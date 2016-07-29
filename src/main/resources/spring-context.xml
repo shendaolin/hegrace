@@ -7,12 +7,19 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
 	<context:component-scan base-package="cn.hegrace.www.v1.controller" />
 	<mvc:annotation-driven />
-
 	<context:property-placeholder location="classpath:mysql.properties" />
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="${jdbc.driverClassName}" />
-		<property name="url" value="${jdbc.url}" />
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverclass">{jdbc.driverClassName}</property>
+		<property name="jdbcUrl">{jdbc.url}</property>
+		<!--MySQL数据库的用户名 -->
+		<property name="user">{jdbc.username}</property>
+		<!--MySQL数据库 密码 -->
+		<property name="password">{jdbc.password}</property>
+		<!--连接池中保留的最小连接数。 -->
+		<property name="minPoolSize">{jdbc.minPoolSize}</property>
+		<!--连接池中保留的最大连接数。Default: 15 -->
+		<property name="maxPoolSize">{jdbc.maxPoolSize}</property>
 	</bean>
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
