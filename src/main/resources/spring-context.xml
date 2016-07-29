@@ -2,28 +2,43 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx" 
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
-        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/pring-aop-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 	<context:component-scan base-package="cn.hegrace.www.v1.controller" />
 	<mvc:annotation-driven />
 	<context:property-placeholder location="classpath:mysql.properties" />
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
-		<property name="driverclass">{jdbc.driverClassName}</property>
-		<property name="jdbcUrl">{jdbc.url}</property>
-		<!--MySQL数据库的用户名 -->
-		<property name="user">{jdbc.username}</property>
-		<!--MySQL数据库 密码 -->
-		<property name="password">{jdbc.password}</property>
-		<!--连接池中保留的最小连接数。 -->
-		<property name="minPoolSize">{jdbc.minPoolSize}</property>
-		<!--连接池中保留的最大连接数。Default: 15 -->
-		<property name="maxPoolSize">{jdbc.maxPoolSize}</property>
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl"
+			value="jdbc:mysql://114.55.105.202:3306/hegrace?useUnicode=true&amp;characterEncoding=UTF-8" />
+		<property name="user" value="appcat" />
+		<property name="password" value="HEGRACE@mysql" />
+		<property name="minPoolSize" value="50" />
+		<property name="maxPoolSize" value="200" />
 	</bean>
+
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations"
+			value="classpath:cn/hegrace/www/v1/dao/mapping/*Mapper.xml" />
+	</bean>
+
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
 
 	<bean id="velocityConfigurer"

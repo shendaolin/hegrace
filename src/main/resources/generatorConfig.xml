@@ -19,20 +19,18 @@
 		</javaTypeResolver>
 
 		<javaModelGenerator targetPackage="cn.hegrace.www.v1.dao.pojo"
-			targetProject="${project}">
+			targetProject="src/main/java">
 			<property name="enableSubPackages" value="false" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
-		<sqlMapGenerator targetPackage="cn.hegrace.www.v1.dao.mapping" targetProject="${project}">
+		<sqlMapGenerator targetPackage="cn.hegrace.www.v1.dao.mapping" targetProject="src/main/java">
 			<property name="enableSubPackages" value="false" />
 		</sqlMapGenerator>
 
 
-		<table tableName="xt_gydm" domainObjectName="hegrace"
-			enableCountByExample="false" enableSelectByExample="false"
-			enableUpdateByExample="false" enableDeleteByExample="false">
-		</table>
+		
+		<table tableName="xt_gydm" domainObjectName=""></table>
 	</context>
 
 </generatorConfiguration>
