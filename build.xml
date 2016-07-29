@@ -60,7 +60,7 @@
         <pathelement location="C:/Users/Administrator/.m2/repository/org/apache/httpcomponents/httpclient/4.5.2/httpclient-4.5.2.jar"/>
         <pathelement location="C:/Users/Administrator/.m2/repository/org/apache/httpcomponents/httpcore/4.4.4/httpcore-4.4.4.jar"/>
         <pathelement location="C:/Users/Administrator/.m2/repository/commons-codec/commons-codec/1.9/commons-codec-1.9.jar"/>
-        <pathelement location="C:/Users/Administrator/.m2/repository/mysql/mysql-connector-java/6.0.3/mysql-connector-java-6.0.3.jar"/>
+        <pathelement location="C:/Users/Administrator/.m2/repository/mysql/mysql-connector-java/5.1.39/mysql-connector-java-5.1.39.jar"/>
         <pathelement location="C:/Users/Administrator/.m2/repository/c3p0/c3p0/0.9.1.2/c3p0-0.9.1.2.jar"/>
     </path>
     <path id="hegrace.classpath">
@@ -72,7 +72,12 @@
     <target name="init">
         <mkdir dir="target/classes"/>
         <copy includeemptydirs="false" todir="target/classes">
-            <fileset dir="src">
+            <fileset dir="src/main/resources">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/java">
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -86,7 +91,8 @@
     <target depends="init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" includeantruntime="false" source="${source}" target="${target}">
-            <src path="src"/>
+            <src path="src/main/resources"/>
+            <src path="src/main/java"/>
             <classpath refid="hegrace.classpath"/>
         </javac>
     </target>

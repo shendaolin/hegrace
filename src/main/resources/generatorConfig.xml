@@ -5,13 +5,13 @@
 
 <generatorConfiguration>
 	<classPathEntry
-		location="C:/Users/Administrator/.m2/repository/mysql/mysql-connector-java/6.0.3/mysql-connector-java-6.0.3.jar" />
+		location="C:/Users/Administrator/.m2/repository/mysql/mysql-connector-java/5.1.39/mysql-connector-java-5.1.39.jar" />
 	<context id="DB2Tables" targetRuntime="MyBatis3">
 		<commentGenerator>
 			<property name="suppressAllComments" value="true" />
 		</commentGenerator>
-		<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-			connectionURL="jdbc:mysql://114.55.105.202:3306/hegrace?useUnicode=true&characterEncoding=UTF-8"
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://114.55.105.202:3306/hegrace?useUnicode=true&amp;characterEncoding=UTF-8"
 			userId="appcat" password="HEGRACE@mysql">
 		</jdbcConnection>
 		<javaTypeResolver>
@@ -19,19 +19,16 @@
 		</javaTypeResolver>
 
 		<javaModelGenerator targetPackage="cn.hegrace.www.v1.dao.pojo"
-			targetProject="hegrace">
-			<property name="enableSubPackages" value="true" />
+			targetProject="${project}">
+			<property name="enableSubPackages" value="false" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
-		<sqlMapGenerator targetPackage="cn.hegrace.www.v1.dao.mapping" targetProject="hegrace">
-			<property name="enableSubPackages" value="true" />
+		<sqlMapGenerator targetPackage="cn.hegrace.www.v1.dao.mapping" targetProject="${project}">
+			<property name="enableSubPackages" value="false" />
 		</sqlMapGenerator>
 
-		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.mybatis.mapper" targetProject="src/main/java">
-			<property name="enableSubPackages" value="true" />
-		</javaClientGenerator>
+
 		<table tableName="xt_gydm" domainObjectName="hegrace"
 			enableCountByExample="false" enableSelectByExample="false"
 			enableUpdateByExample="false" enableDeleteByExample="false">
