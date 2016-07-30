@@ -1,0 +1,76 @@
+<div class="container-fluid">
+	<!-- BEGIN PAGE HEADER-->
+	<div class="row-fluid">
+		<div class="span12">
+			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+			<h3 class="page-title">
+				系统参数管理 <small>参数设置</small>
+			</h3>
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="index.html">首页</a> 
+					<i class="icon-angle-right"></i>
+				</li>
+				<li><a href="#">系统参数管理</a><i class="icon-angle-right"></i></li>
+				<li><a href="#">新增参数</a></li>
+				<li class="pull-right no-text-shadow">
+					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
+						<i class="icon-calendar"></i>
+						<span></span>
+						<i class="icon-angle-down"></i>
+					</div>
+				</li>
+			</ul>
+			<!-- END PAGE TITLE & BREADCRUMB-->
+			<button id="csList" class="btn black">
+			返回 <i class="icon-arrow-left"></i>
+			</button>
+			<button id="raceSaveCart" class="btn blue">
+			保存<i class="icon-share"></i>
+			</button>
+			<br/><br/>
+			<form id="fileupload" action="#" class="form-horizontal" method="POST" enctype="multipart/form-data">
+				<div class="control-group">
+					<label class="control-label">参数类型</label>
+					<div class="controls">
+						<select id="select2_sample2" class="span6 select2">
+							<option value=""></option>
+							<option value="1">职位</option>
+							<option value="2">设备类型</option>
+						</select>
+
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">参数名称:</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="text" name="xm">
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+			</form>
+			
+			<br/>
+		</div>
+	</div>
+</div>
+
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->   
+<script type="text/javascript" src="../media/js/select2.min.js"></script>
+
+<!-- END PAGE LEVEL PLUGINS -->
+
+<script>
+	jQuery(document).ready(function() {   
+		
+	   $("#csList").on("click", CsEdit.csListOnClick());
+	   $('#select2_sample2').select2({
+            placeholder: "选择一个类型",
+            allowClear: true
+        });
+	});
+</script>
+<!-- END JAVASCRIPTS -->

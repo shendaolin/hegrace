@@ -1,0 +1,104 @@
+<div class="container-fluid">
+	<!-- BEGIN PAGE HEADER-->
+	<div class="row-fluid">
+		<div class="span12">
+			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+			<h3 class="page-title">
+				塞事管理 <small>马拉松赛事维护</small>
+			</h3>
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="index.html">首页</a> 
+					<i class="icon-angle-right"></i>
+				</li>
+				<li><a href="#">塞事管理</a></li>
+				<li class="pull-right no-text-shadow">
+					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
+						<i class="icon-calendar"></i>
+						<span></span>
+						<i class="icon-angle-down"></i>
+					</div>
+				</li>
+			</ul>
+			<!-- END PAGE TITLE & BREADCRUMB-->
+			<div style="float:left;">
+			<button id="raceEdit" class="btn green">
+			新增 <i class="icon-plus"></i>
+			</button>
+			<button id="raceDelete" class="btn red">
+			删除 <i class="icon-trash"></i>
+			</button>
+			<button id="raceShare" class="btn blue">
+			发布 <i class="icon-share"></i>
+			</button>
+			</div>
+			<div style="float:right;">
+			<select class="small m-wrap" tabindex="1">
+				<option value="Category 1">全部</option>
+				<option value="Category 2">已发布</option>
+				<option value="Category 3">待发布</option>
+			</select>
+			<input placeholder="赛事名称" class="m-wrap medium" type="text"/>
+			</div>
+
+			<table class="flexme4" style="display: none">
+			<tbody>
+			<tr>
+				<td><div><input type="checkbox" class="selectsub"/></div></td>
+				<td><div>辽宁盘锦马拉松</div></td>
+				<td><div>辽宁盘锦</div></td>
+				<td><div>2016-07-12</div></td>
+				<td><div>2016-07-11</div></td>
+				<td><div><a href="#" class="btn mini green cszList"><i class="icon-user"></i> 1005</a></div></td>
+				<td><div><a href="#" class="btn mini red jjyList"><i class="icon-plus"></i> 30</a></div></td>
+				<td><div><span class="label label-success">已发布</span></div></td>
+				<td><div>
+				<a href="#" class="btn mini purple"><i class="icon-edit"></i> 编辑</a>
+				<a href="#" class="btn mini green sszbgl"><i class="icon-th-large"></i> 赛事装备管理</a>
+				<a href="#" class="btn mini red zyzsh"><i class="icon-th-large"></i> 自愿者审核</a>
+				<a href="#" class="btn mini blue sstj"><i class="icon-th-large"></i> 赛事统计</a>
+				</div></td>
+			</tr>    
+			<tr>
+				<td><div><input type="checkbox" class="selectsub"/></div></td>
+				<td><div>辽宁盘锦马拉松</div></td>
+				<td><div>辽宁盘锦</div></td>
+				<td><div>2016-07-12</div></td>
+				<td><div>2016-07-11</div></td>
+				<td><div><a href="#" class="btn mini green cszList"><i class="icon-user"></i> 1005</a></div></td>
+				<td><div><a href="#" class="btn mini red jjyList"><i class="icon-plus"></i> 30</a></div></td>
+				<td><div><span class="label label-success">已发布</span></div></td>
+				<td><div>
+				<a href="#" class="btn mini purple"><i class="icon-edit"></i> 编辑</a>
+				<a href="#" class="btn mini green sszbgl"><i class="icon-th-large"></i> 赛事装备管理</a>
+				<a href="#" class="btn mini red zyzsh"><i class="icon-th-large"></i> 自愿者审核</a>
+				<a href="#" class="btn mini blue sstj"><i class="icon-th-large"></i> 赛事统计</a>
+				</div></td>
+			</tr> 
+			</tbody>
+			</table>
+			
+			<br/>
+		</div>
+	</div>
+</div>
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->   
+ <script type="text/javascript" src="../media/js/flexigrid.js"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+
+<script>
+	jQuery(document).ready(function() {    
+		//App.init(); // initlayout and core plugins
+		Racelist.init();
+		$("#raceEdit").on("click",Racelist.raceEditOnClick());
+		$(".cszList").on("click",Racelist.cszListOnClick())
+		$(".jjyList").on("click",Racelist.jjyListOnClick())
+		$(".sstj").on("click", Racelist.sstjOnClick())
+		$(".zyzsh").on("click", Racelist.zyzshOnClick())
+		$(".sszbgl").on("click", Racelist.sszbglOnClick())
+
+	});
+</script>
+<!-- END JAVASCRIPTS -->

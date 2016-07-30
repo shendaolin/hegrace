@@ -1,0 +1,81 @@
+<div class="container-fluid">
+	<!-- BEGIN PAGE HEADER-->
+	<div class="row-fluid">
+		<div class="span12">
+			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+			<h3 class="page-title">
+				塞事管理 <small>马拉松赛事维护</small>
+			</h3>
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="index.html">首页</a> 
+					<i class="icon-angle-right"></i>
+				</li>
+				<li>
+					<a href="#">塞事管理</a>
+					<i class="icon-angle-right"></i>
+				</li>
+				<li><a href="#">赛事统计</a></li>
+				<li class="pull-right no-text-shadow">
+					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
+						<i class="icon-calendar"></i>
+						<span></span>
+						<i class="icon-angle-down"></i>
+					</div>
+				</li>
+			</ul>
+			<!-- END PAGE TITLE & BREADCRUMB-->
+			<div>
+			<button id="sbList" class="btn black">
+			返回 <i class="icon-arrow-left"></i>
+			</button>
+			</div>
+			<br/>
+
+				<!-- BEGIN SAMPLE TABLE PORTLET-->
+
+				<div class="portlet box red">
+					<div class="portlet-title">
+						<div class="caption"><i class="icon-cogs"></i>统计</div>
+					</div>
+
+					<div class="portlet-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>序号</th>
+									<th>类型</th>
+									<th>总数</th>
+									<th>已分配数量</th>
+									<th>不可用数量</th>
+									<th>可用数量</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>担架</td>
+									<td>130</td>
+									<td>35</td>
+									<td>30</td>
+									<td>100</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			<br/>
+		</div>
+	</div>
+</div>
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->   
+<!-- END PAGE LEVEL PLUGINS -->
+
+<script>
+	jQuery(document).ready(function() {    
+		$("#sbList").on("click", SbEdit.sbListOnClick());
+	});
+</script>
+<!-- END JAVASCRIPTS -->

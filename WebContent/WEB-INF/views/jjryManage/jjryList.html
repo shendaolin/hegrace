@@ -1,0 +1,77 @@
+<div class="container-fluid">
+	<!-- BEGIN PAGE HEADER-->
+	<div class="row-fluid">
+		<div class="span12">
+			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+			<h3 class="page-title">
+				急救人员管理 <small>急救人员资质审核</small>
+			</h3>
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="index.html">首页</a> 
+					<i class="icon-angle-right"></i>
+				</li>
+				<li><a href="#">急救人员管理</a></li>
+				<li class="pull-right no-text-shadow">
+					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
+						<i class="icon-calendar"></i>
+						<span></span>
+						<i class="icon-angle-down"></i>
+					</div>
+				</li>
+			</ul>
+			<!-- END PAGE TITLE & BREADCRUMB-->
+			<div style="float:left;">
+			<button id="jjryEdit" class="btn green">
+			新增 <i class="icon-plus"></i>
+			</button>
+			<button id="jjyImp" class="btn yellow">
+			导入 <i class="icon-ok"></i>
+			</button>
+			<button id="jjyExp" class="btn blue">
+			导出 <i class="icon-share"></i>
+			</button>
+			</div>
+			<div style="float:right;">
+			<input placeholder="姓名" class="m-wrap medium" type="text"/>
+			</div>
+
+			<table class="flexme4" style="display: none">
+			<tbody>
+			<tr>
+				<td><div><input type="checkbox"></div></td>
+				<td><div>123967128888</div></td>
+				<td><div>飞利浦</div></td>
+				<td><div>男</div></td>
+				<td><div>33018888888888</div></td>
+				<td><div>医生</div></td>
+				<td><div>骨科、全科</div></td>
+				<td><div><span class="label label-success">审核通过</span></div></td>
+				<td><div>
+				<a href="#" class="btn mini blue"><i class="icon-exclamation-sign"></i> 审核</a>
+				<a href="#" class="btn mini purple"><i class="icon-edit"></i> 编辑</a>
+				<a href="#" class="btn mini red"><i class="icon-trash"></i> 删除</a>
+				<a href="#" class="btn mini yellow ssjl"><i class="icon-time"></i> 赛事记录</a>
+				</div></td>
+			</tr>    
+			</tbody>
+			</table>
+			
+			<br/>
+		</div>
+	</div>
+</div>
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->   
+ <script type="text/javascript" src="../media/js/flexigrid.js"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+
+<script>
+	jQuery(document).ready(function() {    
+		JjryList.init();
+		$("#jjryEdit").on("click", JjryList.jjryEditOnClick());
+		$(".ssjl").on("click", JjryList.ssjlEditOnClick())
+	});
+</script>
+<!-- END JAVASCRIPTS -->

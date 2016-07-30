@@ -1,0 +1,99 @@
+<div class="container-fluid">
+	<!-- BEGIN PAGE HEADER-->
+	<div class="row-fluid">
+		<div class="span12">
+			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+			<h3 class="page-title">
+				塞事管理 <small>马拉松赛事维护</small>
+			</h3>
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="index.html">首页</a> 
+					<i class="icon-angle-right"></i>
+				</li>
+				<li><a href="#">急救人员管理</a><i class="icon-angle-right"></i></li>
+				<li><a href="#">新增急救员</a></li>
+				<li class="pull-right no-text-shadow">
+					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
+						<i class="icon-calendar"></i>
+						<span></span>
+						<i class="icon-angle-down"></i>
+					</div>
+				</li>
+			</ul>
+			<!-- END PAGE TITLE & BREADCRUMB-->
+			<button id="jjryList" class="btn black">
+			返回 <i class="icon-arrow-left"></i>
+			</button>
+			<button id="raceSaveCart" class="btn blue">
+			保存<i class="icon-share"></i>
+			</button>
+			<br/><br/>
+			<form id="fileupload" action="#" class="form-horizontal" method="POST" enctype="multipart/form-data">
+				<div class="control-group">
+					<label class="control-label">姓名:</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="text" name="xm">
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">性别:</label>
+					<div class="controls">
+						<select>
+						<option>男</option>
+						<option>女</option>
+						</select>
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">电话:</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="text" name="lxdh">
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">证件:</label>
+					<div class="controls">
+						<select class="m-wrap small"><option>身份证</option><option>其他</option></select><input class="m-wrap medium" type="text" name="lxdh">
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">身份类型</label>
+					<div class="controls">
+						<select>
+						<option>医生</option>
+						<option>护士</option>
+						</select>
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">类别</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="text" name="lxdh">
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+			</form>
+			
+			<br/>
+		</div>
+	</div>
+</div>
+
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->   
+<!-- END PAGE LEVEL PLUGINS -->
+
+<script>
+	jQuery(document).ready(function() {    
+	   $("#jjryList").on("click", JjryEdit.jjryListOnClick());
+	});
+</script>
+<!-- END JAVASCRIPTS -->

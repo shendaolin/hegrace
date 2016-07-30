@@ -1,0 +1,108 @@
+<div class="container-fluid">
+	<!-- BEGIN PAGE HEADER-->
+	<div class="row-fluid">
+		<div class="span12">
+			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+			<h3 class="page-title">
+				系统管理 <small>账号设置</small>
+			</h3>
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="index.html">首页</a> 
+					<i class="icon-angle-right"></i>
+				</li>
+				<li><a href="#">系统管理</a><i class="icon-angle-right"></i></li>
+				<li><a href="#">新增管理员</a></li>
+				<li class="pull-right no-text-shadow">
+					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
+						<i class="icon-calendar"></i>
+						<span></span>
+						<i class="icon-angle-down"></i>
+					</div>
+				</li>
+			</ul>
+			<!-- END PAGE TITLE & BREADCRUMB-->
+			<button id="zhList" class="btn black">
+			返回 <i class="icon-arrow-left"></i>
+			</button>
+			<button id="raceSaveCart" class="btn blue">
+			保存<i class="icon-share"></i>
+			</button>
+			<br/><br/>
+			<form id="fileupload" action="#" class="form-horizontal" method="POST" enctype="multipart/form-data">
+				<div class="control-group">
+					<label class="control-label">姓名:</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="text" name="xm">
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">电话:</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="text" name="lxdh">
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">账号:</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="text" name="lxdh">
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">密码:</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="password" name="lxdh">
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">职位</label>
+					<div class="controls">
+						<select>
+						<option>运营</option>
+						<option>赛事指挥官</option>
+						</select>
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">选择赛事</label>
+					<div class="controls">
+						<select id="select2_sample1" class="span6 select2">
+							<option value=""></option>
+							<option value="AL">杭州马拉松</option>
+							<option value="WY">上海马拉松</option>
+						</select>
+
+					</div>
+				</div>
+
+			</form>
+			
+			<br/>
+		</div>
+	</div>
+</div>
+
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->   
+<script type="text/javascript" src="../media/js/select2.min.js"></script>
+
+<!-- END PAGE LEVEL PLUGINS -->
+
+<script>
+	jQuery(document).ready(function() {   
+		
+	   $("#zhList").on("click", ZhEdit.zhListOnClick());
+	   $('#select2_sample1').select2({
+            placeholder: "选择一个赛事",
+            allowClear: true
+        });
+	});
+</script>
+<!-- END JAVASCRIPTS -->

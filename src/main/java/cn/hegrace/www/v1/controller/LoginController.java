@@ -33,7 +33,7 @@ public class LoginController {
 		XtGydmExample example = new XtGydmExample();
 		Criteria criterion = example.createCriteria();
 				criterion.andIdEqualTo(1L);
-		List<XtGydm> xtgydms = sqlSession.selectList("cn.hegrace.www.v1.dao.mapping.XtGydmMapper.selectByExample", example);
+		List<XtGydm> xtgydms = sqlSession.selectList("selectByExample", example);
 		mv.addObject("xtgydms", xtgydms);
 		return mv;
 	}

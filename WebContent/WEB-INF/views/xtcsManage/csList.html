@@ -1,0 +1,63 @@
+<div class="container-fluid">
+	<!-- BEGIN PAGE HEADER-->
+	<div class="row-fluid">
+		<div class="span12">
+			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+			<h3 class="page-title">
+				    系统参数管理 <small>参数设置</small>
+			</h3>
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="。。/index.html">首页</a> 
+					<i class="icon-angle-right"></i>
+				</li>
+				<li><a href="#">系统参数管理 </a></li>
+				<li class="pull-right no-text-shadow">
+					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
+						<i class="icon-calendar"></i>
+						<span></span>
+						<i class="icon-angle-down"></i>
+					</div>
+				</li>
+			</ul>
+			<!-- END PAGE TITLE & BREADCRUMB-->
+			<div style="float:left;">
+			<button id="csEdit" class="btn green">
+			新建 <i class="icon-plus"></i>
+			</button>
+			</div>
+			<div style="float:right;">
+			<input placeholder="参数类型" class="m-wrap medium" type="text"/>
+			</div>
+
+			<table class="flexme4" style="display: none">
+			<tbody>
+			<tr>
+				<td><div>职位</div></td>
+				<td><div>1</div></td>
+				<td><div>指挥中心管理员</div></td>
+				<td><div>
+				<a href="#" class="btn mini purple"><i class="icon-edit"></i> 编辑</a>
+				<a href="#" class="btn mini red"><i class="icon-trash"></i> 删除</a>
+				</div></td>
+			</tr>    
+			</tbody>
+			</table>
+			
+			<br/>
+		</div>
+	</div>
+</div>
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->   
+ <script type="text/javascript" src="../media/js/flexigrid.js"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+
+<script>
+	jQuery(document).ready(function() {    
+		CsList.init();
+		$("#csEdit").on("click", CsList.csEditOnClick());
+	});
+</script>
+<!-- END JAVASCRIPTS -->
