@@ -1,19 +1,21 @@
 package cn.hegrace.www.v1.dao.pojo;
 
-public class XtJjry {
-    private Integer id;
+import cn.hegrace.www.v1.annotation.PrimaryKey;
+
+public class XtJjry extends BaseDao{
+    private String id;
 
     private String xm;
 
     private Integer xb;
 
-    private Long zjlx;
+    private String zjlx;
 
     private String zjhm;
 
     private String dh;
 
-    private Long sflx;
+    private String sflx;
 
     private String lb;
 
@@ -22,13 +24,13 @@ public class XtJjry {
     private String fzcc;
 
     private Integer ly;
-
-    public Integer getId() {
+    @PrimaryKey
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getXm() {
@@ -47,12 +49,12 @@ public class XtJjry {
         this.xb = xb;
     }
 
-    public Long getZjlx() {
+    public String getZjlx() {
         return zjlx;
     }
 
-    public void setZjlx(Long zjlx) {
-        this.zjlx = zjlx;
+    public void setZjlx(String zjlx) {
+        this.zjlx = zjlx == null ? null : zjlx.trim();
     }
 
     public String getZjhm() {
@@ -71,12 +73,12 @@ public class XtJjry {
         this.dh = dh == null ? null : dh.trim();
     }
 
-    public Long getSflx() {
+    public String getSflx() {
         return sflx;
     }
 
-    public void setSflx(Long sflx) {
-        this.sflx = sflx;
+    public void setSflx(String sflx) {
+        this.sflx = sflx == null ? null : sflx.trim();
     }
 
     public String getLb() {

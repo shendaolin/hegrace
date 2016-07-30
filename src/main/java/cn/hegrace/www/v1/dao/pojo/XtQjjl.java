@@ -1,11 +1,13 @@
 package cn.hegrace.www.v1.dao.pojo;
 
-public class XtQjjl {
-    private Long id;
+import cn.hegrace.www.v1.annotation.PrimaryKey;
 
-    private Long ssid;
+public class XtQjjl extends BaseDao{
+    private String id;
 
-    private Long sjid;
+    private String ssid;
+
+    private String sjid;
 
     private String xm;
 
@@ -14,29 +16,29 @@ public class XtQjjl {
     private String bh;
 
     private String zb;
-
-    public Long getId() {
+    @PrimaryKey
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
-    public Long getSsid() {
+    public String getSsid() {
         return ssid;
     }
 
-    public void setSsid(Long ssid) {
-        this.ssid = ssid;
+    public void setSsid(String ssid) {
+        this.ssid = ssid == null ? null : ssid.trim();
     }
 
-    public Long getSjid() {
+    public String getSjid() {
         return sjid;
     }
 
-    public void setSjid(Long sjid) {
-        this.sjid = sjid;
+    public void setSjid(String sjid) {
+        this.sjid = sjid == null ? null : sjid.trim();
     }
 
     public String getXm() {

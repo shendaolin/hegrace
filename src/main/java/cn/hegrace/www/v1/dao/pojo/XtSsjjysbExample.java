@@ -3,7 +3,7 @@ package cn.hegrace.www.v1.dao.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class XtSsjjysbExample {
+public class XtSsjjysbExample extends BaseExample{
     protected String orderByClause;
 
     protected boolean distinct;
@@ -114,52 +114,62 @@ public class XtSsjjysbExample {
             return (Criteria) this;
         }
 
-        public Criteria andSsjjyidEqualTo(Long value) {
+        public Criteria andSsjjyidEqualTo(String value) {
             addCriterion("ssjjyid =", value, "ssjjyid");
             return (Criteria) this;
         }
 
-        public Criteria andSsjjyidNotEqualTo(Long value) {
+        public Criteria andSsjjyidNotEqualTo(String value) {
             addCriterion("ssjjyid <>", value, "ssjjyid");
             return (Criteria) this;
         }
 
-        public Criteria andSsjjyidGreaterThan(Long value) {
+        public Criteria andSsjjyidGreaterThan(String value) {
             addCriterion("ssjjyid >", value, "ssjjyid");
             return (Criteria) this;
         }
 
-        public Criteria andSsjjyidGreaterThanOrEqualTo(Long value) {
+        public Criteria andSsjjyidGreaterThanOrEqualTo(String value) {
             addCriterion("ssjjyid >=", value, "ssjjyid");
             return (Criteria) this;
         }
 
-        public Criteria andSsjjyidLessThan(Long value) {
+        public Criteria andSsjjyidLessThan(String value) {
             addCriterion("ssjjyid <", value, "ssjjyid");
             return (Criteria) this;
         }
 
-        public Criteria andSsjjyidLessThanOrEqualTo(Long value) {
+        public Criteria andSsjjyidLessThanOrEqualTo(String value) {
             addCriterion("ssjjyid <=", value, "ssjjyid");
             return (Criteria) this;
         }
 
-        public Criteria andSsjjyidIn(List<Long> values) {
+        public Criteria andSsjjyidLike(String value) {
+            addCriterion("ssjjyid like", value, "ssjjyid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsjjyidNotLike(String value) {
+            addCriterion("ssjjyid not like", value, "ssjjyid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsjjyidIn(List<String> values) {
             addCriterion("ssjjyid in", values, "ssjjyid");
             return (Criteria) this;
         }
 
-        public Criteria andSsjjyidNotIn(List<Long> values) {
+        public Criteria andSsjjyidNotIn(List<String> values) {
             addCriterion("ssjjyid not in", values, "ssjjyid");
             return (Criteria) this;
         }
 
-        public Criteria andSsjjyidBetween(Long value1, Long value2) {
+        public Criteria andSsjjyidBetween(String value1, String value2) {
             addCriterion("ssjjyid between", value1, value2, "ssjjyid");
             return (Criteria) this;
         }
 
-        public Criteria andSsjjyidNotBetween(Long value1, Long value2) {
+        public Criteria andSsjjyidNotBetween(String value1, String value2) {
             addCriterion("ssjjyid not between", value1, value2, "ssjjyid");
             return (Criteria) this;
         }
@@ -174,52 +184,62 @@ public class XtSsjjysbExample {
             return (Criteria) this;
         }
 
-        public Criteria andSbidEqualTo(Long value) {
+        public Criteria andSbidEqualTo(String value) {
             addCriterion("sbid =", value, "sbid");
             return (Criteria) this;
         }
 
-        public Criteria andSbidNotEqualTo(Long value) {
+        public Criteria andSbidNotEqualTo(String value) {
             addCriterion("sbid <>", value, "sbid");
             return (Criteria) this;
         }
 
-        public Criteria andSbidGreaterThan(Long value) {
+        public Criteria andSbidGreaterThan(String value) {
             addCriterion("sbid >", value, "sbid");
             return (Criteria) this;
         }
 
-        public Criteria andSbidGreaterThanOrEqualTo(Long value) {
+        public Criteria andSbidGreaterThanOrEqualTo(String value) {
             addCriterion("sbid >=", value, "sbid");
             return (Criteria) this;
         }
 
-        public Criteria andSbidLessThan(Long value) {
+        public Criteria andSbidLessThan(String value) {
             addCriterion("sbid <", value, "sbid");
             return (Criteria) this;
         }
 
-        public Criteria andSbidLessThanOrEqualTo(Long value) {
+        public Criteria andSbidLessThanOrEqualTo(String value) {
             addCriterion("sbid <=", value, "sbid");
             return (Criteria) this;
         }
 
-        public Criteria andSbidIn(List<Long> values) {
+        public Criteria andSbidLike(String value) {
+            addCriterion("sbid like", value, "sbid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSbidNotLike(String value) {
+            addCriterion("sbid not like", value, "sbid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSbidIn(List<String> values) {
             addCriterion("sbid in", values, "sbid");
             return (Criteria) this;
         }
 
-        public Criteria andSbidNotIn(List<Long> values) {
+        public Criteria andSbidNotIn(List<String> values) {
             addCriterion("sbid not in", values, "sbid");
             return (Criteria) this;
         }
 
-        public Criteria andSbidBetween(Long value1, Long value2) {
+        public Criteria andSbidBetween(String value1, String value2) {
             addCriterion("sbid between", value1, value2, "sbid");
             return (Criteria) this;
         }
 
-        public Criteria andSbidNotBetween(Long value1, Long value2) {
+        public Criteria andSbidNotBetween(String value1, String value2) {
             addCriterion("sbid not between", value1, value2, "sbid");
             return (Criteria) this;
         }

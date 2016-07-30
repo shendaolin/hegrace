@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hegrace.www.v1.dao.mapping.XtSsjjyMapper">
+<mapper namespace="XtSsjjy">
   <resultMap id="BaseResultMap" type="cn.hegrace.www.v1.dao.pojo.XtSsjjy">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="ssid" jdbcType="BIGINT" property="ssid" />
-    <result column="ryid" jdbcType="BIGINT" property="ryid" />
-    <result column="gwid" jdbcType="BIGINT" property="gwid" />
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="ssid" jdbcType="VARCHAR" property="ssid" />
+    <result column="ryid" jdbcType="VARCHAR" property="ryid" />
+    <result column="gwid" jdbcType="VARCHAR" property="gwid" />
     <result column="Zt" jdbcType="INTEGER" property="zt" />
     <result column="zb" jdbcType="VARCHAR" property="zb" />
   </resultMap>
@@ -84,15 +84,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from XT_SSJJY
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from XT_SSJJY
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsjjyExample">
     delete from XT_SSJJY
@@ -103,8 +103,8 @@
   <insert id="insert" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsjjy">
     insert into XT_SSJJY (id, ssid, ryid, 
       gwid, Zt, zb)
-    values (#{id,jdbcType=BIGINT}, #{ssid,jdbcType=BIGINT}, #{ryid,jdbcType=BIGINT}, 
-      #{gwid,jdbcType=BIGINT}, #{zt,jdbcType=INTEGER}, #{zb,jdbcType=VARCHAR})
+    values (#{id,jdbcType=VARCHAR}, #{ssid,jdbcType=VARCHAR}, #{ryid,jdbcType=VARCHAR}, 
+      #{gwid,jdbcType=VARCHAR}, #{zt,jdbcType=INTEGER}, #{zb,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsjjy">
     insert into XT_SSJJY
@@ -130,16 +130,16 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=BIGINT},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="ssid != null">
-        #{ssid,jdbcType=BIGINT},
+        #{ssid,jdbcType=VARCHAR},
       </if>
       <if test="ryid != null">
-        #{ryid,jdbcType=BIGINT},
+        #{ryid,jdbcType=VARCHAR},
       </if>
       <if test="gwid != null">
-        #{gwid,jdbcType=BIGINT},
+        #{gwid,jdbcType=VARCHAR},
       </if>
       <if test="zt != null">
         #{zt,jdbcType=INTEGER},
@@ -159,16 +159,16 @@
     update XT_SSJJY
     <set>
       <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+        id = #{record.id,jdbcType=VARCHAR},
       </if>
       <if test="record.ssid != null">
-        ssid = #{record.ssid,jdbcType=BIGINT},
+        ssid = #{record.ssid,jdbcType=VARCHAR},
       </if>
       <if test="record.ryid != null">
-        ryid = #{record.ryid,jdbcType=BIGINT},
+        ryid = #{record.ryid,jdbcType=VARCHAR},
       </if>
       <if test="record.gwid != null">
-        gwid = #{record.gwid,jdbcType=BIGINT},
+        gwid = #{record.gwid,jdbcType=VARCHAR},
       </if>
       <if test="record.zt != null">
         Zt = #{record.zt,jdbcType=INTEGER},
@@ -183,10 +183,10 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update XT_SSJJY
-    set id = #{record.id,jdbcType=BIGINT},
-      ssid = #{record.ssid,jdbcType=BIGINT},
-      ryid = #{record.ryid,jdbcType=BIGINT},
-      gwid = #{record.gwid,jdbcType=BIGINT},
+    set id = #{record.id,jdbcType=VARCHAR},
+      ssid = #{record.ssid,jdbcType=VARCHAR},
+      ryid = #{record.ryid,jdbcType=VARCHAR},
+      gwid = #{record.gwid,jdbcType=VARCHAR},
       Zt = #{record.zt,jdbcType=INTEGER},
       zb = #{record.zb,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -197,13 +197,13 @@
     update XT_SSJJY
     <set>
       <if test="ssid != null">
-        ssid = #{ssid,jdbcType=BIGINT},
+        ssid = #{ssid,jdbcType=VARCHAR},
       </if>
       <if test="ryid != null">
-        ryid = #{ryid,jdbcType=BIGINT},
+        ryid = #{ryid,jdbcType=VARCHAR},
       </if>
       <if test="gwid != null">
-        gwid = #{gwid,jdbcType=BIGINT},
+        gwid = #{gwid,jdbcType=VARCHAR},
       </if>
       <if test="zt != null">
         Zt = #{zt,jdbcType=INTEGER},
@@ -212,15 +212,15 @@
         zb = #{zb,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsjjy">
     update XT_SSJJY
-    set ssid = #{ssid,jdbcType=BIGINT},
-      ryid = #{ryid,jdbcType=BIGINT},
-      gwid = #{gwid,jdbcType=BIGINT},
+    set ssid = #{ssid,jdbcType=VARCHAR},
+      ryid = #{ryid,jdbcType=VARCHAR},
+      gwid = #{gwid,jdbcType=VARCHAR},
       Zt = #{zt,jdbcType=INTEGER},
       zb = #{zb,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

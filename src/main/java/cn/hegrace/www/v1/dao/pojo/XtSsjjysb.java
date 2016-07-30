@@ -1,26 +1,26 @@
 package cn.hegrace.www.v1.dao.pojo;
 
-public class XtSsjjysb {
-    private Long ssjjyid;
+public class XtSsjjysb extends BaseDao{
+    private String ssjjyid;
 
-    private Long sbid;
+    private String sbid;
 
     private Integer zt;
 
-    public Long getSsjjyid() {
+    public String getSsjjyid() {
         return ssjjyid;
     }
 
-    public void setSsjjyid(Long ssjjyid) {
-        this.ssjjyid = ssjjyid;
+    public void setSsjjyid(String ssjjyid) {
+        this.ssjjyid = ssjjyid == null ? null : ssjjyid.trim();
     }
 
-    public Long getSbid() {
+    public String getSbid() {
         return sbid;
     }
 
-    public void setSbid(Long sbid) {
-        this.sbid = sbid;
+    public void setSbid(String sbid) {
+        this.sbid = sbid == null ? null : sbid.trim();
     }
 
     public Integer getZt() {

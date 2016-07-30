@@ -1,40 +1,42 @@
 package cn.hegrace.www.v1.dao.pojo;
 
-public class XtSsjl {
-    private Long id;
+import cn.hegrace.www.v1.annotation.PrimaryKey;
 
-    private Long ryid;
+public class XtSsjl extends BaseDao{
+    private String id;
 
-    private Long qjid;
+    private String ryid;
+
+    private String qjid;
 
     private Integer zt;
 
     private String bhms;
 
     private String clms;
-
-    public Long getId() {
+    @PrimaryKey
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
-    public Long getRyid() {
+    public String getRyid() {
         return ryid;
     }
 
-    public void setRyid(Long ryid) {
-        this.ryid = ryid;
+    public void setRyid(String ryid) {
+        this.ryid = ryid == null ? null : ryid.trim();
     }
 
-    public Long getQjid() {
+    public String getQjid() {
         return qjid;
     }
 
-    public void setQjid(Long qjid) {
-        this.qjid = qjid;
+    public void setQjid(String qjid) {
+        this.qjid = qjid == null ? null : qjid.trim();
     }
 
     public Integer getZt() {

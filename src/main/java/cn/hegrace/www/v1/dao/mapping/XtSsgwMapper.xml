@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hegrace.www.v1.dao.mapping.XtSsgwMapper">
+<mapper namespace="XtSsgw">
   <resultMap id="BaseResultMap" type="cn.hegrace.www.v1.dao.pojo.XtSsgw">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="ssid" jdbcType="BIGINT" property="ssid" />
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="ssid" jdbcType="VARCHAR" property="ssid" />
     <result column="gwmc" jdbcType="VARCHAR" property="gwmc" />
     <result column="Gwsl" jdbcType="INTEGER" property="gwsl" />
   </resultMap>
@@ -82,15 +82,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from XT_SSGW
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from XT_SSGW
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsgwExample">
     delete from XT_SSGW
@@ -101,7 +101,7 @@
   <insert id="insert" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsgw">
     insert into XT_SSGW (id, ssid, gwmc, 
       Gwsl)
-    values (#{id,jdbcType=BIGINT}, #{ssid,jdbcType=BIGINT}, #{gwmc,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{ssid,jdbcType=VARCHAR}, #{gwmc,jdbcType=VARCHAR}, 
       #{gwsl,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsgw">
@@ -122,10 +122,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=BIGINT},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="ssid != null">
-        #{ssid,jdbcType=BIGINT},
+        #{ssid,jdbcType=VARCHAR},
       </if>
       <if test="gwmc != null">
         #{gwmc,jdbcType=VARCHAR},
@@ -145,10 +145,10 @@
     update XT_SSGW
     <set>
       <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+        id = #{record.id,jdbcType=VARCHAR},
       </if>
       <if test="record.ssid != null">
-        ssid = #{record.ssid,jdbcType=BIGINT},
+        ssid = #{record.ssid,jdbcType=VARCHAR},
       </if>
       <if test="record.gwmc != null">
         gwmc = #{record.gwmc,jdbcType=VARCHAR},
@@ -163,8 +163,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update XT_SSGW
-    set id = #{record.id,jdbcType=BIGINT},
-      ssid = #{record.ssid,jdbcType=BIGINT},
+    set id = #{record.id,jdbcType=VARCHAR},
+      ssid = #{record.ssid,jdbcType=VARCHAR},
       gwmc = #{record.gwmc,jdbcType=VARCHAR},
       Gwsl = #{record.gwsl,jdbcType=INTEGER}
     <if test="_parameter != null">
@@ -175,7 +175,7 @@
     update XT_SSGW
     <set>
       <if test="ssid != null">
-        ssid = #{ssid,jdbcType=BIGINT},
+        ssid = #{ssid,jdbcType=VARCHAR},
       </if>
       <if test="gwmc != null">
         gwmc = #{gwmc,jdbcType=VARCHAR},
@@ -184,13 +184,13 @@
         Gwsl = #{gwsl,jdbcType=INTEGER},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsgw">
     update XT_SSGW
-    set ssid = #{ssid,jdbcType=BIGINT},
+    set ssid = #{ssid,jdbcType=VARCHAR},
       gwmc = #{gwmc,jdbcType=VARCHAR},
       Gwsl = #{gwsl,jdbcType=INTEGER}
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

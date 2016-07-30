@@ -1,16 +1,16 @@
 package cn.hegrace.www.v1.dao.pojo;
 
-public class XtSstp {
-    private Long ssid;
+public class XtSstp extends BaseDao{
+    private String ssid;
 
     private String tpdz;
 
-    public Long getSsid() {
+    public String getSsid() {
         return ssid;
     }
 
-    public void setSsid(Long ssid) {
-        this.ssid = ssid;
+    public void setSsid(String ssid) {
+        this.ssid = ssid == null ? null : ssid.trim();
     }
 
     public String getTpdz() {

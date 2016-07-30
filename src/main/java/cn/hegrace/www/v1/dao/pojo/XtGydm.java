@@ -1,18 +1,23 @@
 package cn.hegrace.www.v1.dao.pojo;
 
-public class XtGydm {
-    private Long id;
+import cn.hegrace.www.v1.annotation.PrimaryKey;
+
+public class XtGydm extends BaseDao{
+	
+	
+    private String id;
 
     private Integer lbid;
 
     private String dmmc;
 
-    public Long getId() {
+    @PrimaryKey
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public Integer getLbid() {

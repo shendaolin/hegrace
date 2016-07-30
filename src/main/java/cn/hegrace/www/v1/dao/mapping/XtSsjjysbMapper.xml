@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hegrace.www.v1.dao.mapping.XtSsjjysbMapper">
+<mapper namespace="XtSsjjysb">
   <resultMap id="BaseResultMap" type="cn.hegrace.www.v1.dao.pojo.XtSsjjysb">
-    <result column="ssjjyid" jdbcType="BIGINT" property="ssjjyid" />
-    <result column="sbid" jdbcType="BIGINT" property="sbid" />
+    <result column="ssjjyid" jdbcType="VARCHAR" property="ssjjyid" />
+    <result column="sbid" jdbcType="VARCHAR" property="sbid" />
     <result column="Zt" jdbcType="INTEGER" property="zt" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -90,7 +90,7 @@
   <insert id="insert" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsjjysb">
     insert into XT_SSJJYSB (ssjjyid, sbid, Zt
       )
-    values (#{ssjjyid,jdbcType=BIGINT}, #{sbid,jdbcType=BIGINT}, #{zt,jdbcType=INTEGER}
+    values (#{ssjjyid,jdbcType=VARCHAR}, #{sbid,jdbcType=VARCHAR}, #{zt,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsjjysb">
@@ -108,10 +108,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="ssjjyid != null">
-        #{ssjjyid,jdbcType=BIGINT},
+        #{ssjjyid,jdbcType=VARCHAR},
       </if>
       <if test="sbid != null">
-        #{sbid,jdbcType=BIGINT},
+        #{sbid,jdbcType=VARCHAR},
       </if>
       <if test="zt != null">
         #{zt,jdbcType=INTEGER},
@@ -128,10 +128,10 @@
     update XT_SSJJYSB
     <set>
       <if test="record.ssjjyid != null">
-        ssjjyid = #{record.ssjjyid,jdbcType=BIGINT},
+        ssjjyid = #{record.ssjjyid,jdbcType=VARCHAR},
       </if>
       <if test="record.sbid != null">
-        sbid = #{record.sbid,jdbcType=BIGINT},
+        sbid = #{record.sbid,jdbcType=VARCHAR},
       </if>
       <if test="record.zt != null">
         Zt = #{record.zt,jdbcType=INTEGER},
@@ -143,8 +143,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update XT_SSJJYSB
-    set ssjjyid = #{record.ssjjyid,jdbcType=BIGINT},
-      sbid = #{record.sbid,jdbcType=BIGINT},
+    set ssjjyid = #{record.ssjjyid,jdbcType=VARCHAR},
+      sbid = #{record.sbid,jdbcType=VARCHAR},
       Zt = #{record.zt,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />

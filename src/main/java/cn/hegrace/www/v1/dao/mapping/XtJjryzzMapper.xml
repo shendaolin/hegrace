@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hegrace.www.v1.dao.mapping.XtJjryzzMapper">
+<mapper namespace="XtJjryzz">
   <resultMap id="BaseResultMap" type="cn.hegrace.www.v1.dao.pojo.XtJjryzz">
-    <result column="ryId" jdbcType="BIGINT" property="ryid" />
+    <result column="ryId" jdbcType="VARCHAR" property="ryid" />
     <result column="tpdz" jdbcType="VARCHAR" property="tpdz" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -88,7 +88,7 @@
   </delete>
   <insert id="insert" parameterType="cn.hegrace.www.v1.dao.pojo.XtJjryzz">
     insert into XT_JJRYZZ (ryId, tpdz)
-    values (#{ryid,jdbcType=BIGINT}, #{tpdz,jdbcType=VARCHAR})
+    values (#{ryid,jdbcType=VARCHAR}, #{tpdz,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.hegrace.www.v1.dao.pojo.XtJjryzz">
     insert into XT_JJRYZZ
@@ -102,7 +102,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="ryid != null">
-        #{ryid,jdbcType=BIGINT},
+        #{ryid,jdbcType=VARCHAR},
       </if>
       <if test="tpdz != null">
         #{tpdz,jdbcType=VARCHAR},
@@ -119,7 +119,7 @@
     update XT_JJRYZZ
     <set>
       <if test="record.ryid != null">
-        ryId = #{record.ryid,jdbcType=BIGINT},
+        ryId = #{record.ryid,jdbcType=VARCHAR},
       </if>
       <if test="record.tpdz != null">
         tpdz = #{record.tpdz,jdbcType=VARCHAR},
@@ -131,7 +131,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update XT_JJRYZZ
-    set ryId = #{record.ryid,jdbcType=BIGINT},
+    set ryId = #{record.ryid,jdbcType=VARCHAR},
       tpdz = #{record.tpdz,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />

@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hegrace.www.v1.dao.mapping.XtCzyhMapper">
+<mapper namespace="XtCzyh">
   <resultMap id="BaseResultMap" type="cn.hegrace.www.v1.dao.pojo.XtCzyh">
-    <id column="Id" jdbcType="BIGINT" property="id" />
+    <id column="Id" jdbcType="VARCHAR" property="id" />
     <result column="dlm" jdbcType="VARCHAR" property="dlm" />
     <result column="dlmm" jdbcType="VARCHAR" property="dlmm" />
     <result column="xm" jdbcType="VARCHAR" property="xm" />
     <result column="dh" jdbcType="VARCHAR" property="dh" />
-    <result column="zw" jdbcType="BIGINT" property="zw" />
-    <result column="ss" jdbcType="BIGINT" property="ss" />
-    <result column="cjrq" jdbcType="DATE" property="cjrq" />
-    <result column="crj" jdbcType="BIGINT" property="crj" />
-    <result column="xgrq" jdbcType="TIMESTAMP" property="xgrq" />
-    <result column="xgr" jdbcType="BIGINT" property="xgr" />
+    <result column="zw" jdbcType="VARCHAR" property="zw" />
+    <result column="ssid" jdbcType="VARCHAR" property="ssid" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    Id, dlm, dlmm, xm, dh, zw, ss, cjrq, crj, xgrq, xgr
+    Id, dlm, dlmm, xm, dh, zw, ssid
   </sql>
   <select id="selectByExample" parameterType="cn.hegrace.www.v1.dao.pojo.XtCzyhExample" resultMap="BaseResultMap">
     select
@@ -89,15 +85,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from XT_CZYH
-    where Id = #{id,jdbcType=BIGINT}
+    where Id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from XT_CZYH
-    where Id = #{id,jdbcType=BIGINT}
+    where Id = #{id,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="cn.hegrace.www.v1.dao.pojo.XtCzyhExample">
     delete from XT_CZYH
@@ -107,12 +103,10 @@
   </delete>
   <insert id="insert" parameterType="cn.hegrace.www.v1.dao.pojo.XtCzyh">
     insert into XT_CZYH (Id, dlm, dlmm, 
-      xm, dh, zw, ss, 
-      cjrq, crj, xgrq, xgr
+      xm, dh, zw, ssid
       )
-    values (#{id,jdbcType=BIGINT}, #{dlm,jdbcType=VARCHAR}, #{dlmm,jdbcType=VARCHAR}, 
-      #{xm,jdbcType=VARCHAR}, #{dh,jdbcType=VARCHAR}, #{zw,jdbcType=BIGINT}, #{ss,jdbcType=BIGINT}, 
-      #{cjrq,jdbcType=DATE}, #{crj,jdbcType=BIGINT}, #{xgrq,jdbcType=TIMESTAMP}, #{xgr,jdbcType=BIGINT}
+    values (#{id,jdbcType=VARCHAR}, #{dlm,jdbcType=VARCHAR}, #{dlmm,jdbcType=VARCHAR}, 
+      #{xm,jdbcType=VARCHAR}, #{dh,jdbcType=VARCHAR}, #{zw,jdbcType=VARCHAR}, #{ssid,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.hegrace.www.v1.dao.pojo.XtCzyh">
@@ -136,25 +130,13 @@
       <if test="zw != null">
         zw,
       </if>
-      <if test="ss != null">
-        ss,
-      </if>
-      <if test="cjrq != null">
-        cjrq,
-      </if>
-      <if test="crj != null">
-        crj,
-      </if>
-      <if test="xgrq != null">
-        xgrq,
-      </if>
-      <if test="xgr != null">
-        xgr,
+      <if test="ssid != null">
+        ssid,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=BIGINT},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="dlm != null">
         #{dlm,jdbcType=VARCHAR},
@@ -169,22 +151,10 @@
         #{dh,jdbcType=VARCHAR},
       </if>
       <if test="zw != null">
-        #{zw,jdbcType=BIGINT},
+        #{zw,jdbcType=VARCHAR},
       </if>
-      <if test="ss != null">
-        #{ss,jdbcType=BIGINT},
-      </if>
-      <if test="cjrq != null">
-        #{cjrq,jdbcType=DATE},
-      </if>
-      <if test="crj != null">
-        #{crj,jdbcType=BIGINT},
-      </if>
-      <if test="xgrq != null">
-        #{xgrq,jdbcType=TIMESTAMP},
-      </if>
-      <if test="xgr != null">
-        #{xgr,jdbcType=BIGINT},
+      <if test="ssid != null">
+        #{ssid,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -198,7 +168,7 @@
     update XT_CZYH
     <set>
       <if test="record.id != null">
-        Id = #{record.id,jdbcType=BIGINT},
+        Id = #{record.id,jdbcType=VARCHAR},
       </if>
       <if test="record.dlm != null">
         dlm = #{record.dlm,jdbcType=VARCHAR},
@@ -213,22 +183,10 @@
         dh = #{record.dh,jdbcType=VARCHAR},
       </if>
       <if test="record.zw != null">
-        zw = #{record.zw,jdbcType=BIGINT},
+        zw = #{record.zw,jdbcType=VARCHAR},
       </if>
-      <if test="record.ss != null">
-        ss = #{record.ss,jdbcType=BIGINT},
-      </if>
-      <if test="record.cjrq != null">
-        cjrq = #{record.cjrq,jdbcType=DATE},
-      </if>
-      <if test="record.crj != null">
-        crj = #{record.crj,jdbcType=BIGINT},
-      </if>
-      <if test="record.xgrq != null">
-        xgrq = #{record.xgrq,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.xgr != null">
-        xgr = #{record.xgr,jdbcType=BIGINT},
+      <if test="record.ssid != null">
+        ssid = #{record.ssid,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -237,17 +195,13 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update XT_CZYH
-    set Id = #{record.id,jdbcType=BIGINT},
+    set Id = #{record.id,jdbcType=VARCHAR},
       dlm = #{record.dlm,jdbcType=VARCHAR},
       dlmm = #{record.dlmm,jdbcType=VARCHAR},
       xm = #{record.xm,jdbcType=VARCHAR},
       dh = #{record.dh,jdbcType=VARCHAR},
-      zw = #{record.zw,jdbcType=BIGINT},
-      ss = #{record.ss,jdbcType=BIGINT},
-      cjrq = #{record.cjrq,jdbcType=DATE},
-      crj = #{record.crj,jdbcType=BIGINT},
-      xgrq = #{record.xgrq,jdbcType=TIMESTAMP},
-      xgr = #{record.xgr,jdbcType=BIGINT}
+      zw = #{record.zw,jdbcType=VARCHAR},
+      ssid = #{record.ssid,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -268,25 +222,13 @@
         dh = #{dh,jdbcType=VARCHAR},
       </if>
       <if test="zw != null">
-        zw = #{zw,jdbcType=BIGINT},
+        zw = #{zw,jdbcType=VARCHAR},
       </if>
-      <if test="ss != null">
-        ss = #{ss,jdbcType=BIGINT},
-      </if>
-      <if test="cjrq != null">
-        cjrq = #{cjrq,jdbcType=DATE},
-      </if>
-      <if test="crj != null">
-        crj = #{crj,jdbcType=BIGINT},
-      </if>
-      <if test="xgrq != null">
-        xgrq = #{xgrq,jdbcType=TIMESTAMP},
-      </if>
-      <if test="xgr != null">
-        xgr = #{xgr,jdbcType=BIGINT},
+      <if test="ssid != null">
+        ssid = #{ssid,jdbcType=VARCHAR},
       </if>
     </set>
-    where Id = #{id,jdbcType=BIGINT}
+    where Id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.hegrace.www.v1.dao.pojo.XtCzyh">
     update XT_CZYH
@@ -294,12 +236,8 @@
       dlmm = #{dlmm,jdbcType=VARCHAR},
       xm = #{xm,jdbcType=VARCHAR},
       dh = #{dh,jdbcType=VARCHAR},
-      zw = #{zw,jdbcType=BIGINT},
-      ss = #{ss,jdbcType=BIGINT},
-      cjrq = #{cjrq,jdbcType=DATE},
-      crj = #{crj,jdbcType=BIGINT},
-      xgrq = #{xgrq,jdbcType=TIMESTAMP},
-      xgr = #{xgr,jdbcType=BIGINT}
-    where Id = #{id,jdbcType=BIGINT}
+      zw = #{zw,jdbcType=VARCHAR},
+      ssid = #{ssid,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

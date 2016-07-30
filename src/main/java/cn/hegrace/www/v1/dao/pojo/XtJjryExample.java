@@ -3,7 +3,7 @@ package cn.hegrace.www.v1.dao.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class XtJjryExample {
+public class XtJjryExample extends BaseExample{
     protected String orderByClause;
 
     protected boolean distinct;
@@ -114,52 +114,62 @@ public class XtJjryExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
+        public Criteria andIdEqualTo(String value) {
             addCriterion("Id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
+        public Criteria andIdNotEqualTo(String value) {
             addCriterion("Id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
+        public Criteria andIdGreaterThan(String value) {
             addCriterion("Id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andIdGreaterThanOrEqualTo(String value) {
             addCriterion("Id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
+        public Criteria andIdLessThan(String value) {
             addCriterion("Id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
+        public Criteria andIdLessThanOrEqualTo(String value) {
             addCriterion("Id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
+        public Criteria andIdLike(String value) {
+            addCriterion("Id like", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotLike(String value) {
+            addCriterion("Id not like", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdIn(List<String> values) {
             addCriterion("Id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
+        public Criteria andIdNotIn(List<String> values) {
             addCriterion("Id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
+        public Criteria andIdBetween(String value1, String value2) {
             addCriterion("Id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andIdNotBetween(String value1, String value2) {
             addCriterion("Id not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -304,52 +314,62 @@ public class XtJjryExample {
             return (Criteria) this;
         }
 
-        public Criteria andZjlxEqualTo(Long value) {
+        public Criteria andZjlxEqualTo(String value) {
             addCriterion("zjlx =", value, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxNotEqualTo(Long value) {
+        public Criteria andZjlxNotEqualTo(String value) {
             addCriterion("zjlx <>", value, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxGreaterThan(Long value) {
+        public Criteria andZjlxGreaterThan(String value) {
             addCriterion("zjlx >", value, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxGreaterThanOrEqualTo(Long value) {
+        public Criteria andZjlxGreaterThanOrEqualTo(String value) {
             addCriterion("zjlx >=", value, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxLessThan(Long value) {
+        public Criteria andZjlxLessThan(String value) {
             addCriterion("zjlx <", value, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxLessThanOrEqualTo(Long value) {
+        public Criteria andZjlxLessThanOrEqualTo(String value) {
             addCriterion("zjlx <=", value, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxIn(List<Long> values) {
+        public Criteria andZjlxLike(String value) {
+            addCriterion("zjlx like", value, "zjlx");
+            return (Criteria) this;
+        }
+
+        public Criteria andZjlxNotLike(String value) {
+            addCriterion("zjlx not like", value, "zjlx");
+            return (Criteria) this;
+        }
+
+        public Criteria andZjlxIn(List<String> values) {
             addCriterion("zjlx in", values, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxNotIn(List<Long> values) {
+        public Criteria andZjlxNotIn(List<String> values) {
             addCriterion("zjlx not in", values, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxBetween(Long value1, Long value2) {
+        public Criteria andZjlxBetween(String value1, String value2) {
             addCriterion("zjlx between", value1, value2, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxNotBetween(Long value1, Long value2) {
+        public Criteria andZjlxNotBetween(String value1, String value2) {
             addCriterion("zjlx not between", value1, value2, "zjlx");
             return (Criteria) this;
         }
@@ -504,52 +524,62 @@ public class XtJjryExample {
             return (Criteria) this;
         }
 
-        public Criteria andSflxEqualTo(Long value) {
+        public Criteria andSflxEqualTo(String value) {
             addCriterion("sflx =", value, "sflx");
             return (Criteria) this;
         }
 
-        public Criteria andSflxNotEqualTo(Long value) {
+        public Criteria andSflxNotEqualTo(String value) {
             addCriterion("sflx <>", value, "sflx");
             return (Criteria) this;
         }
 
-        public Criteria andSflxGreaterThan(Long value) {
+        public Criteria andSflxGreaterThan(String value) {
             addCriterion("sflx >", value, "sflx");
             return (Criteria) this;
         }
 
-        public Criteria andSflxGreaterThanOrEqualTo(Long value) {
+        public Criteria andSflxGreaterThanOrEqualTo(String value) {
             addCriterion("sflx >=", value, "sflx");
             return (Criteria) this;
         }
 
-        public Criteria andSflxLessThan(Long value) {
+        public Criteria andSflxLessThan(String value) {
             addCriterion("sflx <", value, "sflx");
             return (Criteria) this;
         }
 
-        public Criteria andSflxLessThanOrEqualTo(Long value) {
+        public Criteria andSflxLessThanOrEqualTo(String value) {
             addCriterion("sflx <=", value, "sflx");
             return (Criteria) this;
         }
 
-        public Criteria andSflxIn(List<Long> values) {
+        public Criteria andSflxLike(String value) {
+            addCriterion("sflx like", value, "sflx");
+            return (Criteria) this;
+        }
+
+        public Criteria andSflxNotLike(String value) {
+            addCriterion("sflx not like", value, "sflx");
+            return (Criteria) this;
+        }
+
+        public Criteria andSflxIn(List<String> values) {
             addCriterion("sflx in", values, "sflx");
             return (Criteria) this;
         }
 
-        public Criteria andSflxNotIn(List<Long> values) {
+        public Criteria andSflxNotIn(List<String> values) {
             addCriterion("sflx not in", values, "sflx");
             return (Criteria) this;
         }
 
-        public Criteria andSflxBetween(Long value1, Long value2) {
+        public Criteria andSflxBetween(String value1, String value2) {
             addCriterion("sflx between", value1, value2, "sflx");
             return (Criteria) this;
         }
 
-        public Criteria andSflxNotBetween(Long value1, Long value2) {
+        public Criteria andSflxNotBetween(String value1, String value2) {
             addCriterion("sflx not between", value1, value2, "sflx");
             return (Criteria) this;
         }

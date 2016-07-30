@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hegrace.www.v1.dao.mapping.XtSsjlMapper">
+<mapper namespace="XtSsjl">
   <resultMap id="BaseResultMap" type="cn.hegrace.www.v1.dao.pojo.XtSsjl">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="ryid" jdbcType="BIGINT" property="ryid" />
-    <result column="qjid" jdbcType="BIGINT" property="qjid" />
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="ryid" jdbcType="VARCHAR" property="ryid" />
+    <result column="qjid" jdbcType="VARCHAR" property="qjid" />
     <result column="Zt" jdbcType="INTEGER" property="zt" />
     <result column="bhms" jdbcType="VARCHAR" property="bhms" />
     <result column="clms" jdbcType="VARCHAR" property="clms" />
@@ -84,15 +84,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from XT_SSJL
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from XT_SSJL
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsjlExample">
     delete from XT_SSJL
@@ -103,7 +103,7 @@
   <insert id="insert" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsjl">
     insert into XT_SSJL (id, ryid, qjid, 
       Zt, bhms, clms)
-    values (#{id,jdbcType=BIGINT}, #{ryid,jdbcType=BIGINT}, #{qjid,jdbcType=BIGINT}, 
+    values (#{id,jdbcType=VARCHAR}, #{ryid,jdbcType=VARCHAR}, #{qjid,jdbcType=VARCHAR}, 
       #{zt,jdbcType=INTEGER}, #{bhms,jdbcType=VARCHAR}, #{clms,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsjl">
@@ -130,13 +130,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=BIGINT},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="ryid != null">
-        #{ryid,jdbcType=BIGINT},
+        #{ryid,jdbcType=VARCHAR},
       </if>
       <if test="qjid != null">
-        #{qjid,jdbcType=BIGINT},
+        #{qjid,jdbcType=VARCHAR},
       </if>
       <if test="zt != null">
         #{zt,jdbcType=INTEGER},
@@ -159,13 +159,13 @@
     update XT_SSJL
     <set>
       <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+        id = #{record.id,jdbcType=VARCHAR},
       </if>
       <if test="record.ryid != null">
-        ryid = #{record.ryid,jdbcType=BIGINT},
+        ryid = #{record.ryid,jdbcType=VARCHAR},
       </if>
       <if test="record.qjid != null">
-        qjid = #{record.qjid,jdbcType=BIGINT},
+        qjid = #{record.qjid,jdbcType=VARCHAR},
       </if>
       <if test="record.zt != null">
         Zt = #{record.zt,jdbcType=INTEGER},
@@ -183,9 +183,9 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update XT_SSJL
-    set id = #{record.id,jdbcType=BIGINT},
-      ryid = #{record.ryid,jdbcType=BIGINT},
-      qjid = #{record.qjid,jdbcType=BIGINT},
+    set id = #{record.id,jdbcType=VARCHAR},
+      ryid = #{record.ryid,jdbcType=VARCHAR},
+      qjid = #{record.qjid,jdbcType=VARCHAR},
       Zt = #{record.zt,jdbcType=INTEGER},
       bhms = #{record.bhms,jdbcType=VARCHAR},
       clms = #{record.clms,jdbcType=VARCHAR}
@@ -197,10 +197,10 @@
     update XT_SSJL
     <set>
       <if test="ryid != null">
-        ryid = #{ryid,jdbcType=BIGINT},
+        ryid = #{ryid,jdbcType=VARCHAR},
       </if>
       <if test="qjid != null">
-        qjid = #{qjid,jdbcType=BIGINT},
+        qjid = #{qjid,jdbcType=VARCHAR},
       </if>
       <if test="zt != null">
         Zt = #{zt,jdbcType=INTEGER},
@@ -212,15 +212,15 @@
         clms = #{clms,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsjl">
     update XT_SSJL
-    set ryid = #{ryid,jdbcType=BIGINT},
-      qjid = #{qjid,jdbcType=BIGINT},
+    set ryid = #{ryid,jdbcType=VARCHAR},
+      qjid = #{qjid,jdbcType=VARCHAR},
       Zt = #{zt,jdbcType=INTEGER},
       bhms = #{bhms,jdbcType=VARCHAR},
       clms = #{clms,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -2,8 +2,10 @@ package cn.hegrace.www.v1.dao.pojo;
 
 import java.util.Date;
 
-public class XtYjfk {
-    private Integer id;
+import cn.hegrace.www.v1.annotation.PrimaryKey;
+
+public class XtYjfk extends BaseDao{
+    private String id;
 
     private Date fkrq;
 
@@ -14,13 +16,14 @@ public class XtYjfk {
     private Integer zt;
 
     private String fknr;
-
-    public Integer getId() {
+    
+    @PrimaryKey
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public Date getFkrq() {

@@ -3,7 +3,7 @@ package cn.hegrace.www.v1.dao.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class XtCszglExample {
+public class XtCszglExample extends BaseExample{
     protected String orderByClause;
 
     protected boolean distinct;
@@ -114,52 +114,62 @@ public class XtCszglExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Long value) {
+        public Criteria andIdEqualTo(String value) {
             addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Long value) {
+        public Criteria andIdNotEqualTo(String value) {
             addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Long value) {
+        public Criteria andIdGreaterThan(String value) {
             addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andIdGreaterThanOrEqualTo(String value) {
             addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Long value) {
+        public Criteria andIdLessThan(String value) {
             addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Long value) {
+        public Criteria andIdLessThanOrEqualTo(String value) {
             addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Long> values) {
+        public Criteria andIdLike(String value) {
+            addCriterion("id like", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotLike(String value) {
+            addCriterion("id not like", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdIn(List<String> values) {
             addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Long> values) {
+        public Criteria andIdNotIn(List<String> values) {
             addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Long value1, Long value2) {
+        public Criteria andIdBetween(String value1, String value2) {
             addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Long value1, Long value2) {
+        public Criteria andIdNotBetween(String value1, String value2) {
             addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -174,52 +184,62 @@ public class XtCszglExample {
             return (Criteria) this;
         }
 
-        public Criteria andSsidEqualTo(Long value) {
+        public Criteria andSsidEqualTo(String value) {
             addCriterion("ssid =", value, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidNotEqualTo(Long value) {
+        public Criteria andSsidNotEqualTo(String value) {
             addCriterion("ssid <>", value, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidGreaterThan(Long value) {
+        public Criteria andSsidGreaterThan(String value) {
             addCriterion("ssid >", value, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidGreaterThanOrEqualTo(Long value) {
+        public Criteria andSsidGreaterThanOrEqualTo(String value) {
             addCriterion("ssid >=", value, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidLessThan(Long value) {
+        public Criteria andSsidLessThan(String value) {
             addCriterion("ssid <", value, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidLessThanOrEqualTo(Long value) {
+        public Criteria andSsidLessThanOrEqualTo(String value) {
             addCriterion("ssid <=", value, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidIn(List<Long> values) {
+        public Criteria andSsidLike(String value) {
+            addCriterion("ssid like", value, "ssid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsidNotLike(String value) {
+            addCriterion("ssid not like", value, "ssid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsidIn(List<String> values) {
             addCriterion("ssid in", values, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidNotIn(List<Long> values) {
+        public Criteria andSsidNotIn(List<String> values) {
             addCriterion("ssid not in", values, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidBetween(Long value1, Long value2) {
+        public Criteria andSsidBetween(String value1, String value2) {
             addCriterion("ssid between", value1, value2, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidNotBetween(Long value1, Long value2) {
+        public Criteria andSsidNotBetween(String value1, String value2) {
             addCriterion("ssid not between", value1, value2, "ssid");
             return (Criteria) this;
         }
@@ -364,52 +384,62 @@ public class XtCszglExample {
             return (Criteria) this;
         }
 
-        public Criteria andZjlxEqualTo(Long value) {
+        public Criteria andZjlxEqualTo(String value) {
             addCriterion("zjlx =", value, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxNotEqualTo(Long value) {
+        public Criteria andZjlxNotEqualTo(String value) {
             addCriterion("zjlx <>", value, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxGreaterThan(Long value) {
+        public Criteria andZjlxGreaterThan(String value) {
             addCriterion("zjlx >", value, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxGreaterThanOrEqualTo(Long value) {
+        public Criteria andZjlxGreaterThanOrEqualTo(String value) {
             addCriterion("zjlx >=", value, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxLessThan(Long value) {
+        public Criteria andZjlxLessThan(String value) {
             addCriterion("zjlx <", value, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxLessThanOrEqualTo(Long value) {
+        public Criteria andZjlxLessThanOrEqualTo(String value) {
             addCriterion("zjlx <=", value, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxIn(List<Long> values) {
+        public Criteria andZjlxLike(String value) {
+            addCriterion("zjlx like", value, "zjlx");
+            return (Criteria) this;
+        }
+
+        public Criteria andZjlxNotLike(String value) {
+            addCriterion("zjlx not like", value, "zjlx");
+            return (Criteria) this;
+        }
+
+        public Criteria andZjlxIn(List<String> values) {
             addCriterion("zjlx in", values, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxNotIn(List<Long> values) {
+        public Criteria andZjlxNotIn(List<String> values) {
             addCriterion("zjlx not in", values, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxBetween(Long value1, Long value2) {
+        public Criteria andZjlxBetween(String value1, String value2) {
             addCriterion("zjlx between", value1, value2, "zjlx");
             return (Criteria) this;
         }
 
-        public Criteria andZjlxNotBetween(Long value1, Long value2) {
+        public Criteria andZjlxNotBetween(String value1, String value2) {
             addCriterion("zjlx not between", value1, value2, "zjlx");
             return (Criteria) this;
         }

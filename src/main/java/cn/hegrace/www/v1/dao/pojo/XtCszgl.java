@@ -1,15 +1,17 @@
 package cn.hegrace.www.v1.dao.pojo;
 
-public class XtCszgl {
-    private Long id;
+import cn.hegrace.www.v1.annotation.PrimaryKey;
 
-    private Long ssid;
+public class XtCszgl extends BaseDao{
+    private String id;
+
+    private String ssid;
 
     private String xm;
 
     private Integer xb;
 
-    private Long zjlx;
+    private String zjlx;
 
     private String zjhm;
 
@@ -18,21 +20,21 @@ public class XtCszgl {
     private String bh;
 
     private Integer gfx;
-
-    public Long getId() {
+    @PrimaryKey
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
-    public Long getSsid() {
+    public String getSsid() {
         return ssid;
     }
 
-    public void setSsid(Long ssid) {
-        this.ssid = ssid;
+    public void setSsid(String ssid) {
+        this.ssid = ssid == null ? null : ssid.trim();
     }
 
     public String getXm() {
@@ -51,12 +53,12 @@ public class XtCszgl {
         this.xb = xb;
     }
 
-    public Long getZjlx() {
+    public String getZjlx() {
         return zjlx;
     }
 
-    public void setZjlx(Long zjlx) {
-        this.zjlx = zjlx;
+    public void setZjlx(String zjlx) {
+        this.zjlx = zjlx == null ? null : zjlx.trim();
     }
 
     public String getZjhm() {

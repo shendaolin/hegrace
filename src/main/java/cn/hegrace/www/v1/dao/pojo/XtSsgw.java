@@ -1,28 +1,30 @@
 package cn.hegrace.www.v1.dao.pojo;
 
-public class XtSsgw {
-    private Long id;
+import cn.hegrace.www.v1.annotation.PrimaryKey;
 
-    private Long ssid;
+public class XtSsgw extends BaseDao{
+    private String id;
+
+    private String ssid;
 
     private String gwmc;
 
     private Integer gwsl;
-
-    public Long getId() {
+    @PrimaryKey
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
-    public Long getSsid() {
+    public String getSsid() {
         return ssid;
     }
 
-    public void setSsid(Long ssid) {
-        this.ssid = ssid;
+    public void setSsid(String ssid) {
+        this.ssid = ssid == null ? null : ssid.trim();
     }
 
     public String getGwmc() {

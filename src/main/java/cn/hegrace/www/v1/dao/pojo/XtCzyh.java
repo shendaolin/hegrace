@@ -1,9 +1,9 @@
 package cn.hegrace.www.v1.dao.pojo;
 
-import java.util.Date;
+import cn.hegrace.www.v1.annotation.PrimaryKey;
 
-public class XtCzyh {
-    private Long id;
+public class XtCzyh extends BaseDao{
+    private String id;
 
     private String dlm;
 
@@ -13,24 +13,16 @@ public class XtCzyh {
 
     private String dh;
 
-    private Long zw;
+    private String zw;
 
-    private Long ss;
-
-    private Date cjrq;
-
-    private Long crj;
-
-    private Date xgrq;
-
-    private Long xgr;
-
-    public Long getId() {
+    private String ssid;
+    @PrimaryKey
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getDlm() {
@@ -65,51 +57,19 @@ public class XtCzyh {
         this.dh = dh == null ? null : dh.trim();
     }
 
-    public Long getZw() {
+    public String getZw() {
         return zw;
     }
 
-    public void setZw(Long zw) {
-        this.zw = zw;
+    public void setZw(String zw) {
+        this.zw = zw == null ? null : zw.trim();
     }
 
-    public Long getSs() {
-        return ss;
+    public String getSsid() {
+        return ssid;
     }
 
-    public void setSs(Long ss) {
-        this.ss = ss;
-    }
-
-    public Date getCjrq() {
-        return cjrq;
-    }
-
-    public void setCjrq(Date cjrq) {
-        this.cjrq = cjrq;
-    }
-
-    public Long getCrj() {
-        return crj;
-    }
-
-    public void setCrj(Long crj) {
-        this.crj = crj;
-    }
-
-    public Date getXgrq() {
-        return xgrq;
-    }
-
-    public void setXgrq(Date xgrq) {
-        this.xgrq = xgrq;
-    }
-
-    public Long getXgr() {
-        return xgr;
-    }
-
-    public void setXgr(Long xgr) {
-        this.xgr = xgr;
+    public void setSsid(String ssid) {
+        this.ssid = ssid == null ? null : ssid.trim();
     }
 }

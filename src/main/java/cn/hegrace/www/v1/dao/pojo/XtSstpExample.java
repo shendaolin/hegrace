@@ -3,7 +3,7 @@ package cn.hegrace.www.v1.dao.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class XtSstpExample {
+public class XtSstpExample extends BaseExample{
     protected String orderByClause;
 
     protected boolean distinct;
@@ -114,52 +114,62 @@ public class XtSstpExample {
             return (Criteria) this;
         }
 
-        public Criteria andSsidEqualTo(Long value) {
+        public Criteria andSsidEqualTo(String value) {
             addCriterion("ssId =", value, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidNotEqualTo(Long value) {
+        public Criteria andSsidNotEqualTo(String value) {
             addCriterion("ssId <>", value, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidGreaterThan(Long value) {
+        public Criteria andSsidGreaterThan(String value) {
             addCriterion("ssId >", value, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidGreaterThanOrEqualTo(Long value) {
+        public Criteria andSsidGreaterThanOrEqualTo(String value) {
             addCriterion("ssId >=", value, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidLessThan(Long value) {
+        public Criteria andSsidLessThan(String value) {
             addCriterion("ssId <", value, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidLessThanOrEqualTo(Long value) {
+        public Criteria andSsidLessThanOrEqualTo(String value) {
             addCriterion("ssId <=", value, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidIn(List<Long> values) {
+        public Criteria andSsidLike(String value) {
+            addCriterion("ssId like", value, "ssid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsidNotLike(String value) {
+            addCriterion("ssId not like", value, "ssid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsidIn(List<String> values) {
             addCriterion("ssId in", values, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidNotIn(List<Long> values) {
+        public Criteria andSsidNotIn(List<String> values) {
             addCriterion("ssId not in", values, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidBetween(Long value1, Long value2) {
+        public Criteria andSsidBetween(String value1, String value2) {
             addCriterion("ssId between", value1, value2, "ssid");
             return (Criteria) this;
         }
 
-        public Criteria andSsidNotBetween(Long value1, Long value2) {
+        public Criteria andSsidNotBetween(String value1, String value2) {
             addCriterion("ssId not between", value1, value2, "ssid");
             return (Criteria) this;
         }

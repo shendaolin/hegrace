@@ -36,8 +36,7 @@
 			value="classpath:cn/hegrace/www/v1/dao/mapping/*Mapper.xml" />
 	</bean>
 
-
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	<bean id="baseService" class="cn.hegrace.www.v1.busi.BaseService">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
 

@@ -1,16 +1,16 @@
 package cn.hegrace.www.v1.dao.pojo;
 
-public class XtJjryzz {
-    private Long ryid;
+public class XtJjryzz extends BaseDao{
+    private String ryid;
 
     private String tpdz;
 
-    public Long getRyid() {
+    public String getRyid() {
         return ryid;
     }
 
-    public void setRyid(Long ryid) {
-        this.ryid = ryid;
+    public void setRyid(String ryid) {
+        this.ryid = ryid == null ? null : ryid.trim();
     }
 
     public String getTpdz() {

@@ -1,28 +1,30 @@
 package cn.hegrace.www.v1.dao.pojo;
 
-public class XtBsysb {
-    private Integer id;
+import cn.hegrace.www.v1.annotation.PrimaryKey;
 
-    private Long sblx;
+public class XtBsysb extends BaseDao{
+    private String id;
+
+    private String sblx;
 
     private String sbbh;
 
     private Integer sbzt;
-
-    public Integer getId() {
+    @PrimaryKey
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
-    public Long getSblx() {
+    public String getSblx() {
         return sblx;
     }
 
-    public void setSblx(Long sblx) {
-        this.sblx = sblx;
+    public void setSblx(String sblx) {
+        this.sblx = sblx == null ? null : sblx.trim();
     }
 
     public String getSbbh() {

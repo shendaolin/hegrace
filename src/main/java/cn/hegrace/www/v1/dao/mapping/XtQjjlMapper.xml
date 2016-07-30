@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hegrace.www.v1.dao.mapping.XtQjjlMapper">
+<mapper namespace="XtQjjl">
   <resultMap id="BaseResultMap" type="cn.hegrace.www.v1.dao.pojo.XtQjjl">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="ssid" jdbcType="BIGINT" property="ssid" />
-    <result column="sjid" jdbcType="BIGINT" property="sjid" />
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="ssid" jdbcType="VARCHAR" property="ssid" />
+    <result column="sjid" jdbcType="VARCHAR" property="sjid" />
     <result column="xm" jdbcType="VARCHAR" property="xm" />
     <result column="dh" jdbcType="VARCHAR" property="dh" />
     <result column="bh" jdbcType="VARCHAR" property="bh" />
@@ -85,15 +85,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from XT_QJJL
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from XT_QJJL
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="cn.hegrace.www.v1.dao.pojo.XtQjjlExample">
     delete from XT_QJJL
@@ -105,7 +105,7 @@
     insert into XT_QJJL (id, ssid, sjid, 
       xm, dh, bh, zb
       )
-    values (#{id,jdbcType=BIGINT}, #{ssid,jdbcType=BIGINT}, #{sjid,jdbcType=BIGINT}, 
+    values (#{id,jdbcType=VARCHAR}, #{ssid,jdbcType=VARCHAR}, #{sjid,jdbcType=VARCHAR}, 
       #{xm,jdbcType=VARCHAR}, #{dh,jdbcType=VARCHAR}, #{bh,jdbcType=VARCHAR}, #{zb,jdbcType=VARCHAR}
       )
   </insert>
@@ -136,13 +136,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=BIGINT},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="ssid != null">
-        #{ssid,jdbcType=BIGINT},
+        #{ssid,jdbcType=VARCHAR},
       </if>
       <if test="sjid != null">
-        #{sjid,jdbcType=BIGINT},
+        #{sjid,jdbcType=VARCHAR},
       </if>
       <if test="xm != null">
         #{xm,jdbcType=VARCHAR},
@@ -168,13 +168,13 @@
     update XT_QJJL
     <set>
       <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+        id = #{record.id,jdbcType=VARCHAR},
       </if>
       <if test="record.ssid != null">
-        ssid = #{record.ssid,jdbcType=BIGINT},
+        ssid = #{record.ssid,jdbcType=VARCHAR},
       </if>
       <if test="record.sjid != null">
-        sjid = #{record.sjid,jdbcType=BIGINT},
+        sjid = #{record.sjid,jdbcType=VARCHAR},
       </if>
       <if test="record.xm != null">
         xm = #{record.xm,jdbcType=VARCHAR},
@@ -195,9 +195,9 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update XT_QJJL
-    set id = #{record.id,jdbcType=BIGINT},
-      ssid = #{record.ssid,jdbcType=BIGINT},
-      sjid = #{record.sjid,jdbcType=BIGINT},
+    set id = #{record.id,jdbcType=VARCHAR},
+      ssid = #{record.ssid,jdbcType=VARCHAR},
+      sjid = #{record.sjid,jdbcType=VARCHAR},
       xm = #{record.xm,jdbcType=VARCHAR},
       dh = #{record.dh,jdbcType=VARCHAR},
       bh = #{record.bh,jdbcType=VARCHAR},
@@ -210,10 +210,10 @@
     update XT_QJJL
     <set>
       <if test="ssid != null">
-        ssid = #{ssid,jdbcType=BIGINT},
+        ssid = #{ssid,jdbcType=VARCHAR},
       </if>
       <if test="sjid != null">
-        sjid = #{sjid,jdbcType=BIGINT},
+        sjid = #{sjid,jdbcType=VARCHAR},
       </if>
       <if test="xm != null">
         xm = #{xm,jdbcType=VARCHAR},
@@ -228,16 +228,16 @@
         zb = #{zb,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.hegrace.www.v1.dao.pojo.XtQjjl">
     update XT_QJJL
-    set ssid = #{ssid,jdbcType=BIGINT},
-      sjid = #{sjid,jdbcType=BIGINT},
+    set ssid = #{ssid,jdbcType=VARCHAR},
+      sjid = #{sjid,jdbcType=VARCHAR},
       xm = #{xm,jdbcType=VARCHAR},
       dh = #{dh,jdbcType=VARCHAR},
       bh = #{bh,jdbcType=VARCHAR},
       zb = #{zb,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

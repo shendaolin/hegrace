@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hegrace.www.v1.dao.mapping.XtSsglMapper">
+<mapper namespace="XtSsgl">
   <resultMap id="BaseResultMap" type="cn.hegrace.www.v1.dao.pojo.XtSsgl">
-    <id column="id" jdbcType="BIGINT" property="id" />
+    <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="ssmc" jdbcType="VARCHAR" property="ssmc" />
     <result column="ssdd" jdbcType="VARCHAR" property="ssdd" />
     <result column="sskssj" jdbcType="TIMESTAMP" property="sskssj" />
@@ -109,17 +109,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from XT_SSGL
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from XT_SSGL
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsglExample">
     delete from XT_SSGL
@@ -132,7 +132,7 @@
       sskssj, ssjssj, cjkssj, 
       cjjssj, zt, ssjs, 
       sslj)
-    values (#{id,jdbcType=BIGINT}, #{ssmc,jdbcType=VARCHAR}, #{ssdd,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{ssmc,jdbcType=VARCHAR}, #{ssdd,jdbcType=VARCHAR}, 
       #{sskssj,jdbcType=TIMESTAMP}, #{ssjssj,jdbcType=TIMESTAMP}, #{cjkssj,jdbcType=TIMESTAMP}, 
       #{cjjssj,jdbcType=TIMESTAMP}, #{zt,jdbcType=INTEGER}, #{ssjs,jdbcType=LONGVARCHAR}, 
       #{sslj,jdbcType=LONGVARCHAR})
@@ -173,7 +173,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=BIGINT},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="ssmc != null">
         #{ssmc,jdbcType=VARCHAR},
@@ -214,7 +214,7 @@
     update XT_SSGL
     <set>
       <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+        id = #{record.id,jdbcType=VARCHAR},
       </if>
       <if test="record.ssmc != null">
         ssmc = #{record.ssmc,jdbcType=VARCHAR},
@@ -250,7 +250,7 @@
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update XT_SSGL
-    set id = #{record.id,jdbcType=BIGINT},
+    set id = #{record.id,jdbcType=VARCHAR},
       ssmc = #{record.ssmc,jdbcType=VARCHAR},
       ssdd = #{record.ssdd,jdbcType=VARCHAR},
       sskssj = #{record.sskssj,jdbcType=TIMESTAMP},
@@ -266,7 +266,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update XT_SSGL
-    set id = #{record.id,jdbcType=BIGINT},
+    set id = #{record.id,jdbcType=VARCHAR},
       ssmc = #{record.ssmc,jdbcType=VARCHAR},
       ssdd = #{record.ssdd,jdbcType=VARCHAR},
       sskssj = #{record.sskssj,jdbcType=TIMESTAMP},
@@ -309,7 +309,7 @@
         sslj = #{sslj,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsglWithBLOBs">
     update XT_SSGL
@@ -322,7 +322,7 @@
       zt = #{zt,jdbcType=INTEGER},
       ssjs = #{ssjs,jdbcType=LONGVARCHAR},
       sslj = #{sslj,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsgl">
     update XT_SSGL
@@ -333,6 +333,6 @@
       cjkssj = #{cjkssj,jdbcType=TIMESTAMP},
       cjjssj = #{cjjssj,jdbcType=TIMESTAMP},
       zt = #{zt,jdbcType=INTEGER}
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -3,7 +3,7 @@ package cn.hegrace.www.v1.dao.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class XtBsysbExample {
+public class XtBsysbExample extends BaseExample{
     protected String orderByClause;
 
     protected boolean distinct;
@@ -114,52 +114,62 @@ public class XtBsysbExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
+        public Criteria andIdEqualTo(String value) {
             addCriterion("Id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
+        public Criteria andIdNotEqualTo(String value) {
             addCriterion("Id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
+        public Criteria andIdGreaterThan(String value) {
             addCriterion("Id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andIdGreaterThanOrEqualTo(String value) {
             addCriterion("Id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
+        public Criteria andIdLessThan(String value) {
             addCriterion("Id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
+        public Criteria andIdLessThanOrEqualTo(String value) {
             addCriterion("Id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
+        public Criteria andIdLike(String value) {
+            addCriterion("Id like", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotLike(String value) {
+            addCriterion("Id not like", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdIn(List<String> values) {
             addCriterion("Id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
+        public Criteria andIdNotIn(List<String> values) {
             addCriterion("Id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
+        public Criteria andIdBetween(String value1, String value2) {
             addCriterion("Id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andIdNotBetween(String value1, String value2) {
             addCriterion("Id not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -174,52 +184,62 @@ public class XtBsysbExample {
             return (Criteria) this;
         }
 
-        public Criteria andSblxEqualTo(Long value) {
+        public Criteria andSblxEqualTo(String value) {
             addCriterion("sblx =", value, "sblx");
             return (Criteria) this;
         }
 
-        public Criteria andSblxNotEqualTo(Long value) {
+        public Criteria andSblxNotEqualTo(String value) {
             addCriterion("sblx <>", value, "sblx");
             return (Criteria) this;
         }
 
-        public Criteria andSblxGreaterThan(Long value) {
+        public Criteria andSblxGreaterThan(String value) {
             addCriterion("sblx >", value, "sblx");
             return (Criteria) this;
         }
 
-        public Criteria andSblxGreaterThanOrEqualTo(Long value) {
+        public Criteria andSblxGreaterThanOrEqualTo(String value) {
             addCriterion("sblx >=", value, "sblx");
             return (Criteria) this;
         }
 
-        public Criteria andSblxLessThan(Long value) {
+        public Criteria andSblxLessThan(String value) {
             addCriterion("sblx <", value, "sblx");
             return (Criteria) this;
         }
 
-        public Criteria andSblxLessThanOrEqualTo(Long value) {
+        public Criteria andSblxLessThanOrEqualTo(String value) {
             addCriterion("sblx <=", value, "sblx");
             return (Criteria) this;
         }
 
-        public Criteria andSblxIn(List<Long> values) {
+        public Criteria andSblxLike(String value) {
+            addCriterion("sblx like", value, "sblx");
+            return (Criteria) this;
+        }
+
+        public Criteria andSblxNotLike(String value) {
+            addCriterion("sblx not like", value, "sblx");
+            return (Criteria) this;
+        }
+
+        public Criteria andSblxIn(List<String> values) {
             addCriterion("sblx in", values, "sblx");
             return (Criteria) this;
         }
 
-        public Criteria andSblxNotIn(List<Long> values) {
+        public Criteria andSblxNotIn(List<String> values) {
             addCriterion("sblx not in", values, "sblx");
             return (Criteria) this;
         }
 
-        public Criteria andSblxBetween(Long value1, Long value2) {
+        public Criteria andSblxBetween(String value1, String value2) {
             addCriterion("sblx between", value1, value2, "sblx");
             return (Criteria) this;
         }
 
-        public Criteria andSblxNotBetween(Long value1, Long value2) {
+        public Criteria andSblxNotBetween(String value1, String value2) {
             addCriterion("sblx not between", value1, value2, "sblx");
             return (Criteria) this;
         }

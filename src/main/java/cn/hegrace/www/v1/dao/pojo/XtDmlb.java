@@ -1,10 +1,12 @@
 package cn.hegrace.www.v1.dao.pojo;
 
-public class XtDmlb {
+import cn.hegrace.www.v1.annotation.PrimaryKey;
+
+public class XtDmlb extends BaseDao{
     private Integer lbid;
 
     private String lbmc;
-
+    @PrimaryKey
     public Integer getLbid() {
         return lbid;
     }

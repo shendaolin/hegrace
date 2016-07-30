@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import cn.hegrace.www.v1.busi.BaseService;
 import cn.hegrace.www.v1.dao.pojo.XtGydm;
 import cn.hegrace.www.v1.dao.pojo.XtGydmExample;
 import cn.hegrace.www.v1.dao.pojo.XtGydmExample.Criteria;
@@ -21,10 +22,10 @@ import cn.hegrace.www.v1.dao.pojo.XtGydmExample.Criteria;
 public class LoginController {
 
 	@Autowired
-	private SqlSessionTemplate sqlSession;
+	private BaseService baseService;
 	
 	@Transactional
-	@RequestMapping("/login.htm")
+	@RequestMapping("/login.html")
 	public ModelAndView login(HttpServletRequest request,
 			HttpServletResponse response){
 		
@@ -32,8 +33,9 @@ public class LoginController {
 		
 		XtGydmExample example = new XtGydmExample();
 		Criteria criterion = example.createCriteria();
-				criterion.andIdEqualTo(1L);
-		List<XtGydm> xtgydms = sqlSession.selectList("selectByExample", example);
+				criterion.andIdEqualTo("1");
+		List<XtGydm> xtgydms = baseService.selectByExample(example);
+		
 		mv.addObject("xtgydms", xtgydms);
 		return mv;
 	}

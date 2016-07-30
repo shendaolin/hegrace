@@ -2,8 +2,10 @@ package cn.hegrace.www.v1.dao.pojo;
 
 import java.util.Date;
 
-public class XtSsgl {
-    private Long id;
+import cn.hegrace.www.v1.annotation.PrimaryKey;
+
+public class XtSsgl extends BaseDao{
+    private String id;
 
     private String ssmc;
 
@@ -18,13 +20,13 @@ public class XtSsgl {
     private Date cjjssj;
 
     private Integer zt;
-
-    public Long getId() {
+    @PrimaryKey
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getSsmc() {

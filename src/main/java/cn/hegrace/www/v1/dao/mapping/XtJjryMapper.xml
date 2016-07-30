@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hegrace.www.v1.dao.mapping.XtJjryMapper">
+<mapper namespace="XtJjry">
   <resultMap id="BaseResultMap" type="cn.hegrace.www.v1.dao.pojo.XtJjry">
-    <id column="Id" jdbcType="INTEGER" property="id" />
+    <id column="Id" jdbcType="VARCHAR" property="id" />
     <result column="xm" jdbcType="VARCHAR" property="xm" />
     <result column="xb" jdbcType="INTEGER" property="xb" />
-    <result column="zjlx" jdbcType="BIGINT" property="zjlx" />
+    <result column="zjlx" jdbcType="VARCHAR" property="zjlx" />
     <result column="zjhm" jdbcType="VARCHAR" property="zjhm" />
     <result column="dh" jdbcType="VARCHAR" property="dh" />
-    <result column="sflx" jdbcType="BIGINT" property="sflx" />
+    <result column="sflx" jdbcType="VARCHAR" property="sflx" />
     <result column="lb" jdbcType="VARCHAR" property="lb" />
     <result column="zt" jdbcType="INTEGER" property="zt" />
     <result column="fzcc" jdbcType="VARCHAR" property="fzcc" />
@@ -89,15 +89,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from XT_JJRY
-    where Id = #{id,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from XT_JJRY
-    where Id = #{id,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="cn.hegrace.www.v1.dao.pojo.XtJjryExample">
     delete from XT_JJRY
@@ -109,8 +109,8 @@
     insert into XT_JJRY (Id, xm, xb, zjlx, 
       zjhm, dh, sflx, lb, 
       zt, fzcc, ly)
-    values (#{id,jdbcType=INTEGER}, #{xm,jdbcType=VARCHAR}, #{xb,jdbcType=INTEGER}, #{zjlx,jdbcType=BIGINT}, 
-      #{zjhm,jdbcType=VARCHAR}, #{dh,jdbcType=VARCHAR}, #{sflx,jdbcType=BIGINT}, #{lb,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{xm,jdbcType=VARCHAR}, #{xb,jdbcType=INTEGER}, #{zjlx,jdbcType=VARCHAR}, 
+      #{zjhm,jdbcType=VARCHAR}, #{dh,jdbcType=VARCHAR}, #{sflx,jdbcType=VARCHAR}, #{lb,jdbcType=VARCHAR}, 
       #{zt,jdbcType=INTEGER}, #{fzcc,jdbcType=VARCHAR}, #{ly,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.hegrace.www.v1.dao.pojo.XtJjry">
@@ -152,7 +152,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="xm != null">
         #{xm,jdbcType=VARCHAR},
@@ -161,7 +161,7 @@
         #{xb,jdbcType=INTEGER},
       </if>
       <if test="zjlx != null">
-        #{zjlx,jdbcType=BIGINT},
+        #{zjlx,jdbcType=VARCHAR},
       </if>
       <if test="zjhm != null">
         #{zjhm,jdbcType=VARCHAR},
@@ -170,7 +170,7 @@
         #{dh,jdbcType=VARCHAR},
       </if>
       <if test="sflx != null">
-        #{sflx,jdbcType=BIGINT},
+        #{sflx,jdbcType=VARCHAR},
       </if>
       <if test="lb != null">
         #{lb,jdbcType=VARCHAR},
@@ -196,7 +196,7 @@
     update XT_JJRY
     <set>
       <if test="record.id != null">
-        Id = #{record.id,jdbcType=INTEGER},
+        Id = #{record.id,jdbcType=VARCHAR},
       </if>
       <if test="record.xm != null">
         xm = #{record.xm,jdbcType=VARCHAR},
@@ -205,7 +205,7 @@
         xb = #{record.xb,jdbcType=INTEGER},
       </if>
       <if test="record.zjlx != null">
-        zjlx = #{record.zjlx,jdbcType=BIGINT},
+        zjlx = #{record.zjlx,jdbcType=VARCHAR},
       </if>
       <if test="record.zjhm != null">
         zjhm = #{record.zjhm,jdbcType=VARCHAR},
@@ -214,7 +214,7 @@
         dh = #{record.dh,jdbcType=VARCHAR},
       </if>
       <if test="record.sflx != null">
-        sflx = #{record.sflx,jdbcType=BIGINT},
+        sflx = #{record.sflx,jdbcType=VARCHAR},
       </if>
       <if test="record.lb != null">
         lb = #{record.lb,jdbcType=VARCHAR},
@@ -235,13 +235,13 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update XT_JJRY
-    set Id = #{record.id,jdbcType=INTEGER},
+    set Id = #{record.id,jdbcType=VARCHAR},
       xm = #{record.xm,jdbcType=VARCHAR},
       xb = #{record.xb,jdbcType=INTEGER},
-      zjlx = #{record.zjlx,jdbcType=BIGINT},
+      zjlx = #{record.zjlx,jdbcType=VARCHAR},
       zjhm = #{record.zjhm,jdbcType=VARCHAR},
       dh = #{record.dh,jdbcType=VARCHAR},
-      sflx = #{record.sflx,jdbcType=BIGINT},
+      sflx = #{record.sflx,jdbcType=VARCHAR},
       lb = #{record.lb,jdbcType=VARCHAR},
       zt = #{record.zt,jdbcType=INTEGER},
       fzcc = #{record.fzcc,jdbcType=VARCHAR},
@@ -260,7 +260,7 @@
         xb = #{xb,jdbcType=INTEGER},
       </if>
       <if test="zjlx != null">
-        zjlx = #{zjlx,jdbcType=BIGINT},
+        zjlx = #{zjlx,jdbcType=VARCHAR},
       </if>
       <if test="zjhm != null">
         zjhm = #{zjhm,jdbcType=VARCHAR},
@@ -269,7 +269,7 @@
         dh = #{dh,jdbcType=VARCHAR},
       </if>
       <if test="sflx != null">
-        sflx = #{sflx,jdbcType=BIGINT},
+        sflx = #{sflx,jdbcType=VARCHAR},
       </if>
       <if test="lb != null">
         lb = #{lb,jdbcType=VARCHAR},
@@ -284,20 +284,20 @@
         ly = #{ly,jdbcType=INTEGER},
       </if>
     </set>
-    where Id = #{id,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.hegrace.www.v1.dao.pojo.XtJjry">
     update XT_JJRY
     set xm = #{xm,jdbcType=VARCHAR},
       xb = #{xb,jdbcType=INTEGER},
-      zjlx = #{zjlx,jdbcType=BIGINT},
+      zjlx = #{zjlx,jdbcType=VARCHAR},
       zjhm = #{zjhm,jdbcType=VARCHAR},
       dh = #{dh,jdbcType=VARCHAR},
-      sflx = #{sflx,jdbcType=BIGINT},
+      sflx = #{sflx,jdbcType=VARCHAR},
       lb = #{lb,jdbcType=VARCHAR},
       zt = #{zt,jdbcType=INTEGER},
       fzcc = #{fzcc,jdbcType=VARCHAR},
       ly = #{ly,jdbcType=INTEGER}
-    where Id = #{id,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

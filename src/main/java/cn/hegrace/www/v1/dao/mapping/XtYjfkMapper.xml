@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hegrace.www.v1.dao.mapping.XtYjfkMapper">
+<mapper namespace="XtYjfk">
   <resultMap id="BaseResultMap" type="cn.hegrace.www.v1.dao.pojo.XtYjfk">
-    <id column="Id" jdbcType="INTEGER" property="id" />
+    <id column="Id" jdbcType="VARCHAR" property="id" />
     <result column="fkrq" jdbcType="TIMESTAMP" property="fkrq" />
     <result column="xm" jdbcType="VARCHAR" property="xm" />
     <result column="dh" jdbcType="VARCHAR" property="dh" />
@@ -105,17 +105,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from XT_YJFK
-    where Id = #{id,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from XT_YJFK
-    where Id = #{id,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="cn.hegrace.www.v1.dao.pojo.XtYjfkExample">
     delete from XT_YJFK
@@ -126,7 +126,7 @@
   <insert id="insert" parameterType="cn.hegrace.www.v1.dao.pojo.XtYjfk">
     insert into XT_YJFK (Id, fkrq, xm, 
       dh, zt, fknr)
-    values (#{id,jdbcType=INTEGER}, #{fkrq,jdbcType=TIMESTAMP}, #{xm,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{fkrq,jdbcType=TIMESTAMP}, #{xm,jdbcType=VARCHAR}, 
       #{dh,jdbcType=VARCHAR}, #{zt,jdbcType=INTEGER}, #{fknr,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.hegrace.www.v1.dao.pojo.XtYjfk">
@@ -153,7 +153,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="fkrq != null">
         #{fkrq,jdbcType=TIMESTAMP},
@@ -182,7 +182,7 @@
     update XT_YJFK
     <set>
       <if test="record.id != null">
-        Id = #{record.id,jdbcType=INTEGER},
+        Id = #{record.id,jdbcType=VARCHAR},
       </if>
       <if test="record.fkrq != null">
         fkrq = #{record.fkrq,jdbcType=TIMESTAMP},
@@ -206,7 +206,7 @@
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update XT_YJFK
-    set Id = #{record.id,jdbcType=INTEGER},
+    set Id = #{record.id,jdbcType=VARCHAR},
       fkrq = #{record.fkrq,jdbcType=TIMESTAMP},
       xm = #{record.xm,jdbcType=VARCHAR},
       dh = #{record.dh,jdbcType=VARCHAR},
@@ -218,7 +218,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update XT_YJFK
-    set Id = #{record.id,jdbcType=INTEGER},
+    set Id = #{record.id,jdbcType=VARCHAR},
       fkrq = #{record.fkrq,jdbcType=TIMESTAMP},
       xm = #{record.xm,jdbcType=VARCHAR},
       dh = #{record.dh,jdbcType=VARCHAR},
@@ -246,7 +246,7 @@
         fknr = #{fknr,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where Id = #{id,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.hegrace.www.v1.dao.pojo.XtYjfk">
     update XT_YJFK
@@ -255,7 +255,7 @@
       dh = #{dh,jdbcType=VARCHAR},
       zt = #{zt,jdbcType=INTEGER},
       fknr = #{fknr,jdbcType=LONGVARCHAR}
-    where Id = #{id,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.hegrace.www.v1.dao.pojo.XtYjfk">
     update XT_YJFK
@@ -263,6 +263,6 @@
       xm = #{xm,jdbcType=VARCHAR},
       dh = #{dh,jdbcType=VARCHAR},
       zt = #{zt,jdbcType=INTEGER}
-    where Id = #{id,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>
