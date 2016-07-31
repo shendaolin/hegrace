@@ -3,8 +3,6 @@ package cn.hegrace.www.v1.dao.pojo;
 import cn.hegrace.www.v1.annotation.PrimaryKey;
 
 public class XtGydm extends BaseDao{
-	
-	
     private String id;
 
     private Integer lbid;

@@ -80,7 +80,7 @@ public class BaseService extends SqlSessionTemplate {
 
 	public int updateByPrimaryKey(BaseDao parameter) throws Exception {
 		// TODO Auto-generated method stub
-		return super.update(getNamespace(parameter) +".updateByPrimaryKey", parameter.getPrimaryKeyValue());
+		return super.update(getNamespace(parameter) +".updateByPrimaryKey", parameter);
 	}
-
+	
 }

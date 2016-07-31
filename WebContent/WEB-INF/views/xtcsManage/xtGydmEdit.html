@@ -23,21 +23,22 @@
 				</li>
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
-			<button id="csList" class="btn black">
+			<button id="xtGydmList" class="btn black">
 			返回 <i class="icon-arrow-left"></i>
 			</button>
-			<button id="raceSaveCart" class="btn blue">
+			<button id="xtGydmSave" class="btn blue">
 			保存<i class="icon-share"></i>
 			</button>
 			<br/><br/>
-			<form id="fileupload" action="#" class="form-horizontal" method="POST" enctype="multipart/form-data">
+			<form id="xtGydmForm" action="xtGydmSave.html" class="form-horizontal" method="POST">
+				<input type="hidden" name="id" value="$!xtGydm.id">
 				<div class="control-group">
 					<label class="control-label">参数类型</label>
 					<div class="controls">
-						<select id="select2_sample2" class="span6 select2">
-							<option value=""></option>
-							<option value="1">职位</option>
-							<option value="2">设备类型</option>
+						<select id="xtDmlbSelect" class="span6 select2" name="lbid">
+							#foreach($xtDmlb in $xtDmlbList)
+								<option value="$!xtDmlb.lbid" #if("$!xtDmlb.lbid"=="$!xtGydm.lbid") selected #end>$!xtDmlb.lbmc</option>
+							#end
 						</select>
 
 					</div>
@@ -45,7 +46,7 @@
 				<div class="control-group">
 					<label class="control-label">参数名称:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="xm">
+						<input class="m-wrap medium" type="text" name="dmmc" value="$!xtGydm.dmmc">
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
@@ -60,17 +61,39 @@
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->   
 <script type="text/javascript" src="../media/js/select2.min.js"></script>
-
+<script type="text/javascript" src="../media/js/jquery.form.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 
 <script>
 	jQuery(document).ready(function() {   
 		
-	   $("#csList").on("click", CsEdit.csListOnClick());
-	   $('#select2_sample2').select2({
+	   $("#xtGydmList").on("click", xtGydmEdit.xtGydmListOnClick());
+	   $('#xtDmlbSelect').select2({
             placeholder: "选择一个类型",
-            allowClear: true
+            allowClear: false
         });
+	   
+	   
+	   
+		$('#xtGydmForm').submit(function() {
+		
+	        $(this).ajaxSubmit({
+	        	success: function(data){
+	        		alert("保存成功！");
+	            },
+	            error: function(data){
+	                alert("保存失败！");
+	            }
+	        });
+	        
+	        return false; //阻止表单默认提交
+	    });
+
+		$("#xtGydmSave").on("click", xtGydmEdit.xtGydmFormSubmit());
+		
 	});
+	
+	
+
 </script>
 <!-- END JAVASCRIPTS -->

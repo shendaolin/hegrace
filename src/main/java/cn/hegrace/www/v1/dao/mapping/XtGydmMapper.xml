@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="XtGydm">
   <resultMap id="BaseResultMap" type="cn.hegrace.www.v1.dao.pojo.XtGydm">
-    <result column="id" jdbcType="VARCHAR" property="id" />
+    <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="lbid" jdbcType="INTEGER" property="lbid" />
     <result column="dmmc" jdbcType="VARCHAR" property="dmmc" />
   </resultMap>
@@ -81,6 +81,16 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from XT_GYDM
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from XT_GYDM
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
   <delete id="deleteByExample" parameterType="cn.hegrace.www.v1.dao.pojo.XtGydmExample">
     delete from XT_GYDM
     <if test="_parameter != null">
@@ -149,5 +159,23 @@
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hegrace.www.v1.dao.pojo.XtGydm">
+    update XT_GYDM
+    <set>
+      <if test="lbid != null">
+        lbid = #{lbid,jdbcType=INTEGER},
+      </if>
+      <if test="dmmc != null">
+        dmmc = #{dmmc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hegrace.www.v1.dao.pojo.XtGydm">
+    update XT_GYDM
+    set lbid = #{lbid,jdbcType=INTEGER},
+      dmmc = #{dmmc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -11,6 +12,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.codehaus.plexus.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 
 import cn.hegrace.www.v1.busi.BaseService;
+import cn.hegrace.www.v1.dao.pojo.XtDmlb;
+import cn.hegrace.www.v1.dao.pojo.XtDmlbExample;
+import cn.hegrace.www.v1.dao.pojo.XtGydm;
 import cn.hegrace.www.v1.seach.Flexigrid;
 import cn.hegrace.www.v1.seach.XtGydmSeach;
 import net.sf.json.JSONObject;
@@ -64,31 +69,50 @@ public class XtGydmController extends BaseController {
 	
 	@RequestMapping("xtcsManage/xtGydmEdit.html")
 	public ModelAndView xtGydmEdit(HttpServletRequest request,
-			HttpServletResponse response){
+			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("xtcsManage/xtGydmEdit");
+		String id = request.getParameter("id");
+		XtDmlbExample example = new XtDmlbExample();
+		List<XtDmlb> list = baseService.selectByExample(example);
+		mv.addObject("xtDmlbList", list);
+		
+		if(StringUtils.isNotEmpty(id)){
+			XtGydm xtGydm = new XtGydm();
+			xtGydm.setId(id);
+			xtGydm = baseService.selectByPrimaryKey(xtGydm);
+			mv.addObject("xtGydm", xtGydm);
+		}
+		
 		return mv;
 	}
 	
-	@RequestMapping("xtcsManage/xtGydmView.html")
-	public ModelAndView xtGydmView(HttpServletRequest request,
-			HttpServletResponse response){
-		ModelAndView mv = new ModelAndView("xtcsManage/xtGydmView");
-		return mv;
-	}
 	
-	
+	/**
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
 	@RequestMapping("xtcsManage/xtGydmSave.html")
-	public ModelAndView xtGydmSave(HttpServletRequest request,
-			HttpServletResponse response){
-		ModelAndView mv = new ModelAndView("xtcsManage/xtGydmView");
-		return mv;
+	public void xtGydmSave(HttpServletRequest request,
+			HttpServletResponse response) throws Exception{
+		XtGydm xtGydm = (XtGydm) httpMessageConverter(new XtGydm(), request);
+		if(StringUtils.isEmpty(xtGydm.getId())){
+			xtGydm.setId(baseService.getUuid());
+			baseService.insert(xtGydm);
+		}else{
+			baseService.updateByPrimaryKey(xtGydm);
+		}
+		sendJson(xtGydm, response);
 	}
+	
 	
 	@RequestMapping("xtcsManage/xtGydmDelete.html")
-	public ModelAndView xtGydmDelete(HttpServletRequest request,
-			HttpServletResponse response){
-		ModelAndView mv = new ModelAndView("xtcsManage/xtGydmList");
-		return mv;
+	public void xtGydmDelete(HttpServletRequest request,
+			HttpServletResponse response) throws Exception{
+		String id = request.getParameter("id");
+		XtGydm xtGydm = new XtGydm();
+		xtGydm.setId(id);
+		baseService.deleteByPrimaryKey(xtGydm);
 	}
 	
 }

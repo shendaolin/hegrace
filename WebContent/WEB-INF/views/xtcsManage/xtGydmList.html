@@ -23,7 +23,7 @@
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
 			<div style="float:left;">
-			<button id="csEdit" class="btn green">
+			<button id="xtGydmEdit" class="btn green">
 			新建 <i class="icon-plus"></i>
 			</button>
 			</div>
@@ -33,18 +33,7 @@
 			</form>
 			</div>
 
-			<table id="xtGydm" style="display: none">
-			<tbody>
-			<tr>
-				<td><div>职位</div></td>
-				<td><div>1</div></td>
-				<td><div>指挥中心管理员</div></td>
-				<td><div>
-				<a href="#" class="btn mini purple"><i class="icon-edit"></i> 编辑</a>
-				<a href="#" class="btn mini red"><i class="icon-trash"></i> 删除</a>
-				</div></td>
-			</tr>    
-			</tbody>
+			<table id="xtGydmFlexigrid" style="display: none">
 			</table>
 			
 			<br/>
@@ -57,8 +46,8 @@
 <!-- END PAGE LEVEL PLUGINS -->
 
 <script>
-	jQuery(document).ready(function() {    		CsList.init();
-		$("#csEdit").on("click", CsList.csEditOnClick());
+	jQuery(document).ready(function() {    		XtGydmList.init();
+		$("#xtGydmEdit").on("click", XtGydmList.xtGydmEditOnClick());
 	});
 </script>
 <!-- END JAVASCRIPTS -->
