@@ -9,10 +9,10 @@
 			<ul class="breadcrumb">
 				<li>
 					<i class="icon-home"></i>
-					<a href="。。/index.html">首页</a> 
+					首页
 					<i class="icon-angle-right"></i>
 				</li>
-				<li><a href="#">系统参数管理 </a></li>
+				<li>系统参数管理</li>
 				<li class="pull-right no-text-shadow">
 					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
 						<i class="icon-calendar"></i>
@@ -28,10 +28,12 @@
 			</button>
 			</div>
 			<div style="float:right;">
-			<input placeholder="参数类型" class="m-wrap medium" type="text"/>
+			<form id="xtGydmSeach">
+			<input placeholder="参数类型" class="m-wrap medium" type="text" name="lbmc"/>
+			</form>
 			</div>
 
-			<table class="flexme4" style="display: none">
+			<table id="xtGydm" style="display: none">
 			<tbody>
 			<tr>
 				<td><div>职位</div></td>
@@ -55,8 +57,7 @@
 <!-- END PAGE LEVEL PLUGINS -->
 
 <script>
-	jQuery(document).ready(function() {    
-		CsList.init();
+	jQuery(document).ready(function() {    		CsList.init();
 		$("#csEdit").on("click", CsList.csEditOnClick());
 	});
 </script>

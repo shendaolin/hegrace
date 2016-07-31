@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="XtGydm">
+
+	<select id="select_xtgydm_count" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		SELECT count(1) from XT_GYDM g, XT_DMLB d where d.lbid = g.lbid
+		<if test="lbmc != null and lbmc != ''">
+			and lbmc like '%${lbmc}%'
+		</if>
+	</select>
+
+	<select id="select_xtgydm_list" parameterType="java.util.Map"
+		resultType="cn.hegrace.www.v1.dto.XtGydmDto">
+		SELECT g.*, d.lbmc from XT_GYDM g, XT_DMLB d where d.lbid = g.lbid
+		<if test="lbmc != null and lbmc != ''">
+			and lbmc like '%${lbmc}%'
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+		limit ${startPage}, ${page}
+	</select>
+
+</mapper>

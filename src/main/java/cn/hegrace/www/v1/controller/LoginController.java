@@ -19,24 +19,22 @@ import cn.hegrace.www.v1.dao.pojo.XtGydmExample;
 import cn.hegrace.www.v1.dao.pojo.XtGydmExample.Criteria;
 
 @Controller
-public class LoginController {
+public class LoginController extends BaseController{
 
 	@Autowired
 	private BaseService baseService;
 	
-	@Transactional
+
 	@RequestMapping("/login.html")
 	public ModelAndView login(HttpServletRequest request,
 			HttpServletResponse response){
 		
 		ModelAndView mv = new ModelAndView("login");
-		
-		XtGydmExample example = new XtGydmExample();
-		Criteria criterion = example.createCriteria();
-				criterion.andIdEqualTo("1");
-		List<XtGydm> xtgydms = baseService.selectByExample(example);
-		
-		mv.addObject("xtgydms", xtgydms);
+//		XtGydmExample example = new XtGydmExample();
+//		Criteria criterion = example.createCriteria();
+//				criterion.andIdEqualTo("1");
+//		List<XtGydm> xtgydms = baseService.selectByExample(example);
+//		mv.addObject("xtgydms", xtgydms);
 		return mv;
 	}
 

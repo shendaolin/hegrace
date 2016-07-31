@@ -30,7 +30,7 @@
 
 
 		
-		<table tableName="XT_YJFK" domainObjectName=""></table>
+		<table tableName="" domainObjectName=""></table>
 	</context>
 
 </generatorConfiguration>

@@ -12,13 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 public class SimpleCORSFilter implements Filter {
 
-	@Override
+
 	public void destroy() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+
 	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletResponse response = (HttpServletResponse) arg1;
@@ -30,7 +30,7 @@ public class SimpleCORSFilter implements Filter {
         chain.doFilter(arg0, arg1);
 	}
 
-	@Override
+
 	public void init(FilterConfig arg0) throws ServletException {
 		// TODO Auto-generated method stub
 		
