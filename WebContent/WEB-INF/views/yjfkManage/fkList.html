@@ -4,7 +4,7 @@
 		<div class="span12">
 			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 			<h3 class="page-title">
-				    比赛用设别管理 <small>设备管理</small>
+				 意见反馈管理 <small>意见反馈管理</small>
 			</h3>
 			<ul class="breadcrumb">
 				<li>
@@ -12,7 +12,7 @@
 					<a href="。。/index.html">首页</a> 
 					<i class="icon-angle-right"></i>
 				</li>
-				<li><a href="#">比赛用设别管理 </a></li>
+				<li><a href="#">意见反馈管理 </a></li>
 				<li class="pull-right no-text-shadow">
 					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
 						<i class="icon-calendar"></i>
@@ -22,19 +22,13 @@
 				</li>
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
-			<table class="flexme4" style="display: none">
-			<tbody>
-			<tr>
-				<td><div title="巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉">巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉</div></td>
-				<td><div>2016-07-19</div></td>
-				<td><div>无敌</div></td>
-				<td><div>92834986</div></td>
-				<td><div>未处理</div></td>
-				<td><div>
-				<a href="#" class="btn mini purple"><i class="icon-edit"></i> 处理</a>
-				</div></td>
-			</tr>    
-			</tbody>
+			<div style="float:right;">
+			<form id="xtyjfkSeach">
+			<input placeholder="姓名" class="m-wrap medium" type="text" name="xm"/>
+			</form>
+			</div>
+
+			<table id="yjfkFlexigrid" style="display: none">
 			</table>
 			
 			<br/>
@@ -46,9 +40,13 @@
  <script type="text/javascript" src="../media/js/flexigrid.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 
-<script>
-	jQuery(document).ready(function() {    
+ <script>
+	jQuery(document).ready(function() {
+		
 		FkList.init();
+		
+		 
+		//$("#xtGydmEdit").on("click", XtGydmList.xtGydmEditOnClick());
 	});
 </script>
 <!-- END JAVASCRIPTS -->

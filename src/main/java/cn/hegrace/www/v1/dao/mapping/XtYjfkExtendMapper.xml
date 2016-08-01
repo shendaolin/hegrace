@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="XtYjfkdm">
+
+	<select id="select_xtyjfk_count" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		SELECT count(1) from XT_YJFK
+		<if test="xm != null and xm != ''">
+			and xm like '%${xm}%'
+		</if>
+	</select>
+
+	<select id="select_xtyjfk_list" parameterType="java.util.Map"
+		resultType="cn.hegrace.www.v1.dto.XtYjfkDto">
+		SELECT * from XT_YJFK
+		<if test="xm != null and xm != ''">
+			and xm like '%${xm}%'
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+		limit ${startPage}, ${page}
+	</select>
+
+</mapper>
