@@ -23,4 +23,12 @@ public class IndexController extends BaseController {
 		ModelAndView mv = new ModelAndView("footer");
 		return mv;
 	}
+	
+	
+	@RequestMapping("/index.html")
+	public ModelAndView index(HttpServletRequest request,
+			HttpServletResponse response){
+		ModelAndView mv = new ModelAndView("index");
+		return mv;
+	}
 }

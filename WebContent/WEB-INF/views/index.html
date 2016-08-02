@@ -100,9 +100,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 		<!-- END SIDEBAR -->
 		<!-- BEGIN PAGE -->
 		<div class="page-content" id="page-content"> 
-
-			  
-		</div>
+		</div>				<div style="position:fixed;top:50px;left:250px;">			<input type="button" value=">> 赛事名称 <<" />		</div>				<div style="position:fixed;right:10px;top:50px;">			<input type="button" value="设备清单" />			<input type="button" value="任务管理" />			<input type="button" value="未到岗人员清单" />			<input type="button" value="图例" />		</div>		
 		<!-- END PAGE -->
 	</div>
 	<!-- END CONTAINER -->
@@ -137,8 +135,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 		jQuery(document).ready(function() {    
 			$("#header").load("header.html");
 			$("#footer").load("footer.html");
-			App.init(); // initlayout and core plugins
-			$(".page-content").height($(document).height() - 80)
+			App.init(); // initlayout and core plugins			$(".page-content").height($(document).height() - 80)
 			initialize();
 		});
 
