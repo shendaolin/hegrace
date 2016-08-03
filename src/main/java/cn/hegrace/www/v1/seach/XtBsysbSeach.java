@@ -1,0 +1,15 @@
+package cn.hegrace.www.v1.seach;
+
+public class XtBsysbSeach extends Page {
+	
+	private String lbmc;
+	
+	public String getLbmc() {
+		return lbmc;
+	}
+
+	public void setLbmc(String lbmc) {
+		this.lbmc = lbmc;
+	}
+
+}

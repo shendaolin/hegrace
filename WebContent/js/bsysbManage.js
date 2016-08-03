@@ -6,21 +6,21 @@ var SbList = function () {
 
 			$(".flexme4").flexigrid({
 				idProperty : "racelist",
-                url : false,
+                url : "xtBsysbFlexigrid.html",
                 dataType : 'json',
                 colModel : [ {
                         display : '设备类型',
-                        name : 'dd',
+                        name : 'sblx',
                         width : 100,
                         align : 'center'
                     }, {
                         display : '设备编号',
-                        name : 'bssj',
+                        name : 'sbbh',
                         width : 100,
                         align : 'center'
                     },  {
                         display : '设备状态',
-                        name : 'bssj',
+                        name : 'sbzt',
                         width : 100,
                         align : 'center'
                     },{
@@ -32,7 +32,7 @@ var SbList = function () {
                 sortname : "iso",
                 sortorder : "asc",
                 usepager : true,
-                title : '急救人员列表',
+                title : '设备信息列表',
                 useRp : false,
                 rp : 15,
                 width : "100%",

@@ -34,11 +34,6 @@ var FkList = function () {
                         name : 'zt',
                         width : 50,
                         align : 'center'
-                    },{
-                        display : '操作',
-                        name : 'zt',
-                        width : 100,
-                        align : 'center'
                     }],
                 sortname : "fkrq",
                 sortorder : "asc",
@@ -51,12 +46,6 @@ var FkList = function () {
             });
 
 
-		},
-
-		sbEditOnClick : function(){
-			return function(){
-				$("#page-content").load("sbedit.html");
-			}
 		}
 
     };

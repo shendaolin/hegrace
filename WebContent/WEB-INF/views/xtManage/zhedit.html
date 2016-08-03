@@ -26,11 +26,12 @@
 			<button id="zhList" class="btn black">
 			返回 <i class="icon-arrow-left"></i>
 			</button>
-			<button id="raceSaveCart" class="btn blue">
+			<button id="xtczyhSave" class="btn blue">
 			保存<i class="icon-share"></i>
 			</button>
 			<br/><br/>
-			<form id="fileupload" action="#" class="form-horizontal" method="POST" enctype="multipart/form-data">
+			<form id="xtczyhForm" action="xtCzyhSave.html" class="form-horizontal" method="POST">
+				<input type="hidden" name="id" value="$!xtCzyh.ssid">
 				<div class="control-group">
 					<label class="control-label">姓名:</label>
 					<div class="controls">
@@ -41,30 +42,30 @@
 				<div class="control-group">
 					<label class="control-label">电话:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="lxdh">
+						<input class="m-wrap medium" type="text" name="dh">
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">账号:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="lxdh">
+						<input class="m-wrap medium" type="text" name="dlm">
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">密码:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="password" name="lxdh">
+						<input class="m-wrap medium" type="password" name="dlmm">
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">职位</label>
 					<div class="controls">
-						<select>
-						<option>运营</option>
-						<option>赛事指挥官</option>
+						<select name="zw">
+						<option value="1">运营</option>
+						<option value="2">赛事指挥官</option>
 						</select>
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
@@ -72,10 +73,15 @@
 				<div class="control-group">
 					<label class="control-label">选择赛事</label>
 					<div class="controls">
-						<select id="select2_sample1" class="span6 select2">
+					<!-- <select id="xtczyhSelect" class="span6 select2" name="ssid">
 							<option value=""></option>
 							<option value="AL">杭州马拉松</option>
 							<option value="WY">上海马拉松</option>
+						</select>-->
+						<select id="XtSsgList" class="span6 select2" name="ssid">
+							#foreach($XtSsgL in $XtSsgList)
+								<option value="$!XtSsgL.id" #if("$!XtSsgL.id"=="$!xtCzyh.ssid") selected #end>$!XtSsgL.ssmc</option>
+							#end
 						</select>
 
 					</div>
@@ -99,10 +105,26 @@
 	jQuery(document).ready(function() {   
 		
 	   $("#zhList").on("click", ZhEdit.zhListOnClick());
-	   $('#select2_sample1').select2({
+	   $('#xtczyhSelect').select2({
             placeholder: "选择一个赛事",
             allowClear: true
-        });
+        }); 
+		$('#xtczyhForm').submit(function() {
+		
+	        $(this).ajaxSubmit({
+	        	success: function(data){
+	        		alert("保存成功！");
+	            },
+	            error: function(data){
+	                alert("保存失败！");
+	            }
+	        });
+	        
+	        return false; //阻止表单默认提交
+	    });
+		
+		$("#xtczyhSave").on("click", ZhEdit.xtczyhFormSubmit());
+	   
 	});
 </script>
 <!-- END JAVASCRIPTS -->

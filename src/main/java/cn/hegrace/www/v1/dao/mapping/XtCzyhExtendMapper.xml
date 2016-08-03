@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="XtCzyh">
+
+	<select id="select_xtczyh_count" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		SELECT count(1) from XT_CZYH g, XT_SSGL d where d.id = g.ssid
+		<if test="dlm != null and dlm != ''">
+			and dlm like '%${dlm}%'
+		</if>
+		<if test="ssmc != null and ssmc != ''">
+			and ssmc like '%${ssmc}%'
+		</if>
+	</select>
+
+	<select id="select_xtczyh_list" parameterType="java.util.Map"
+		resultType="cn.hegrace.www.v1.dto.XtCzyhDto">
+		SELECT g.*, d.ssmc from  XT_CZYH g, XT_SSGL d  where  d.id = g.ssid
+		<if test="dlm != null and dlm != ''">
+			and dlm like '%${dlm}%'
+		</if>
+		<if test="ssmc != null and ssmc != ''">
+			and ssmc like '%${ssmc}%'
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+		limit ${startPage}, ${page}
+	</select>
+
+</mapper>
