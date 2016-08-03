@@ -100,7 +100,7 @@ var ZhEdit = function () {
 		},
 		xtczyhFormSubmit : function() {
 			return function() {
-				$('#xtczyhForm').submit();
+				$("#xtczyhForm").submit();
 				
 			}
 		}

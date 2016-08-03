@@ -4,9 +4,10 @@ var SbList = function () {
 
 		init: function () {
 
-			$(".flexme4").flexigrid({
+			$("#bsysbFlexigrid").flexigrid({
 				idProperty : "racelist",
                 url : "xtBsysbFlexigrid.html",
+                params : $("#bsysbSeach").serializeArray(),
                 dataType : 'json',
                 colModel : [ {
                         display : '设备类型',
@@ -29,7 +30,7 @@ var SbList = function () {
                         width : 200,
                         align : 'center'
                     }],
-                sortname : "iso",
+                sortname : "id",
                 sortorder : "asc",
                 usepager : true,
                 title : '设备信息列表',

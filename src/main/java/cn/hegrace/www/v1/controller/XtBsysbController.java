@@ -28,6 +28,8 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 import cn.hegrace.www.v1.busi.BaseService;
 import cn.hegrace.www.v1.dao.pojo.XtDmlb;
 import cn.hegrace.www.v1.dao.pojo.XtDmlbExample;
+import cn.hegrace.www.v1.dao.pojo.XtGydm;
+import cn.hegrace.www.v1.dao.pojo.XtGydmExample;
 import cn.hegrace.www.v1.dao.pojo.XtBsysb;
 import cn.hegrace.www.v1.seach.Flexigrid;
 import cn.hegrace.www.v1.seach.XtBsysbSeach;
@@ -62,8 +64,8 @@ public class XtBsysbController extends BaseController {
 		Map map = flexigrid.getMap();
 		map.put("lbmc", xtBsysbSeach.getLbmc());
 		flexigrid.setPages(xtBsysbSeach.getPage());
-		flexigrid.setTotal(baseService.queryForCount("XtBsysb.select_xtgydm_count", map));
-		flexigrid.setRows(baseService.queryForList("XtBsysb.select_xtgydm_list", map));
+		flexigrid.setTotal(baseService.queryForCount("XtBsysb.select_xtbsysb_count", map));
+		flexigrid.setRows(baseService.queryForList("XtBsysb.select_xtbsysb_list", map));
 		sendJson(flexigrid, response);
 	}
 	
@@ -72,9 +74,9 @@ public class XtBsysbController extends BaseController {
 			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("bsysbManage/sbedit");
 		String id = request.getParameter("id");
-		XtDmlbExample example = new XtDmlbExample();
-		List<XtDmlb> list = baseService.selectByExample(example);
-		mv.addObject("sbList", list);
+		XtGydmExample example = new XtGydmExample();
+		List<XtGydm> list = baseService.selectByExample(example);
+		mv.addObject("XtDmbList", list);
 		
 		if(StringUtils.isNotEmpty(id)){
 			XtBsysb xtBsysb = new XtBsysb();

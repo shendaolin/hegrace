@@ -34,10 +34,10 @@
 				<div class="control-group">
 					<label class="control-label">设备类型</label>
 					<div class="controls">
-						<select id="select2_sample2" class="span6 select2 medium">
-							<option value=""></option>
-							<option value="1">担架</option>
-							<option value="2">急救包</option>
+						<select id="xtbsysbSelect" class="span6 select2" name="lbid">
+							#foreach($xtDmlb in $XtDmbList)
+								<option value="$!xtDmlb.sblx" #if("$!xtDmlb.sblx"=="$!xtGydm.lbid") selected #end>$!xtDmlb.dmmc</option>
+							#end
 						</select>
 
 					</div>
@@ -76,5 +76,9 @@
 		$("#page-content").height($(document).height() - 80)
 	   $("#sbList").on("click", SbEdit.sbListOnClick());
 	});
+	 $('#xtbsysbSelect').select2({
+         placeholder: "选择一个类型",
+         allowClear: false
+     });
 </script>
 <!-- END JAVASCRIPTS -->
