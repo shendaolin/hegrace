@@ -75,6 +75,7 @@ public class XtBsysbController extends BaseController {
 		ModelAndView mv = new ModelAndView("bsysbManage/sbedit");
 		String id = request.getParameter("id");
 		XtGydmExample example = new XtGydmExample();
+		example.createCriteria().andLbidEqualTo(2);
 		List<XtGydm> list = baseService.selectByExample(example);
 		mv.addObject("XtDmbList", list);
 		

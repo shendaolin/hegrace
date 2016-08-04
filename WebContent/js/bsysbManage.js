@@ -11,7 +11,7 @@ var SbList = function () {
                 dataType : 'json',
                 colModel : [ {
                         display : '设备类型',
-                        name : 'sblx',
+                        name : 'dmmc',
                         width : 100,
                         align : 'center'
                     }, {
