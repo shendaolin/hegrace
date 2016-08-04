@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="XtSsjjy">
+
+	<select id="select_noSignIn_count" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		SELECT count(1) from XT_SSJJY where ssid = #{ssid} and
+		zt='1' and ( zb = '' or zb is null )
+	</select>
+
+	<select id="select_noSignIn_list" parameterType="java.util.Map"
+		resultType="cn.hegrace.www.v1.dao.pojo.XtJjry">
+		SELECT jj.* from XT_SSJJY ssjj, XT_JJRY jj where ssjj.ryid =
+		jj.id and ssjj.ssid = #{ssid} and ssjj.zt = '1' and ( zb = '' or zb is
+		null )
+		order by jj.xm asc
+		limit ${startPage}, ${page}
+	</select>
+
+</mapper>
