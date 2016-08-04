@@ -17,6 +17,7 @@ public abstract class BaseController {
 		
 		   try {  
 		        out = response.getWriter();  
+		        System.out.println(JSONObject.fromObject(object).toString());
 		        out.append(JSONObject.fromObject(object).toString());   
 		    } catch (IOException e) {  
 		        e.printStackTrace();  
