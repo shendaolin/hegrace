@@ -1730,7 +1730,7 @@ Custom icon buttons
   font-weight: 300;
 }
 
-.icon-btn .badge {
+.icon-btn .badge, .btn .badge{
   position: absolute;
   font-family: 'Open Sans';
   font-size: 11px !important;
