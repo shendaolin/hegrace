@@ -12,8 +12,8 @@
 					<a href="index.html">首页</a> 
 					<i class="icon-angle-right"></i>
 				</li>
-				<li><a href="#">系统管理</a><i class="icon-angle-right"></i></li>
-				<li><a href="#">新增管理员</a></li>
+				<li>系统管理<i class="icon-angle-right"></i></li>
+				<li>新增管理员</li>
 				<li class="pull-right no-text-shadow">
 					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
 						<i class="icon-calendar"></i>
@@ -23,14 +23,14 @@
 				</li>
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
-			<button id="zhList" class="btn black">
+			<button id="xtCzyhList" class="btn black">
 			返回 <i class="icon-arrow-left"></i>
 			</button>
-			<button id="xtczyhSave" class="btn blue">
+			<button id="xtCzyhSave" class="btn blue">
 			保存<i class="icon-share"></i>
 			</button>
 			<br/><br/>
-			<form id="xtczyhForm" action="xtCzyhSave.html" class="form-horizontal" method="POST">
+			<form id="xtCzyhForm" action="xtCzyhSave.html" class="form-horizontal" method="POST">
 				<input type="hidden" name="id" value="$!xtCzyh.ssid">
 				<div class="control-group">
 					<label class="control-label">姓名:</label>
@@ -73,12 +73,7 @@
 				<div class="control-group">
 					<label class="control-label">选择赛事</label>
 					<div class="controls">
-					<!-- <select id="xtczyhSelect" class="span6 select2" name="ssid">
-							<option value=""></option>
-							<option value="AL">杭州马拉松</option>
-							<option value="WY">上海马拉松</option>
-						</select>-->
-						<select id="XtSsgList" class="span6 select2" name="ssid">
+						<select id="xtSsgList" class="span6 select2" name="ssid">
 							#foreach($XtSsgL in $XtSsgList)
 								<option value="$!XtSsgL.id" #if("$!XtSsgL.id"=="$!xtCzyh.ssid") selected #end>$!XtSsgL.ssmc</option>
 							#end
@@ -98,17 +93,20 @@
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->   
 <script type="text/javascript" src="../media/js/select2.min.js"></script>
+<script type="text/javascript" src="../media/js/jquery.form.js"></script>
 
 <!-- END PAGE LEVEL PLUGINS -->
 
 <script>
 	jQuery(document).ready(function() {   
 		
-	   $("#zhList").on("click", ZhEdit.zhListOnClick());
-	   $('#xtczyhSelect').select2({
+	   $("#xtCzyhList").on("click", XtCzyhEdit.xtCzyhListOnClick());
+	   
+	   $('#xtSsgList').select2({
             placeholder: "选择一个赛事",
             allowClear: true
         }); 
+	   
 		$('#xtczyhForm').submit(function() {
 		
 	        $(this).ajaxSubmit({
@@ -123,7 +121,7 @@
 	        return false; //阻止表单默认提交
 	    });
 		
-		$("#xtczyhSave").on("click", ZhEdit.xtczyhFormSubmit());
+		$("#xtCzyhSave").on("click", XtCzyhEdit.xtCzyhFormSubmit());
 	   
 	});
 </script>

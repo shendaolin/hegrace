@@ -42,7 +42,7 @@ var FkList = function () {
                 useRp : false,
                 rp : 15,
                 width : "100%",
-                height : 300
+                height : $(document).height() - 400
             });
 
 

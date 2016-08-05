@@ -51,10 +51,10 @@ public class XtCzyhController extends BaseController {
 		return mv;
 	}
 	
-	@RequestMapping("xtManage/zhList.html")
+	@RequestMapping("xtManage/xtCzyhList.html")
 	public ModelAndView XtCzyhList(HttpServletRequest request,
 			HttpServletResponse response){
-		ModelAndView mv = new ModelAndView("xtManage/zhList");
+		ModelAndView mv = new ModelAndView("xtManage/xtCzyhList");
 		return mv;
 	}
 	
@@ -72,15 +72,14 @@ public class XtCzyhController extends BaseController {
 		sendJson(flexigrid, response);
 	}
 	
-	@RequestMapping("xtManage/zhedit.html")
+	@RequestMapping("xtManage/xtCzyhEdit.html")
 	public ModelAndView XtCzyhEdit(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
-		ModelAndView mv = new ModelAndView("xtManage/zhedit");
+		ModelAndView mv = new ModelAndView("xtManage/xtCzyhEdit");
 		String id = request.getParameter("id");
 		XtSsglExample example = new XtSsglExample();
 		List<XtSsgl> list = baseService.selectByExample(example);
 		mv.addObject("XtSsgList", list);
-		
 		if(StringUtils.isNotEmpty(id)){
 			XtCzyh xtCzyh = new XtCzyh();
 			xtCzyh.setId(id);
@@ -100,7 +99,6 @@ public class XtCzyhController extends BaseController {
 	@RequestMapping("xtManage/xtCzyhSave.html")
 	public void XtCzyhSave(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
-		System.out.println("dd23");
 		XtCzyh xtCzyh = (XtCzyh) httpMessageConverter(new XtCzyh(), request);
 		if(StringUtils.isEmpty(xtCzyh.getId())){
 			xtCzyh.setId(baseService.getUuid());
@@ -112,7 +110,7 @@ public class XtCzyhController extends BaseController {
 	}
 	
 	
-	@RequestMapping("xtManage/XtCzyhDelete.html")
+	@RequestMapping("xtManage/xtCzyhDelete.html")
 	public void XtCzyhDelete(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		String id = request.getParameter("id");

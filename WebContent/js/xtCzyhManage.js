@@ -1,11 +1,10 @@
-var ZhList = function () {
+var XtCzyhList = function () {
 
     return {
 
 		init: function () {
 
-			$("#czyhFlexigrid").flexigrid({
-				idProperty : "racelist",
+			$("#xtCzyhFlexigrid").flexigrid({
                 url : "xtCzyhFlexigrid.html",
                 dataType : 'json',
                 params : $("#xtczyhSeach").serializeArray(),
@@ -29,12 +28,7 @@ var ZhList = function () {
                         name : 'zw',
                         width : 100,
                         align : 'center'
-                    }, {
-                        display : '创建时间',
-                        name : 'ss',
-                        width : 100,
-                        align : 'center'
-                },{
+                    },{
                 	display : '操作',
 					width : 200,
 					align : 'center',
@@ -58,23 +52,23 @@ var ZhList = function () {
                 useRp : false,
                 rp : 15,
                 width : "100%",
-                height : 300
+                height : $(document).height() - 400
             });
 
 
 		},
 
-		zhEditOnClick : function(){
+		xtCzyhEditOnClick : function(){
 			return function(){
-				$("#page-content").load("zhedit.html");
+				$("#page-content").load("xtCzyhEdit.html");
 			}
 		},
 		 
 
-		xtczyhDelete : function(id) {
+		xtCzyhDelete : function(id) {
 			var del = confirm("确定要删除吗？");
 			if (del == true) {
-				$.get("XtCzyhDelete.html", {
+				$.get("xtCzyhDelete.html", {
 					"id" : id
 				});
 				$("#xtCzyhFlexigrid").flexReload();
@@ -89,18 +83,18 @@ var ZhList = function () {
 }();
 
 
-var ZhEdit = function () {
+var XtCzyhEdit = function () {
 	 
     return {
 
-		zhListOnClick : function(){
+    	xtCzyhListOnClick : function(){
 			return function(){
-				$("#page-content").load("zhList.html");
+				$("#page-content").load("xtCzyhList.html");
 			}
 		},
-		xtczyhFormSubmit : function() {
+		xtCzyhFormSubmit : function() {
 			return function() {
-				$("#xtczyhForm").submit();
+				$("#xtCzyhForm").submit();
 				
 			}
 		}
