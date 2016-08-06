@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="XtSsjjysb">
+
+  	<select id="select_equipment_count" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		SELECT count(1) from XT_SSJJY where ssid = #{ssid} and
+		zt='1' and ( zb = '' or zb is null )
+	</select>
+
+	<select id="select_equipment_list" parameterType="java.util.Map"
+		resultType="cn.hegrace.www.v1.dto.XtSsjjysbDto">
+		SELECT dm.dmmc as sblx, bssb.sbbh, ry.xm, ry.dh FROM XT_SSJJYSB sb 
+		left join XT_SSJJY jj on jj.id = sb.ssjjyid and jj.zt = '1'
+		left join XT_JJRY ry on jj.ryid = ry.id and ry.zt = '1'
+		left join XT_BSYSB bssb on bssb.id = sb.sbid and bssb.sbzt = '1'	
+		left join XT_GYDM dm on dm.id = bssb.sblx and dm.lbid = '2' 
+		where jj.ssid = #{ssid} and sb.zt = '1' order by sb.ssjjyid asc
+		limit ${startPage}, ${page}
+	</select>
+	
+</mapper>
