@@ -46,8 +46,6 @@ var XtGydmList = function() {
 																+ "</div>");
 											}
 										} ],
-								checkbox : true,
-								rowId : 'id',
 								sortname : "id",
 								sortorder : "asc",
 								usepager : true,

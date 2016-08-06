@@ -6,25 +6,26 @@ import java.util.Map;
 public class Flexigrid {
 
 	private int pages;
+	private int page;
 	private int total;
 	private Object[] rows;
 	private Map map;
-	private Page page;
+	private Page pageObject;
 
-	public Flexigrid(Page page){
-		this.page = page;
+	public Flexigrid(Page page) {
+		this.pageObject = page;
 	}
-	
+
 	public Map getMap() {
-		if(map == null){
+		if (map == null) {
 			map = new HashMap();
-			map.put("page", page.getRp());
-			map.put("startPage", page.getStartPage());
-			map.put("orderByClause", page.getOrderByClause());
+			map.put("page", pageObject.getRp());
+			map.put("startPage", pageObject.getStartPage());
+			map.put("orderByClause", pageObject.getOrderByClause());
 		}
 		return map;
 	}
-	
+
 	public int getPages() {
 		return pages;
 	}
@@ -47,6 +48,14 @@ public class Flexigrid {
 
 	public void setRows(Object[] rows) {
 		this.rows = rows;
+	}
+
+	public int getPage() {
+		return this.pageObject.getPage();
+	}
+
+	public void setPage(int page) {
+		this.page = page;
 	}
 
 }

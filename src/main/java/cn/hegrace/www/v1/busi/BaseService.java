@@ -44,6 +44,11 @@ public class BaseService extends SqlSessionTemplate {
 		return super.selectOne(sqlid, parameter);
 	}
 	
+	public <E> List<E> selectList(String sqlid, Object parameter) {
+		// TODO Auto-generated method stub
+		return super.selectList(sqlid, parameter);
+	}
+	
 	public Object[] queryForList(String sqlid, Object parameter) {
 		// TODO Auto-generated method stub
 		List list = super.selectList(sqlid, parameter);
