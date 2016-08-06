@@ -12,7 +12,7 @@
 
 	<select id="select_xtbsysb_list" parameterType="java.util.Map"
 		resultType="cn.hegrace.www.v1.dto.XtBsysbDto">
-		SELECT g.dmmc, d.* from XT_GYDM g, XT_BSYSB d where d.sblx = g.id 
+		SELECT d.*,g.dmmc,case  when sbzt=1 then '可用' when sbzt=0 then '不可用' end as sbztName  from XT_GYDM g, XT_BSYSB d where d.sblx = g.id 
 		<if test="sbbh != null and sbbh != ''">
 			and sbbh like '%${sbbh}%'
 		</if>

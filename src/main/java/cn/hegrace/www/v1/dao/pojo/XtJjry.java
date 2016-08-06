@@ -24,6 +24,12 @@ public class XtJjry extends BaseDao{
     private String fzcc;
 
     private Integer ly;
+    
+    private String xbName;
+    private String lyName;
+    private String ztName;
+    private String sflxName;
+    private String zjlxName;
     @PrimaryKey
     public String getId() {
         return id;
@@ -112,4 +118,45 @@ public class XtJjry extends BaseDao{
     public void setLy(Integer ly) {
         this.ly = ly;
     }
+
+	public String getXbName() {
+		return xbName;
+	}
+
+	public void setXbName(String xbName) {
+		this.xbName = xbName;
+	}
+
+	public String getLyName() {
+		return lyName;
+	}
+
+	public void setLyName(String lyName) {
+		this.lyName = lyName;
+	}
+
+	public String getZtName() {
+		return ztName;
+	}
+
+	public void setZtName(String ztName) {
+		this.ztName = ztName;
+	}
+
+	public String getSflxName() {
+		return sflxName;
+	}
+
+	public void setSflxName(String sflxName) {
+		this.sflxName = sflxName;
+	}
+
+	public String getZjlxName() {
+		return zjlxName;
+	}
+
+	public void setZjlxName(String zjlxName) {
+		this.zjlxName = zjlxName;
+	}
+    
 }

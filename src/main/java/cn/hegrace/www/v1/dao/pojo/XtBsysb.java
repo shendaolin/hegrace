@@ -10,7 +10,12 @@ public class XtBsysb extends BaseDao{
     private String sbbh;
 
     private Integer sbzt;
-    @PrimaryKey
+    
+    private String dmmc;
+    
+    private String sbztName;
+
+	@PrimaryKey
     public String getId() {
         return id;
     }
@@ -42,4 +47,20 @@ public class XtBsysb extends BaseDao{
     public void setSbzt(Integer sbzt) {
         this.sbzt = sbzt;
     }
+    public String getDmmc() {
+		return dmmc;
+	}
+
+	public void setDmmc(String dmmc) {
+		this.dmmc = dmmc;
+	}
+
+	public String getSbztName() {
+		return sbztName;
+	}
+
+	public void setSbztName(String sbztName) {
+		this.sbztName = sbztName;
+	}
+	
 }

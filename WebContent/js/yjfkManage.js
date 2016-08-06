@@ -1,8 +1,8 @@
 
-var FkList = function () {
+var xtYjfkList = function () {
 	
     return {
-
+    	
 		init: function () {
 
 			$("#yjfkFlexigrid").flexigrid({
@@ -31,7 +31,7 @@ var FkList = function () {
                         align : 'center'
                     },{
                         display : '状态',
-                        name : 'zt',
+                        name : 'ztName',
                         width : 50,
                         align : 'center'
                     }],

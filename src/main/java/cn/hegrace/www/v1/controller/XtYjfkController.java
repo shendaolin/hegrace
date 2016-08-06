@@ -39,31 +39,29 @@ public class XtYjfkController extends BaseController {
 	@Autowired
 	private BaseService baseService;
 	
-	@RequestMapping("yjfkManage/index.html")
+	@RequestMapping("xtyjfkManage/index.html")
 	public ModelAndView index(HttpServletRequest request,
 			HttpServletResponse response){
-		ModelAndView mv = new ModelAndView("yjfkManage/index");
+		ModelAndView mv = new ModelAndView("xtyjfkManage/index");
 		return mv;
 	}
 	
-	@RequestMapping("yjfkManage/fkList.html")
-	public ModelAndView fkList(HttpServletRequest request,
+	@RequestMapping("xtyjfkManage/xtYjfkList.html")
+	public ModelAndView xtYjfkList(HttpServletRequest request,
 			HttpServletResponse response){
-		ModelAndView mv = new ModelAndView("yjfkManage/fkList");
+		ModelAndView mv = new ModelAndView("xtyjfkManage/xtYjfkList");
 		
 		return mv;
 	}
 	
 	
 	
-	@RequestMapping(value="yjfkManage/yjfkFlexigrid.html", method = RequestMethod.POST)
+	@RequestMapping(value="xtyjfkManage/yjfkFlexigrid.html", method = RequestMethod.POST)
 	public void yjfkFlexigrid(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
-		System.out.println("222"); 
 		XtYjfkSeach xtYjfkSeach = (XtYjfkSeach) httpMessageConverter(new XtYjfkSeach(), request);
 		Flexigrid flexigrid = new Flexigrid(xtYjfkSeach);
 		Map map = flexigrid.getMap();
-		System.out.println("222");
 		map.put("xm", xtYjfkSeach.getXm());
 		flexigrid.setPages(xtYjfkSeach.getPage());
 		flexigrid.setTotal(baseService.queryForCount("XtYjfkdm.select_xtyjfk_count", map));

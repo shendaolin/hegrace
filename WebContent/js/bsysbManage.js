@@ -1,11 +1,10 @@
-var SbList = function () {
+var xtBsysbList = function () {
 
     return {
 
 		init: function () {
 
 			$("#bsysbFlexigrid").flexigrid({
-				idProperty : "racelist",
                 url : "xtBsysbFlexigrid.html",
                 params : $("#bsysbSeach").serializeArray(),
                 dataType : 'json',
@@ -21,16 +20,29 @@ var SbList = function () {
                         align : 'center'
                     },  {
                         display : '设备状态',
-                        name : 'sbzt',
+                        name : 'sbztName',
                         width : 100,
-                        align : 'center'
+                        align : 'center'	
                     },{
                         display : '操作',
                         name : 'zt',
                         width : 200,
-                        align : 'center'
-                    }],
-                sortname : "id",
+                        align : 'center',
+    					process : function(tdDiv, id) {
+    						 
+    						var editButton = "<a href=\"javascript:;\" onclick=\"xtBsysbList.bsysbEdit('"
+    								+ id
+    								+ "')\" class=\"btn mini purple\"><i class=\"icon-edit\"></i> 编辑</a>";
+    						var deleteButton = "<a href=\"javascript:;\" onclick=\"xtBsysbList.bsysDelete('"
+    								+ id
+    								+ "')\"  class=\"btn mini red\"><i class=\"icon-trash\"></i> 删除</a>";
+    						$(tdDiv).html(
+    								"<div>" + editButton
+    										+ deleteButton
+    										+ "</div>");
+    					}
+    				} ],
+                sortname : "Id",
                 sortorder : "asc",
                 usepager : true,
                 title : '设备信息列表',
@@ -42,35 +54,52 @@ var SbList = function () {
 
 
 		},
-
-		sbEditOnClick : function(){
-			return function(){
-				$("#page-content").load("sbedit.html");
+		xtCzyhEditOnClick : function() {
+			return function() {
+				$("#page-content").load("xtBsysbEdit.html");
 			}
 		},
 
-		sbTjOnClick : function(){
-			return function(){
-				$("#page-content").load("sbtj.html");
+		bsysbEdit : function(id) {
+			
+			$("#page-content").load("xtBsysbEdit.html", {
+				"id" : id
+			});
+			
+		},
+		bsysDelete : function(id) {
+			var del = confirm("确定要删除吗？");
+			if (del == true) {
+				$.get("xtBsysbDelete.html", {
+					"id" : id
+				});
+				$("#bsysbFlexigrid").flexReload();
+			} else {
+				return false;
 			}
 		}
-
+		  
     };
 
 }();
 
 
 
-var SbEdit = function () {
+var xtBsysbEdit = function () {
 
     return {
 
-		sbListOnClick : function(){
+		xtBsysbListOnClick : function(){
 			return function(){
-				$("#page-content").load("sbList.html");
+				
+				$("#page-content").load("xtBsysbList.html");
+			}
+		},
+		xtBsysbFormSubmit : function() {
+			return function() {
+				$("#xtBsysbForm").submit();
 			}
 		}
-
     };
 
 }();

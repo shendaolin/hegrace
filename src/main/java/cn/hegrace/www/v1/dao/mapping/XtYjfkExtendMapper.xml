@@ -12,7 +12,7 @@
 
 	<select id="select_xtyjfk_list" parameterType="java.util.Map"
 		resultType="cn.hegrace.www.v1.dto.XtYjfkDto">
-		SELECT * from XT_YJFK
+		SELECT *,case  when zt=1 then '已处理' when zt=0 then '未处理' end as ztName  from XT_YJFK 
 		<if test="xm != null and xm != ''">
 			and xm like '%${xm}%'
 		</if>

@@ -44,22 +44,22 @@ public class XtCzyhController extends BaseController {
 	@Autowired
 	private BaseService baseService;
 	
-	@RequestMapping("xtManage/index.html")
+	@RequestMapping("xtczyhManage/index.html")
 	public ModelAndView index(HttpServletRequest request,
 			HttpServletResponse response){
-		ModelAndView mv = new ModelAndView("xtManage/index");
+		ModelAndView mv = new ModelAndView("xtczyhManage/index");
 		return mv;
 	}
 	
-	@RequestMapping("xtManage/xtCzyhList.html")
+	@RequestMapping("xtczyhManage/xtCzyhList.html")
 	public ModelAndView XtCzyhList(HttpServletRequest request,
 			HttpServletResponse response){
-		ModelAndView mv = new ModelAndView("xtManage/xtCzyhList");
+		ModelAndView mv = new ModelAndView("xtczyhManage/xtCzyhList");
 		return mv;
 	}
 	
 	
-	@RequestMapping(value = "xtManage/xtCzyhFlexigrid.html", method = RequestMethod.POST)
+	@RequestMapping(value = "xtczyhManage/xtCzyhFlexigrid.html", method = RequestMethod.POST)
 	public void XtCzyhFlexigrid(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtCzyhSeach xtCzyhSeach = (XtCzyhSeach) httpMessageConverter(new XtCzyhSeach(), request);
@@ -72,10 +72,10 @@ public class XtCzyhController extends BaseController {
 		sendJson(flexigrid, response);
 	}
 	
-	@RequestMapping("xtManage/xtCzyhEdit.html")
+	@RequestMapping("xtczyhManage/xtCzyhEdit.html")
 	public ModelAndView XtCzyhEdit(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
-		ModelAndView mv = new ModelAndView("xtManage/xtCzyhEdit");
+		ModelAndView mv = new ModelAndView("xtczyhManage/xtCzyhEdit");
 		String id = request.getParameter("id");
 		XtSsglExample example = new XtSsglExample();
 		List<XtSsgl> list = baseService.selectByExample(example);
@@ -96,7 +96,7 @@ public class XtCzyhController extends BaseController {
 	 * @param response
 	 * @throws Exception
 	 */
-	@RequestMapping("xtManage/xtCzyhSave.html")
+	@RequestMapping("xtczyhManage/xtCzyhSave.html")
 	public void XtCzyhSave(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtCzyh xtCzyh = (XtCzyh) httpMessageConverter(new XtCzyh(), request);
@@ -110,7 +110,7 @@ public class XtCzyhController extends BaseController {
 	}
 	
 	
-	@RequestMapping("xtManage/xtCzyhDelete.html")
+	@RequestMapping("xtczyhManage/xtCzyhDelete.html")
 	public void XtCzyhDelete(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		String id = request.getParameter("id");

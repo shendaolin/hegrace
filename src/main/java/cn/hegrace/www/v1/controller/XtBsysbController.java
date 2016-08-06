@@ -41,22 +41,22 @@ public class XtBsysbController extends BaseController {
 	@Autowired
 	private BaseService baseService;
 	
-	@RequestMapping("bsysbManage/index.html")
+	@RequestMapping("xtbsysbManage/index.html")
 	public ModelAndView index(HttpServletRequest request,
 			HttpServletResponse response){
-		ModelAndView mv = new ModelAndView("bsysbManage/index");
+		ModelAndView mv = new ModelAndView("xtbsysbManage/index");
 		return mv;
 	}
 	
-	@RequestMapping("bsysbManage/sbList.html")
-	public ModelAndView sbList(HttpServletRequest request,
+	@RequestMapping("xtbsysbManage/xtBsysbList.html")
+	public ModelAndView xtBsysbList(HttpServletRequest request,
 			HttpServletResponse response){
-		ModelAndView mv = new ModelAndView("bsysbManage/sbList");
+		ModelAndView mv = new ModelAndView("xtbsysbManage/xtBsysbList");
 		return mv;
 	}
 	
 	
-	@RequestMapping(value = "bsysbManage/xtBsysbFlexigrid.html", method = RequestMethod.POST)
+	@RequestMapping(value = "xtbsysbManage/xtBsysbFlexigrid.html", method = RequestMethod.POST)
 	public void xtBsysbFlexigrid(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtBsysbSeach xtBsysbSeach = (XtBsysbSeach) httpMessageConverter(new XtBsysbSeach(), request);
@@ -69,21 +69,22 @@ public class XtBsysbController extends BaseController {
 		sendJson(flexigrid, response);
 	}
 	
-	@RequestMapping("bsysbManage/sbedit.html")
-	public ModelAndView sbedit(HttpServletRequest request,
+	@RequestMapping("xtbsysbManage/xtBsysbEdit.html")
+	public ModelAndView xtBsysbEdit(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
-		ModelAndView mv = new ModelAndView("bsysbManage/sbedit");
+		ModelAndView mv = new ModelAndView("xtbsysbManage/xtBsysbEdit");
 		String id = request.getParameter("id");
 		XtGydmExample example = new XtGydmExample();
 		example.createCriteria().andLbidEqualTo(2);
 		List<XtGydm> list = baseService.selectByExample(example);
 		mv.addObject("XtDmbList", list);
-		
+		System.out.println(id);
 		if(StringUtils.isNotEmpty(id)){
 			XtBsysb xtBsysb = new XtBsysb();
 			xtBsysb.setId(id);
 			xtBsysb = baseService.selectByPrimaryKey(xtBsysb);
 			mv.addObject("xtBsysb", xtBsysb);
+			System.out.println(xtBsysb);
 		}
 		
 		return mv;
@@ -95,7 +96,7 @@ public class XtBsysbController extends BaseController {
 	 * @param response
 	 * @throws Exception
 	 */
-	@RequestMapping("bsysbManage/xtBsysbSave.html")
+	@RequestMapping("xtbsysbManage/xtBsysbSave.html")
 	public void xtBsysbSave(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtBsysb xtBsysb = (XtBsysb) httpMessageConverter(new XtBsysb(), request);
@@ -109,7 +110,7 @@ public class XtBsysbController extends BaseController {
 	}
 	
 	
-	@RequestMapping("bsysbManage/xtBsysbDelete.html")
+	@RequestMapping("xtbsysbManage/xtBsysbDelete.html")
 	public void xtBsysbDelete(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		String id = request.getParameter("id");

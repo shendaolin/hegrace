@@ -31,32 +31,33 @@
 			</button>
 			<br/><br/>
 			<form id="xtCzyhForm" action="xtCzyhSave.html" class="form-horizontal" method="POST">
-				<input type="hidden" name="id" value="$!xtCzyh.ssid">
+				<input type="hidden" name="id" value="$!xtCzyh.id">
+				
 				<div class="control-group">
 					<label class="control-label">姓名:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="xm">
+						<input class="m-wrap medium" type="text" name="xm" value="$!xtCzyh.xm">
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">电话:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="dh">
+						<input class="m-wrap medium" type="text" name="dh" value="$!xtCzyh.dh">
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">账号:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="dlm">
+						<input class="m-wrap medium" type="text" name="dlm" value="$!xtCzyh.dlm">
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">密码:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="password" name="dlmm">
+						<input class="m-wrap medium" type="password" name="dlmm" value="$!xtCzyh.dlmm">
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
@@ -64,8 +65,8 @@
 					<label class="control-label">职位</label>
 					<div class="controls">
 						<select name="zw">
-						<option value="1">运营</option>
-						<option value="2">赛事指挥官</option>
+						<option value="1" #if("$!xtCzyh.zw"=="1") selected #end>运营</option>
+						<option value="2" #if("$!xtCzyh.zw"=="2") selected #end>赛事指挥官</option>
 						</select>
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>

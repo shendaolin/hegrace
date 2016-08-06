@@ -17,6 +17,8 @@ public class XtYjfk extends BaseDao{
 
     private String fknr;
     
+    private String ztName;
+    
     @PrimaryKey
     public String getId() {
         return id;
@@ -65,4 +67,13 @@ public class XtYjfk extends BaseDao{
     public void setFknr(String fknr) {
         this.fknr = fknr == null ? null : fknr.trim();
     }
+
+	public String getZtName() {
+		return ztName;
+	}
+
+	public void setZtName(String ztName) {
+		this.ztName = ztName;
+	}
+    
 }

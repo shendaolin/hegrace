@@ -33,10 +33,10 @@ var XtCzyhList = function () {
 					width : 200,
 					align : 'center',
 					process : function(tdDiv, id) {
-						var editButton = "<a href=\"javascript:;\" onclick=\"zhList.ZhEdit('"
+						var editButton = "<a href=\"javascript:;\" onclick=\"XtCzyhList.xtCzyhEdit('"
 								+ id
 								+ "')\" class=\"btn mini purple\"><i class=\"icon-edit\"></i> 编辑</a>";
-						var deleteButton = "<a href=\"javascript:;\" onclick=\"zhList.xtczyhDelete('"
+						var deleteButton = "<a href=\"javascript:;\" onclick=\"XtCzyhList.xtCzyhDelete('"
 								+ id
 								+ "')\"  class=\"btn mini red\"><i class=\"icon-trash\"></i> 删除</a>";
 						$(tdDiv).html(
@@ -57,14 +57,17 @@ var XtCzyhList = function () {
 
 
 		},
-
-		xtCzyhEditOnClick : function(){
-			return function(){
+		xtCzyhEditOnClick : function() {
+			return function() {
 				$("#page-content").load("xtCzyhEdit.html");
 			}
 		},
-		 
 
+		xtCzyhEdit : function(id) {
+			$("#page-content").load("xtCzyhEdit.html", {
+				"id" : id
+			});
+		},
 		xtCzyhDelete : function(id) {
 			var del = confirm("确定要删除吗？");
 			if (del == true) {

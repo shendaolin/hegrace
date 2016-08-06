@@ -1,12 +1,11 @@
-var JjryList = function () {
-
+var xtJjryList = function () {
+	
     return {
-
+    	
 		init: function () {
-
-			$(".flexme4").flexigrid({
-				idProperty : "racelist",
-                url : false,
+			$("#xtJjryFlexigrid").flexigrid({
+                url : "xtJjryFlexigrid.html",
+                params : $("#jjrySeach").serializeArray(),
                 dataType : 'json',
                 colModel : [ {
                     display : '<input type="checkbox" id="selectall">',
@@ -14,37 +13,37 @@ var JjryList = function () {
                     align : 'center'
                     },{
                         display : '手机号',
-                        name : 'dd',
+                        name : 'dh',
                         width : 100,
                         align : 'center'
                     }, {
                         display : '姓名',
-                        name : 'bssj',
+                        name : 'xm',
                         width : 100,
                         align : 'center'
                     },  {
                         display : '性别',
-                        name : 'bssj',
+                        name : 'xbName',
                         width : 30,
                         align : 'center'
                     },{
-                        display : '身份证号',
-                        name : 'cjsj',
+                        display : '证件类型',
+                        name : 'zjlxName',
                         width : 100,
                         align : 'center'
                     }, {
                         display : '身份类型',
-                        name : 'csrs',
+                        name : 'sflxName',
                         width : 60,
                         align : 'center'
                 },{
                         display : '类别',
-                        name : 'csrs',
+                        name : 'lyName',
                         width : 100,
                         align : 'center'
                 },{
                         display : '审核状态',
-                        name : 'csrs',
+                        name : 'ztName',
                         width : 60,
                         align : 'center'
                 },{
@@ -53,7 +52,7 @@ var JjryList = function () {
                         width : 300,
                         align : 'center'
                     }],
-                sortname : "iso",
+                sortname : "id",
                 sortorder : "asc",
                 usepager : true,
                 title : '急救人员列表',
@@ -63,7 +62,7 @@ var JjryList = function () {
                 height : 300
             });
 
-
+			alert('sadfsafd');
 		},
 
 		jjryEditOnClick : function(){
@@ -74,7 +73,7 @@ var JjryList = function () {
 
 		ssjlEditOnClick : function(jhyid){
 			return function(){
-				$("#page-content").load("ssjlList.html", {"jhyid" : jhyid});
+				$("#page-content").load("xtssjlList.html", {"jhyid" : jhyid});
 			}
 		}
 
