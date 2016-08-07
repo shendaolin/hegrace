@@ -16,5 +16,15 @@
 		order by jj.xm asc
 		limit ${startPage}, ${page}
 	</select>
+	
+	<select id="select_getJjryLngLats_list" parameterType="java.util.Map"
+		resultType="cn.hegrace.www.v1.dto.XtSsjjyDto">
+		SELECT jjy.* ,
+		group_concat(jjysb.sbid separator '|') as sbid
+		FROM XT_SSJJY jjy
+		left join XT_SSJJYSB jjysb on jjysb.ssjjyid = jjy.id and jjysb.zt = '1'
+		where jjy.zt = '1' and jjy.ssid = #{ssid} and jjy.zb != ''
+		group by jjy.id
+	</select>
 
 </mapper>

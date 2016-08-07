@@ -3,10 +3,20 @@ package cn.hegrace.www.v1.dto;
 import cn.hegrace.www.v1.dao.pojo.XtQjjl;
 
 public class XtQjjlDto extends XtQjjl {
-
+	private String sjmc;
 	private String jjyxm;
 	private String jjydh;
 	private String clms;
+	private String bhms;
+	private String jjyzt;
+
+	public String getSjmc() {
+		return sjmc;
+	}
+
+	public void setSjmc(String sjmc) {
+		this.sjmc = sjmc;
+	}
 
 	public String getJjyxm() {
 		return jjyxm;
@@ -30,6 +40,22 @@ public class XtQjjlDto extends XtQjjl {
 
 	public void setClms(String clms) {
 		this.clms = clms;
+	}
+
+	public String getBhms() {
+		return bhms;
+	}
+
+	public void setBhms(String bhms) {
+		this.bhms = bhms;
+	}
+
+	public String getJjyzt() {
+		return jjyzt;
+	}
+
+	public void setJjyzt(String jjyzt) {
+		this.jjyzt = jjyzt;
 	}
 
 }
