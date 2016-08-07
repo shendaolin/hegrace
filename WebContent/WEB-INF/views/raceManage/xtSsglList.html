@@ -23,7 +23,7 @@
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
 			<div style="float:left;">
-			<button id="raceEdit" class="btn green">
+			<button id="xtssglEdit" class="btn green">
 			新增 <i class="icon-plus"></i>
 			</button>
 			<button id="raceDelete" class="btn red">
@@ -33,15 +33,18 @@
 			发布 <i class="icon-share"></i>
 			</button>
 			</div>
+			<form id="ssglSeach">
 			<div style="float:right;">
-			<select class="small m-wrap" tabindex="1">
-				<option value="Category 1">全部</option>
-				<option value="Category 2">已发布</option>
-				<option value="Category 3">待发布</option>
+			<select class="small m-wrap" tabindex="1" name="Zt">
+				<option value="">全部</option>
+				<option value="1">已发布</option>
+				<option value="0">待发布</option>
 			</select>
-			<input placeholder="赛事名称" class="m-wrap medium" type="text"/>
+			<input placeholder="赛事名称" class="m-wrap medium" type="text" name="ssmc"/>
 			</div>
-
+			</form>
+			<table id="ssglFlexigrid" style="display: none">
+			<!-- 
 			<table class="flexme4" style="display: none">
 			<tbody>
 			<tr>
@@ -78,7 +81,7 @@
 			</tr> 
 			</tbody>
 			</table>
-			
+			 -->
 			<br/>
 		</div>
 	</div>
@@ -89,6 +92,7 @@
 <!-- END PAGE LEVEL PLUGINS -->
 
 <script>
+/*
 	jQuery(document).ready(function() {    
 		//App.init(); // initlayout and core plugins
 		Racelist.init();
@@ -99,6 +103,13 @@
 		$(".zyzsh").on("click", Racelist.zyzshOnClick())
 		$(".sszbgl").on("click", Racelist.sszbglOnClick())
 
+	});*/jQuery(document).ready(function() {  
+		xtSsglList.init();
+		$("#xtssglEdit").on("click", xtSsglList.xtSsglEditOnClick());
+		$("#page-content").height("100%");
+
+		//$("#sbtj").on("click", xtBsysbList.sbTjOnClick());
 	});
+	
 </script>
 <!-- END JAVASCRIPTS -->

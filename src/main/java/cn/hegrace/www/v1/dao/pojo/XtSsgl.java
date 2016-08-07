@@ -2,6 +2,8 @@ package cn.hegrace.www.v1.dao.pojo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import cn.hegrace.www.v1.annotation.PrimaryKey;
 
 public class XtSsgl extends BaseDao{
@@ -10,16 +12,21 @@ public class XtSsgl extends BaseDao{
     private String ssmc;
 
     private String ssdd;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")  
     private Date sskssj;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")  
     private Date ssjssj;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")  
     private Date cjkssj;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")  
     private Date cjjssj;
 
     private Integer zt;
+    private String ztName;
+    private Integer ssjjySum;
+    private Integer cszglSum;
+    private String ssjs;
+    private String sslj;
     @PrimaryKey
     public String getId() {
         return id;
@@ -84,4 +91,49 @@ public class XtSsgl extends BaseDao{
     public void setZt(Integer zt) {
         this.zt = zt;
     }
+
+	 
+
+	public String getSslj() {
+		return sslj;
+	}
+
+	public void setSslj(String sslj) {
+		this.sslj = sslj;
+	}
+
+	 
+
+	public String getZtName() {
+		return ztName;
+	}
+
+	public void setZtName(String ztName) {
+		this.ztName = ztName;
+	}
+
+	public Integer getSsjjySum() {
+		return ssjjySum;
+	}
+
+	public void setSsjjySum(Integer ssjjySum) {
+		this.ssjjySum = ssjjySum;
+	}
+
+	public Integer getCszglSum() {
+		return cszglSum;
+	}
+
+	public void setCszglSum(Integer cszglSum) {
+		this.cszglSum = cszglSum;
+	}
+
+	public String getSsjs() {
+		return ssjs;
+	}
+
+	public void setSsjs(String ssjs) {
+		this.ssjs = ssjs;
+	}
+    
 }

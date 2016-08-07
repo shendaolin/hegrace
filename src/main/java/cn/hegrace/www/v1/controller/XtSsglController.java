@@ -63,9 +63,11 @@ public class XtSsglController extends BaseController {
 		Flexigrid flexigrid = new Flexigrid(xtSsglSeach);
 		Map map = flexigrid.getMap();
 		map.put("ssmc", xtSsglSeach.getSsmc());
+		map.put("zt", xtSsglSeach.getZt());
 		flexigrid.setPages(xtSsglSeach.getPage());
-		flexigrid.setTotal(baseService.queryForCount("select_xtssgl_count", map));
+		flexigrid.setTotal(baseService.queryForCount("XtSsgl.select_xtssgl_count", map));
 		flexigrid.setRows(baseService.queryForList("XtSsgl.select_xtssgl_list", map));
+		System.out.println(baseService.queryForList("XtSsgl.select_xtssgl_list", map));
 		sendJson(flexigrid, response);
 	 }
 	
@@ -74,9 +76,17 @@ public class XtSsglController extends BaseController {
 			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("raceManage/xtSsglEdit");
 		String id = request.getParameter("id");
+		String zt = request.getParameter("zt");
+		int zt1=0;
+		if(StringUtils.isNotEmpty(zt)){
+			zt1 = Integer.parseInt(zt);
+		}else{
+			zt1=0;
+		}
 		if(StringUtils.isNotEmpty(id)){
 			XtSsgl xtSsgl = new XtSsgl();
 			xtSsgl.setId(id);
+			xtSsgl.setZt(zt1);
 			xtSsgl = baseService.selectByPrimaryKey(xtSsgl);
 			mv.addObject("xtSsgl", xtSsgl);
 		}
@@ -108,6 +118,7 @@ public class XtSsglController extends BaseController {
 	public void xtSsglDelete(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		String id = request.getParameter("id");
+		System.out.println(id);
 		XtSsgl xtSsgl = new XtSsgl();
 		xtSsgl.setId(id);
 		baseService.deleteByPrimaryKey(xtSsgl);

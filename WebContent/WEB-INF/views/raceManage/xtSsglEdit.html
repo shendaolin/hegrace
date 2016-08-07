@@ -23,28 +23,30 @@
 				</li>
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
-			<button id="raceList" class="btn black">
+			<button id="xtSsglList" class="btn black">
 			返回 <i class="icon-arrow-left"></i>
 			</button>
-			<button id="raceSaveCart" class="btn blue">
+			<button id="xtSsglSave" class="btn blue">
 			保存为待发布 <i class="icon-shopping-cart"></i>
 			</button>
-			<button id="raceSave" class="btn green">
+			<button id="xtSsglSaveAck" class="btn green">
 			直接发布 <i class="icon-share"></i>
 			</button>
 			<br/><br/>
-			<form id="fileupload" action="#" class="form-horizontal" method="POST" enctype="multipart/form-data">
+			<form id="xtSsglForm" action="xtSsglSave.html" class="form-horizontal" method="POST">
+				<input type="hidden" name="id" value="$!xtSsgl.id">
+				<input type="hidden" name="zt" id="zt" value="$!xtSsgl.zt">
 				<div class="control-group">
 					<label class="control-label">赛事名称:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="ssmc">
+						<input class="m-wrap medium" type="text" name="ssmc" value="$!xtSsgl.ssmc">
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">赛事地点:</label>
 					<div class="controls">
-						<input class="m-wrap large" type="text" name="ssdd">
+						<input class="m-wrap large" type="text" name="ssdd" value="$!xtSsgl.ssdd">
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
@@ -52,11 +54,11 @@
 					<label class="control-label">赛事时间:</label>
 					<div class="controls">
 						<div class="input-append date sssjstart">
-							<input size="16" value="" readonly="" class="m-wrap" type="text">
+							<input size="16"  readonly="readonly" class="m-wrap" name="sskssj" type="text"   value="$dateTool.format('yyyy-MM-dd HH:mm:ss',$!xtSsgl.sskssj)">
 							<span class="add-on"><i class="icon-calendar"></i></span>
 						</div> 到
 						<div class="input-append date sssjend">
-							<input size="16" value="" readonly="" class="m-wrap" type="text">
+							<input size="16"  readonly="readolny" class="m-wrap" name="ssjssj" type="text"  value="$dateTool.format('yyyy-MM-dd HH:mm:ss',$!xtSsgl.ssjssj)">
 							<span class="add-on"><i class="icon-calendar"></i></span>
 						</div>
 					</div>
@@ -65,11 +67,11 @@
 					<label class="control-label">场景时间:</label>
 					<div class="controls">
 						<div class="input-append date cjsjstart">
-							<input size="16" value="" readonly="" class="m-wrap" type="text">
+							<input size="16"  readonly="readonly" class="m-wrap"  name="cjkssj" type="text"  value="$dateTool.format('yyyy-MM-dd HH:mm:ss',$!xtSsgl.cjkssj)">
 							<span class="add-on"><i class="icon-calendar"></i></span>
 						</div> 到
 						<div class="input-append date cjsjend">
-							<input size="16" value="" readonly="" class="m-wrap" type="text">
+							<input size="16"  readonly="readonly" class="m-wrap" name="cjjssj" type="text"  value="$dateTool.format('yyyy-MM-dd HH:mm:ss',$!xtSsgl.cjjssj)">
 							<span class="add-on"><i class="icon-calendar"></i></span>
 						</div>
 					</div>
@@ -77,17 +79,17 @@
 				<div class="control-group">
 					<label class="control-label">赛事介绍</label>
 					<div class="controls">
-						<textarea class="span12 wysihtml5 m-wrap" rows="6"></textarea>
+						<textarea class="span12 wysihtml5 m-wrap" rows="6" name="ssjs">$!xtSsgl.ssjs</textarea>
 					</div>
 				</div>
-
+				<!-- 
 				<div class="control-group">
 					<label class="control-label">岗位设置</label>
 					<div class="controls">
-						<input id="tags_2" type="text" class="m-wra tags medium" value="" />
+						<input id="tags_2" type="text" class="m-wra tags medium" name="" value="$!xtSsgl.id"/>
 					</div>
 				</div>
-
+ -->
 				<div class="control-group">
 					<label class="control-label">赛事图片</label>
 					<div class="controls">
@@ -211,21 +213,37 @@
 
 
 <!-- END PAGE LEVEL PLUGINS -->
-
+<script type="text/javascript" src="../media/js/select2.min.js"></script>
+<script type="text/javascript" src="../media/js/jquery.form.js"></script>
 <script>
 	jQuery(document).ready(function() {    
 	   App.init(); // initlayout and core plugins
 	   RaceEdit.init(); 
-	   $("#raceList").on("click", RaceEdit.raceListOnClick());
+		$("#xtSsglList").on("click", XtSsglEdit.xtSsglListOnClick());
+	
+		$('#xtSsglForm').submit(function() {
+		
+	        $(this).ajaxSubmit({
+	        	success: function(data){
+	        		alert("保存成功！");
+	            },
+	            error: function(data){
+	                alert("保存失败！");
+	            }
+	        });
+	        
+	        return false; //阻止表单默认提交
+	    }); 
+
+		$("#xtSsglSave").on("click", XtSsglEdit.xtSsglFormSubmit());
+		$("#xtSsglSaveAck").on("click", XtSsglEdit.xtSsglFormSubmitAck());
 		$('#tags_2').tagsInput({
             width: 'auto',
             'onAddTag': function () {
                 //alert(1);
             },
         });
-	   $("#raceSave").on("click",function(){
-
-	   })
+	   
 	});
 </script>
 <!-- END JAVASCRIPTS -->
