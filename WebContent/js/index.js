@@ -1,16 +1,19 @@
+
 var HegraceMap = function(){
 	return {
 		mapObj : null,
-		markers : [],
+		markerJjrys : [],
+		markerQjjls : [],
+		alljjry:[],
 		init : function() {
 			var position = new AMap.LngLat(120.121082,30.230878);// 创建中心点坐标
 			this.mapObj = new AMap.Map("page-content", {
 				center : position,
 				level : 17
 			});// 创建地图实例
-			
+			this.mapObj.setFitView();
+			this.getQjjlLngLatsInterval();
 			this.getJjryLngLatsInterval();
-			this.getQJJLLngLatsInterval();
 		},
 		
 		getJjryLngLatsInterval : function(){
@@ -18,24 +21,22 @@ var HegraceMap = function(){
 			var self = this;
 			var getJjryLngLats = function(){
 				
-				if(self.markers.length > 0){
-					self.mapObj.remove(self.markers);
-					self.markers = [];
-				}
-				
 				$.get("getJjryLngLats.html", function(data){
+					
+					if(self.markerJjrys.length > 0){
+						self.mapObj.remove(self.markerJjrys);
+						self.markerJjrys = [];
+					}
+					self.alljjry = [];
 					var rows = data.rows;
 					$(rows).each(function(i, item){
 				        var marker = new AMap.Marker({
 				        	icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
 				            position:item.zb.split(",")
 				        });
-//				        marker.setLabel({
-//				            offset: new AMap.Pixel(40, 20),
-//				            content: '设备:' + item.sbid
-//				        });
 				        marker.setMap(self.mapObj);
-				        self.markers.push(marker);
+				        self.alljjry.push(marker.getPosition());
+				        self.markerJjrys.push(marker);
 					});
 					
 				});
@@ -43,23 +44,24 @@ var HegraceMap = function(){
 			getJjryLngLats();
 			setInterval(function() {
 				getJjryLngLats();
-			}, "30000");
+			}, "60000");
 		},
 		
-		getQJJLLngLatsInterval : function(){
+		getQjjlLngLatsInterval : function(){
 			
 			var self = this;
 			var getQJJLLngLats = function(){
 				
-				if(self.markers.length > 0){
-					self.mapObj.remove(self.markers);
-					self.markers = [];
+				if(self.markerQjjls.length > 0){
+					self.mapObj.remove(self.markerQjjls);
+					self.markerQjjls = [];
 				}
 				
 				$.get("getQJJLLngLats.html", function(data){
 					var rows = data.rows;
 					var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
 					$(rows).each(function(i, item){
+						if(!item.zb) return;
 				        var marker = new AMap.Marker({
 				        	icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_r.png",
 				            position:item.zb.split(",")
@@ -85,29 +87,36 @@ var HegraceMap = function(){
 				        });
 				        
 				        if(!item.jjyxm){
-				        	
 					        var circle = new AMap.Circle({
 					            center: item.zb.split(","),// 圆心位置
-					            radius: 200, //半径
+					            radius: 150, //半径
 					            strokeColor: "#F33", //线颜色
-					            strokeOpacity: 1, //线透明度
-					            strokeWeight: 3, //线粗细度
+					            strokeOpacity: 0.3, //线透明度
+					            strokeWeight: 1, //线粗细度
 					            fillColor: "#ee2200", //填充颜色
-					            fillOpacity: 0.1//填充透明度
+					            fillOpacity: 0//填充透明度
 					        });
 					        circle.setMap(self.mapObj);
+					        self.markerQjjls.push(circle);
+					        if(self.alljjry){
+					        	$(self.alljjry).each(function(i, item){
+					        		if(circle.contains(item)){
+					        			//alert(item)
+					        		}
+					        	});
+					        }
 				        }
 				        
 				        marker.setMap(self.mapObj);
-				        self.markers.push(marker);
+				        self.markerQjjls.push(marker);
+				        
 					});
 					
 				});
 			}
-			getQJJLLngLats();
 			setInterval(function() {
 				getQJJLLngLats();
-			}, "30000");
+			}, "10000");
 		}
 	}
 }();

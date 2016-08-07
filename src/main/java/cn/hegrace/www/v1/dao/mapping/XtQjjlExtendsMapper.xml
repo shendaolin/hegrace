@@ -58,7 +58,7 @@
 		left join XT_SSJL jl on qj.id = jl.qjid and jl.zt in ('0','1')
 		left join XT_JJRY ry on jl.ryid = ry.id and ry.zt = '1'
 		left join XT_GYDM dm on dm.id = qj.sjid and dm.lbid = '5'
-		where qj.zt = '1' and qj.ssid = #{ssid}
+		where qj.zt = '1' and qj.ssid = #{ssid} and qj.zb != ''
 		group by qj.id
 	</select>
 	
