@@ -1,8 +1,8 @@
 package cn.hegrace.www.v1.dao.pojo;
 
-import cn.hegrace.www.v1.annotation.PrimaryKey;
+import java.util.Date;
 
-public class XtQjjl extends BaseDao{
+public class XtQjjl {
     private String id;
 
     private String ssid;
@@ -16,7 +16,13 @@ public class XtQjjl extends BaseDao{
     private String bh;
 
     private String zb;
-    @PrimaryKey
+
+    private String ms;
+
+    private String zt;
+
+    private Date xgsj;
+
     public String getId() {
         return id;
     }
@@ -71,5 +77,29 @@ public class XtQjjl extends BaseDao{
 
     public void setZb(String zb) {
         this.zb = zb == null ? null : zb.trim();
+    }
+
+    public String getMs() {
+        return ms;
+    }
+
+    public void setMs(String ms) {
+        this.ms = ms == null ? null : ms.trim();
+    }
+
+    public String getZt() {
+        return zt;
+    }
+
+    public void setZt(String zt) {
+        this.zt = zt == null ? null : zt.trim();
+    }
+
+    public Date getXgsj() {
+        return xgsj;
+    }
+
+    public void setXgsj(Date xgsj) {
+        this.xgsj = xgsj;
     }
 }

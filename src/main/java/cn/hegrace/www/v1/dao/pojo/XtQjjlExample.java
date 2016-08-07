@@ -1,9 +1,10 @@
 package cn.hegrace.www.v1.dao.pojo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class XtQjjlExample extends BaseExample{
+public class XtQjjlExample {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -591,6 +592,206 @@ public class XtQjjlExample extends BaseExample{
 
         public Criteria andZbNotBetween(String value1, String value2) {
             addCriterion("zb not between", value1, value2, "zb");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsIsNull() {
+            addCriterion("ms is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsIsNotNull() {
+            addCriterion("ms is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsEqualTo(String value) {
+            addCriterion("ms =", value, "ms");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsNotEqualTo(String value) {
+            addCriterion("ms <>", value, "ms");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsGreaterThan(String value) {
+            addCriterion("ms >", value, "ms");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsGreaterThanOrEqualTo(String value) {
+            addCriterion("ms >=", value, "ms");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsLessThan(String value) {
+            addCriterion("ms <", value, "ms");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsLessThanOrEqualTo(String value) {
+            addCriterion("ms <=", value, "ms");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsLike(String value) {
+            addCriterion("ms like", value, "ms");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsNotLike(String value) {
+            addCriterion("ms not like", value, "ms");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsIn(List<String> values) {
+            addCriterion("ms in", values, "ms");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsNotIn(List<String> values) {
+            addCriterion("ms not in", values, "ms");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsBetween(String value1, String value2) {
+            addCriterion("ms between", value1, value2, "ms");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsNotBetween(String value1, String value2) {
+            addCriterion("ms not between", value1, value2, "ms");
+            return (Criteria) this;
+        }
+
+        public Criteria andZtIsNull() {
+            addCriterion("zt is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZtIsNotNull() {
+            addCriterion("zt is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZtEqualTo(String value) {
+            addCriterion("zt =", value, "zt");
+            return (Criteria) this;
+        }
+
+        public Criteria andZtNotEqualTo(String value) {
+            addCriterion("zt <>", value, "zt");
+            return (Criteria) this;
+        }
+
+        public Criteria andZtGreaterThan(String value) {
+            addCriterion("zt >", value, "zt");
+            return (Criteria) this;
+        }
+
+        public Criteria andZtGreaterThanOrEqualTo(String value) {
+            addCriterion("zt >=", value, "zt");
+            return (Criteria) this;
+        }
+
+        public Criteria andZtLessThan(String value) {
+            addCriterion("zt <", value, "zt");
+            return (Criteria) this;
+        }
+
+        public Criteria andZtLessThanOrEqualTo(String value) {
+            addCriterion("zt <=", value, "zt");
+            return (Criteria) this;
+        }
+
+        public Criteria andZtLike(String value) {
+            addCriterion("zt like", value, "zt");
+            return (Criteria) this;
+        }
+
+        public Criteria andZtNotLike(String value) {
+            addCriterion("zt not like", value, "zt");
+            return (Criteria) this;
+        }
+
+        public Criteria andZtIn(List<String> values) {
+            addCriterion("zt in", values, "zt");
+            return (Criteria) this;
+        }
+
+        public Criteria andZtNotIn(List<String> values) {
+            addCriterion("zt not in", values, "zt");
+            return (Criteria) this;
+        }
+
+        public Criteria andZtBetween(String value1, String value2) {
+            addCriterion("zt between", value1, value2, "zt");
+            return (Criteria) this;
+        }
+
+        public Criteria andZtNotBetween(String value1, String value2) {
+            addCriterion("zt not between", value1, value2, "zt");
+            return (Criteria) this;
+        }
+
+        public Criteria andXgsjIsNull() {
+            addCriterion("xgsj is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andXgsjIsNotNull() {
+            addCriterion("xgsj is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andXgsjEqualTo(Date value) {
+            addCriterion("xgsj =", value, "xgsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andXgsjNotEqualTo(Date value) {
+            addCriterion("xgsj <>", value, "xgsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andXgsjGreaterThan(Date value) {
+            addCriterion("xgsj >", value, "xgsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andXgsjGreaterThanOrEqualTo(Date value) {
+            addCriterion("xgsj >=", value, "xgsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andXgsjLessThan(Date value) {
+            addCriterion("xgsj <", value, "xgsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andXgsjLessThanOrEqualTo(Date value) {
+            addCriterion("xgsj <=", value, "xgsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andXgsjIn(List<Date> values) {
+            addCriterion("xgsj in", values, "xgsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andXgsjNotIn(List<Date> values) {
+            addCriterion("xgsj not in", values, "xgsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andXgsjBetween(Date value1, Date value2) {
+            addCriterion("xgsj between", value1, value2, "xgsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andXgsjNotBetween(Date value1, Date value2) {
+            addCriterion("xgsj not between", value1, value2, "xgsj");
             return (Criteria) this;
         }
     }

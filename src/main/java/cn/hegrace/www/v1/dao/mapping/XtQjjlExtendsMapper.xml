@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="XtQjjl">
+
+  <select id="select_processed_count" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		SELECT count(1) from XT_QJJL where ssid = #{ssid} and zt='3'
+	</select>
+
+	<select id="select_processed_list" parameterType="java.util.Map"
+		resultType="cn.hegrace.www.v1.dto.XtQjjlDto">
+		select qj.id, qj.xm, qj.dh,qj.bh, dm.dmmc as sjid,qj.xgsj,
+		group_concat(ry.xm separator '|') as jjyxm,
+		group_concat(ry.dh separator '|') as jjydh,
+		group_concat(jl.clms separator '|') as clms
+		from XT_QJJL qj
+		left join XT_SSJL jl on qj.id = jl.qjid and jl.zt = '3'
+		left join XT_JJRY ry on jl.ryid = ry.id and ry.zt = '1'
+		left join XT_GYDM dm on dm.id = qj.sjid and dm.lbid = '5'
+		where qj.zt = '3' and qj.ssid = #{ssid}
+		group by qj.id, qj.xm, qj.dh,qj.bh, dm.dmmc,qj.xgsj
+		order by  qj.xgsj desc
+		limit ${startPage}, ${page}
+	</select>
+	
+</mapper>

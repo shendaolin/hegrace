@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="XtQjjl">
+<mapper namespace="cn.hegrace.www.v1.dao.mapping.XtQjjlMapper">
   <resultMap id="BaseResultMap" type="cn.hegrace.www.v1.dao.pojo.XtQjjl">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="ssid" jdbcType="VARCHAR" property="ssid" />
@@ -9,6 +9,9 @@
     <result column="dh" jdbcType="VARCHAR" property="dh" />
     <result column="bh" jdbcType="VARCHAR" property="bh" />
     <result column="zb" jdbcType="VARCHAR" property="zb" />
+    <result column="ms" jdbcType="VARCHAR" property="ms" />
+    <result column="zt" jdbcType="VARCHAR" property="zt" />
+    <result column="xgsj" jdbcType="TIMESTAMP" property="xgsj" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, ssid, sjid, xm, dh, bh, zb
+    id, ssid, sjid, xm, dh, bh, zb, ms, zt, xgsj
   </sql>
   <select id="selectByExample" parameterType="cn.hegrace.www.v1.dao.pojo.XtQjjlExample" resultMap="BaseResultMap">
     select
@@ -103,11 +106,11 @@
   </delete>
   <insert id="insert" parameterType="cn.hegrace.www.v1.dao.pojo.XtQjjl">
     insert into XT_QJJL (id, ssid, sjid, 
-      xm, dh, bh, zb
-      )
+      xm, dh, bh, zb, 
+      ms, zt, xgsj)
     values (#{id,jdbcType=VARCHAR}, #{ssid,jdbcType=VARCHAR}, #{sjid,jdbcType=VARCHAR}, 
-      #{xm,jdbcType=VARCHAR}, #{dh,jdbcType=VARCHAR}, #{bh,jdbcType=VARCHAR}, #{zb,jdbcType=VARCHAR}
-      )
+      #{xm,jdbcType=VARCHAR}, #{dh,jdbcType=VARCHAR}, #{bh,jdbcType=VARCHAR}, #{zb,jdbcType=VARCHAR}, 
+      #{ms,jdbcType=VARCHAR}, #{zt,jdbcType=VARCHAR}, #{xgsj,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.hegrace.www.v1.dao.pojo.XtQjjl">
     insert into XT_QJJL
@@ -133,6 +136,15 @@
       <if test="zb != null">
         zb,
       </if>
+      <if test="ms != null">
+        ms,
+      </if>
+      <if test="zt != null">
+        zt,
+      </if>
+      <if test="xgsj != null">
+        xgsj,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -155,6 +167,15 @@
       </if>
       <if test="zb != null">
         #{zb,jdbcType=VARCHAR},
+      </if>
+      <if test="ms != null">
+        #{ms,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null">
+        #{zt,jdbcType=VARCHAR},
+      </if>
+      <if test="xgsj != null">
+        #{xgsj,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -188,6 +209,15 @@
       <if test="record.zb != null">
         zb = #{record.zb,jdbcType=VARCHAR},
       </if>
+      <if test="record.ms != null">
+        ms = #{record.ms,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zt != null">
+        zt = #{record.zt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xgsj != null">
+        xgsj = #{record.xgsj,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -201,7 +231,10 @@
       xm = #{record.xm,jdbcType=VARCHAR},
       dh = #{record.dh,jdbcType=VARCHAR},
       bh = #{record.bh,jdbcType=VARCHAR},
-      zb = #{record.zb,jdbcType=VARCHAR}
+      zb = #{record.zb,jdbcType=VARCHAR},
+      ms = #{record.ms,jdbcType=VARCHAR},
+      zt = #{record.zt,jdbcType=VARCHAR},
+      xgsj = #{record.xgsj,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +260,15 @@
       <if test="zb != null">
         zb = #{zb,jdbcType=VARCHAR},
       </if>
+      <if test="ms != null">
+        ms = #{ms,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null">
+        zt = #{zt,jdbcType=VARCHAR},
+      </if>
+      <if test="xgsj != null">
+        xgsj = #{xgsj,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -237,7 +279,10 @@
       xm = #{xm,jdbcType=VARCHAR},
       dh = #{dh,jdbcType=VARCHAR},
       bh = #{bh,jdbcType=VARCHAR},
-      zb = #{zb,jdbcType=VARCHAR}
+      zb = #{zb,jdbcType=VARCHAR},
+      ms = #{ms,jdbcType=VARCHAR},
+      zt = #{zt,jdbcType=VARCHAR},
+      xgsj = #{xgsj,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>
