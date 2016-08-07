@@ -7,93 +7,156 @@
 				塞事管理 <small>马拉松赛事维护</small>
 			</h3>
 			<ul class="breadcrumb">
-				<li>
-					<i class="icon-home"></i>
-					<a href="index.html">首页</a> 
-					<i class="icon-angle-right"></i>
-				</li>
+				<li><i class="icon-home"></i> <a href="index.html">首页</a> <i
+					class="icon-angle-right"></i></li>
 				<li><a href="#">急救人员管理</a><i class="icon-angle-right"></i></li>
 				<li><a href="#">新增急救员</a></li>
 				<li class="pull-right no-text-shadow">
-					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
-						<i class="icon-calendar"></i>
-						<span></span>
-						<i class="icon-angle-down"></i>
+					<div id="dashboard-report-range"
+						class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive"
+						data-tablet="" data-desktop="tooltips" data-placement="top"
+						data-original-title="Change dashboard date range">
+						<i class="icon-calendar"></i> <span></span> <i
+							class="icon-angle-down"></i>
 					</div>
 				</li>
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
-			<button id="jjryList" class="btn black">
-			返回 <i class="icon-arrow-left"></i>
+			<button id="xtjjryList" class="btn black">
+				返回 <i class="icon-arrow-left"></i>
 			</button>
-			<button id="raceSaveCart" class="btn blue">
-			保存<i class="icon-share"></i>
+			<button id="xtJjrySave" class="btn blue">
+				保存<i class="icon-share"></i>
 			</button>
-			<br/><br/>
-			<form id="fileupload" action="#" class="form-horizontal" method="POST" enctype="multipart/form-data">
+			<br />
+			<br />
+			<form id="xtJjryForm" action="xtJjrySave.html"
+				class="form-horizontal" method="POST">
+				<input type="hidden" name="id" value="$!xtJjry.id">
 				<div class="control-group">
 					<label class="control-label">姓名:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="xm">
-						<span class="help-inline"><font color="red">*</font></span>
+						<input class="m-wrap medium" type="text" name="xm"
+							value="$!xtJjry.xm"> <span class="help-inline"><font
+							color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">性别:</label>
 					<div class="controls">
-						<select>
-						<option>男</option>
-						<option>女</option>
-						</select>
-						<span class="help-inline"><font color="red">*</font></span>
+						<select id="xb" name="xb">
+							<option value="1" #if("$!xtJjry.xb"== "1") selected #end>男</option>
+							<option value="2" #if("$!xtJjry.xb"== "2") selected #end>女</option>
+
+						</select> <span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">电话:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="lxdh">
-						<span class="help-inline"><font color="red">*</font></span>
+						<input class="m-wrap medium" type="text" name="dh"
+							value="$!xtJjry.dh"> <span class="help-inline"><font
+							color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">证件:</label>
+					<label class="control-label">证件类型:</label>
 					<div class="controls">
-						<select class="m-wrap small"><option>身份证</option><option>其他</option></select><input class="m-wrap medium" type="text" name="lxdh">
-						<span class="help-inline"><font color="red">*</font></span>
+						<select id="xtjjrySelect1" class="span6 select2" name="zjlx">
+							#foreach($xtDmlb in $XtDmbList1)
+								<option value="$!xtDmlb.id" #if("$!xtDmlb.id"=="$!xtJjry.zjlx") selected #end>$!xtDmlb.dmmc</option> 
+							#end
+						</select> <span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
+				<div class="control-group">
+					<label class="control-label">证件号码:</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="text" name="zjhm"
+							value="$!xtJjry.zjhm"> <span class="help-inline"><font
+							color="red">*</font></span>
+					</div>
+				</div>
+
 				<div class="control-group">
 					<label class="control-label">身份类型</label>
 					<div class="controls">
-						<select>
-						<option>医生</option>
-						<option>护士</option>
-						</select>
-						<span class="help-inline"><font color="red">*</font></span>
+						<select id="xtjjrySelect" class="span6 select2" name="sflx">
+							#foreach($xtDmlb in $XtDmbList) 
+							 	<option value="$!xtDmlb.id" #if("$!xtDmlb.id"=="$!xtJjry.sflx") selected #end>$!xtDmlb.dmmc</option> 
+							#end
+						</select> <span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">类别</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="lxdh">
-						<span class="help-inline"><font color="red">*</font></span>
+						<input class="m-wrap medium" type="text" name="lb"
+							value="$!xtJjry.lb"> <span class="help-inline"><font
+							color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">服装尺寸</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="text" name="fzcc"
+							value="$!xtJjry.fzcc"> <span class="help-inline"><font
+							color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">审核状态:</label>
+					<div class="controls">
+						<select id="zt" name="zt">
+							<option value="0" #if("$!xtJjry.zt"== "0") selected #end>未通过</option>
+							<option value="1" #if("$!xtJjry.zt"== "1") selected #end>通过</option>
+							<option value="2" #if("$!xtJjry.zt"== "2") selected #end>黑名单</option>
+						</select> <span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 			</form>
-			
-			<br/>
+
+			<br />
 		</div>
 	</div>
 </div>
 
+<script type="text/javascript" src="../media/js/select2.min.js"></script>
+<script type="text/javascript" src="../media/js/jquery.form.js"></script>
 
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-<!-- BEGIN PAGE LEVEL PLUGINS -->   
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
 <!-- END PAGE LEVEL PLUGINS -->
 
 <script>
-	jQuery(document).ready(function() {    
-	   $("#jjryList").on("click", JjryEdit.jjryListOnClick());
+	jQuery(document).ready(function() {  
+			$("#xtjjryList").on("click", XtJjryEdit.xtJjryListOnClick());   
+	       $('#xtjjrySelect1').select2({
+	         placeholder: "选择一个类型",
+	         allowClear: true
+	     	}); 
+		   $('#xtjjrySelect').select2({
+		         placeholder: "选择一个类型",
+		         allowClear: true
+		   });  
+			$('#xtJjryForm').submit(function() {
+			
+		        $(this).ajaxSubmit({
+		        	success: function(data){
+		        		alert("保存成功！");
+		            },
+		            error: function(data){
+		                alert("保存失败！");
+		            }
+		        });
+		        
+		        return false; //阻止表单默认提交
+		    }); 
+			$("#xtJjrySave").on("click", XtJjryEdit.xtJjryFormSubmit());
+		   
+		 
 	});
+	
 </script>
 <!-- END JAVASCRIPTS -->

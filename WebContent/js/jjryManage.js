@@ -7,11 +7,12 @@ var xtJjryList = function () {
                 url : "xtJjryFlexigrid.html",
                 params : $("#jjrySeach").serializeArray(),
                 dataType : 'json',
-                colModel : [ {
-                    display : '<input type="checkbox" id="selectall">',
+                colModel : [ /*{
+                    display : '<input type="checkbox" id="selectall">全选',
+                    name:'id',
                     width : 30,
                     align : 'center'
-                    },{
+                    },*/{
                         display : '手机号',
                         name : 'dh',
                         width : 100,
@@ -38,7 +39,7 @@ var xtJjryList = function () {
                         align : 'center'
                 },{
                         display : '类别',
-                        name : 'lyName',
+                        name : 'lb',
                         width : 100,
                         align : 'center'
                 },{
@@ -50,8 +51,23 @@ var xtJjryList = function () {
                         display : '操作',
                         name : 'zt',
                         width : 300,
-                        align : 'center'
-                    }],
+                        process : function(tdDiv, id) {
+    						var editButton = "<a href=\"javascript:;\" onclick=\"xtJjryList.xtJjryEdit('"
+    								+ id
+    								+ "')\" class=\"btn mini purple\"><i class=\"icon-edit\"></i> 编辑</a>";
+    						var deleteButton = "<a href=\"javascript:;\" onclick=\"xtJjryList.xtJjryDelete('"
+    								+ id
+    								+ "')\"  class=\"btn mini red\"><i class=\"icon-trash\"></i> 删除</a>";
+    						var ssjlListButton = "<a href=\"javascript:;\" onclick=\"xtSsjlList.jjryListOnClick('"
+								+ id
+								+ "')\" class=\"btn mini yellow ssjl\"><i class=\"icon-time\"></i>赛事记录</a>";
+						
+    						$(tdDiv).html(
+    								"<div>" + editButton
+    										+ deleteButton
+    										+ ssjlListButton+"</div>");
+    					}
+    				} ],
                 sortname : "id",
                 sortorder : "asc",
                 usepager : true,
@@ -62,12 +78,29 @@ var xtJjryList = function () {
                 height : 300
             });
 
-			alert('sadfsafd');
+			 
 		},
 
-		jjryEditOnClick : function(){
-			return function(){
-				$("#page-content").load("jjryedit.html");
+		xtJjryEditOnClick : function() {
+			return function() {
+				$("#page-content").load("xtJjryEdit.html");
+			}
+		},
+
+		xtJjryEdit : function(id) {
+			$("#page-content").load("xtJjryEdit.html", {
+				"id" : id
+			});
+		},
+		xtJjryDelete : function(id) {
+			var del = confirm("确定要删除吗？");
+			if (del == true) {
+				$.get("xtJjryDelete.html", {
+					"id" : id
+				});
+				$("#xtJjryFlexigrid").flexReload();
+			} else {
+				return false;
 			}
 		},
 
@@ -82,28 +115,33 @@ var xtJjryList = function () {
 }();
 
 
-var JjryEdit = function () {
-
+var XtJjryEdit = function () {
+	
     return {
 
-		jjryListOnClick : function(){
+    	xtJjryListOnClick : function(){
 			return function(){
-				$("#page-content").load("jjryList.html");
+				$("#page-content").load("xtJjryList.html");
+			}
+		},
+		xtJjryFormSubmit : function() {
+			return function() {
+				$("#xtJjryForm").submit();
+				
 			}
 		}
-    };
+	}; 
 
 }();
 
 
-var SsjlList = function () {
+var xtSsjlList = function () {
 
     return {
 
 		init: function () {
 
 			$(".flexme4").flexigrid({
-				idProperty : "racelist",
                 url : false,
                 dataType : 'json',
                 colModel : [ {
