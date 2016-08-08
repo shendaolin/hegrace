@@ -50,15 +50,11 @@
 	
 	<select id="select_getQJJLLngLats_list" parameterType="java.util.Map"
 		resultType="cn.hegrace.www.v1.dto.XtQjjlDto">
-		select qj.*, dm.dmmc as sjmc,
-		group_concat(ry.xm separator '|') as jjyxm,
-		group_concat(ry.dh separator '|') as jjydh,
+		select qj.*,
 		group_concat(jl.zt separator '|') as jjyzt
 		from XT_QJJL qj
 		left join XT_SSJL jl on qj.id = jl.qjid and jl.zt in ('0','1')
-		left join XT_JJRY ry on jl.ryid = ry.id and ry.zt = '1'
-		left join XT_GYDM dm on dm.id = qj.sjid and dm.lbid = '5'
-		where qj.zt = '1' and qj.ssid = #{ssid} and qj.zb != ''
+		where qj.zt = '1' and qj.ssid = '1' and qj.zb != ''
 		group by qj.id
 	</select>
 	

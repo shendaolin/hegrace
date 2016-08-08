@@ -4,7 +4,7 @@ var HegraceMap = function(){
 		mapObj : null,
 		markerJjrys : [],
 		markerQjjls : [],
-		alljjry:[],
+		alljjry:{},
 		init : function() {
 			var position = new AMap.LngLat(120.121082,30.230878);// 创建中心点坐标
 			this.mapObj = new AMap.Map("page-content", {
@@ -27,7 +27,7 @@ var HegraceMap = function(){
 						self.mapObj.remove(self.markerJjrys);
 						self.markerJjrys = [];
 					}
-					self.alljjry = [];
+					self.alljjry = {};
 					var rows = data.rows;
 					$(rows).each(function(i, item){
 				        var marker = new AMap.Marker({
@@ -35,7 +35,11 @@ var HegraceMap = function(){
 				            position:item.zb.split(",")
 				        });
 				        marker.setMap(self.mapObj);
-				        self.alljjry.push(marker.getPosition());
+				        self.alljjry[item.id] = {
+				        		"position" : marker.getPosition(),
+				        		"ryid" : item.ryid,
+				        		"jlid" : item.jlid
+				        };
 				        self.markerJjrys.push(marker);
 					});
 					
@@ -67,21 +71,21 @@ var HegraceMap = function(){
 				            position:item.zb.split(",")
 				        });
 				        marker.on('click', function(e){
-				        	var content = "<div>参赛者："+item.xm+"("+item.dh+")</div>"
-				        	content += "<div>事件名称："+item.sjmc+"</div>"
-				        	content += "<div>事件描述："+item.ms+"</div>"
-				        	if(item.jjyxm){
-				        	var jjyxms = item.jjyxm.split("|");
-				        	var jjydhs = item.jjydh.split("|");
-				        	var jjyzts = item.jjyzt.split("|");
-				        	var ztStyle = {
-									"0" : "未接",
-									"1" : "已接",
-							}
-					        	$(jjyxms).each(function(i){
-					        		content += "<div>["+ztStyle[jjyzts[i]]+"]救护员："+jjyxms[i]+"("+jjydhs[i]+")</div>"
-					        	});
-				        	}
+//				        	var content = "<div>参赛者："+item.xm+"("+item.dh+")</div>"
+//				        	content += "<div>事件名称："+item.sjmc+"</div>"
+//				        	content += "<div>事件描述："+item.ms+"</div>"
+//				        	if(item.jjyxm){
+//				        	var jjyxms = item.jjyxm.split("|");
+//				        	var jjydhs = item.jjydh.split("|");
+//				        	var jjyzts = item.jjyzt.split("|");
+//				        	var ztStyle = {
+//									"0" : "未接",
+//									"1" : "已接",
+//							}
+//					        	$(jjyxms).each(function(i){
+//					        		content += "<div>["+ztStyle[jjyzts[i]]+"]救护员："+jjyxms[i]+"("+jjydhs[i]+")</div>"
+//					        	});
+//				        	}
 				            infoWindow.setContent(content);
 				            infoWindow.open(self.mapObj, e.target.getPosition());
 				        });
@@ -100,8 +104,8 @@ var HegraceMap = function(){
 					        self.markerQjjls.push(circle);
 					        if(self.alljjry){
 					        	$(self.alljjry).each(function(i, item){
-					        		if(circle.contains(item)){
-					        			//alert(item)
+					        		if(circle.contains(item.position)){
+					        			
 					        		}
 					        	});
 					        }

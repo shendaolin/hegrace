@@ -3,7 +3,7 @@ package cn.hegrace.www.v1.dao.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class XtSsjlExample extends BaseExample{
+public class XtSsjlExample {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -174,6 +174,76 @@ public class XtSsjlExample extends BaseExample{
             return (Criteria) this;
         }
 
+        public Criteria andSsidIsNull() {
+            addCriterion("ssid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsidIsNotNull() {
+            addCriterion("ssid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsidEqualTo(String value) {
+            addCriterion("ssid =", value, "ssid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsidNotEqualTo(String value) {
+            addCriterion("ssid <>", value, "ssid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsidGreaterThan(String value) {
+            addCriterion("ssid >", value, "ssid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsidGreaterThanOrEqualTo(String value) {
+            addCriterion("ssid >=", value, "ssid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsidLessThan(String value) {
+            addCriterion("ssid <", value, "ssid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsidLessThanOrEqualTo(String value) {
+            addCriterion("ssid <=", value, "ssid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsidLike(String value) {
+            addCriterion("ssid like", value, "ssid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsidNotLike(String value) {
+            addCriterion("ssid not like", value, "ssid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsidIn(List<String> values) {
+            addCriterion("ssid in", values, "ssid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsidNotIn(List<String> values) {
+            addCriterion("ssid not in", values, "ssid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsidBetween(String value1, String value2) {
+            addCriterion("ssid between", value1, value2, "ssid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSsidNotBetween(String value1, String value2) {
+            addCriterion("ssid not between", value1, value2, "ssid");
+            return (Criteria) this;
+        }
+
         public Criteria andRyidIsNull() {
             addCriterion("ryid is null");
             return (Criteria) this;
@@ -315,62 +385,62 @@ public class XtSsjlExample extends BaseExample{
         }
 
         public Criteria andZtIsNull() {
-            addCriterion("Zt is null");
+            addCriterion("zt is null");
             return (Criteria) this;
         }
 
         public Criteria andZtIsNotNull() {
-            addCriterion("Zt is not null");
+            addCriterion("zt is not null");
             return (Criteria) this;
         }
 
         public Criteria andZtEqualTo(Integer value) {
-            addCriterion("Zt =", value, "zt");
+            addCriterion("zt =", value, "zt");
             return (Criteria) this;
         }
 
         public Criteria andZtNotEqualTo(Integer value) {
-            addCriterion("Zt <>", value, "zt");
+            addCriterion("zt <>", value, "zt");
             return (Criteria) this;
         }
 
         public Criteria andZtGreaterThan(Integer value) {
-            addCriterion("Zt >", value, "zt");
+            addCriterion("zt >", value, "zt");
             return (Criteria) this;
         }
 
         public Criteria andZtGreaterThanOrEqualTo(Integer value) {
-            addCriterion("Zt >=", value, "zt");
+            addCriterion("zt >=", value, "zt");
             return (Criteria) this;
         }
 
         public Criteria andZtLessThan(Integer value) {
-            addCriterion("Zt <", value, "zt");
+            addCriterion("zt <", value, "zt");
             return (Criteria) this;
         }
 
         public Criteria andZtLessThanOrEqualTo(Integer value) {
-            addCriterion("Zt <=", value, "zt");
+            addCriterion("zt <=", value, "zt");
             return (Criteria) this;
         }
 
         public Criteria andZtIn(List<Integer> values) {
-            addCriterion("Zt in", values, "zt");
+            addCriterion("zt in", values, "zt");
             return (Criteria) this;
         }
 
         public Criteria andZtNotIn(List<Integer> values) {
-            addCriterion("Zt not in", values, "zt");
+            addCriterion("zt not in", values, "zt");
             return (Criteria) this;
         }
 
         public Criteria andZtBetween(Integer value1, Integer value2) {
-            addCriterion("Zt between", value1, value2, "zt");
+            addCriterion("zt between", value1, value2, "zt");
             return (Criteria) this;
         }
 
         public Criteria andZtNotBetween(Integer value1, Integer value2) {
-            addCriterion("Zt not between", value1, value2, "zt");
+            addCriterion("zt not between", value1, value2, "zt");
             return (Criteria) this;
         }
 
