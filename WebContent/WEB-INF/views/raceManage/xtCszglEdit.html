@@ -1,0 +1,147 @@
+<div class="container-fluid">
+	<!-- BEGIN PAGE HEADER-->
+	<div class="row-fluid">
+		<div class="span12">
+			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+			<h3 class="page-title">
+				塞事管理 <small>马拉松赛事维护</small>
+			</h3>
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="index.html">首页</a> 
+					<i class="icon-angle-right"></i>
+				</li>
+				<li><a href="#">赛事管理</a><i class="icon-angle-right"></i></li>
+				<li><a href="#">新增赛事</a></li>
+				<li class="pull-right no-text-shadow">
+					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
+						<i class="icon-calendar"></i>
+						<span></span>
+						<i class="icon-angle-down"></i>
+					</div>
+				</li>
+			</ul>
+			<!-- END PAGE TITLE & BREADCRUMB-->
+			<button id="xtCszglList" class="btn black">
+			返回 <i class="icon-arrow-left"></i>
+			</button>
+			<button id="xtCszglSave" class="btn blue">
+			保存为待发布 <i class="icon-shopping-cart"></i>
+			</button>
+			<button id="xtCszglSaveAck" class="btn green">
+			直接发布 <i class="icon-share"></i>
+			</button>
+			<br/><br/>
+			<form id="xtCszglForm" action="xtCszglSave.html" class="form-horizontal" method="POST">
+				<input type="hidden" name="id" value="$!xtCszgl.id">
+				<input type="hidden" name="ssid" value="$!xtCszgl.ssid">
+				 	<div class="control-group">
+					<label class="control-label">姓名:</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="text" name="xm" value="$!xtJjry.xm">
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">性别:</label>
+					<div class="controls">
+						<select name="xb">
+						<option value="1" #if("$!xtCszgl.xb"=="1") selected #end>男</option>
+						<option value="2" #if("$!xtCszgl.xb"=="2") selected #end>女</option>
+						</select>
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">电话:</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="text" name="dh"value="$!xtJjry.dh">
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">证件类型:</label>
+					<div class="controls">
+						<select id="xtjjrySelect1" class="span6 select2" name="zjlx">
+							#foreach($xtDmlb in $XtDmbList1)
+								<option value="$!xtDmlb.id" #if("$!xtDmlb.id"=="$!xtCszgl.zjlx") selected #end>$!xtDmlb.dmmc</option> 
+							#end
+						</select> <span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">证件号码:</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="text" name="zjhm"value="$!xtJjry.zjhm">
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">参赛编号:</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="text" name="bh"value="$!xtJjry.bh">
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">是否高风险:</label>
+					<div class="controls">
+						<select name="gfx">
+						<option value="1" #if("$!xtCszgl.gfx"=="0") selected #end>否</option>
+						<option value="2" #if("$!xtCszgl.gfx"=="1") selected #end>是</option>
+						</select>
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+			</form>
+			
+			<br/>
+		</div>
+	</div>
+</div>
+
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+ 
+ 
+
+
+<!-- END PAGE LEVEL PLUGINS -->
+<script type="text/javascript" src="../media/js/select2.min.js"></script>
+<script type="text/javascript" src="../media/js/jquery.form.js"></script>
+<script>
+	jQuery(document).ready(function() {    
+	   App.init(); // initlayout and core plugins
+	   RaceEdit.init(); 
+		$("#xtCszglList").on("click", XtCszglEdit.xtCszglListOnClick());
+		 $('#xtjjrySelect1').select2({
+	         placeholder: "选择一个类型",
+	         allowClear: true
+	     	}); 
+		$('#xtCszglForm').submit(function() {
+		
+	        $(this).ajaxSubmit({
+	        	success: function(data){
+	        		alert("保存成功！");
+	            },
+	            error: function(data){
+	                alert("保存失败！");
+	            }
+	        });
+	        
+	        return false; //阻止表单默认提交
+	    }); 
+
+		$("#xtCszglSave").on("click", XtCszglEdit.xtCszglFormSubmit());
+		$("#xtCszglSaveAck").on("click", XtCszglEdit.xtCszglFormSubmitAck());
+		$('#tags_2').tagsInput({
+            width: 'auto',
+            'onAddTag': function () {
+                //alert(1);
+            },
+        });
+	   
+	});
+</script>
+<!-- END JAVASCRIPTS -->

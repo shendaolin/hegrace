@@ -16,6 +16,8 @@ public class XtCzyh extends BaseDao{
     private String zw;
 
     private String ssid;
+    
+    private String zwName;
     @PrimaryKey
     public String getId() {
         return id;
@@ -72,4 +74,13 @@ public class XtCzyh extends BaseDao{
     public void setSsid(String ssid) {
         this.ssid = ssid == null ? null : ssid.trim();
     }
+
+	public String getZwName() {
+		return zwName;
+	}
+
+	public void setZwName(String zwName) {
+		this.zwName = zwName;
+	}
+    
 }

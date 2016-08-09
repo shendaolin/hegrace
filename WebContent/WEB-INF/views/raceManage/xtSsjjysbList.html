@@ -4,7 +4,7 @@
 		<div class="span12">
 			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 			<h3 class="page-title">
-				赛事管理  
+				赛事管理 <small>$!xtSsgl.ssmc</small>
 			</h3>
 			<ul class="breadcrumb">
 				<li>
@@ -23,27 +23,18 @@
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
 			<div style="float:left;">
-			<button id="xtssglEdit" class="btn green">
+			<button id="xtSsjjysbEdit" class="btn green">
 			新增 <i class="icon-plus"></i>
 			</button>
-			<button id="raceDelete" class="btn red">
-			删除 <i class="icon-trash"></i>
-			</button>
-			<button id="raceShare" class="btn blue">
-			发布 <i class="icon-share"></i>
-			</button>
+			
 			</div>
-			<form id="ssglSeach">
+			<form id="SsjjysbSeach">
 			<div style="float:right;">
-			<select class="small m-wrap" tabindex="1" name="Zt">
-				<option value="">全部</option>
-				<option value="1">已发布</option>
-				<option value="0">待发布</option>
-			</select>
-			<input placeholder="赛事名称" class="m-wrap medium" type="text" name="ssmc"/>
+			 <input type="hidden" name="ssid"  id="ssid" value="$!xtSsgl.id">
+			<input placeholder="名称" class="m-wrap medium" type="text" name="xm"/>
 			</div>
 			</form>
-			<table id="ssglFlexigrid" style="display: none">
+			<table id="SsjjysbFlexigrid" style="display: none">
 			<!-- 
 			<table class="flexme4" style="display: none">
 			<tbody>
@@ -103,9 +94,10 @@
 		$(".zyzsh").on("click", Racelist.zyzshOnClick())
 		$(".sszbgl").on("click", Racelist.sszbglOnClick())
 
-	});*/jQuery(document).ready(function() {  
-		xtSsglList.init();
-		$("#xtssglEdit").on("click", xtSsglList.xtSsglEditOnClick());
+	});*/jQuery(document).ready(function() { 
+		var ssid=$("#ssid").val();
+		xtSsjjysbList.init(ssid);
+		$("#xtSsjjysbEdit").on("click", xtSsjjysbList.xtSsjjysbEditOnClick(ssid));
 		$("#page-content").height("100%");
 
 		//$("#sbtj").on("click", xtBsysbList.sbTjOnClick());

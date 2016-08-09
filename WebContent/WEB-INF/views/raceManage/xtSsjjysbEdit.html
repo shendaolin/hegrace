@@ -1,0 +1,122 @@
+<div class="container-fluid">
+	<!-- BEGIN PAGE HEADER-->
+	<div class="row-fluid">
+		<div class="span12">
+			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+			<h3 class="page-title">
+				赛事管理 <small>$!xtSsgl.ssmc</small>
+			</h3>
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="index.html">首页</a> 
+					<i class="icon-angle-right"></i>
+				</li>
+				<li><a href="#">赛事管理</a><i class="icon-angle-right"></i></li>
+				<li><a href="#">赛事急救员设备</a></li>
+				<li class="pull-right no-text-shadow">
+					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
+						<i class="icon-calendar"></i>
+						<span></span>
+						<i class="icon-angle-down"></i>
+					</div>
+				</li>
+			</ul>
+			<!-- END PAGE TITLE & BREADCRUMB-->
+			<button id="xtSsjjysbList" class="btn black">
+			返回 <i class="icon-arrow-left"></i>
+			</button>
+			<button id="xtSsjjysbSave" class="btn blue">
+			保存 <i class="icon-shopping-cart"></i>
+			</button>
+			<br/><br/>
+			<form id="xtSsjjysbForm" action="xtSsjjysbSave.html" class="form-horizontal" method="POST">
+				<input type="text" name="ssid"  id="ssid" value="$!xtSsgl.id">
+				 <div class="control-group">
+					<label class="control-label">赛事急救员:</label>
+					<div class="controls">
+						
+						<select id="ssjjyidSelect1" class="span6 select2" name="ssjjyid">
+							#foreach($xttSsjjysb in $XtSsjjysbList)
+								<option value="$!xttSsjjysb.id" #if("$!xttSsjjysb.id"=="$!xtSsjjysb.ssjjyid") selected #end>$!xttSsjjysb.dmmc</option> 
+							#end
+						</select> <span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">设备:</label>
+					<div class="controls">
+						<select id="ssBsysbSelect1" class="span6 select2" name="sbid">
+							#foreach($xtBsysb in $XtBsysbList)
+								<option value="$!xtBsysb.id" #if("$!xtBsysb.id"=="$!xtSsjjysb.sbid") selected #end>$!xtBsysb.sbbh</option> 
+							#end
+						</select>
+						<input class="m-wrap large" type="text" name="ssdd" value="$!xtSsjjysb.ssdd">
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+					<div class="control-group">
+					<label class="control-label">领取状态:</label>
+					<div class="controls">
+						<select name="zt">
+						<option value="1" #if("$!xtSsjjysb.zt"=="0") selected #end>未领取</option>
+						<option value="2" #if("$!xtSsjjysb.zt"=="1") selected #end>已领取</option>
+						<option value="3" #if("$!xtSsjjysb.zt"=="2") selected #end>已归还</option>
+						</select>
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				 
+				</div>
+			</form>
+			
+			<br/>
+		</div>
+	</div>
+</div>
+
+
+
+
+<!-- END PAGE LEVEL PLUGINS -->
+<script type="text/javascript" src="../media/js/select2.min.js"></script>
+<script type="text/javascript" src="../media/js/jquery.form.js"></script>
+<script>
+	jQuery(document).ready(function() {    
+	   App.init(); // initlayout and core plugins
+	   RaceEdit.init(); 
+		$("#xtSsjjysbList").on("click", xtSsjjysbEdit.xtSsjjysbListOnClick());
+	 $('#ssjjyidSelect1').select2({
+	         placeholder: "选择赛事急救员",
+	         allowClear: true
+	     	}); 
+	     	 $('#ssBsysbSelect1').select2({
+	         placeholder: "选择一个设备类型",
+	         allowClear: true
+	     	}); 
+		$('#xtSsjjysbForm').submit(function() {
+		
+	        $(this).ajaxSubmit({
+	        	success: function(data){
+	        		alert("保存成功！");
+	            },
+	            error: function(data){
+	                alert("保存失败！");
+	            }
+	        });
+	        
+	        return false; //阻止表单默认提交
+	    }); 
+
+		$("#xtSsjjysbSave").on("click", xtSsjjysbEdit.xtSsjjysbFormSubmit());
+		$("#xtSsjjysbSaveAck").on("click", xtSsjjysbEdit.xtSsjjysbFormSubmitAck());
+		$('#tags_2').tagsInput({
+            width: 'auto',
+            'onAddTag': function () {
+                //alert(1);
+            },
+        });
+	   
+	});
+</script>
+<!-- END JAVASCRIPTS -->

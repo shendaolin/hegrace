@@ -35,15 +35,29 @@ var xtSsglList = function () {
                         align : 'center'
                     }, {
                         display : '参赛人数',
-                        name : 'cszglSum',
-                        width : 60,
-                        align : 'center'
-                },{
+                        name : 'zt',
+                        width : 100,
+                        align : 'center',
+                        process : function(tdDiv1, cszglSum) {
+    						var cszglSumButton = "<div><a href='#' class='btn mini green cszList'><i class='icon-user'>'"+cszglSum+"'</i></a></div>";
+    						$(tdDiv1).html(
+    								"<div>" + cszglSumButton
+    										+ "</div>"); 
+                       
+    				}
+                      },{ 
                         display : '急救人数',
                         name : 'ssjjySum',
                         width : 60,
-                        align : 'center'
-                    } ,{
+                        align : 'center',
+                        	process : function(tdDiv1, ssjjySum) {
+        						var ssjjySum = "<div><a href=\"#\" class=\"btn mini green cszList\"><i class=\"icon-plus\">'"+ssjjySum+"'</i></a></div>";
+        						$(tdDiv1).html(
+        								"<div>" + ssjjySum
+        										+ "</div>"); 
+                           
+        				}
+                          } ,{
                         display : '状态',
                         name : 'ztName',
                         width : 60,
@@ -61,10 +75,10 @@ var xtSsglList = function () {
     						var deleteButton = "<a href=\"javascript:;\" onclick=\"xtSsglList.xtSsglDelete('"
     								+ id
     								+ "')\"  class=\"btn mini red\"><i class=\"icon-trash\"></i> 删除</a>";
-    						var sszbglButton = "<a href=\"javascript:;\" onclick=\"xtSsglList.xtSsglEdit('"
+    						var sszbglButton = "<a href=\"javascript:;\" onclick=\"xtSsglList.xtSsjjysbListOnClick('"
 								+ id
 								+ "')\" class=\"btn mini green sszbgl\"><i class=\"icon-th-large\"></i> 赛事装备管理</a>";
-    						var zyzshButton = "<a href=\"javascript:;\" onclick=\"xtSsglList.xtSsglEdit('"
+    						var zyzshButton = "<a href=\"javascript:;\" onclick=\"xtSsglList.xtSsjjysbListOnClick('"
 								+ id
 								+ "')\" class=\"btn mini red zyzsh\"><i class=\"icon-th-large\"></i> 自愿者审核</a>";
     						var sstjButton = "<a href=\"javascript:;\" onclick=\"xtSsglList.xtSsglEdit('"
@@ -97,7 +111,11 @@ var xtSsglList = function () {
 				$("#page-content").load("xtSsglEdit.html");
 			}
 		},
-
+		xtSsjjysbListOnClick : function(ssid){
+				$("#page-content").load("xtSsjjysbList.html", {
+					"ssid" :ssid
+					});		
+		},
 		xtSsglEdit : function(id) {
 			$("#page-content").load("xtSsglEdit.html", {
 				"id" : id
@@ -113,42 +131,7 @@ var xtSsglList = function () {
 			} else {
 				return false;
 			}
-		},
-		
-		cszListOnClick : function(ssid){
-			return function(){
-				$("#page-content").load("cszlist.html", {"ssid" :ssid});
-			}
-			
-		},
-
-		jjyListOnClick : function(ssid){
-			return function(){
-				$("#page-content").load("jjylist.html", {"ssid" :ssid});
-			}
-		},
-
-		sstjOnClick : function(ssid){
-			return function(){
-				$("#page-content").load("sstj.html", {"ssid" :ssid});
-			}
-		},
-
-		zyzshOnClick : function(ssid){
-			return function(){
-				$("#page-content").load("shList.html", {"ssid" :ssid});
-			}
-		},
-
-		sszbglOnClick : function(ssid){
-			return function(){
-				$("#page-content").load("zbglList.html", {"ssid" :ssid});
-			}
 		}
-
-
-
-
 
     };
 
@@ -167,15 +150,14 @@ var XtSsglEdit = function () {
 		xtSsglFormSubmit : function() {
 			return function() {
 				var zt=$("#zt").val();
-				$("#zt").val(0)
-				alert(zt);
+				$("#zt").val(0);
 				$("#xtSsglForm").submit();
 				
 			}
 		},
 		xtSsglFormSubmitAck : function() {
 			return function() {
-				$("#zt").val(1) 
+				$("#zt").val(1);
 				$("#xtSsglForm").submit();
 				
 			}
@@ -183,8 +165,367 @@ var XtSsglEdit = function () {
 	}; 
 
 }();
+var xtcszglList = function () {
+	return {
+    	//main function to initiate the module
+        init: function () {
+			$("#cszglFlexigrid").flexigrid({
+                url : "xtcszglFlexigrid.html",
+                params : $("#cszglSeach").serializeArray(),
+                dataType : 'json',
+                colModel : [ {
+                    display : '<input type="checkbox" id="selectall">',
+                    name:'',
+                    width : 30,
+                    sortable : true,
+                    align : 'center'
+                    },{
+                    display : '参赛者',
+                    name : 'xm',
+                    width : 150,
+                    sortable : true,
+                    align : 'center'
+                    }, {
+                        display : '性别',
+                        name : 'xbName',
+                        width : 70,
+                        align : 'center'
+                    }, {
+                        display : '证件号码',
+                        name : 'zjhm',
+                        width : 70,
+                        align : 'center'
+                    }, {
+                        display : '电话',
+                        name : 'dh',
+                        width : 70,
+                        align : 'center'
+                    }, {
+                        display : '参赛者编号',
+                        name : 'bh',
+                        width : 60,
+                        align : 'center'
+                },{
+                        display : '是否高风险',
+                        name : 'gfxName',
+                        width : 60,
+                        align : 'center'
+                    },{
+                        display : '操作',
+                        name : 'zt',
+                        width : 650,
+                        align : 'center',
+                    	process : function(tdDiv, id) {
+   						 
+    						var editButton = "<a href=\"javascript:;\" onclick=\"xtcszglList.xtcszglEdit('"
+    								+ id
+    								+ "')\" class=\"btn mini purple\"><i class=\"icon-edit\"></i> 编辑</a>";
+    						var deleteButton = "<a href=\"javascript:;\" onclick=\"xtcszglList.xtcszglDelete('"
+    								+ id
+    								+ "')\"  class=\"btn mini red\"><i class=\"icon-trash\"></i> 删除</a>";
+    					
+						
+    						$(tdDiv).html(
+    								"<div>" + editButton
+    										+ deleteButton
+    										+ "</div>");
+    					}
+        				} ],
+                sortname : "id",
+                sortorder : "desc",
+                usepager : true,
+                title : '赛事参赛者管理',
+                useRp : false,
+                rp : 15,
+                width : "100%",
+                height : 300
+            });
 
-var RaceEdit = function () {
+
+        },
+        xtcszglEditOnClick : function() {
+			return function() {
+				$("#page-content").load("xtcszglEdit.html");
+			}
+		},
+
+		xtcszglEdit : function(id) {
+			$("#page-content").load("xtcszglEdit.html", {
+				"id" : id
+			});
+		},
+		xtcszglDelete : function(id) {
+			var del = confirm("确定要删除吗？");
+			if (del == true) {
+				$.get("xtcszglDelete.html", {
+					"id" : id
+				});
+				$("#cszglFlexigrid").flexReload();
+			} else {
+				return false;
+			}
+		}
+
+    };
+
+}();
+
+var xtSsjjysbList = function () {
+	 
+	return {
+    	//main function to initiate the module
+		
+        init: function (ssid) {
+			$("#SsjjysbFlexigrid").flexigrid({	
+                url : "xtSsjjysbFlexigrid.html",
+                data : {  
+                	ssid : ssid  
+                }, 
+                params : $("#SsjjysbSeach").serializeArray(),
+                dataType : 'json',
+                colModel : [ {
+                    display : '<input type="checkbox" id="selectall">',
+                    name:'',
+                    width : 30,
+                    sortable : true,
+                    align : 'center'
+                    },{
+                    display : '赛事急救员',
+                    name : 'ssjjyid',
+                    width : 150,
+                    sortable : true,
+                    align : 'center'
+                    }, {
+                        display : '设备',
+                        name : 'sbid',
+                        width : 70,
+                        align : 'center'
+                    }, {
+                        display : '领取状态',
+                        name : 'zt',
+                        width : 70,
+                        align : 'center'
+                    },{
+                        display : '操作',
+                        name : 'zt',
+                        width : 650,
+                        align : 'center',
+                    	process : function(tdDiv, ssjjyid) {
+    						var editButton = "<a href=\"javascript:;\" onclick=\"xtSsjjysbList.xtSsjjysbEdit('"
+    								+ ssjjyid
+    								+ "')\" class=\"btn mini purple\"><i class=\"icon-edit\"></i> 编辑</a>";
+    		
+    						$(tdDiv).html(
+    								"<div>" + editButton+
+    						"</div>");
+    					}
+        				} ],
+                sortname : "id",
+                sortorder : "desc",
+                usepager : true,
+                title : '赛事急救员设备管理',
+                useRp : false,
+                rp : 15,
+                width : "100%",
+                height : 300
+            });
+
+
+        },
+        xtSsjjysbEditOnClick : function(ssid) {
+        	alert(ssid);
+        	return function(ssid) {
+        		$("#page-content").load("xtSsjjysbEdit.html",{
+					"ssid" : ssid
+				});
+			}	
+        	
+		},
+
+		xtSsjjysbEdit : function(id) {
+			alert(id);
+			$("#page-content").load("xtSsjjysbEdit.html", {
+				"id" : id
+			});
+		},
+		xtSsjjysbDelete : function(id) {
+			var del = confirm("确定要删除吗？");
+			if (del == true) {
+				$.get("xtSsjjysbDelete.html", {
+					"id" : id
+				});
+				$("#SsjjysbFlexigrid").flexReload();
+			} else {
+				return false;
+			}
+		}
+
+    };
+
+}();
+var XtcszglEdit = function () {
+	
+    return {
+
+    	xtcszglListOnClick : function(){
+			return function(){
+				 
+				$("#page-content").load("xtcszglList.html");
+			}
+		},
+		xtcszglFormSubmit : function() {
+			return function() {
+				var zt=$("#zt").val();
+				$("#zt").val(0)
+				alert(zt);
+				$("#xtcszglForm").submit();
+				
+			}
+		},
+		xtcszglFormSubmitAck : function() {
+			return function() {
+				$("#zt").val(1) 
+				$("#xtcszglForm").submit();
+				
+			}
+		}
+	}; 
+
+}();
+var RaceEdit = function () {var xtcszglList = function () {
+	return {
+    	//main function to initiate the module
+        init: function () {
+			$("#cszglFlexigrid").flexigrid({
+                url : "xtcszglFlexigrid.html",
+                params : $("#cszglSeach").serializeArray(),
+                dataType : 'json',
+                colModel : [ {
+                    display : '<input type="checkbox" id="selectall">',
+                    name:'',
+                    width : 30,
+                    sortable : true,
+                    align : 'center'
+                    },{
+                    display : '参赛者',
+                    name : 'xm',
+                    width : 150,
+                    sortable : true,
+                    align : 'center'
+                    }, {
+                        display : '性别',
+                        name : 'xbName',
+                        width : 70,
+                        align : 'center'
+                    }, {
+                        display : '证件号码',
+                        name : 'zjhm',
+                        width : 70,
+                        align : 'center'
+                    }, {
+                        display : '电话',
+                        name : 'dh',
+                        width : 70,
+                        align : 'center'
+                    }, {
+                        display : '参赛者编号',
+                        name : 'bh',
+                        width : 60,
+                        align : 'center'
+                },{
+                        display : '是否高风险',
+                        name : 'gfxName',
+                        width : 60,
+                        align : 'center'
+                    },{
+                        display : '操作',
+                        name : 'zt',
+                        width : 650,
+                        align : 'center',
+                    	process : function(tdDiv, id) {
+   						 
+    						var editButton = "<a href=\"javascript:;\" onclick=\"xtcszglList.xtcszglEdit('"
+    								+ id
+    								+ "')\" class=\"btn mini purple\"><i class=\"icon-edit\"></i> 编辑</a>";
+    						var deleteButton = "<a href=\"javascript:;\" onclick=\"xtcszglList.xtcszglDelete('"
+    								+ id
+    								+ "')\"  class=\"btn mini red\"><i class=\"icon-trash\"></i> 删除</a>";
+    					
+						
+    						$(tdDiv).html(
+    								"<div>" + editButton
+    										+ deleteButton
+    										+ "</div>");
+    					}
+        				} ],
+                sortname : "id",
+                sortorder : "desc",
+                usepager : true,
+                title : '赛事参赛者管理',
+                useRp : false,
+                rp : 15,
+                width : "100%",
+                height : 300
+            });
+
+
+        },
+        xtcszglEditOnClick : function() {
+			return function() {
+				$("#page-content").load("xtcszglEdit.html");
+			}
+		},
+
+		xtcszglEdit : function(id) {
+			$("#page-content").load("xtcszglEdit.html", {
+				"id" : id
+			});
+		},
+		xtcszglDelete : function(id) {
+			var del = confirm("确定要删除吗？");
+			if (del == true) {
+				$.get("xtcszglDelete.html", {
+					"id" : id
+				});
+				$("#cszglFlexigrid").flexReload();
+			} else {
+				return false;
+			}
+		}
+
+    };
+
+}();
+
+var XtcszglEdit = function () {
+	
+    return {
+
+    	xtcszglListOnClick : function(){
+			return function(){
+				 
+				$("#page-content").load("xtcszglList.html");
+			}
+		},
+		xtcszglFormSubmit : function() {
+			return function() {
+				var zt=$("#zt").val();
+				$("#zt").val(0)
+				alert(zt);
+				$("#xtcszglForm").submit();
+				
+			}
+		},
+		xtcszglFormSubmitAck : function() {
+			return function() {
+				$("#zt").val(1) 
+				$("#xtcszglForm").submit();
+				
+			}
+		}
+	}; 
+
+}();
 
     return {
 

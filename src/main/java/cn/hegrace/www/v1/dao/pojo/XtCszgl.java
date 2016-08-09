@@ -20,6 +20,11 @@ public class XtCszgl extends BaseDao{
     private String bh;
 
     private Integer gfx;
+    
+    private String xbName;
+    
+    private String gfxName;
+    
     @PrimaryKey
     public String getId() {
         return id;
@@ -92,4 +97,21 @@ public class XtCszgl extends BaseDao{
     public void setGfx(Integer gfx) {
         this.gfx = gfx;
     }
+
+	public String getXbName() {
+		return xbName;
+	}
+
+	public void setXbName(String xbName) {
+		this.xbName = xbName;
+	}
+
+	public String getGfxName() {
+		return gfxName;
+	}
+
+	public void setGfxName(String gfxName) {
+		this.gfxName = gfxName;
+	}
+    
 }

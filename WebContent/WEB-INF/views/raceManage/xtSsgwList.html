@@ -4,7 +4,7 @@
 		<div class="span12">
 			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 			<h3 class="page-title">
-				赛事管理  
+				塞事管理 <small>马拉松赛事维护</small>
 			</h3>
 			<ul class="breadcrumb">
 				<li>
@@ -12,7 +12,7 @@
 					<a href="index.html">首页</a> 
 					<i class="icon-angle-right"></i>
 				</li>
-				<li><a href="#">赛事管理</a></li>
+				<li><a href="#">塞事管理</a></li>
 				<li class="pull-right no-text-shadow">
 					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
 						<i class="icon-calendar"></i>
@@ -23,7 +23,7 @@
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
 			<div style="float:left;">
-			<button id="xtssglEdit" class="btn green">
+			<button id="xtssgwEdit" class="btn green">
 			新增 <i class="icon-plus"></i>
 			</button>
 			<button id="raceDelete" class="btn red">
@@ -33,7 +33,7 @@
 			发布 <i class="icon-share"></i>
 			</button>
 			</div>
-			<form id="ssglSeach">
+			<form id="ssgwSeach">
 			<div style="float:right;">
 			<select class="small m-wrap" tabindex="1" name="Zt">
 				<option value="">全部</option>
@@ -43,7 +43,7 @@
 			<input placeholder="赛事名称" class="m-wrap medium" type="text" name="ssmc"/>
 			</div>
 			</form>
-			<table id="ssglFlexigrid" style="display: none">
+			<table id="ssgwFlexigrid" style="display: none">
 			<!-- 
 			<table class="flexme4" style="display: none">
 			<tbody>
@@ -104,8 +104,8 @@
 		$(".sszbgl").on("click", Racelist.sszbglOnClick())
 
 	});*/jQuery(document).ready(function() {  
-		xtSsglList.init();
-		$("#xtssglEdit").on("click", xtSsglList.xtSsglEditOnClick());
+		xtssgwList.init();
+		$("#xtssgwEdit").on("click", xtssgwList.xtssgwEditOnClick());
 		$("#page-content").height("100%");
 
 		//$("#sbtj").on("click", xtBsysbList.sbTjOnClick());

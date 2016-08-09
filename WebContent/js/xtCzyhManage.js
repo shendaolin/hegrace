@@ -25,7 +25,7 @@ var XtCzyhList = function () {
                         align : 'center'
                     },{
                         display : '职位',
-                        name : 'zw',
+                        name : 'zwName',
                         width : 100,
                         align : 'center'
                     },{
