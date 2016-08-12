@@ -3,7 +3,7 @@ package cn.hegrace.www.v1.dao.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class XtSsjlExample {
+public class XtSsjlExample extends BaseExample{
     protected String orderByClause;
 
     protected boolean distinct;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class XtQjjlExample {
+public class XtQjjlExample extends BaseExample{
     protected String orderByClause;
 
     protected boolean distinct;

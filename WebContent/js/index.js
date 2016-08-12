@@ -35,11 +35,12 @@ var HegraceMap = function(){
 				            position:item.zb.split(",")
 				        });
 				        marker.setMap(self.mapObj);
-				        self.alljjry[item.id] = {
+				        self.alljjry[""+item.id] = {
 				        		"position" : marker.getPosition(),
 				        		"ryid" : item.ryid,
 				        		"jlid" : item.jlid
 				        };
+				        //alert(self.alljjry[item.id].position);
 				        self.markerJjrys.push(marker);
 					});
 					
@@ -71,6 +72,8 @@ var HegraceMap = function(){
 				            position:item.zb.split(",")
 				        });
 				        marker.on('click', function(e){
+				        	
+				        	
 //				        	var content = "<div>参赛者："+item.xm+"("+item.dh+")</div>"
 //				        	content += "<div>事件名称："+item.sjmc+"</div>"
 //				        	content += "<div>事件描述："+item.ms+"</div>"
@@ -90,26 +93,42 @@ var HegraceMap = function(){
 				            infoWindow.open(self.mapObj, e.target.getPosition());
 				        });
 				        
-				        if(!item.jjyxm){
-					        var circle = new AMap.Circle({
-					            center: item.zb.split(","),// 圆心位置
-					            radius: 150, //半径
-					            strokeColor: "#F33", //线颜色
-					            strokeOpacity: 0.3, //线透明度
-					            strokeWeight: 1, //线粗细度
-					            fillColor: "#ee2200", //填充颜色
-					            fillOpacity: 0//填充透明度
-					        });
-					        circle.setMap(self.mapObj);
-					        self.markerQjjls.push(circle);
 					        if(self.alljjry){
-					        	$(self.alljjry).each(function(i, item){
-					        		if(circle.contains(item.position)){
+					        	var distance = [];
+					        	jQuery.each(self.alljjry, function(key, jjry){
+				        			if(!jjry.jlid && !item.jjyzt){
+				        				distance.push({"key" : key, "ryid":jjry.ryid, "jl":marker.getPosition().distance(jjry.position)})
+				        			}
+					        	})
+					        	
+					        	distance = distance.sort(function(a, b){  
+					                return a.jl-b.jl;  
+					            });  	
+					        	
+ 					        	distance = distance.slice(0,2);
+					        	
+ 					        	var ryids = [];
+					        	jQuery.each(distance, function(i, json){
+					        		ryids.push(json.ryid);
+						        })
+						        
+					        	if(ryids.length > 0){
+					        		alert(1)
+					        	$.get("automatic.html", {"ryid":ryids.join(","), "qjid" : item.id}, function(){
+					        		jQuery.each(distance, function(i, json){
+					        			self.alljjry[json.key].jjyzt = '1';
 					        			
-					        		}
-					        	});
+					        			  var walking = new AMap.Walking({
+					        			        map: self.mapObj,
+					        			        panel: "panel"
+					        			    }); 
+					        			    //根据起终点坐标规划步行路线
+					        			    walking.search(self.alljjry[json.key].position, marker.getPosition());
+					        			
+						        	})
+					        	})
+					        	}
 					        }
-				        }
 				        
 				        marker.setMap(self.mapObj);
 				        self.markerQjjls.push(marker);
@@ -500,7 +519,7 @@ var Nquipment = function() {
 				colModel : [ {
 					display : '设备类型',
 					name : 'sblx',
-					width : 80,
+					width : 120,
 					align : 'center'
 				}, {
 					display : '设备编号',

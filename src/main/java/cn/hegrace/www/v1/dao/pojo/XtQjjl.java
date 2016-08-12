@@ -2,7 +2,9 @@ package cn.hegrace.www.v1.dao.pojo;
 
 import java.util.Date;
 
-public class XtQjjl {
+import cn.hegrace.www.v1.annotation.PrimaryKey;
+
+public class XtQjjl extends BaseDao{
     private String id;
 
     private String ssid;
@@ -23,6 +25,7 @@ public class XtQjjl {
 
     private Date xgsj;
 
+    @PrimaryKey
     public String getId() {
         return id;
     }

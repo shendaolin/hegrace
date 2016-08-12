@@ -54,7 +54,7 @@
 		group_concat(jl.zt separator '|') as jjyzt
 		from XT_QJJL qj
 		left join XT_SSJL jl on qj.id = jl.qjid and jl.zt in ('0','1')
-		where qj.zt = '1' and qj.ssid = '1' and qj.zb != ''
+		where qj.zt = '1' and qj.ssid = #{ssid} and qj.zb != ''
 		group by qj.id
 	</select>
 	

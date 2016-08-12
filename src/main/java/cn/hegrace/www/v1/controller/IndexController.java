@@ -47,7 +47,7 @@ public class IndexController extends BaseController {
 		ModelAndView mv = new ModelAndView("index");
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
-		String ssid = "1";
+		String ssid = "7eb491aa-5dbb-11e6-b84a-00163e0003f4";
 		if(xtCzyh != null){
 			ssid = xtCzyh.getSsid();
 		}
@@ -62,7 +62,7 @@ public class IndexController extends BaseController {
 	public void noSignInCount(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
-		String ssid = "1";
+		String ssid = "7eb491aa-5dbb-11e6-b84a-00163e0003f4";
 		if(xtCzyh != null){
 			ssid = xtCzyh.getSsid();
 		}
@@ -78,7 +78,7 @@ public class IndexController extends BaseController {
 	public void noSignIn(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
-		String ssid = "1";
+		String ssid = "7eb491aa-5dbb-11e6-b84a-00163e0003f4";
 		if(xtCzyh != null){
 			ssid = xtCzyh.getSsid();
 		}
@@ -109,7 +109,7 @@ public class IndexController extends BaseController {
 	public void equipment(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
-		String ssid = "1";
+		String ssid = "7eb491aa-5dbb-11e6-b84a-00163e0003f4";
 		if(xtCzyh != null){
 			ssid = xtCzyh.getSsid();
 		}
@@ -128,7 +128,7 @@ public class IndexController extends BaseController {
 	public void processedCount(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
-		String ssid = "1";
+		String ssid = "7eb491aa-5dbb-11e6-b84a-00163e0003f4";
 		if(xtCzyh != null){
 			ssid = xtCzyh.getSsid();
 		}
@@ -144,7 +144,7 @@ public class IndexController extends BaseController {
 	public void processed(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
-		String ssid = "1";
+		String ssid = "7eb491aa-5dbb-11e6-b84a-00163e0003f4";
 		if(xtCzyh != null){
 			ssid = xtCzyh.getSsid();
 		}
@@ -161,7 +161,7 @@ public class IndexController extends BaseController {
 	public void processingCount(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
-		String ssid = "1";
+		String ssid = "7eb491aa-5dbb-11e6-b84a-00163e0003f4";
 		if(xtCzyh != null){
 			ssid = xtCzyh.getSsid();
 		}
@@ -177,7 +177,7 @@ public class IndexController extends BaseController {
 	public void processing(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
-		String ssid = "1";
+		String ssid = "7eb491aa-5dbb-11e6-b84a-00163e0003f4";
 		if(xtCzyh != null){
 			ssid = xtCzyh.getSsid();
 		}

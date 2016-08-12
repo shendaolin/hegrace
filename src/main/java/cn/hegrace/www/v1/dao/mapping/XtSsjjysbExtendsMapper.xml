@@ -20,8 +20,9 @@
   	
   	<select id="select_equipment_count" parameterType="java.util.Map"
 		resultType="java.lang.Integer">
-		SELECT count(1) from XT_SSJJY where ssid = #{ssid} and
-		zt='1' and ( zb = '' or zb is null )
+		SELECT count(1) FROM XT_SSJJYSB sb 
+		left join XT_SSJJY jj on jj.id = sb.ssjjyid and jj.zt = '1'
+		where jj.ssid = #{ssid} and sb.zt = '1'
 	</select>
 
 	<select id="select_equipment_list" parameterType="java.util.Map"

@@ -1,6 +1,8 @@
 package cn.hegrace.www.v1.dao.pojo;
 
-public class XtSsjl {
+import cn.hegrace.www.v1.annotation.PrimaryKey;
+
+public class XtSsjl extends BaseDao{
     private String id;
 
     private String ssid;
@@ -15,6 +17,7 @@ public class XtSsjl {
 
     private String clms;
 
+    @PrimaryKey
     public String getId() {
         return id;
     }
