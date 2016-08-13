@@ -20,14 +20,35 @@
 	<select id="select_getJjryLngLats_list" parameterType="java.util.Map"
 		resultType="cn.hegrace.www.v1.dto.XtSsjjyDto">
 		SELECT jjy.* ,ry.xm, ry.dh,
-		group_concat(jjysb.sbid separator '|') as sbid,
+		group_concat(dm.dmmc) as sbmc,
 		group_concat(jl.id separator '|') as jlid
 		FROM XT_SSJJY jjy
-		left join XT_JJRY ry on ry.id = jjy.ryid and ry.zt = '1'
 		left join XT_SSJJYSB jjysb on jjysb.ssjjyid = jjy.id and jjysb.zt = '1'
-		left join XT_SSJL jl on jl.ryid = jjy.ryid and jl.ssid = #{ssid} and jl.zt in ('0','1')
+		left join XT_BSYSB sb on sb.id = jjysb.sbid and sbzt = '1'
+		left join XT_GYDM dm on sb.sblx = dm.id and lbid = '2'
+		left join XT_JJRY ry on ry.id = jjy.ryid and ry.zt = '1'
+		left join XT_SSJL jl on jl.ryid = jjy.ryid and jjy.ssid =  jl.ssid and jl.zt in ('0','1')
+		left join XT_QJJL qj on qj.id = jl.qjid and jjy.ssid = qj.ssid and qj.zt in ('1')
 		where jjy.zt = '1' and jjy.ssid = #{ssid} and jjy.zb != ''
 		group by jjy.id
+	</select>
+	
+	<select id="select_getJjryInfomation_list" parameterType="java.util.Map"
+		resultType="cn.hegrace.www.v1.dto.XtSsjjyDto">
+		SELECT jjy.* ,ry.xm, ry.dh, gw.gwmc, sflx.dmmc as sflx, ry.lb,
+		group_concat(dm.dmmc) as sbmc,
+		qj.id as qjid, qj.zt as qjzt,qj.xm as qjxm, qj.dh as qjdh
+		FROM XT_SSJJY jjy
+		left join XT_SSGW gw on gw.id = jjy.gwid
+		left join XT_SSJJYSB jjysb on jjysb.ssjjyid = jjy.id and jjysb.zt = '1'
+		left join XT_BSYSB sb on sb.id = jjysb.sbid and sbzt = '1'
+		left join XT_GYDM dm on sb.sblx = dm.id and dm.lbid = '2'
+		left join XT_JJRY ry on ry.id = jjy.ryid and ry.zt = '1'
+		left join XT_GYDM sflx on ry.sflx = sflx.id and sflx.lbid = '3'
+		left join XT_SSJL jl on jl.ryid = jjy.ryid and jjy.ssid =  jl.ssid and jl.zt in ('0','1')
+		left join XT_QJJL qj on qj.id = jl.qjid and jjy.ssid = qj.ssid and qj.zt in ('1')
+		where jjy.id = #{jjyid}
+		group by jjy.id, qj.id
 	</select>
 
 </mapper>
