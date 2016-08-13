@@ -9,41 +9,27 @@
 
 	<select id="select_processed_list" parameterType="java.util.Map"
 		resultType="cn.hegrace.www.v1.dto.XtQjjlDto">
-		select qj.*, dm.dmmc as sjmc,
-		group_concat(ry.xm separator '|') as jjyxm,
-		group_concat(ry.dh separator '|') as jjydh,
-		group_concat(jl.clms separator '|') as clms
+		select qj.*, dm.dmmc as sjmc
 		from XT_QJJL qj
-		left join XT_SSJL jl on qj.id = jl.qjid and jl.zt = '3'
-		left join XT_JJRY ry on jl.ryid = ry.id and ry.zt = '1'
 		left join XT_GYDM dm on dm.id = qj.sjid and dm.lbid = '5'
-		where qj.zt = '8' and qj.ssid = #{ssid}
-		group by qj.id
-		order by  qj.xgsj desc
+		where qj.zt = '8' and qj.ssid = #{ssid} and qj.zb != ''
+		order by qj.xgsj desc
 		limit ${startPage}, ${page}
 	</select>
 	
 	
 	<select id="select_processing_count" parameterType="java.util.Map"
 		resultType="java.lang.Integer">
-		SELECT count(1) from XT_QJJL where ssid = #{ssid} and zt in ('1','3')
+		SELECT count(1) from XT_QJJL where ssid = #{ssid} and zt in ('1','3') and zb != ''
 	</select>
 	
 	<select id="select_processing_list" parameterType="java.util.Map"
 		resultType="cn.hegrace.www.v1.dto.XtQjjlDto">
-		select qj.*, dm.dmmc as sjmc,
-		group_concat(ry.xm separator '|') as jjyxm,
-		group_concat(ry.dh separator '|') as jjydh,
-		group_concat(jl.bhms  separator '|') as bhms,
-		group_concat(jl.clms separator '|') as clms,
-		group_concat(jl.zt separator '|') as jjyzt
+		select qj.*, dm.dmmc as sjmc
 		from XT_QJJL qj
-		left join XT_SSJL jl on qj.id = jl.qjid and jl.zt in ('0','1','2','3')
-		left join XT_JJRY ry on jl.ryid = ry.id and ry.zt = '1'
 		left join XT_GYDM dm on dm.id = qj.sjid and dm.lbid = '5'
-		where qj.zt in ('1','3') and qj.ssid = #{ssid}
-		group by qj.id
-		order by  qj.xgsj desc
+		where qj.zt in ('1','3') and qj.ssid = #{ssid} and qj.zb != ''
+		order by qj.xgsj desc
 		limit ${startPage}, ${page}
 	</select>
 	
@@ -53,9 +39,21 @@
 		select qj.*,
 		group_concat(jl.zt separator '|') as jjyzt
 		from XT_QJJL qj
-		left join XT_SSJL jl on qj.id = jl.qjid and jl.zt in ('0','1')
-		where qj.zt = '1' and qj.ssid = #{ssid} and qj.zb != ''
+		left join XT_SSJL jl on qj.id = jl.qjid and jl.zt in ('0','1','3')
+		where qj.zt in ('1','3') and qj.ssid = #{ssid} and qj.zb != ''
 		group by qj.id
+	</select>
+	
+	
+	<select id="XtQjjl.select_getQJJLInfomation_list" parameterType="java.util.Map"
+		resultType="cn.hegrace.www.v1.dto.XtQjjlDto">
+		select qj.*, dm.dmmc as sjmc,ry.xm as jjyxm,ry.dh as jjydh,jl.bhms as bhms,jl.clms as clms,
+		jl.zt as jjyzt
+		from XT_QJJL qj
+		left join XT_SSJL jl on qj.id = jl.qjid and jl.zt in ('0','1','2','3')
+		left join XT_JJRY ry on jl.ryid = ry.id and ry.zt = '1'
+		left join XT_GYDM dm on dm.id = qj.sjid and dm.lbid = '5'
+		where qj.id = #{qjid}
 	</select>
 	
 </mapper>

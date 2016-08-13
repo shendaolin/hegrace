@@ -1,5 +1,7 @@
 package cn.hegrace.www.v1.controller;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,12 +11,14 @@ import javax.servlet.http.HttpSession;
 import org.codehaus.plexus.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.hegrace.www.v1.busi.BaseService;
 import cn.hegrace.www.v1.dao.pojo.XtCzyh;
 import cn.hegrace.www.v1.dao.pojo.XtGydm;
 import cn.hegrace.www.v1.dao.pojo.XtSsjl;
+import cn.hegrace.www.v1.dto.XtQjjlDto;
 import cn.hegrace.www.v1.seach.Flexigrid;
 import cn.hegrace.www.v1.seach.Page;
 
@@ -57,6 +61,19 @@ public class IndexMapController extends BaseController {
 	}
 	
 	
+	@RequestMapping("/getQJJLInfomation.html")
+	public void getQJJLInfomation(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String qjid = request.getParameter("qjid");
+		Flexigrid flexigrid = new Flexigrid(new Page());
+		if(StringUtils.isNotEmpty(qjid)){
+			Map map = new HashMap();
+			map.put("qjid", qjid);
+			flexigrid.setRows(baseService.queryForList("XtQjjl.select_getQJJLInfomation_list", map));
+		}
+		sendJson(flexigrid, response);
+	}
+	
+	
 	@RequestMapping("/automatic.html")
 	public void automatic(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
@@ -81,5 +98,9 @@ public class IndexMapController extends BaseController {
 		}
 
 	}
+	
+	
+	
+	
 	
 }

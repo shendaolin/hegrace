@@ -542,7 +542,7 @@
 				$('tr', t).unbind();
 				$(t).empty();
 				$(t).append(tbody);
-				this.addCellProp();
+				this.addCellProp(data);
 				this.addRowProp();
 				this.rePosDrag();
 				tbody = null;
@@ -717,9 +717,10 @@
 					this.populate();
 				}
 			},
-			addCellProp: function () {
+			addCellProp: function (data) {
 				$('tbody tr td', g.bDiv).each(function () {
 					var tdDiv = document.createElement('div');
+					var r = $('tr', $(this).parents("tbody")).index($(this).parent());
 					var n = $('td', $(this).parent()).index(this);
 					var pth = $('th:eq(' + n + ')', g.hDiv).get(0);
 					if (pth != null) {
@@ -749,6 +750,10 @@
 					if (pth != null) {
 						if (pth.process) pth.process(tdDiv, pid);
 					}
+					if (pth != null) {
+						if (pth.operation) pth.operation(tdDiv, data.rows[r]);
+					}
+					
 					$(this).empty().append(tdDiv).removeAttr('width'); //wrap content
 					g.addTitleToCell(tdDiv);
 				});
@@ -929,6 +934,9 @@
 					}
 					if (cm.process) {
 						th.process = cm.process;
+					}
+					if (cm.operation) {
+						th.operation = cm.operation;
 					}
 				} else {
 					th.innerHTML = "";
