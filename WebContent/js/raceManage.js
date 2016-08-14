@@ -35,28 +35,27 @@ var xtSsglList = function () {
                     		var content = "<a href=\"javascript:;\" class=\"btn mini green\"><i class=\"icon-user\"></i> "+row.cszcount+"</a>";
 							$(tdDiv).html(content);
 						}
-                    },{ 
+                    },{
                         display : '急救人数',
-                        width : 100,
-                        align : 'center',
-                        operation : function(tdDiv, row){
-                        	var content = "";
-                        	if(row.zt = 1){
-                        		content = "已发布";
-                        	}else{
-                        		content = "未发布";
-                        	}
-							$(tdDiv).html(content);
-						}	
-                    } ,{
-                        display : '状态',
-                        name : 'zt',
                         width : 60,
                         align : 'center',
                         operation : function(tdDiv, row){
                         	var content = "<a href=\"javascript:;\" class=\"btn mini red\"><i class=\"icon-plus\"></i> "+row.jjycount+"</a>";
 							$(tdDiv).html(content);
 						}
+                    },{ 
+                        display : '状态',
+                        width : 100,
+                        align : 'center',
+                        operation : function(tdDiv, row){
+                        	var content = "";
+                        	if(row.zt == 1){
+                        		content = "已发布";
+                        	}else{
+                        		content = "未发布";
+                        	}
+							$(tdDiv).html(content);
+						}	
                     },{
                         display : '操作',
                         width : 450,

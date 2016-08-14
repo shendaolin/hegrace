@@ -8,9 +8,7 @@ var HegraceMap = function(){
 		alljjry:{},
 		allqjjl:{},
 		init : function() {
-			var position = new AMap.LngLat(120.121082,30.230878);// 创建中心点坐标
 			this.mapObj = new AMap.Map("page-content", {
-				center : position,
 				level : 17
 			});// 创建地图实例
 			this.mapObj.setFitView();
