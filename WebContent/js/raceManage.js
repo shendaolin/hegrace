@@ -134,6 +134,26 @@ var xtSsglList = function () {
 var XtSsglEdit = function () {
 	
     return {
+    	init: function () {
+
+			$(".sssjstart").datetimepicker({
+			  format: "yyyy-mm-dd hh:ii",
+			  pickerPosition: (App.isRTL() ? "bottom-right" : "bottom-left")
+			});
+			  $(".sssjend").datetimepicker({
+			  format: "yyyy-mm-dd hh:ii",
+			  pickerPosition: (App.isRTL() ? "bottom-right" : "bottom-left")
+			});
+			$(".cjsjstart").datetimepicker({
+			  format: "yyyy-mm-dd hh:ii",
+			  pickerPosition: (App.isRTL() ? "bottom-right" : "bottom-left")
+			});
+			 $(".cjsjend").datetimepicker({
+			  format: "yyyy-mm-dd hh:ii",
+			  pickerPosition: (App.isRTL() ? "bottom-right" : "bottom-left")
+			});
+ 
+		},
 
     	xtSsglListOnClick : function(){
 			return function(){

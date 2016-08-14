@@ -36,6 +36,7 @@
 			<form id="xtSsglForm" action="xtSsglSave.htm" class="form-horizontal" method="POST">
 				<input type="hidden" name="id" value="$!xtSsgl.id">
 				<input type="hidden" name="zt" id="zt" value="$!xtSsgl.zt">
+				<input type="hidden" name="ssjs" id="ssjs">
 				<div class="control-group">
 					<label class="control-label">赛事名称:</label>
 					<div class="controls">
@@ -63,6 +64,7 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="control-group">
 					<label class="control-label">场景时间:</label>
 					<div class="controls">
@@ -79,7 +81,7 @@
 				<div class="control-group">
 					<label class="control-label">赛事介绍</label>
 					<div class="controls">
-						<textarea cols="80" id="ssjs" name="ssjs" rows="10">$!xtSsgl.ssjs</textarea>
+						<textarea cols="80" id="editor1" name="editor1" rows="10">$!xtSsgl.ssjs</textarea>
 					</div>
 				</div>
 	
@@ -94,6 +96,7 @@
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <script type="text/javascript" src="../media/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="../media/js/jquery.tagsinput.min.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <script type="text/javascript" src="../media/js/select2.min.js"></script>
 <script type="text/javascript" src="../media/js/jquery.form.js"></script>
@@ -102,9 +105,10 @@
 
 <script>
 	jQuery(document).ready(function() {    
-	   App.init(); // initlayout and core plugins
+		XtSsglEdit.init();
 		$("#xtSsglList").on("click", XtSsglEdit.xtSsglListOnClick());
 		$('#xtSsglForm').submit(function() {
+			$("#ssjs").val(CKEDITOR.instances["editor1"].getData());
 	        $(this).ajaxSubmit({
 	        	success: function(data){
 	        		alert("保存成功！");
@@ -116,9 +120,9 @@
 	        return false; //阻止表单默认提交
 	    }); 
 
-		//$("#xtSsglSave").on("click", XtSsglEdit.xtSsglFormSubmit());
-		//$("#xtSsglSaveAck").on("click", XtSsglEdit.xtSsglFormSubmitAck());
-         CKEDITOR.replaceAll();
+		$("#xtSsglSave").on("click", XtSsglEdit.xtSsglFormSubmit());
+		$("#xtSsglSaveAck").on("click", XtSsglEdit.xtSsglFormSubmitAck());
+        CKEDITOR.replaceAll();
 
 	});
 </script>

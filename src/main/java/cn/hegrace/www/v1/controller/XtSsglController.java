@@ -31,6 +31,7 @@ import cn.hegrace.www.v1.dao.pojo.XtDmlbExample;
 import cn.hegrace.www.v1.dao.pojo.XtGydm;
 import cn.hegrace.www.v1.dao.pojo.XtGydmExample;
 import cn.hegrace.www.v1.dao.pojo.XtSsgl;
+import cn.hegrace.www.v1.dao.pojo.XtSsglWithBLOBs;
 import cn.hegrace.www.v1.seach.Flexigrid;
 import cn.hegrace.www.v1.seach.XtSsglSeach;
 import net.sf.json.JSONObject;
@@ -103,14 +104,14 @@ public class XtSsglController extends BaseController {
 	@RequestMapping("raceManage/xtSsglSave.htm")
 	public void xtSsglSave(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
-		XtSsgl xtSsgl = (XtSsgl) httpMessageConverter(new XtSsgl(), request);
-		if(StringUtils.isEmpty(xtSsgl.getId())){
-			xtSsgl.setId(baseService.getUuid());
-			baseService.insert(xtSsgl);
+		XtSsglWithBLOBs xtSsglWithBLOBs = (XtSsglWithBLOBs) httpMessageConverter(new XtSsglWithBLOBs(), request);
+		if(StringUtils.isEmpty(xtSsglWithBLOBs.getId())){
+			xtSsglWithBLOBs.setId(baseService.getUuid());
+			baseService.insert("XtSsgl.insert", xtSsglWithBLOBs);
 		}else{
-			baseService.updateByPrimaryKey(xtSsgl);
+			baseService.update("XtSsgl.updateByPrimaryKeyWithBLOBs", xtSsglWithBLOBs);
 		}
-		sendJson(xtSsgl, response);
+		sendJson(xtSsglWithBLOBs, response);
 	}
 	
 	

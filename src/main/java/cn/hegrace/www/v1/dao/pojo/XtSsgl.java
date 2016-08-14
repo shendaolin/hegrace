@@ -8,22 +8,13 @@ import cn.hegrace.www.v1.annotation.PrimaryKey;
 
 public class XtSsgl extends BaseDao {
 	private String id;
-
 	private String ssmc;
-
 	private String ssdd;
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date sskssj;
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date ssjssj;
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date cjkssj;
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date cjjssj;
-
 	private Integer zt;
-	private String ssjs;
-	private String sslj;
 
 	@PrimaryKey
 	public String getId() {
@@ -88,22 +79,6 @@ public class XtSsgl extends BaseDao {
 
 	public void setZt(Integer zt) {
 		this.zt = zt;
-	}
-
-	public String getSslj() {
-		return sslj;
-	}
-
-	public void setSslj(String sslj) {
-		this.sslj = sslj;
-	}
-
-	public String getSsjs() {
-		return ssjs;
-	}
-
-	public void setSsjs(String ssjs) {
-		this.ssjs = ssjs;
 	}
 
 }
