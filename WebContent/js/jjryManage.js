@@ -4,49 +4,68 @@ var xtJjryList = function () {
     	
 		init: function () {
 			$("#xtJjryFlexigrid").flexigrid({
-                url : "xtJjryFlexigrid.html",
+                url : "xtJjryFlexigrid.htm",
                 params : $("#jjrySeach").serializeArray(),
                 dataType : 'json',
-                colModel : [ /*{
-                    display : '<input type="checkbox" id="selectall">全选',
-                    name:'id',
-                    width : 30,
-                    align : 'center'
-                    },*/{
+                colModel : [{
+	                    display : '姓名',
+	                    name : 'xm',
+	                    width : 100,
+	                    align : 'center'
+	                },{
                         display : '手机号',
                         name : 'dh',
                         width : 100,
                         align : 'center'
-                    }, {
-                        display : '姓名',
-                        name : 'xm',
-                        width : 100,
-                        align : 'center'
-                    },  {
+                    },{
                         display : '性别',
-                        name : 'xbName',
                         width : 30,
-                        align : 'center'
+                        align : 'center',
+                    	operation : function(tdDiv, row){
+                    		var content = "";
+                    		if(row.xb == "1"){
+                    			content = "男";
+                    		}else{
+                    			content = "女";
+                    		}
+							$(tdDiv).html(content);
+						}	
                     },{
                         display : '证件类型',
-                        name : 'zjlxName',
+                        name : 'zjmc',
+                        width : 100,
+                        align : 'center'
+                    },{
+                        display : '证件号码',
+                        name : 'zjhm',
                         width : 100,
                         align : 'center'
                     }, {
                         display : '身份类型',
-                        name : 'sflxName',
+                        name : 'sfmc',
                         width : 60,
                         align : 'center'
-                },{
+                    },{
                         display : '类别',
                         name : 'lb',
                         width : 100,
                         align : 'center'
-                },{
+                    },{
                         display : '审核状态',
-                        name : 'ztName',
                         width : 60,
-                        align : 'center'
+                        align : 'center',
+                    	operation : function(tdDiv, row){
+                    		var content = "";
+                    		if(row.zt == "0"){
+                    			content = "<span class=\"label label-warning\">未通过</span>";
+                    		}else if(row.zt == "1"){
+                    			content = "<span class=\"label label-success\">通过</span>";
+                    		}else if(row.zt == "2"){
+                    			content = "<span class=\"label label-danger\">黑名单</span>";
+                    		}
+							$(tdDiv).html(content);
+						}
+                        	
                 },{
                         display : '操作',
                         name : 'zt',
@@ -75,7 +94,7 @@ var xtJjryList = function () {
                 useRp : false,
                 rp : 15,
                 width : "100%",
-                height : 300
+                height : $(document).height() - 400
             });
 
 			 
@@ -83,19 +102,19 @@ var xtJjryList = function () {
 
 		xtJjryEditOnClick : function() {
 			return function() {
-				$("#page-content").load("xtJjryEdit.html");
+				$("#page-content").load("xtJjryEdit.htm");
 			}
 		},
 
 		xtJjryEdit : function(id) {
-			$("#page-content").load("xtJjryEdit.html", {
+			$("#page-content").load("xtJjryEdit.htm", {
 				"id" : id
 			});
 		},
 		xtJjryDelete : function(id) {
 			var del = confirm("确定要删除吗？");
 			if (del == true) {
-				$.get("xtJjryDelete.html", {
+				$.get("xtJjryDelete.htm", {
 					"id" : id
 				});
 				$("#xtJjryFlexigrid").flexReload();
@@ -106,8 +125,14 @@ var xtJjryList = function () {
 
 		ssjlEditOnClick : function(jhyid){
 			return function(){
-				$("#page-content").load("xtssjlList.html", {"jhyid" : jhyid});
+				$("#page-content").load("xtssjlList.htm", {"jhyid" : jhyid});
 			}
+		}, 
+		
+		xtJjrySeach : function(){
+			$("#xtJjryFlexigrid").flexOptions({
+				params : $("#xtJjrySeach").serializeArray()
+			}).flexReload();
 		}
 
     };
@@ -121,7 +146,7 @@ var XtJjryEdit = function () {
 
     	xtJjryListOnClick : function(){
 			return function(){
-				$("#page-content").load("xtJjryList.html");
+				$("#page-content").load("xtJjryList.htm");
 			}
 		},
 		xtJjryFormSubmit : function() {
@@ -179,7 +204,7 @@ var xtSsjlList = function () {
 		},
 		jjryListOnClick : function(){
 			return function(){
-				$("#page-content").load("jjryList.html");
+				$("#page-content").load("jjryList.htm");
 			}
 		}
     };

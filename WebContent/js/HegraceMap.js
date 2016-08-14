@@ -24,7 +24,7 @@ var HegraceMap = function(){
 			var self = this;
 			var getJjryLngLats = function(){
 				
-				$.get("getJjryLngLats.html", function(data){
+				$.get("getJjryLngLats.htm", function(data){
 					
 					if(self.markerJjrys.length > 0){
 						self.mapObj.remove(self.markerJjrys);
@@ -41,7 +41,7 @@ var HegraceMap = function(){
 				        marker.on('click', function(e){
 				        	
 				        	var content = "";
-				        	$.get("getJjryInfomation.html", {"jjyid" : item.id}, function(list){
+				        	$.get("getJjryInfomation.htm", {"jjyid" : item.id}, function(list){
 				        			$.each(list.rows, function(key, xtSsjjyDto){
 				        				if(key == 0){
 				        					content += "<div>急救员："+xtSsjjyDto.xm+"("+xtSsjjyDto.dh+")</div>"
@@ -92,7 +92,7 @@ var HegraceMap = function(){
 		},
 		getQJJLLngLats : function(){
 			var self = this;
-			$.get("getQJJLLngLats.html", function(data){
+			$.get("getQJJLLngLats.htm", function(data){
 				
 				if(self.markerQjjls.length > 0){
 					self.mapObj.remove(self.markerQjjls);
@@ -109,7 +109,7 @@ var HegraceMap = function(){
 			        marker.on('click', function(e){
 			        	
 			        	var content = "";
-			        	$.get("getQJJLInfomation.html", {"qjid" : item.id}, function(list){
+			        	$.get("getQJJLInfomation.htm", {"qjid" : item.id}, function(list){
 				        		var ztStyle = {
 										"0" : "未接受",
 										"1" : "已接受",
@@ -175,7 +175,7 @@ var HegraceMap = function(){
 					        
 				        	if(ryids.length > 0){
 					        	$.ajaxSetup({async : false  }); 
-					        	$.get("automatic.html", {"ryid":ryids.join(","), "qjid" : item.id}, function(){
+					        	$.get("automatic.htm", {"ryid":ryids.join(","), "qjid" : item.id}, function(){
 					        		jQuery.each(distance, function(i, json){
 					        			self.alljjry[json.key].jjry = '1';
 						        	})
@@ -211,7 +211,7 @@ var HegraceMap = function(){
 		close : function(qjid){
 			var self = this;
 			if(confirm("完成任务吗？")){
-				$.get("closeQjjl.html",{"qjid" : qjid}, function(){
+				$.get("closeQjjl.htm",{"qjid" : qjid}, function(){
 					var marker = self.allqjjl[""+qjid].marker;
 					self.mapObj.remove(marker);
 					delete self.allqjjl[""+qjid];
@@ -224,7 +224,7 @@ var HegraceMap = function(){
 		
 		cancel : function(qjid){
 			if(confirm("取消任务吗？")){
-				$.get("cancelQjjl.html",{"qjid" : qjid}, function(){
+				$.get("cancelQjjl.htm",{"qjid" : qjid}, function(){
 					var marker = self.allqjjl[""+qjid].marker;
 					self.mapObj.remove(marker);
 					delete self.allqjjl[""+qjid];
@@ -238,7 +238,7 @@ var HegraceMap = function(){
 		allocation : function(jjryid, qjid){
 			var self = this;
 			if(confirm("确认分配吗？")){
-				$.get("allocation.html",{"qjid" : qjid, "jjryid" : jjryid}, function(){
+				$.get("allocation.htm",{"qjid" : qjid, "jjryid" : jjryid}, function(){
 					self.alljjry[""+jjryid].jlid = "1";
 					AMap.event.trigger(self.allqjjl[""+qjid].marker,"click");
 				});

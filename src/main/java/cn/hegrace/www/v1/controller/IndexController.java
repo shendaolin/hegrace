@@ -30,19 +30,19 @@ public class IndexController extends BaseController {
 	@Autowired
 	private BaseService baseService;
 	
-	@RequestMapping("/header.html")
+	@RequestMapping("/header.htm")
 	public ModelAndView header(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView("header");
 		return mv;
 	}
 
-	@RequestMapping("/footer.html")
+	@RequestMapping("/footer.htm")
 	public ModelAndView footer(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView("footer");
 		return mv;
 	}
 
-	@RequestMapping("/index.html")
+	@RequestMapping("/index.htm")
 	public ModelAndView index(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView("index");
 		HttpSession session = request.getSession();
@@ -58,7 +58,7 @@ public class IndexController extends BaseController {
 		return mv;
 	}
 
-	@RequestMapping("/noSignInCount.html")
+	@RequestMapping("/noSignInCount.htm")
 	public void noSignInCount(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
@@ -74,7 +74,7 @@ public class IndexController extends BaseController {
 		sendJson(flexigrid, response);
 	}
 	
-	@RequestMapping("/noSignIn.html")
+	@RequestMapping("/noSignIn.htm")
 	public void noSignIn(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
@@ -105,7 +105,7 @@ public class IndexController extends BaseController {
 	}
 	
 	
-	@RequestMapping("/nquipment.html")
+	@RequestMapping("/nquipment.htm")
 	public void equipment(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
@@ -124,7 +124,7 @@ public class IndexController extends BaseController {
 
 	
 
-	@RequestMapping("/processedCount.html")
+	@RequestMapping("/processedCount.htm")
 	public void processedCount(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
@@ -140,7 +140,7 @@ public class IndexController extends BaseController {
 		sendJson(flexigrid, response);
 	}
 	
-	@RequestMapping("/processed.html")
+	@RequestMapping("/processed.htm")
 	public void processed(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
@@ -157,7 +157,7 @@ public class IndexController extends BaseController {
 		sendJson(flexigrid, response);
 	}
 	
-	@RequestMapping("/processingCount.html")
+	@RequestMapping("/processingCount.htm")
 	public void processingCount(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
@@ -173,7 +173,7 @@ public class IndexController extends BaseController {
 		sendJson(flexigrid, response);
 	}
 	
-	@RequestMapping("/processing.html")
+	@RequestMapping("/processing.htm")
 	public void processing(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");

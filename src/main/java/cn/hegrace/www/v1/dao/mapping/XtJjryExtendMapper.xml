@@ -4,17 +4,19 @@
 
 	<select id="select_xtjjry_count" parameterType="java.util.Map"
 		resultType="java.lang.Integer">
-		select count(1) from (select XT_JJRY.id,zjlx,sflx,xb,zjhm,dh,lb,fzcc,ly,zt,a.sflxName,case  when xb=1 then '男' when xb=2 then '女' end as xbName,case  when ly=1 then '平台' when ly=2 then 'App' end as lyName,case  when zt=0 then '未通过'     when zt=1 then '通过' when zt=2 then '黑名单' end as ztName from XT_JJRY  left join  (select dmmc  as  sflxName ,id from  XT_GYDM ) a on XT_JJRY.sflx=a.id)t1 left join (select dmmc  as  zjlxName ,id from  XT_GYDM) b on t1.zjlx=b.id
+		select count(1) from XT_JJRY
 		<if test="xm != null and xm != ''">
-			and xm like '%${xm}%'
+			where xm like '%${xm}%'
 		</if>
 	</select>
 
 	<select id="select_xtjjry_list" parameterType="java.util.Map"
 		resultType="cn.hegrace.www.v1.dto.XtJjryDto">
-			select t1.*,b.zjlxName from (select XT_JJRY.id,xm,zjlx,sflx,xb,zjhm,dh,lb,fzcc,ly,zt,a.sflxName,case  when xb=1 then '男' when xb=2 then '女' end as xbName,case  when ly=1 then '平台' when ly=2 then 'App'  else '平台' end   as lyName,case  when zt=0 then '未通过'     when zt=1 then '通过' when zt=2 then '黑名单' end as ztName from XT_JJRY  left join  (select dmmc  as  sflxName ,id from  XT_GYDM ) a on XT_JJRY.sflx=a.id)t1 left join (select dmmc  as  zjlxName ,id from  XT_GYDM) b on t1.zjlx=b.id
-			<if test="xm != null and xm != ''">
-			and xm like '%${xm}%'
+		select ry.*, sflx.dmmc as sfmc, zjlx.dmmc as zjmc  from XT_JJRY ry
+		left join XT_GYDM sflx on sflx.id = ry.sflx and sflx.lbid = '3'
+		left join XT_GYDM zjlx on zjlx.id = ry.zjlx and zjlx.lbid = '4'
+		<if test="xm != null and xm != ''">
+			where xm like '%${xm}%'
 		</if>
 		<if test="orderByClause != null">
 			order by ${orderByClause}

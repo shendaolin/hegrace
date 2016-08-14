@@ -47,14 +47,14 @@ var Login = function () {
 	            },
 
 	            submitHandler: function (form) {
-	                window.location.href = "xtcsManage/index.html";
+	                window.location.href = "xtcsManage/index.htm";
 	            }
 	        });
 
 	        $('.login-form input').keypress(function (e) {
 	            if (e.which == 13) {
 	                if ($('.login-form').validate().form()) {
-	                    window.location.href = "xtcsManage/index.html";
+	                    window.location.href = "xtcsManage/index.htm";
 	                }
 	                return false;
 	            }

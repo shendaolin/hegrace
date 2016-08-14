@@ -41,14 +41,14 @@ public class XtBsysbController extends BaseController {
 	@Autowired
 	private BaseService baseService;
 	
-	@RequestMapping("xtbsysbManage/index.html")
+	@RequestMapping("xtbsysbManage/index.htm")
 	public ModelAndView index(HttpServletRequest request,
 			HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("xtbsysbManage/index");
 		return mv;
 	}
 	
-	@RequestMapping("xtbsysbManage/xtBsysbList.html")
+	@RequestMapping("xtbsysbManage/xtBsysbList.htm")
 	public ModelAndView xtBsysbList(HttpServletRequest request,
 			HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("xtbsysbManage/xtBsysbList");
@@ -56,7 +56,7 @@ public class XtBsysbController extends BaseController {
 	}
 	
 	
-	@RequestMapping(value = "xtbsysbManage/xtBsysbFlexigrid.html", method = RequestMethod.POST)
+	@RequestMapping(value = "xtbsysbManage/xtBsysbFlexigrid.htm", method = RequestMethod.POST)
 	public void xtBsysbFlexigrid(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtBsysbSeach xtBsysbSeach = (XtBsysbSeach) httpMessageConverter(new XtBsysbSeach(), request);
@@ -69,7 +69,7 @@ public class XtBsysbController extends BaseController {
 		sendJson(flexigrid, response);
 	}
 	
-	@RequestMapping("xtbsysbManage/xtBsysbEdit.html")
+	@RequestMapping("xtbsysbManage/xtBsysbEdit.htm")
 	public ModelAndView xtBsysbEdit(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("xtbsysbManage/xtBsysbEdit");
@@ -96,7 +96,7 @@ public class XtBsysbController extends BaseController {
 	 * @param response
 	 * @throws Exception
 	 */
-	@RequestMapping("xtbsysbManage/xtBsysbSave.html")
+	@RequestMapping("xtbsysbManage/xtBsysbSave.htm")
 	public void xtBsysbSave(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtBsysb xtBsysb = (XtBsysb) httpMessageConverter(new XtBsysb(), request);
@@ -110,7 +110,7 @@ public class XtBsysbController extends BaseController {
 	}
 	
 	
-	@RequestMapping("xtbsysbManage/xtBsysbDelete.html")
+	@RequestMapping("xtbsysbManage/xtBsysbDelete.htm")
 	public void xtBsysbDelete(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		String id = request.getParameter("id");

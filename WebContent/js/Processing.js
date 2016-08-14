@@ -55,7 +55,7 @@ var Processing = function() {
 		},
 
 		processingCount : function() {
-			jQuery.get("processingCount.html", function(date) {
+			jQuery.get("processingCount.htm", function(date) {
 				$("#processing").find(".badge").text(date.total);
 			});
 		},
@@ -72,7 +72,7 @@ var Processing = function() {
 			$("#processingFlexigrid")
 					.flexigrid(
 							{
-								url : "processing.html",
+								url : "processing.htm",
 								dataType : 'json',
 								colModel : [{
 											display : '操作',

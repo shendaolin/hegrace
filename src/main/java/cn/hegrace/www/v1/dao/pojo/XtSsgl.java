@@ -6,93 +6,89 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import cn.hegrace.www.v1.annotation.PrimaryKey;
 
-public class XtSsgl extends BaseDao{
-    private String id;
+public class XtSsgl extends BaseDao {
+	private String id;
 
-    private String ssmc;
+	private String ssmc;
 
-    private String ssdd;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")  
-    private Date sskssj;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")  
-    private Date ssjssj;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")  
-    private Date cjkssj;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")  
-    private Date cjjssj;
+	private String ssdd;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date sskssj;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date ssjssj;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date cjkssj;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date cjjssj;
 
-    private Integer zt;
-    private String ztName;
-    private Integer ssjjySum;
-    private Integer cszglSum;
-    private String ssjs;
-    private String sslj;
-    @PrimaryKey
-    public String getId() {
-        return id;
-    }
+	private Integer zt;
+	private String ssjs;
+	private String sslj;
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
+	@PrimaryKey
+	public String getId() {
+		return id;
+	}
 
-    public String getSsmc() {
-        return ssmc;
-    }
+	public void setId(String id) {
+		this.id = id == null ? null : id.trim();
+	}
 
-    public void setSsmc(String ssmc) {
-        this.ssmc = ssmc == null ? null : ssmc.trim();
-    }
+	public String getSsmc() {
+		return ssmc;
+	}
 
-    public String getSsdd() {
-        return ssdd;
-    }
+	public void setSsmc(String ssmc) {
+		this.ssmc = ssmc == null ? null : ssmc.trim();
+	}
 
-    public void setSsdd(String ssdd) {
-        this.ssdd = ssdd == null ? null : ssdd.trim();
-    }
+	public String getSsdd() {
+		return ssdd;
+	}
 
-    public Date getSskssj() {
-        return sskssj;
-    }
+	public void setSsdd(String ssdd) {
+		this.ssdd = ssdd == null ? null : ssdd.trim();
+	}
 
-    public void setSskssj(Date sskssj) {
-        this.sskssj = sskssj;
-    }
+	public Date getSskssj() {
+		return sskssj;
+	}
 
-    public Date getSsjssj() {
-        return ssjssj;
-    }
+	public void setSskssj(Date sskssj) {
+		this.sskssj = sskssj;
+	}
 
-    public void setSsjssj(Date ssjssj) {
-        this.ssjssj = ssjssj;
-    }
+	public Date getSsjssj() {
+		return ssjssj;
+	}
 
-    public Date getCjkssj() {
-        return cjkssj;
-    }
+	public void setSsjssj(Date ssjssj) {
+		this.ssjssj = ssjssj;
+	}
 
-    public void setCjkssj(Date cjkssj) {
-        this.cjkssj = cjkssj;
-    }
+	public Date getCjkssj() {
+		return cjkssj;
+	}
 
-    public Date getCjjssj() {
-        return cjjssj;
-    }
+	public void setCjkssj(Date cjkssj) {
+		this.cjkssj = cjkssj;
+	}
 
-    public void setCjjssj(Date cjjssj) {
-        this.cjjssj = cjjssj;
-    }
+	public Date getCjjssj() {
+		return cjjssj;
+	}
 
-    public Integer getZt() {
-        return zt;
-    }
+	public void setCjjssj(Date cjjssj) {
+		this.cjjssj = cjjssj;
+	}
 
-    public void setZt(Integer zt) {
-        this.zt = zt;
-    }
+	public Integer getZt() {
+		return zt;
+	}
 
-	 
+	public void setZt(Integer zt) {
+		this.zt = zt;
+	}
 
 	public String getSslj() {
 		return sslj;
@@ -102,32 +98,6 @@ public class XtSsgl extends BaseDao{
 		this.sslj = sslj;
 	}
 
-	 
-
-	public String getZtName() {
-		return ztName;
-	}
-
-	public void setZtName(String ztName) {
-		this.ztName = ztName;
-	}
-
-	public Integer getSsjjySum() {
-		return ssjjySum;
-	}
-
-	public void setSsjjySum(Integer ssjjySum) {
-		this.ssjjySum = ssjjySum;
-	}
-
-	public Integer getCszglSum() {
-		return cszglSum;
-	}
-
-	public void setCszglSum(Integer cszglSum) {
-		this.cszglSum = cszglSum;
-	}
-
 	public String getSsjs() {
 		return ssjs;
 	}
@@ -135,5 +105,5 @@ public class XtSsgl extends BaseDao{
 	public void setSsjs(String ssjs) {
 		this.ssjs = ssjs;
 	}
-    
+
 }

@@ -43,7 +43,7 @@ public class XtSsgwController extends BaseController {
 	
 	 
 	
-	@RequestMapping("raceManage/xtSsgwList.html")
+	@RequestMapping("raceManage/xtSsgwList.htm")
 	public ModelAndView xtSsgwList(HttpServletRequest request,
 			HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("raceManage/xtSsgwList");
@@ -51,7 +51,7 @@ public class XtSsgwController extends BaseController {
 	}
 	
 	
-	@RequestMapping(value = "raceManage/xtSsgwFlexigrid.html", method = RequestMethod.POST)
+	@RequestMapping(value = "raceManage/xtSsgwFlexigrid.htm", method = RequestMethod.POST)
 	public void xtSsgwFlexigrid(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtSsgwSeach xtSsgwSeach = (XtSsgwSeach) httpMessageConverter(new XtSsgwSeach(), request);
@@ -66,7 +66,7 @@ public class XtSsgwController extends BaseController {
 		sendJson(flexigrid, response);
 	 }
 	
-	@RequestMapping("raceManage/xtSsgwEdit.html")
+	@RequestMapping("raceManage/xtSsgwEdit.htm")
 	public ModelAndView xtSsgwEdit(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("raceManage/xtSsgwEdit");
@@ -95,7 +95,7 @@ public class XtSsgwController extends BaseController {
 	 * @param response
 	 * @throws Exception
 	 */
-	@RequestMapping("raceManage/xtSsgwSave.html")
+	@RequestMapping("raceManage/xtSsgwSave.htm")
 	public void xtSsgwSave(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtSsgw xtSsgw = (XtSsgw) httpMessageConverter(new XtSsgw(), request);
@@ -109,7 +109,7 @@ public class XtSsgwController extends BaseController {
 	}
 	
 	
-	@RequestMapping("raceManage/xtSsgwDelete.html")
+	@RequestMapping("raceManage/xtSsgwDelete.htm")
 	public void xtSsgwDelete(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		String id = request.getParameter("id");

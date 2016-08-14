@@ -42,7 +42,7 @@ public class XtCszglController extends BaseController {
 	private BaseService baseService;
 	
 	
-	@RequestMapping("raceManage/xtCszglList.html")
+	@RequestMapping("raceManage/xtCszglList.htm")
 	public ModelAndView xtCszglList(HttpServletRequest request,
 			HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("raceManage/xtCszglList");
@@ -50,7 +50,7 @@ public class XtCszglController extends BaseController {
 	}
 	
 	
-	@RequestMapping(value = "raceManage/xtCszglFlexigrid.html", method = RequestMethod.POST)
+	@RequestMapping(value = "raceManage/xtCszglFlexigrid.htm", method = RequestMethod.POST)
 	public void xtCszglFlexigrid(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtCszglSeach xtCszglSeach = (XtCszglSeach) httpMessageConverter(new XtCszglSeach(), request);
@@ -67,7 +67,7 @@ public class XtCszglController extends BaseController {
 		sendJson(flexigrid, response);
 	 }
 	
-	@RequestMapping("raceManage/xtCszglEdit.html")
+	@RequestMapping("raceManage/xtCszglEdit.htm")
 	public ModelAndView xtCszglEdit(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("raceManage/xtCszglEdit");
@@ -93,7 +93,7 @@ public class XtCszglController extends BaseController {
 	 * @param response
 	 * @throws Exception
 	 */
-	@RequestMapping("raceManage/xtCszglSave.html")
+	@RequestMapping("raceManage/xtCszglSave.htm")
 	public void xtCszglSave(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtCszgl xtCszgl = (XtCszgl) httpMessageConverter(new XtCszgl(), request);
@@ -107,7 +107,7 @@ public class XtCszglController extends BaseController {
 	}
 	
 	
-	@RequestMapping("raceManage/xtCszglDelete.html")
+	@RequestMapping("raceManage/xtCszglDelete.htm")
 	public void xtCszglDelete(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		String id = request.getParameter("id");

@@ -6,7 +6,7 @@ var xtYjfkList = function () {
 		init: function () {
 
 			$("#yjfkFlexigrid").flexigrid({
-                url : "yjfkFlexigrid.html",
+                url : "yjfkFlexigrid.htm",
                 dataType : 'json',
                 params : $("#xtyjfkSeach").serializeArray(),
                 colModel : [ {
@@ -43,7 +43,7 @@ var xtYjfkList = function () {
 							$(tdDiv).html("").append($("<a href=\"#\" class=\"btn mini red\"><i class=\"icon-edit\"></i>处理</a>").on("click",function(){
 								var handle = confirm("确认处理吗？");
 								if(handle){
-									$.get("handle.html", {"id" : row.id}, function(){
+									$.get("handle.htm", {"id" : row.id}, function(){
 										$("#yjfkFlexigrid").flexReload();
 									});
 								}else{

@@ -47,14 +47,14 @@ public class XtCzyhController extends BaseController {
 	@Autowired
 	private BaseService baseService;
 	
-	@RequestMapping("xtczyhManage/index.html")
+	@RequestMapping("xtczyhManage/index.htm")
 	public ModelAndView index(HttpServletRequest request,
 			HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("xtczyhManage/index");
 		return mv;
 	}
 	
-	@RequestMapping("xtczyhManage/xtCzyhList.html")
+	@RequestMapping("xtczyhManage/xtCzyhList.htm")
 	public ModelAndView XtCzyhList(HttpServletRequest request,
 			HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("xtczyhManage/xtCzyhList");
@@ -62,7 +62,7 @@ public class XtCzyhController extends BaseController {
 	}
 	
 	
-	@RequestMapping(value = "xtczyhManage/xtCzyhFlexigrid.html", method = RequestMethod.POST)
+	@RequestMapping(value = "xtczyhManage/xtCzyhFlexigrid.htm", method = RequestMethod.POST)
 	public void XtCzyhFlexigrid(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtCzyhSeach xtCzyhSeach = (XtCzyhSeach) httpMessageConverter(new XtCzyhSeach(), request);
@@ -75,7 +75,7 @@ public class XtCzyhController extends BaseController {
 		sendJson(flexigrid, response);
 	}
 	
-	@RequestMapping("xtczyhManage/xtCzyhEdit.html")
+	@RequestMapping("xtczyhManage/xtCzyhEdit.htm")
 	public ModelAndView XtCzyhEdit(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("xtczyhManage/xtCzyhEdit");
@@ -107,7 +107,7 @@ public class XtCzyhController extends BaseController {
 	 * @param response
 	 * @throws Exception
 	 */
-	@RequestMapping("xtczyhManage/xtCzyhSave.html")
+	@RequestMapping("xtczyhManage/xtCzyhSave.htm")
 	public void XtCzyhSave(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtCzyh xtCzyh = (XtCzyh) httpMessageConverter(new XtCzyh(), request);
@@ -124,7 +124,7 @@ public class XtCzyhController extends BaseController {
 	}
 	
 	
-	@RequestMapping("xtczyhManage/xtCzyhDelete.html")
+	@RequestMapping("xtczyhManage/xtCzyhDelete.htm")
 	public void XtCzyhDelete(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		String id = request.getParameter("id");

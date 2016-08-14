@@ -24,7 +24,7 @@ var Nquipment = function() {
 		nquipmentLoad : function() {
 
 			$("#nquipmentFlexigrid").flexigrid({
-				url : "nquipment.html",
+				url : "nquipment.htm",
 				dataType : 'json',
 				colModel : [ {
 					display : '设备类型',

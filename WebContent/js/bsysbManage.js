@@ -5,7 +5,7 @@ var xtBsysbList = function () {
 		init: function () {
 
 			$("#bsysbFlexigrid").flexigrid({
-                url : "xtBsysbFlexigrid.html",
+                url : "xtBsysbFlexigrid.htm",
                 params : $("#bsysbSeach").serializeArray(),
                 dataType : 'json',
                 colModel : [ {
@@ -63,13 +63,13 @@ var xtBsysbList = function () {
 		},
 		xtCzyhEditOnClick : function() {
 			return function() {
-				$("#page-content").load("xtBsysbEdit.html");
+				$("#page-content").load("xtBsysbEdit.htm");
 			}
 		},
 
 		bsysbEdit : function(id) {
 			
-			$("#page-content").load("xtBsysbEdit.html", {
+			$("#page-content").load("xtBsysbEdit.htm", {
 				"id" : id
 			});
 			
@@ -77,7 +77,7 @@ var xtBsysbList = function () {
 		bsysDelete : function(id) {
 			var del = confirm("确定要删除吗？");
 			if (del == true) {
-				$.get("xtBsysbDelete.html", {
+				$.get("xtBsysbDelete.htm", {
 					"id" : id
 				});
 				$("#bsysbFlexigrid").flexReload();
@@ -104,7 +104,7 @@ var xtBsysbEdit = function () {
 		xtBsysbListOnClick : function(){
 			return function(){
 				
-				$("#page-content").load("xtBsysbList.html");
+				$("#page-content").load("xtBsysbList.htm");
 			}
 		},
 		xtBsysbFormSubmit : function() {

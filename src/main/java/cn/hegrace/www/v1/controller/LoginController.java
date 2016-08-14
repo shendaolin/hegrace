@@ -25,7 +25,7 @@ public class LoginController extends BaseController{
 	private BaseService baseService;
 	
 
-	@RequestMapping("/login.html")
+	@RequestMapping("/login.htm")
 	public ModelAndView login(HttpServletRequest request,
 			HttpServletResponse response){
 		

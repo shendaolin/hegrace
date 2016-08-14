@@ -7,7 +7,7 @@ var XtGydmList = function() {
 			$("#xtGydmFlexigrid")
 					.flexigrid(
 							{
-								url : "xtGydmFlexigrid.html",
+								url : "xtGydmFlexigrid.htm",
 								dataType : 'json',
 								params : $("#xtGydmSeach").serializeArray(),
 								colModel : [
@@ -61,12 +61,12 @@ var XtGydmList = function() {
 
 		xtGydmEditOnClick : function() {
 			return function() {
-				$("#page-content").load("xtGydmEdit.html");
+				$("#page-content").load("xtGydmEdit.htm");
 			}
 		},
 
 		xtGydmEdit : function(id) {
-			$("#page-content").load("xtGydmEdit.html", {
+			$("#page-content").load("xtGydmEdit.htm", {
 				"id" : id
 			});
 		},
@@ -74,7 +74,7 @@ var XtGydmList = function() {
 		xtGydmDelete : function(id) {
 			var del = confirm("确定要删除吗？");
 			if (del == true) {
-				$.get("xtGydmDelete.html", {
+				$.get("xtGydmDelete.htm", {
 					"id" : id
 				});
 				$("#xtGydmFlexigrid").flexReload();
@@ -98,7 +98,7 @@ var xtGydmEdit = function() {
 
 		xtGydmListOnClick : function() {
 			return function() {
-				$("#page-content").load("xtGydmList.html");
+				$("#page-content").load("xtGydmList.htm");
 			}
 		},
 

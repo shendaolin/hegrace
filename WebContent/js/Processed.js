@@ -52,7 +52,7 @@ var Processed = function() {
 		},
 
 		processedCount : function() {
-			jQuery.get("processedCount.html", function(date) {
+			jQuery.get("processedCount.htm", function(date) {
 				$("#processed").find(".badge").text(date.total);
 			});
 		},
@@ -69,7 +69,7 @@ var Processed = function() {
 			$("#processedFlexigrid")
 					.flexigrid(
 							{
-								url : "processed.html",
+								url : "processed.htm",
 								dataType : 'json',
 								colModel : [ {
 									display : '操作',
@@ -79,7 +79,7 @@ var Processed = function() {
 										$(tdDiv).html("").append($("<a href=\"#\" class=\"btn mini red\"><i class=\"icon-info\"></i>查看</a>").on("click",function(){
 										
 											var content = "";
-								        	$.get("getQJJLInfomation.html", {"qjid" : row.id}, function(list){
+								        	$.get("getQJJLInfomation.htm", {"qjid" : row.id}, function(list){
 									        		var ztStyle = {
 															"0" : "未接受",
 															"1" : "已接受",

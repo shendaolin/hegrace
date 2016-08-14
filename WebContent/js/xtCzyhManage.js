@@ -5,7 +5,7 @@ var XtCzyhList = function () {
 		init: function () {
 
 			$("#xtCzyhFlexigrid").flexigrid({
-                url : "xtCzyhFlexigrid.html",
+                url : "xtCzyhFlexigrid.htm",
                 dataType : 'json',
                 params : $("#xtczyhSeach").serializeArray(),
                 colModel : [ {
@@ -64,12 +64,12 @@ var XtCzyhList = function () {
 		},
 		xtCzyhEditOnClick : function() {
 			return function() {
-				$("#page-content").load("xtCzyhEdit.html");
+				$("#page-content").load("xtCzyhEdit.htm");
 			}
 		},
 
 		xtCzyhEdit : function(id) {
-			$("#page-content").load("xtCzyhEdit.html", {
+			$("#page-content").load("xtCzyhEdit.htm", {
 				"id" : id
 			});
 		},
@@ -77,7 +77,7 @@ var XtCzyhList = function () {
 		xtCzyhDelete : function(id) {
 			var del = confirm("确定要删除吗？");
 			if (del == true) {
-				$.get("xtCzyhDelete.html", {
+				$.get("xtCzyhDelete.htm", {
 					"id" : id
 				});
 				$("#xtCzyhFlexigrid").flexReload();
@@ -104,7 +104,7 @@ var XtCzyhEdit = function () {
 
     	xtCzyhListOnClick : function(){
 			return function(){
-				$("#page-content").load("xtCzyhList.html");
+				$("#page-content").load("xtCzyhList.htm");
 			}
 		},
 		xtCzyhFormSubmit : function() {

@@ -39,14 +39,14 @@ public class XtGydmController extends BaseController {
 	@Autowired
 	private BaseService baseService;
 	
-	@RequestMapping("xtcsManage/index.html")
+	@RequestMapping("xtcsManage/index.htm")
 	public ModelAndView index(HttpServletRequest request,
 			HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("xtcsManage/index");
 		return mv;
 	}
 	
-	@RequestMapping("xtcsManage/xtGydmList.html")
+	@RequestMapping("xtcsManage/xtGydmList.htm")
 	public ModelAndView xtGydmList(HttpServletRequest request,
 			HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("xtcsManage/xtGydmList");
@@ -54,7 +54,7 @@ public class XtGydmController extends BaseController {
 	}
 	
 	
-	@RequestMapping(value = "xtcsManage/xtGydmFlexigrid.html", method = RequestMethod.POST)
+	@RequestMapping(value = "xtcsManage/xtGydmFlexigrid.htm", method = RequestMethod.POST)
 	public void xtGydmFlexigrid(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtGydmSeach xtGydmSeach = (XtGydmSeach) httpMessageConverter(new XtGydmSeach(), request);
@@ -67,7 +67,7 @@ public class XtGydmController extends BaseController {
 		sendJson(flexigrid, response);
 	}
 	
-	@RequestMapping("xtcsManage/xtGydmEdit.html")
+	@RequestMapping("xtcsManage/xtGydmEdit.htm")
 	public ModelAndView xtGydmEdit(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("xtcsManage/xtGydmEdit");
@@ -92,7 +92,7 @@ public class XtGydmController extends BaseController {
 	 * @param response
 	 * @throws Exception
 	 */
-	@RequestMapping("xtcsManage/xtGydmSave.html")
+	@RequestMapping("xtcsManage/xtGydmSave.htm")
 	public void xtGydmSave(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtGydm xtGydm = (XtGydm) httpMessageConverter(new XtGydm(), request);
@@ -106,7 +106,7 @@ public class XtGydmController extends BaseController {
 	}
 	
 	
-	@RequestMapping("xtcsManage/xtGydmDelete.html")
+	@RequestMapping("xtcsManage/xtGydmDelete.htm")
 	public void xtGydmDelete(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		String id = request.getParameter("id");

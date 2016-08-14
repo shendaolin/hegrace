@@ -1,28 +1,25 @@
 package cn.hegrace.www.v1.dto;
+
 import cn.hegrace.www.v1.dao.pojo.XtSsgl;
+
 public class XtSsglDto extends XtSsgl {
-private String ssmc;
-private Integer zt;
+	private int cszcount;
+	private int jjycount;
 
-public Integer getZt() {
-	return zt;
-}
+	public int getCszcount() {
+		return cszcount;
+	}
 
-public void setZt(Integer zt) {
-	this.zt = zt;
-}
+	public void setCszcount(int cszcount) {
+		this.cszcount = cszcount;
+	}
 
-public String getSsmc() {
-	return ssmc;
-}
+	public int getJjycount() {
+		return jjycount;
+	}
 
-public void setSsmc(String ssmc) {
-	this.ssmc = ssmc;
-}
-	
-	 
+	public void setJjycount(int jjycount) {
+		this.jjycount = jjycount;
+	}
 
-	 
-
-	 
 }

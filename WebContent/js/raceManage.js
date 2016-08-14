@@ -2,86 +2,79 @@ var xtSsglList = function () {
 	return {
     	//main function to initiate the module
         init: function () {
-			$("#ssglFlexigrid").flexigrid({
-                url : "xtSsglFlexigrid.html",
-                params : $("#ssglSeach").serializeArray(),
+			$("#xtSsglFlexigrid").flexigrid({
+                url : "xtSsglFlexigrid.htm",
+                params : $("#xtSsglSeach").serializeArray(),
                 dataType : 'json',
                 colModel : [ {
-                    display : '<input type="checkbox" id="selectall">',
-                    name:'',
-                    width : 30,
-                    sortable : true,
-                    align : 'center'
-                    },{
-                    display : '赛事名称',
-                    name : 'ssmc',
-                    width : 150,
-                    sortable : true,
-                    align : 'center'
+                    	display : '赛事名称',
+                    	name : 'ssmc',
+                    	width : 200,
+                    	sortable : true,
+                    	align : 'center'
                     }, {
                         display : '赛事地点',
                         name : 'ssdd',
-                        width : 70,
+                        width : 100,
                         align : 'center'
                     }, {
                         display : '比赛时间',
                         name : 'sskssj',
-                        width : 70,
+                        width : 120,
                         align : 'center'
                     }, {
                         display : '场景时间',
                         name : 'cjkssj',
-                        width : 70,
+                        width : 120,
                         align : 'center'
                     }, {
                         display : '参赛人数',
-                        name : 'zt',
                         width : 100,
                         align : 'center',
-                        process : function(tdDiv1, cszglSum) {
-    						var cszglSumButton = "<div><a href='#' class='btn mini green cszList'><i class='icon-user'>'"+cszglSum+"'</i></a></div>";
-    						$(tdDiv1).html(
-    								"<div>" + cszglSumButton
-    										+ "</div>"); 
-                       
-    				}
-                      },{ 
+                        operation : function(tdDiv, row){
+                    		var content = "<a href=\"javascript:;\" class=\"btn mini green\"><i class=\"icon-user\"></i> "+row.cszcount+"</a>";
+							$(tdDiv).html(content);
+						}
+                    },{ 
                         display : '急救人数',
-                        name : 'ssjjySum',
+                        width : 100,
+                        align : 'center',
+                        operation : function(tdDiv, row){
+                        	var content = "";
+                        	if(row.zt = 1){
+                        		content = "已发布";
+                        	}else{
+                        		content = "未发布";
+                        	}
+							$(tdDiv).html(content);
+						}	
+                    } ,{
+                        display : '状态',
+                        name : 'zt',
                         width : 60,
                         align : 'center',
-                        	process : function(tdDiv1, ssjjySum) {
-        						var ssjjySum = "<div><a href=\"#\" class=\"btn mini green cszList\"><i class=\"icon-plus\">'"+ssjjySum+"'</i></a></div>";
-        						$(tdDiv1).html(
-        								"<div>" + ssjjySum
-        										+ "</div>"); 
-                           
-        				}
-                          } ,{
-                        display : '状态',
-                        name : 'ztName',
-                        width : 60,
-                        align : 'center'
+                        operation : function(tdDiv, row){
+                        	var content = "<a href=\"javascript:;\" class=\"btn mini red\"><i class=\"icon-plus\"></i> "+row.jjycount+"</a>";
+							$(tdDiv).html(content);
+						}
                     },{
                         display : '操作',
-                        name : 'zt',
-                        width : 650,
-                        align : 'center',
+                        width : 450,
+                        align : 'left',
                     	process : function(tdDiv, id) {
-   						 
-    						var editButton = "<a href=\"javascript:;\" onclick=\"xtSsglList.xtSsglEdit('"
+    						var editButton = " <a href=\"javascript:;\" onclick=\"xtSsglList.xtSsglEdit('"
     								+ id
     								+ "')\" class=\"btn mini purple\"><i class=\"icon-edit\"></i> 编辑</a>";
-    						var deleteButton = "<a href=\"javascript:;\" onclick=\"xtSsglList.xtSsglDelete('"
+    						var deleteButton = " <a href=\"javascript:;\" onclick=\"xtSsglList.xtSsglDelete('"
     								+ id
     								+ "')\"  class=\"btn mini red\"><i class=\"icon-trash\"></i> 删除</a>";
-    						var sszbglButton = "<a href=\"javascript:;\" onclick=\"xtSsglList.xtSsjjysbListOnClick('"
+    						var sszbglButton = " <a href=\"javascript:;\" onclick=\"xtSsglList.xtSsjjysbListOnClick('"
 								+ id
 								+ "')\" class=\"btn mini green sszbgl\"><i class=\"icon-th-large\"></i> 赛事装备管理</a>";
-    						var zyzshButton = "<a href=\"javascript:;\" onclick=\"xtSsglList.xtSsjjysbListOnClick('"
+    						var zyzshButton = " <a href=\"javascript:;\" onclick=\"xtSsglList.xtSsjjysbListOnClick('"
 								+ id
 								+ "')\" class=\"btn mini red zyzsh\"><i class=\"icon-th-large\"></i> 自愿者审核</a>";
-    						var sstjButton = "<a href=\"javascript:;\" onclick=\"xtSsglList.xtSsglEdit('"
+    						var sstjButton = " <a href=\"javascript:;\" onclick=\"xtSsglList.xtSsglEdit('"
 								+ id
 								+ "')\" class=\"btn mini blue sstj\"><i class=\"icon-th-large\"></i> 赛事统计</a>";
 						
@@ -101,33 +94,33 @@ var xtSsglList = function () {
                 useRp : false,
                 rp : 15,
                 width : "100%",
-                height : 300
+                height : $(document).height() - 400
             });
 
 
         },
         xtSsglEditOnClick : function() {
 			return function() {
-				$("#page-content").load("xtSsglEdit.html");
+				$("#page-content").load("xtSsglEdit.htm");
 			}
 		},
 		xtSsjjysbListOnClick : function(ssid){
-				$("#page-content").load("xtSsjjysbList.html", {
+				$("#page-content").load("xtSsjjysbList.htm", {
 					"ssid" :ssid
 					});		
 		},
 		xtSsglEdit : function(id) {
-			$("#page-content").load("xtSsglEdit.html", {
+			$("#page-content").load("xtSsglEdit.htm", {
 				"id" : id
 			});
 		},
 		xtSsglDelete : function(id) {
 			var del = confirm("确定要删除吗？");
 			if (del == true) {
-				$.get("xtSsglDelete.html", {
+				$.get("xtSsglDelete.htm", {
 					"id" : id
 				});
-				$("#ssglFlexigrid").flexReload();
+				$("#xtSsglFlexigrid").flexReload();
 			} else {
 				return false;
 			}
@@ -137,16 +130,17 @@ var xtSsglList = function () {
 
 }();
 
+
 var XtSsglEdit = function () {
 	
     return {
 
     	xtSsglListOnClick : function(){
 			return function(){
-				 
-				$("#page-content").load("xtSsglList.html");
+				$("#page-content").load("xtSsglList.htm");
 			}
 		},
+		
 		xtSsglFormSubmit : function() {
 			return function() {
 				var zt=$("#zt").val();
@@ -155,6 +149,7 @@ var XtSsglEdit = function () {
 				
 			}
 		},
+		
 		xtSsglFormSubmitAck : function() {
 			return function() {
 				$("#zt").val(1);
@@ -165,12 +160,14 @@ var XtSsglEdit = function () {
 	}; 
 
 }();
+
+/*
 var xtcszglList = function () {
 	return {
     	//main function to initiate the module
         init: function () {
 			$("#cszglFlexigrid").flexigrid({
-                url : "xtcszglFlexigrid.html",
+                url : "xtcszglFlexigrid.htm",
                 params : $("#cszglSeach").serializeArray(),
                 dataType : 'json',
                 colModel : [ {
@@ -245,19 +242,19 @@ var xtcszglList = function () {
         },
         xtcszglEditOnClick : function() {
 			return function() {
-				$("#page-content").load("xtcszglEdit.html");
+				$("#page-content").load("xtcszglEdit.htm");
 			}
 		},
 
 		xtcszglEdit : function(id) {
-			$("#page-content").load("xtcszglEdit.html", {
+			$("#page-content").load("xtcszglEdit.htm", {
 				"id" : id
 			});
 		},
 		xtcszglDelete : function(id) {
 			var del = confirm("确定要删除吗？");
 			if (del == true) {
-				$.get("xtcszglDelete.html", {
+				$.get("xtcszglDelete.htm", {
 					"id" : id
 				});
 				$("#cszglFlexigrid").flexReload();
@@ -277,7 +274,7 @@ var xtSsjjysbList = function () {
 		
         init: function (ssid) {
 			$("#SsjjysbFlexigrid").flexigrid({	
-                url : "xtSsjjysbFlexigrid.html",
+                url : "xtSsjjysbFlexigrid.htm",
                 data : {  
                 	ssid : ssid  
                 }, 
@@ -335,7 +332,7 @@ var xtSsjjysbList = function () {
         xtSsjjysbEditOnClick : function(ssid) {
         	alert(ssid);
         	return function(ssid) {
-        		$("#page-content").load("xtSsjjysbEdit.html",{
+        		$("#page-content").load("xtSsjjysbEdit.htm",{
 					"ssid" : ssid
 				});
 			}	
@@ -344,14 +341,14 @@ var xtSsjjysbList = function () {
 
 		xtSsjjysbEdit : function(id) {
 			alert(id);
-			$("#page-content").load("xtSsjjysbEdit.html", {
+			$("#page-content").load("xtSsjjysbEdit.htm", {
 				"id" : id
 			});
 		},
 		xtSsjjysbDelete : function(id) {
 			var del = confirm("确定要删除吗？");
 			if (del == true) {
-				$.get("xtSsjjysbDelete.html", {
+				$.get("xtSsjjysbDelete.htm", {
 					"id" : id
 				});
 				$("#SsjjysbFlexigrid").flexReload();
@@ -363,6 +360,8 @@ var xtSsjjysbList = function () {
     };
 
 }();
+
+
 var XtcszglEdit = function () {
 	
     return {
@@ -370,13 +369,13 @@ var XtcszglEdit = function () {
     	xtcszglListOnClick : function(){
 			return function(){
 				 
-				$("#page-content").load("xtcszglList.html");
+				$("#page-content").load("xtcszglList.htm");
 			}
 		},
 		xtcszglFormSubmit : function() {
 			return function() {
 				var zt=$("#zt").val();
-				$("#zt").val(0)
+				$("#zt").val(0);
 				alert(zt);
 				$("#xtcszglForm").submit();
 				
@@ -384,7 +383,7 @@ var XtcszglEdit = function () {
 		},
 		xtcszglFormSubmitAck : function() {
 			return function() {
-				$("#zt").val(1) 
+				$("#zt").val(1);
 				$("#xtcszglForm").submit();
 				
 			}
@@ -392,12 +391,13 @@ var XtcszglEdit = function () {
 	}; 
 
 }();
+
 var RaceEdit = function () {var xtcszglList = function () {
 	return {
     	//main function to initiate the module
         init: function () {
 			$("#cszglFlexigrid").flexigrid({
-                url : "xtcszglFlexigrid.html",
+                url : "xtcszglFlexigrid.htm",
                 params : $("#cszglSeach").serializeArray(),
                 dataType : 'json',
                 colModel : [ {
@@ -472,19 +472,19 @@ var RaceEdit = function () {var xtcszglList = function () {
         },
         xtcszglEditOnClick : function() {
 			return function() {
-				$("#page-content").load("xtcszglEdit.html");
+				$("#page-content").load("xtcszglEdit.htm");
 			}
 		},
 
 		xtcszglEdit : function(id) {
-			$("#page-content").load("xtcszglEdit.html", {
+			$("#page-content").load("xtcszglEdit.htm", {
 				"id" : id
 			});
 		},
 		xtcszglDelete : function(id) {
 			var del = confirm("确定要删除吗？");
 			if (del == true) {
-				$.get("xtcszglDelete.html", {
+				$.get("xtcszglDelete.htm", {
 					"id" : id
 				});
 				$("#cszglFlexigrid").flexReload();
@@ -504,13 +504,13 @@ var XtcszglEdit = function () {
     	xtcszglListOnClick : function(){
 			return function(){
 				 
-				$("#page-content").load("xtcszglList.html");
+				$("#page-content").load("xtcszglList.htm");
 			}
 		},
 		xtcszglFormSubmit : function() {
 			return function() {
 				var zt=$("#zt").val();
-				$("#zt").val(0)
+				$("#zt").val(0);
 				alert(zt);
 				$("#xtcszglForm").submit();
 				
@@ -518,7 +518,7 @@ var XtcszglEdit = function () {
 		},
 		xtcszglFormSubmitAck : function() {
 			return function() {
-				$("#zt").val(1) 
+				$("#zt").val(1);
 				$("#xtcszglForm").submit();
 				
 			}
@@ -526,6 +526,7 @@ var XtcszglEdit = function () {
 	}; 
 
 }();
+
 
     return {
 
@@ -563,7 +564,7 @@ var XtcszglEdit = function () {
 		raceListOnClick : function(){
 			return function(){
 
-				$("#page-content").load("list.html");
+				$("#page-content").load("list.htm");
 			}
 		}
 
@@ -634,7 +635,7 @@ var CszList = function () {
 
 		cszEditOnClick:function(){
 			return function(){
-				$("#page-content").load("cszedit.html");
+				$("#page-content").load("cszedit.htm");
 			}
 		}
 
@@ -650,7 +651,7 @@ var CszEdit = function () {
 
 		cszListOnClick : function(){
 			return function(){
-				$("#page-content").load("cszlist.html");
+				$("#page-content").load("cszlist.htm");
 			}
 		}
 
@@ -742,7 +743,7 @@ var JjyList = function () {
 
 		jjyEditOnClick:function(){
 			return function(){
-				$("#page-content").load("jjyedit.html");
+				$("#page-content").load("jjyedit.htm");
 			}
 		}
 
@@ -758,7 +759,7 @@ var JjyEdit = function () {
 
 		jjyListOnClick:function(){
 			return function(){
-				$("#page-content").load("jjyList.html");
+				$("#page-content").load("jjyList.htm");
 			}
 		}
 
@@ -915,3 +916,4 @@ var ZbglList = function () {
     };
 
 }();
+*/

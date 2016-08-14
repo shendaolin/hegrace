@@ -41,14 +41,14 @@ public class XtSsglController extends BaseController {
 	@Autowired
 	private BaseService baseService;
 	
-	@RequestMapping("raceManage/index.html")
+	@RequestMapping("raceManage/index.htm")
 	public ModelAndView index(HttpServletRequest request,
 			HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("raceManage/index");
 		return mv;
 	}
 	
-	@RequestMapping("raceManage/xtSsglList.html")
+	@RequestMapping("raceManage/xtSsglList.htm")
 	public ModelAndView xtSsglList(HttpServletRequest request,
 			HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("raceManage/xtSsglList");
@@ -56,7 +56,7 @@ public class XtSsglController extends BaseController {
 	}
 	
 	
-	@RequestMapping(value = "raceManage/xtSsglFlexigrid.html", method = RequestMethod.POST)
+	@RequestMapping(value = "raceManage/xtSsglFlexigrid.htm", method = RequestMethod.POST)
 	public void xtSsglFlexigrid(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtSsglSeach xtSsglSeach = (XtSsglSeach) httpMessageConverter(new XtSsglSeach(), request);
@@ -71,7 +71,7 @@ public class XtSsglController extends BaseController {
 		sendJson(flexigrid, response);
 	 }
 	
-	@RequestMapping("raceManage/xtSsglEdit.html")
+	@RequestMapping("raceManage/xtSsglEdit.htm")
 	public ModelAndView xtSsglEdit(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("raceManage/xtSsglEdit");
@@ -100,7 +100,7 @@ public class XtSsglController extends BaseController {
 	 * @param response
 	 * @throws Exception
 	 */
-	@RequestMapping("raceManage/xtSsglSave.html")
+	@RequestMapping("raceManage/xtSsglSave.htm")
 	public void xtSsglSave(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtSsgl xtSsgl = (XtSsgl) httpMessageConverter(new XtSsgl(), request);
@@ -114,7 +114,7 @@ public class XtSsglController extends BaseController {
 	}
 	
 	
-	@RequestMapping("raceManage/xtSsglDelete.html")
+	@RequestMapping("raceManage/xtSsglDelete.htm")
 	public void xtSsglDelete(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		String id = request.getParameter("id");

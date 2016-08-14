@@ -30,7 +30,7 @@ public class IndexMapController extends BaseController {
 	@Autowired
 	private BaseService baseService;
 	
-	@RequestMapping("/getJjryLngLats.html")
+	@RequestMapping("/getJjryLngLats.htm")
 	public void getJjryLngLats(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
@@ -46,7 +46,7 @@ public class IndexMapController extends BaseController {
 		sendJson(flexigrid, response);
 	}
 	
-	@RequestMapping("/getQJJLLngLats.html")
+	@RequestMapping("/getQJJLLngLats.htm")
 	public void getQJJLLngLats(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
@@ -63,7 +63,7 @@ public class IndexMapController extends BaseController {
 	}
 	
 	
-	@RequestMapping("/getQJJLInfomation.html")
+	@RequestMapping("/getQJJLInfomation.htm")
 	public void getQJJLInfomation(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String qjid = request.getParameter("qjid");
 		Flexigrid flexigrid = new Flexigrid(new Page());
@@ -76,7 +76,7 @@ public class IndexMapController extends BaseController {
 	}
 	
 	
-	@RequestMapping("/getJjryInfomation.html")
+	@RequestMapping("/getJjryInfomation.htm")
 	public void getJjryInfomation(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String jjyid = request.getParameter("jjyid");
 		Flexigrid flexigrid = new Flexigrid(new Page());
@@ -89,7 +89,7 @@ public class IndexMapController extends BaseController {
 	}
 	
 	
-	@RequestMapping("/automatic.html")
+	@RequestMapping("/automatic.htm")
 	public void automatic(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
@@ -114,7 +114,7 @@ public class IndexMapController extends BaseController {
 	}
 	
 	
-	@RequestMapping("/closeQjjl.html")
+	@RequestMapping("/closeQjjl.htm")
 	public void closeQjjl(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String qjid = request.getParameter("qjid");
 		XtQjjl xtqjjl = new XtQjjl();
@@ -127,7 +127,7 @@ public class IndexMapController extends BaseController {
 	}
 	
 	
-	@RequestMapping("/cancelQjjl.html")
+	@RequestMapping("/cancelQjjl.htm")
 	public void cancelQjjl(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String qjid = request.getParameter("qjid");
 		XtQjjl xtqjjl = new XtQjjl();
@@ -139,7 +139,7 @@ public class IndexMapController extends BaseController {
 		}
 	}
 	
-	@RequestMapping("/allocation.html")
+	@RequestMapping("/allocation.htm")
 	public void allocation(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String qjid = request.getParameter("qjid");
 		String jjryid = request.getParameter("jjryid");

@@ -47,7 +47,7 @@ public class XtSsjjysbController extends BaseController {
 	private BaseService baseService;
 	 
 	
-	@RequestMapping("raceManage/xtSsjjysbList.html")
+	@RequestMapping("raceManage/xtSsjjysbList.htm")
 	public ModelAndView xtSsjjysbList(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{ 
 		String ssid = request.getParameter("ssid");
@@ -60,7 +60,7 @@ public class XtSsjjysbController extends BaseController {
 	}
 	
 	
-	@RequestMapping(value = "raceManage/xtSsjjysbFlexigrid.html", method = RequestMethod.POST)
+	@RequestMapping(value = "raceManage/xtSsjjysbFlexigrid.htm", method = RequestMethod.POST)
 	public void xtSsjjysbFlexigrid(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtSsjjysbSeach xtSsjjysbSeach = (XtSsjjysbSeach) httpMessageConverter(new XtSsjjysbSeach(), request);
@@ -76,7 +76,7 @@ public class XtSsjjysbController extends BaseController {
 		sendJson(flexigrid, response);
 	 }
 	
-	@RequestMapping("raceManage/xtSsjjysbEdit.html")
+	@RequestMapping("raceManage/xtSsjjysbEdit.htm")
 	public ModelAndView xtSsjjysbEdit(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("raceManage/xtSsjjysbEdit");
@@ -113,7 +113,7 @@ public class XtSsjjysbController extends BaseController {
 	 * @param response
 	 * @throws Exception
 	 */
-	@RequestMapping("raceManage/xtSsjjysbSave.html")
+	@RequestMapping("raceManage/xtSsjjysbSave.htm")
 	public void xtSsjjysbSave(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtSsjjysb xtSsjjysb = (XtSsjjysb) httpMessageConverter(new XtSsjjysb(), request);
@@ -127,7 +127,7 @@ public class XtSsjjysbController extends BaseController {
 	}
 	
 	
-	@RequestMapping("raceManage/xtSsjjysbDelete.html")
+	@RequestMapping("raceManage/xtSsjjysbDelete.htm")
 	public void xtSsjjysbDelete(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		String id = request.getParameter("id");

@@ -41,14 +41,14 @@ public class XtJjryController extends BaseController {
 	@Autowired
 	private BaseService baseService;
 	
-	@RequestMapping("xtjjryManage/index.html")
+	@RequestMapping("xtjjryManage/index.htm")
 	public ModelAndView index(HttpServletRequest request,
 			HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("xtjjryManage/index");
 		return mv;
 	}
 	
-	@RequestMapping("xtjjryManage/xtJjryList.html")
+	@RequestMapping("xtjjryManage/xtJjryList.htm")
 	public ModelAndView xtJjryList(HttpServletRequest request,
 			HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("xtjjryManage/xtJjryList");
@@ -56,7 +56,7 @@ public class XtJjryController extends BaseController {
 	}
 	
 	
-	@RequestMapping(value = "xtjjryManage/xtJjryFlexigrid.html", method = RequestMethod.POST)
+	@RequestMapping(value = "xtjjryManage/xtJjryFlexigrid.htm", method = RequestMethod.POST)
 	public void xtJjryFlexigrid(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtJjrySeach xtJjrySeach = (XtJjrySeach) httpMessageConverter(new XtJjrySeach(), request);
@@ -69,7 +69,7 @@ public class XtJjryController extends BaseController {
 		sendJson(flexigrid, response);
 	 }
 	
-	@RequestMapping("xtjjryManage/xtJjryEdit.html")
+	@RequestMapping("xtjjryManage/xtJjryEdit.htm")
 	public ModelAndView xtJjryEdit(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("xtjjryManage/xtJjryEdit");
@@ -99,7 +99,7 @@ public class XtJjryController extends BaseController {
 	 * @param response
 	 * @throws Exception
 	 */
-	@RequestMapping("xtjjryManage/xtJjrySave.html")
+	@RequestMapping("xtjjryManage/xtJjrySave.htm")
 	public void xtJjrySave(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtJjry xtJjry = (XtJjry) httpMessageConverter(new XtJjry(), request);
@@ -113,7 +113,7 @@ public class XtJjryController extends BaseController {
 	}
 	
 	
-	@RequestMapping("xtjjryManage/xtJjryDelete.html")
+	@RequestMapping("xtjjryManage/xtJjryDelete.htm")
 	public void xtJjryDelete(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		String id = request.getParameter("id");

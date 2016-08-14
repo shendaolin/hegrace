@@ -48,7 +48,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 	<link href="../media/css/jquery.fileupload-ui.css" rel="stylesheet" />
 
 	<!-- END PAGE LEVEL STYLES -->
-
+	<link rel="stylesheet" type="text/css" href="../ckeditor/skins/kama/editor.css?t=D03G5XL">
 	<link rel="shortcut icon" href="../media/image/favicon.ico" />
 
 </head>
@@ -68,27 +68,27 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 			<!-- BEGIN SIDEBAR MENU -->        
 			<ul class="page-sidebar-menu">
 				<li class="start">
-					<a href="../index.html">
+					<a href="../index.htm">
 					<i class="icon-home"></i> 
 					<span class="title">指挥中心</span>
 					</a>
 				</li>
 				<li class="active">
-					<a href="index.html">
+					<a href="index.htm">
 					<i class="icon-file-text"></i> 
 					<span class="title">赛事管理</span>
 					<span class="selected"></span>
 					</a>
 				</li>
 				<li class="">
-					<a href="../xtjjryManage/index.html">
+					<a href="../xtjjryManage/index.htm">
 					<i class="icon-cogs"></i> 
 					<span class="title">急救人员管理</span>
 					<span class="selected"></span>
 					</a>
 				</li>
 				<li class="">
-					<a href="../xtbsysbManage/index.html">
+					<a href="../xtbsysbManage/index.htm">
 					<i class="icon-briefcase"></i> 
 					<span class="title">比赛用设备管理</span>
 					<span class="selected"></span>
@@ -96,7 +96,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 				</li>
 
 				<li class="">
-					<a href="../xtczyhManage/index.html">
+					<a href="../xtczyhManage/index.htm">
 					<i class="icon-sitemap"></i> 
 					<span class="title">系统管理</span>
 					<span class="selected"></span>
@@ -104,14 +104,14 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 				</li>
 				
 				<li class="">
-					<a href="../xtyjfkManage/index.html">
+					<a href="../xtyjfkManage/index.htm">
 					<i class="icon-bar-chart"></i> 
 					<span class="title">意见反馈管理</span>
 					</a>
 				</li>
 
 				<li class="last ">
-					<a href="../xtcsManage/index.html">
+					<a href="../xtcsManage/index.htm">
 					<i class="icon-th-list"></i> 
 					<span class="title">系统参数管理</span>
 					</a>
@@ -148,14 +148,17 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="../media/js/app.js" type="text/javascript"></script>
-	<script src="../js/raceManage.js" type="text/javascript"></script>        
+	<script src="../js/raceManage.js" type="text/javascript"></script>  
+	<script src="../ckeditor/ckeditor.js"></script>
+	<script src="../ckfinder/ckfinder.js"></script>     
 	<!-- END PAGE LEVEL SCRIPTS -->  
 	<script>
 		jQuery(document).ready(function() {    
-		   $("#header").load("../header.html");
-		   $("#footer").load("../footer.html");
+		   $("#header").load("../header.htm");
+		   $("#footer").load("../footer.htm");
 		   App.init(); // initlayout and core plugins
-		   $("#page-content").load("xtSsglList.html")
+		   $("#page-content").height($(document).height() - 80)
+		   $("#page-content").load("xtSsglList.htm")
 		});
 	</script>
 	<!-- END JAVASCRIPTS -->

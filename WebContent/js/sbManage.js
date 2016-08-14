@@ -44,7 +44,7 @@ var CsList = function () {
 
 		csEditOnClick : function(){
 			return function(){
-				$("#page-content").load("csedit.html");
+				$("#page-content").load("csedit.htm");
 			}
 		}
 
@@ -60,7 +60,7 @@ var CsEdit = function () {
 
 		csListOnClick : function(){
 			return function(){
-				$("#page-content").load("csList.html");
+				$("#page-content").load("csList.htm");
 			}
 		}
 

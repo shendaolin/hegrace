@@ -39,14 +39,14 @@ public class XtYjfkController extends BaseController {
 	@Autowired
 	private BaseService baseService;
 	
-	@RequestMapping("xtyjfkManage/index.html")
+	@RequestMapping("xtyjfkManage/index.htm")
 	public ModelAndView index(HttpServletRequest request,
 			HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("xtyjfkManage/index");
 		return mv;
 	}
 	
-	@RequestMapping("xtyjfkManage/xtYjfkList.html")
+	@RequestMapping("xtyjfkManage/xtYjfkList.htm")
 	public ModelAndView xtYjfkList(HttpServletRequest request,
 			HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("xtyjfkManage/xtYjfkList");
@@ -55,7 +55,7 @@ public class XtYjfkController extends BaseController {
 	
 	
 	
-	@RequestMapping(value="xtyjfkManage/yjfkFlexigrid.html", method = RequestMethod.POST)
+	@RequestMapping(value="xtyjfkManage/yjfkFlexigrid.htm", method = RequestMethod.POST)
 	public void yjfkFlexigrid(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtYjfkSeach xtYjfkSeach = (XtYjfkSeach) httpMessageConverter(new XtYjfkSeach(), request);
@@ -71,7 +71,7 @@ public class XtYjfkController extends BaseController {
 	
 	
 	
-	@RequestMapping("xtyjfkManage/handle.html")
+	@RequestMapping("xtyjfkManage/handle.htm")
 	public void handle(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		String id = request.getParameter("id");

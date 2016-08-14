@@ -3,7 +3,7 @@
 <mapper namespace="XtSsgl">
 	<select id="select_xtssgl_count" parameterType="java.util.Map"
 		resultType="java.lang.Integer">
-		select  count(1) from (select  a.cszglSum,id,ssmc,ssdd,sskssj,cjkssj,case when zt=0 then '未通过' when zt=1 then '通过' end as zbName  from XT_SSGL left join (select count(1) as cszglSum,ssid from XT_CSZGL group by  ssid) a on XT_SSGL.id=a.ssid) t1 left join (select count(1) as ssjjySum,ssid from XT_SSJJY group by  ssid) b on b.ssid=t1.id 
+		select  count(1) from  XT_SSGL where 1=1
 		<if test="ssmc != null and ssmc != ''">
 			and ssmc like '%${ssmc}%'
 		</if>
@@ -14,13 +14,17 @@
 
 	<select id="select_xtssgl_list" parameterType="java.util.Map"
 		resultType="cn.hegrace.www.v1.dto.XtSsglDto">
-			select t1.*,b.ssjjySum from (select  a.cszglSum,id,ssmc,ssdd,sskssj,cjkssj,ssjssj,cjjssj,case when zt=0 then '未通过' when zt=1 then '通过' end as ztName  from XT_SSGL left join (select count(1) as cszglSum,ssid from XT_CSZGL group by  ssid) a on XT_SSGL.id=a.ssid) t1 left join (select count(1) as ssjjySum,ssid from XT_SSJJY group by  ssid) b on b.ssid=t1.id 
+		select ssgl.*, count(distinct cszgl.id) as cszcount, count(distinct ssjjy.id) as jjycount from XT_SSGL ssgl
+		left join XT_CSZGL cszgl on cszgl.ssid = ssgl.id
+		left join XT_SSJJY ssjjy on ssjjy.ssid = ssgl.id
+		where 1=1
 		<if test="ssmc != null and ssmc != ''">
 			and ssmc like %${ssmc}%'
 		</if>
 		<if test="zt != null and zt != ''">
 			and zt = ${zt}
 		</if>
+		group by ssgl.id
 		<if test="orderByClause != null">
 			order by ${orderByClause}
 		</if>

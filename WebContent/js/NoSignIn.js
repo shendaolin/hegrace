@@ -55,7 +55,7 @@ var NoSignIn = function() {
 		},
 
 		noSignInCount : function() {
-			jQuery.get("noSignInCount.html", function(date) {
+			jQuery.get("noSignInCount.htm", function(date) {
 				$("#noSignIn").find(".badge").text(date.total);
 			});
 		},
@@ -70,7 +70,7 @@ var NoSignIn = function() {
 		noSignInLoad : function() {
 
 			$("#noSignInFlexigrid").flexigrid({
-				url : "noSignIn.html",
+				url : "noSignIn.htm",
 				dataType : 'json',
 				colModel : [ {
 					display : '姓名',
