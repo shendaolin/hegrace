@@ -2,18 +2,14 @@ package cn.hegrace.www.v1.seach;
 
 public class XtCzyhSeach extends Page {
 	
-	private String dlm;
+	private String xm;
 
-	public String getDlm() {
-		return dlm;
+	public String getXm() {
+		return xm;
 	}
 
-	public void setDlm(String dlm) {
-		this.dlm = dlm;
+	public void setXm(String xm) {
+		this.xm = xm;
 	}
-
-
-	 
-	 
 
 }

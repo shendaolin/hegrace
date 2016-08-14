@@ -4,17 +4,19 @@
 
 	<select id="select_xtbsysb_count" parameterType="java.util.Map"
 		resultType="java.lang.Integer">
-		SELECT count(1) from XT_GYDM g, XT_BSYSB d where d.sblx = g.id 
-		<if test="sbbh != null and sbbh != ''">
-			and sbbh like '%${sbbh}%'
+		SELECT count(1) from XT_BSYSB sb
+		left join XT_GYDM dm on dm.id = sb.sblx and dm.lbid = '2'
+		<if test="lbmc != null and lbmc != ''">
+			where dmmc like '%${lbmc}%'
 		</if>
 	</select>
 
 	<select id="select_xtbsysb_list" parameterType="java.util.Map"
 		resultType="cn.hegrace.www.v1.dto.XtBsysbDto">
-		SELECT d.*,g.dmmc,case  when sbzt=1 then '可用' when sbzt=0 then '不可用' end as sbztName  from XT_GYDM g, XT_BSYSB d where d.sblx = g.id 
-		<if test="sbbh != null and sbbh != ''">
-			and sbbh like '%${sbbh}%'
+		SELECT sb.*, dm.dmmc as lbmc from XT_BSYSB sb
+		left join XT_GYDM dm on dm.id = sb.sblx and dm.lbid = '2'
+		<if test="lbmc != null and lbmc != ''">
+			where dmmc like '%${lbmc}%'
 		</if>
 		<if test="orderByClause != null">
 			order by ${orderByClause}

@@ -10,7 +10,7 @@ var xtBsysbList = function () {
                 dataType : 'json',
                 colModel : [ {
                         display : '设备类型',
-                        name : 'dmmc',
+                        name : 'lbmc',
                         width : 100,
                         align : 'center'
                     }, {
@@ -20,12 +20,19 @@ var xtBsysbList = function () {
                         align : 'center'
                     },  {
                         display : '设备状态',
-                        name : 'sbztName',
                         width : 100,
-                        align : 'center'	
+                        align : 'center',
+                    	operation : function(tdDiv, row){
+                    		var content = "";
+                    		if(row.sbzt == "1"){
+                    			content = "<span class=\"label label-success\">可用</span>";
+                    		}else if(row.sbzt == "0"){
+                    			content = "<span class=\"label label-warning\">不可用</span>";
+                    		}
+							$(tdDiv).html(content);
+						}
                     },{
                         display : '操作',
-                        name : 'zt',
                         width : 200,
                         align : 'center',
     					process : function(tdDiv, id) {
@@ -42,14 +49,14 @@ var xtBsysbList = function () {
     										+ "</div>");
     					}
     				} ],
-                sortname : "Id",
+                sortname : "id",
                 sortorder : "asc",
                 usepager : true,
                 title : '设备信息列表',
                 useRp : false,
                 rp : 15,
                 width : "100%",
-                height : 300
+                height : $(document).height() - 400
             });
 
 
@@ -77,6 +84,11 @@ var xtBsysbList = function () {
 			} else {
 				return false;
 			}
+		},
+		xtBsysbSeach : function(){
+			$("#bsysbFlexigrid").flexOptions({
+				params : $("#bsysbSeach").serializeArray()
+			}).flexReload();
 		}
 		  
     };

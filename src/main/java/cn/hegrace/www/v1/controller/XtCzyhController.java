@@ -2,6 +2,7 @@ package cn.hegrace.www.v1.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +31,8 @@ import cn.hegrace.www.v1.dao.pojo.XtCzyh;
 import cn.hegrace.www.v1.dao.pojo.XtCzyhExample;
 import cn.hegrace.www.v1.dao.pojo.XtDmlb;
 import cn.hegrace.www.v1.dao.pojo.XtDmlbExample;
+import cn.hegrace.www.v1.dao.pojo.XtGydm;
+import cn.hegrace.www.v1.dao.pojo.XtGydmExample;
 import cn.hegrace.www.v1.dao.pojo.XtSsgl;
 import cn.hegrace.www.v1.dao.pojo.XtSsglExample;
 import cn.hegrace.www.v1.dao.pojo.XtCzyh;
@@ -65,7 +68,7 @@ public class XtCzyhController extends BaseController {
 		XtCzyhSeach xtCzyhSeach = (XtCzyhSeach) httpMessageConverter(new XtCzyhSeach(), request);
 		Flexigrid flexigrid = new Flexigrid(xtCzyhSeach);
 		Map map = flexigrid.getMap();
-		map.put("dlm", xtCzyhSeach.getDlm());
+		map.put("xm", xtCzyhSeach.getXm());
 		flexigrid.setPages(xtCzyhSeach.getPage());
 		flexigrid.setTotal(baseService.queryForCount("XtCzyh.select_xtczyh_count", map));
 		flexigrid.setRows(baseService.queryForList("XtCzyh.select_xtczyh_list", map));
@@ -78,8 +81,16 @@ public class XtCzyhController extends BaseController {
 		ModelAndView mv = new ModelAndView("xtczyhManage/xtCzyhEdit");
 		String id = request.getParameter("id");
 		XtSsglExample example = new XtSsglExample();
+		example.createCriteria().andZtEqualTo(1);
+		example.createCriteria().andSsjssjGreaterThanOrEqualTo(new Date());
 		List<XtSsgl> list = baseService.selectByExample(example);
 		mv.addObject("XtSsgList", list);
+		
+		XtGydmExample xtGydmExample = new XtGydmExample();
+		xtGydmExample.createCriteria().andLbidEqualTo(1);
+		List<XtGydm> xtGydms = baseService.selectByExample(xtGydmExample);
+		mv.addObject("xtGydms", xtGydms);
+		
 		if(StringUtils.isNotEmpty(id)){
 			XtCzyh xtCzyh = new XtCzyh();
 			xtCzyh.setId(id);
@@ -104,6 +115,9 @@ public class XtCzyhController extends BaseController {
 			xtCzyh.setId(baseService.getUuid());
 			baseService.insert(xtCzyh);
 		}else{
+			XtCzyh xtCzyh2 = baseService.selectByPrimaryKey(xtCzyh);
+			xtCzyh.setDlm(xtCzyh2.getDlm());
+			xtCzyh.setDlmm(xtCzyh2.getDlmm());
 			baseService.updateByPrimaryKey(xtCzyh);
 		}
 		sendJson(xtCzyh, response);
@@ -114,9 +128,11 @@ public class XtCzyhController extends BaseController {
 	public void XtCzyhDelete(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		String id = request.getParameter("id");
-		XtCzyh xtCzyh = new XtCzyh();
-		xtCzyh.setId(id);
-		baseService.deleteByPrimaryKey(xtCzyh);
+			if(StringUtils.isNotEmpty(id)){
+			XtCzyh xtCzyh = new XtCzyh();
+			xtCzyh.setId(id);
+			baseService.deleteByPrimaryKey(xtCzyh);
+		}
 	}
 	
 }

@@ -4,23 +4,20 @@
 
 	<select id="select_xtczyh_count" parameterType="java.util.Map"
 		resultType="java.lang.Integer">
-		SELECT count(1) from XT_CZYH g, XT_SSGL d where d.id = g.ssid
-		<if test="dlm != null and dlm != ''">
-			and dlm like '%${dlm}%'
-		</if>
-		<if test="ssmc != null and ssmc != ''">
-			and ssmc like '%${ssmc}%'
+		SELECT count(1) from XT_CZYH
+		<if test="xm != null and xm != ''">
+			where xm like '%${xm}%'
 		</if>
 	</select>
 
 	<select id="select_xtczyh_list" parameterType="java.util.Map"
 		resultType="cn.hegrace.www.v1.dto.XtCzyhDto">
-		SELECT g.*, d.ssmc,,case  when zw=1 then '运营' when zw=2 then '赛事指挥官' end as zwName from  XT_CZYH g, XT_SSGL d  where  d.id = g.ssid
-		<if test="dlm != null and dlm != ''">
-			and dlm like '%${dlm}%'
-		</if>
-		<if test="ssmc != null and ssmc != ''">
-			and ssmc like '%${ssmc}%'
+		select czyh.*, ssgl.ssmc, dmmc as zwmc
+		from XT_CZYH czyh
+		left join XT_SSGL ssgl on ssgl.id = czyh.ssid
+		left join XT_GYDM dm on dm.id = czyh.zw and lbid = '1'
+		<if test="xm != null and xm != ''">
+			where czyh.xm like '%${xm}%'
 		</if>
 		<if test="orderByClause != null">
 			order by ${orderByClause}

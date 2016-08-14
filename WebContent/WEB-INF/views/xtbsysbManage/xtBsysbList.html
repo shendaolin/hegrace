@@ -9,10 +9,10 @@
 			<ul class="breadcrumb">
 				<li>
 					<i class="icon-home"></i>
-					<a href="。。/index.html">首页</a> 
+					<a href="../index.html">首页</a> 
 					<i class="icon-angle-right"></i>
 				</li>
-				<li><a href="#">比赛用设别管理 </a></li>
+				<li><a href="#">比赛用设备管理 </a></li>
 				<li class="pull-right no-text-shadow">
 					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
 						<i class="icon-calendar"></i>
@@ -38,24 +38,11 @@
 			</div>
 			<div style="float:right;">
 			<form id="bsysbSeach">
-			<input placeholder="参数类型" class="m-wrap medium" type="text" name="lbmc"/>
+			<input placeholder="设备类型" class="m-wrap medium" type="text" name="lbmc"/>
 			</form>
 			</div>
-			<!-- 
-			<table class="xtBsysbFlexiGrid" style="display: none">
-			<tbody>
-			<tr>
-				<td><div>担架cs</div></td>
-				<td><div>92834986</div></td>
-				<td><div>可以</div></td>
-				<td><div>
-				<a href="#" class="btn mini purple"><i class="icon-edit"></i> 编辑</a>
-				<a href="#" class="btn mini red"><i class="icon-trash"></i> 删除</a>
-				</div></td>
-			</tr>    
-			</tbody>
-			</table>
-			--><table id="bsysbFlexigrid" style="display: none">
+			
+			<table id="bsysbFlexigrid" style="display: none" /> 
 			<br/>
 		</div>
 	</div>
@@ -70,8 +57,11 @@
 		xtBsysbList.init();
 		$("#sbEdit1").on("click", xtBsysbList.xtCzyhEditOnClick());
 		$("#page-content").height("100%");
-
-		//$("#sbtj").on("click", xtBsysbList.sbTjOnClick());
+		$('#bsysbSeach').submit(function() {
+			xtBsysbList.xtBsysbSeach()
+	        return false; //阻止表单默认提交
+	    });
+		// $("#sbtj").on("click", xtBsysbList.sbTjOnClick());
 	});
 </script>
 <!-- END JAVASCRIPTS -->

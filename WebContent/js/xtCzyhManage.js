@@ -9,6 +9,11 @@ var XtCzyhList = function () {
                 dataType : 'json',
                 params : $("#xtczyhSeach").serializeArray(),
                 colModel : [ {
+		                    display : '赛事名称',
+		                    name : 'ssmc',
+		                    width : 200,
+		                    align : 'center'
+		                },{
                         display : '账号名',
                         name : 'dlm',
                         width : 100,
@@ -25,7 +30,7 @@ var XtCzyhList = function () {
                         align : 'center'
                     },{
                         display : '职位',
-                        name : 'zwName',
+                        name : 'zwmc',
                         width : 100,
                         align : 'center'
                     },{
@@ -68,6 +73,7 @@ var XtCzyhList = function () {
 				"id" : id
 			});
 		},
+		
 		xtCzyhDelete : function(id) {
 			var del = confirm("确定要删除吗？");
 			if (del == true) {
@@ -78,6 +84,12 @@ var XtCzyhList = function () {
 			} else {
 				return false;
 			}
+		},
+		
+		xtCzyhSeach : function(){
+			$("#xtCzyhFlexigrid").flexOptions({
+				params : $("#xtCzyhSeach").serializeArray()
+			}).flexReload();
 		}
 	};
 

@@ -28,12 +28,8 @@
 			</button>
 			</div>
 			<div style="float:right;">
-			<input placeholder="赛事名称" class="m-wrap medium" type="text"/>
-			</div>
-
-			<div style="float:right;">
 			<form id="xtCzyhSeach">
-			<input placeholder="用户名" class="m-wrap medium" type="text" name="xm"/>
+			<input placeholder="用户姓名" class="m-wrap medium" type="text" name="xm"/>
 			</form>
 			</div>
 
@@ -53,6 +49,10 @@
 	jQuery(document).ready(function() {    
 		XtCzyhList.init();
 		$("#xtCzyhEdit").on("click", XtCzyhList.xtCzyhEditOnClick());
+		$('#xtCzyhSeach').submit(function() {
+			XtCzyhList.xtCzyhSeach()
+	        return false; //阻止表单默认提交
+	    });
 	});
 </script>
 <!-- END JAVASCRIPTS -->

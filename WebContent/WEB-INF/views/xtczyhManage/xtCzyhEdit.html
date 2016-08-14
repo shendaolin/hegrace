@@ -47,6 +47,7 @@
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
+				#if("$!xtCzyh.id"=="")
 				<div class="control-group">
 					<label class="control-label">账号:</label>
 					<div class="controls">
@@ -61,12 +62,14 @@
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
+				#end
 				<div class="control-group">
 					<label class="control-label">职位</label>
 					<div class="controls">
 						<select name="zw">
-						<option value="1" #if("$!xtCzyh.zw"=="1") selected #end>运营</option>
-						<option value="2" #if("$!xtCzyh.zw"=="2") selected #end>赛事指挥官</option>
+						#foreach($xtGydm in $xtGydms)
+								<option value="$!xtGydm.id" #if("$!xtGydm.id"=="$!xtCzyh.zw") selected #end>$!xtGydm.dmmc</option>
+						#end
 						</select>
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
@@ -75,6 +78,7 @@
 					<label class="control-label">选择赛事</label>
 					<div class="controls">
 						<select id="xtSsgList" class="span6 select2" name="ssid">
+							<option value=""></option>
 							#foreach($XtSsgL in $XtSsgList)
 								<option value="$!XtSsgL.id" #if("$!XtSsgL.id"=="$!xtCzyh.ssid") selected #end>$!XtSsgL.ssmc</option>
 							#end
@@ -103,10 +107,11 @@
 		
 	   $("#xtCzyhList").on("click", XtCzyhEdit.xtCzyhListOnClick());
 	   
-	   $('#xtSsgList').select2({
-            placeholder: "选择一个赛事",
-            allowClear: true
+	    $('#xtSsgList').select2({
+	    	allowClear: true,
+            placeholder: "选择一个赛事"
         }); 
+
 	   
 		$('#xtCzyhForm').submit(function() {
 		
