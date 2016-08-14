@@ -22,7 +22,7 @@ var xtYjfkList = function () {
                     },  {
                         display : '反馈人姓名',
                         name : 'xm',
-                        width : 60,
+                        width : 80,
                         align : 'center'
                     }, {
                         display : '反馈人电话',
@@ -34,6 +34,26 @@ var xtYjfkList = function () {
                         name : 'ztName',
                         width : 50,
                         align : 'center'
+                    },{
+                        display : '操作',
+                        width : 80,
+                        align : 'center',
+						operation : function(tdDiv, row){
+							if(row.ztName == "未处理"){
+							$(tdDiv).html("").append($("<a href=\"#\" class=\"btn mini red\"><i class=\"icon-edit\"></i>处理</a>").on("click",function(){
+								var handle = confirm("确认处理吗？");
+								if(handle){
+									$.get("handle.html", {"id" : row.id}, function(){
+										$("#yjfkFlexigrid").flexReload();
+									});
+								}else{
+									return false;
+								}
+							}));
+							}else{
+								$(tdDiv).html("");
+							}
+						}	
                     }],
                 sortname : "fkrq",
                 sortorder : "asc",
@@ -46,6 +66,12 @@ var xtYjfkList = function () {
             });
 
 
+		},
+		
+		xtYjfkSearch : function(){
+			$("#yjfkFlexigrid").flexOptions({
+				params : $("#xtyjfkSeach").serializeArray()
+			}).flexReload();
 		}
 
     };

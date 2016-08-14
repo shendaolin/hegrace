@@ -46,7 +46,7 @@ var XtGydmList = function() {
 																+ "</div>");
 											}
 										} ],
-								sortname : "id",
+								sortname : "lbid",
 								sortorder : "asc",
 								usepager : true,
 								title : '系统参数列表',
@@ -81,6 +81,12 @@ var XtGydmList = function() {
 			} else {
 				return false;
 			}
+		},
+		
+		xtGydmSearch : function(){
+			$("#xtGydmFlexigrid").flexOptions({
+				params : $("#xtGydmSeach").serializeArray()
+			}).flexReload();
 		}
 	};
 

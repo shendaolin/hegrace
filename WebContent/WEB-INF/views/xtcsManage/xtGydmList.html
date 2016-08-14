@@ -48,6 +48,12 @@
 <script>
 	jQuery(document).ready(function() {    		XtGydmList.init();
 		$("#xtGydmEdit").on("click", XtGydmList.xtGydmEditOnClick());
+		
+		$('#xtGydmSeach').submit(function() {
+			XtGydmList.xtGydmSearch()
+	        return false; //阻止表单默认提交
+	    });
+
 	});
 </script>
 <!-- END JAVASCRIPTS -->

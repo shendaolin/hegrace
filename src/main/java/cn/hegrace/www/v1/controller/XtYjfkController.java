@@ -50,7 +50,6 @@ public class XtYjfkController extends BaseController {
 	public ModelAndView xtYjfkList(HttpServletRequest request,
 			HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("xtyjfkManage/xtYjfkList");
-		
 		return mv;
 	}
 	
@@ -69,52 +68,21 @@ public class XtYjfkController extends BaseController {
 		sendJson(flexigrid, response);
 	}
 	
-	/*@RequestMapping("yjfkManage/fkEdit.html")
-	public ModelAndView fkEdit(HttpServletRequest request,
+	
+	
+	
+	@RequestMapping("xtyjfkManage/handle.html")
+	public void handle(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
-		ModelAndView mv = new ModelAndView("yjfkManage/fkEdit");
 		String id = request.getParameter("id");
-		XtDmlbExample example = new XtDmlbExample();
-		List<XtDmlb> list = baseService.selectByExample(example);
-		mv.addObject("xtDmlbList", list);
-		
+		XtYjfk XtYjfk = new XtYjfk();
 		if(StringUtils.isNotEmpty(id)){
-			XtYjfk fk = new XtYjfk();
-			fk.setId(id);
-			fk = baseService.selectByPrimaryKey(fk);
-			mv.addObject("fk", fk);
+			XtYjfk.setId(id);
+			XtYjfk = baseService.selectByPrimaryKey(XtYjfk);
+			XtYjfk.setZt(1);
+			baseService.updateByPrimaryKey(XtYjfk);
 		}
-		
-		return mv;
 	}
-	*/
-	
-	/**
-	 * @param request
-	 * @param response
-	 * @throws Exception
-	 */
-	/*@RequestMapping("yjfkManage/fkSave.html")
-	public void fkSave(HttpServletRequest request,
-			HttpServletResponse response) throws Exception{
-		fk fk = (fk) httpMessageConverter(new fk(), request);
-		if(StringUtils.isEmpty(fk.getId())){
-			fk.setId(baseService.getUuid());
-			baseService.insert(fk);
-		}else{
-			baseService.updateByPrimaryKey(fk);
-		}
-		sendJson(fk, response);
-	}
-	
-	
-	@RequestMapping("yjfkManage/fkDelete.html")
-	public void fkDelete(HttpServletRequest request,
-			HttpServletResponse response) throws Exception{
-		String id = request.getParameter("id");
-		fk fk = new fk();
-		fk.setId(id);
-		baseService.deleteByPrimaryKey(fk);
-	}*/
+
 	
 }

@@ -9,7 +9,7 @@
 			<ul class="breadcrumb">
 				<li>
 					<i class="icon-home"></i>
-					<a href="。。/index.html">首页</a> 
+					<a href="../index.html">首页</a> 
 					<i class="icon-angle-right"></i>
 				</li>
 				<li><a href="#">意见反馈管理 </a></li>
@@ -42,11 +42,11 @@
 
  <script>
 	jQuery(document).ready(function() {
-		
 		xtYjfkList.init();
-		
-		 
-		//$("#xtGydmEdit").on("click", XtGydmList.xtGydmEditOnClick());
+		$('#xtyjfkSeach').submit(function() {
+			xtYjfkList.xtYjfkSearch()
+	        return false; //阻止表单默认提交
+	    });
 	});
 </script>
 <!-- END JAVASCRIPTS -->

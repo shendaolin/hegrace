@@ -6,7 +6,7 @@
 		resultType="java.lang.Integer">
 		SELECT count(1) from XT_YJFK
 		<if test="xm != null and xm != ''">
-			and xm like '%${xm}%'
+			where xm like '%${xm}%'
 		</if>
 	</select>
 
@@ -14,7 +14,7 @@
 		resultType="cn.hegrace.www.v1.dto.XtYjfkDto">
 		SELECT *,case  when zt=1 then '已处理' when zt=0 then '未处理' end as ztName  from XT_YJFK 
 		<if test="xm != null and xm != ''">
-			and xm like '%${xm}%'
+			where xm like '%${xm}%'
 		</if>
 		<if test="orderByClause != null">
 			order by ${orderByClause}
