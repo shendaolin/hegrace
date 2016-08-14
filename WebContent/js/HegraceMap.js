@@ -7,10 +7,23 @@ var HegraceMap = function(){
 		markerQjjls : [],
 		alljjry:{},
 		allqjjl:{},
-		init : function() {
+		init : function(sslj) {
 			this.mapObj = new AMap.Map("page-content", {
 				level : 17
 			});// 创建地图实例
+			
+	        if(sslj){
+	        	var pathArry = new Array();
+	        	var paths = sslj.split(";");
+	        	$(paths).each(function(i, path){
+	        		pathArry.push(path.split(","))
+	        	});
+	            var polyline = new AMap.Polyline({
+	                path: pathArry
+	            });
+	            polyline.setMap(this.mapObj);
+	        }
+			
 			this.mapObj.setFitView();
 			this.infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
 			this.getQjjlLngLatsInterval();

@@ -20,6 +20,7 @@ import cn.hegrace.www.v1.dao.pojo.XtGydm;
 import cn.hegrace.www.v1.dao.pojo.XtGydmExample;
 import cn.hegrace.www.v1.dao.pojo.XtJjry;
 import cn.hegrace.www.v1.dao.pojo.XtSsgl;
+import cn.hegrace.www.v1.dao.pojo.XtSsglWithBLOBs;
 import cn.hegrace.www.v1.dto.XtSsjjysbDto;
 import cn.hegrace.www.v1.seach.Flexigrid;
 import cn.hegrace.www.v1.seach.Page;
@@ -51,10 +52,10 @@ public class IndexController extends BaseController {
 		if(xtCzyh != null){
 			ssid = xtCzyh.getSsid();
 		}
-		XtSsgl xtSsgl = new XtSsgl();
-		xtSsgl.setId(ssid);
-		xtSsgl = baseService.selectByPrimaryKey(xtSsgl);
-		mv.addObject("xtSsgl", xtSsgl);
+		XtSsglWithBLOBs xtSsglWithBLOBs = new XtSsglWithBLOBs();
+		xtSsglWithBLOBs.setId(ssid);
+		xtSsglWithBLOBs = baseService.selectOne("XtSsgl.selectByPrimaryKey",xtSsglWithBLOBs);
+		mv.addObject("xtSsglWithBLOBs", xtSsglWithBLOBs);
 		return mv;
 	}
 
