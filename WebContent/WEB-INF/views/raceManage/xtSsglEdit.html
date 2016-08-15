@@ -115,7 +115,8 @@
 <script type="text/javascript" src="../media/js/jquery.form.js"></script>
 
 <script>
-	jQuery(document).ready(function() {    
+	jQuery(document).ready(function() {   
+		$("#page-content").height("auto");
 		XtSsglEdit.init();
 		$("#xtSsglList").on("click", XtSsglEdit.xtSsglListOnClick());
 		$('#xtSsglForm').submit(function() {
@@ -165,7 +166,6 @@
         AMap.event.addListener( mouseTool, "draw", function(e){
         	var polylines = map.getAllOverlays("polyline");
         	if(polylines){
-        		//alert(polylines[0].getPath());
         		$("#sslj").val(polylines[0].getPath().join(";"));
         	}
         })

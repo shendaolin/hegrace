@@ -9,7 +9,7 @@
 			<ul class="breadcrumb">
 				<li>
 					<i class="icon-home"></i>
-					<a href="index.htm">首页</a> 
+					<a href="../index.htm">首页</a> 
 					<i class="icon-angle-right"></i>
 				</li>
 				<li><a href="#">塞事管理</a></li>
@@ -23,65 +23,21 @@
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
 			<div style="float:left;">
-			<button id="xtssglEdit" class="btn green">
-			新增 <i class="icon-plus"></i>
+			<button id="xtSsglList" class="btn black">
+			返回 <i class="icon-arrow-left"></i>
 			</button>
-			<button id="raceDelete" class="btn red">
-			删除 <i class="icon-trash"></i>
-			</button>
-			<button id="raceShare" class="btn blue">
-			发布 <i class="icon-share"></i>
+			<button id="xtSsjjyEdit" class="btn green">
+			新增急救员<i class="icon-plus"></i>
 			</button>
 			</div>
-			<form id="ssglSeach">
+			
 			<div style="float:right;">
-			<select class="small m-wrap" tabindex="1" name="Zt">
-				<option value="">全部</option>
-				<option value="1">已发布</option>
-				<option value="0">待发布</option>
-			</select>
-			<input placeholder="赛事名称" class="m-wrap medium" type="text" name="ssmc"/>
-			</div>
+			<form id="xtSsjjySeach">
+			<input type="hidden" name="ssid" value="$!ssid">
+			<input placeholder="急救员姓名" class="m-wrap medium" type="text" name="xm"/>
 			</form>
-			<table id="ssglFlexigrid" style="display: none">
-			<!-- 
-			<table class="flexme4" style="display: none">
-			<tbody>
-			<tr>
-				<td><div><input type="checkbox" class="selectsub"/></div></td>
-				<td><div>辽宁盘锦马拉松</div></td>
-				<td><div>辽宁盘锦</div></td>
-				<td><div>2016-07-12</div></td>
-				<td><div>2016-07-11</div></td>
-				<td><div><a href="#" class="btn mini green cszList"><i class="icon-user"></i> 1005</a></div></td>
-				<td><div><a href="#" class="btn mini red jjyList"><i class="icon-plus"></i> 30</a></div></td>
-				<td><div><span class="label label-success">已发布</span></div></td>
-				<td><div>
-				<a href="#" class="btn mini purple"><i class="icon-edit"></i> 编辑</a>
-				<a href="#" class="btn mini green sszbgl"><i class="icon-th-large"></i> 赛事装备管理</a>
-				<a href="#" class="btn mini red zyzsh"><i class="icon-th-large"></i> 自愿者审核</a>
-				<a href="#" class="btn mini blue sstj"><i class="icon-th-large"></i> 赛事统计</a>
-				</div></td>
-			</tr>    
-			<tr>
-				<td><div><input type="checkbox" class="selectsub"/></div></td>
-				<td><div>辽宁盘锦马拉松</div></td>
-				<td><div>辽宁盘锦</div></td>
-				<td><div>2016-07-12</div></td>
-				<td><div>2016-07-11</div></td>
-				<td><div><a href="#" class="btn mini green cszList"><i class="icon-user"></i> 1005</a></div></td>
-				<td><div><a href="#" class="btn mini red jjyList"><i class="icon-plus"></i> 30</a></div></td>
-				<td><div><span class="label label-success">已发布</span></div></td>
-				<td><div>
-				<a href="#" class="btn mini purple"><i class="icon-edit"></i> 编辑</a>
-				<a href="#" class="btn mini green sszbgl"><i class="icon-th-large"></i> 赛事装备管理</a>
-				<a href="#" class="btn mini red zyzsh"><i class="icon-th-large"></i> 自愿者审核</a>
-				<a href="#" class="btn mini blue sstj"><i class="icon-th-large"></i> 赛事统计</a>
-				</div></td>
-			</tr> 
-			</tbody>
-			</table>
-			 -->
+			</div>
+			<table id="xtSsjjyFlexigrid" style="display: none" />
 			<br/>
 		</div>
 	</div>
@@ -89,26 +45,15 @@
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->   
  <script type="text/javascript" src="../media/js/flexigrid.js"></script>
+ 
 <!-- END PAGE LEVEL PLUGINS -->
 
 <script>
-/*
-	jQuery(document).ready(function() {    
-		//App.init(); // initlayout and core plugins
-		Racelist.init();
-		$("#raceEdit").on("click",Racelist.raceEditOnClick());
-		$(".cszList").on("click",Racelist.cszListOnClick())
-		$(".jjyList").on("click",Racelist.jjyListOnClick())
-		$(".sstj").on("click", Racelist.sstjOnClick())
-		$(".zyzsh").on("click", Racelist.zyzshOnClick())
-		$(".sszbgl").on("click", Racelist.sszbglOnClick())
-
-	});*/jQuery(document).ready(function() {  
-		xtSsglList.init();
-		$("#xtssglEdit").on("click", xtSsglList.xtSsglEditOnClick());
-		$("#page-content").height("100%");
-
-		//$("#sbtj").on("click", xtBsysbList.sbTjOnClick());
+		
+	jQuery(document).ready(function() {  
+		XtSsjjyList.init();
+		$("#xtSsglList").on("click", XtSsglEdit.xtSsglListOnClick());
+		$("#xtSsjjyEdit").on("click", XtSsjjyList.XtSsjjyEditOnClick("$!ssid"));
 	});
 	
 </script>

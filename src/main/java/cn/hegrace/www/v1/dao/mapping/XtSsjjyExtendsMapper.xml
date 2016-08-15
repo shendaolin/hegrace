@@ -51,4 +51,39 @@
 		group by jjy.id, qj.id
 	</select>
 
+
+	<select id="select_xtssgl_count" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		SELECT count(1) FROM XT_SSJJY jjy
+		where jjy.zt = '1' and jjy.ssid = #{ssid}
+	</select>
+
+
+	<select id="select_xtssgl_list" parameterType="java.util.Map"
+		resultType="cn.hegrace.www.v1.dto.XtSsjjyDto">
+		SELECT jjy.* ,ry.xm, ry.dh, ry.ly, ry.fzcc, gw.gwmc, sflx.dmmc as sflx, zjlx.dmmc as zjlx, ry.zjhm,
+		group_concat(dm.dmmc) as sbmc
+		FROM XT_SSJJY jjy
+		left join XT_SSGW gw on gw.id = jjy.gwid
+		left join XT_SSJJYSB jjysb on jjysb.ssjjyid = jjy.id and jjysb.zt = '1'
+		left join XT_BSYSB sb on sb.id = jjysb.sbid and sbzt = '1'
+		left join XT_GYDM dm on sb.sblx = dm.id and lbid = '2'
+		left join XT_JJRY ry on ry.id = jjy.ryid and ry.zt = '1'
+		left join XT_GYDM sflx on ry.sflx = sflx.id and sflx.lbid = '3'
+		left join XT_GYDM zjlx on ry.zjlx = zjlx.id and zjlx.lbid = '4'
+		where jjy.zt = '1' and jjy.ssid = #{ssid}
+		group by jjy.id
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+		limit ${startPage}, ${page}
+	</select>
+	
+
+	<select id="select_xtJjrys_list" parameterType="java.util.Map"
+		resultType="cn.hegrace.www.v1.dao.pojo.XtJjry">
+		select * from XT_JJRY ry where ry.zt = '1'  
+		and not exists (select 1 from XT_SSJJY jjy where jjy.ssid = #{ssid} and jjy.ryid = ry.id)
+	</select>
+
 </mapper>

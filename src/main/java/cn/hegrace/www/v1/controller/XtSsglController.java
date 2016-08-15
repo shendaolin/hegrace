@@ -34,6 +34,7 @@ import cn.hegrace.www.v1.dao.pojo.XtSsgl;
 import cn.hegrace.www.v1.dao.pojo.XtSsglWithBLOBs;
 import cn.hegrace.www.v1.seach.Flexigrid;
 import cn.hegrace.www.v1.seach.XtSsglSeach;
+import cn.hegrace.www.v1.seach.XtSsjjySeach;
 import net.sf.json.JSONObject;
 
 @Controller
@@ -55,6 +56,7 @@ public class XtSsglController extends BaseController {
 		ModelAndView mv = new ModelAndView("raceManage/xtSsglList");
 		return mv;
 	}
+
 	
 	
 	@RequestMapping(value = "raceManage/xtSsglFlexigrid.htm", method = RequestMethod.POST)
@@ -68,9 +70,9 @@ public class XtSsglController extends BaseController {
 		flexigrid.setPages(xtSsglSeach.getPage());
 		flexigrid.setTotal(baseService.queryForCount("XtSsgl.select_xtssgl_count", map));
 		flexigrid.setRows(baseService.queryForList("XtSsgl.select_xtssgl_list", map));
-		System.out.println(baseService.queryForList("XtSsgl.select_xtssgl_list", map));
 		sendJson(flexigrid, response);
 	 }
+	
 	
 	@RequestMapping("raceManage/xtSsglEdit.htm")
 	public ModelAndView xtSsglEdit(HttpServletRequest request,
@@ -124,5 +126,7 @@ public class XtSsglController extends BaseController {
 		xtSsgl.setId(id);
 		baseService.deleteByPrimaryKey(xtSsgl);
 	}
+	
+	
 	
 }

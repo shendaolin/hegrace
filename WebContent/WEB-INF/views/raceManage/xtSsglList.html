@@ -49,23 +49,14 @@
 <!-- END PAGE LEVEL PLUGINS -->
 
 <script>
-/*
-	jQuery(document).ready(function() {    
-		//App.init(); // initlayout and core plugins
-		Racelist.init();
-		$("#raceEdit").on("click",Racelist.raceEditOnClick());
-		$(".cszList").on("click",Racelist.cszListOnClick())
-		$(".jjyList").on("click",Racelist.jjyListOnClick())
-		$(".sstj").on("click", Racelist.sstjOnClick())
-		$(".zyzsh").on("click", Racelist.zyzshOnClick())
-		$(".sszbgl").on("click", Racelist.sszbglOnClick())
 
-	});*/jQuery(document).ready(function() {  
+	jQuery(document).ready(function() {  
 		xtSsglList.init();
 		$("#xtssglEdit").on("click", xtSsglList.xtSsglEditOnClick());
-		$("#page-content").height("100%");
-
-		//$("#sbtj").on("click", xtBsysbList.sbTjOnClick());
+		$('#xtSsglSeach').submit(function() {
+			xtSsglList.xtSsglSeach()
+	        return false; //阻止表单默认提交
+	    });
 	});
 	
 </script>

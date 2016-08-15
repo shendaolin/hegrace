@@ -40,7 +40,7 @@ var xtSsglList = function () {
                         width : 60,
                         align : 'center',
                         operation : function(tdDiv, row){
-                        	var content = "<a href=\"javascript:;\" class=\"btn mini red\"><i class=\"icon-plus\"></i> "+row.jjycount+"</a>";
+                        	var content = "<a href=\"javascript:;\" class=\"btn mini red\" onclick=\"xtSsglList.xtSsjjyList('"+row.id+"')\"><i class=\"icon-plus\"></i> "+row.jjycount+"</a>";
 							$(tdDiv).html(content);
 						}
                     },{ 
@@ -98,15 +98,20 @@ var xtSsglList = function () {
 
 
         },
-        xtSsglEditOnClick : function() {
-			return function() {
+        xtSsjjyList : function(ssid){
+        	$("#page-content").load("xtSsjjyList.htm", {
+				"ssid" :ssid
+			});	
+        },
+		xtSsjjysbListOnClick : function(ssid){
+			$("#page-content").load("xtSsjjysbList.htm", {
+				"ssid" :ssid
+			});		
+		},
+		xtSsglEditOnClick : function(id) {
+			return function(){
 				$("#page-content").load("xtSsglEdit.htm");
 			}
-		},
-		xtSsjjysbListOnClick : function(ssid){
-				$("#page-content").load("xtSsjjysbList.htm", {
-					"ssid" :ssid
-					});		
 		},
 		xtSsglEdit : function(id) {
 			$("#page-content").load("xtSsglEdit.htm", {
@@ -123,6 +128,12 @@ var xtSsglList = function () {
 			} else {
 				return false;
 			}
+		},
+		
+		xtSsglSeach : function(){
+			$("#xtSsglFlexigrid").flexOptions({
+				params : $("#xtSsglSeach").serializeArray()
+			}).flexReload();
 		}
 
     };
@@ -681,110 +692,6 @@ var CszEdit = function () {
 
 
 
-
-var JjyList = function () {
-
-    return {
-
-		init: function () {
-
-			$(".flexme4").flexigrid({
-				idProperty : "racelist",
-                url : false,
-                dataType : 'json',
-                colModel : [ {
-                    display : '<input type="checkbox" id="selectall">',
-                    width : 30,
-                    align : 'center'
-                    },{
-                        display : '手机号',
-                        name : 'dd',
-                        width : 100,
-                        align : 'center'
-                    }, {
-                        display : '姓名',
-                        name : 'bssj',
-                        width : 100,
-                        align : 'center'
-                    },  {
-                        display : '性别',
-                        name : 'bssj',
-                        width : 30,
-                        align : 'center'
-                    },{
-                        display : '身份证号',
-                        name : 'cjsj',
-                        width : 100,
-                        align : 'center'
-                    }, {
-                        display : '身份类型',
-                        name : 'csrs',
-                        width : 60,
-                        align : 'center'
-                },{
-                        display : '来源',
-                        name : 'jjrs',
-                        width : 60,
-                        align : 'center'
-                    },{
-                        display : '服装尺寸',
-                        name : 'jjrs',
-                        width : 50,
-                        align : 'center'
-                    } ,{
-                        display : '岗位名称',
-                        name : 'jjrs',
-                        width : 50,
-                        align : 'center'
-                    } ,{
-                        display : '携带装备',
-                        name : 'jjrs',
-                        width : 80,
-                        align : 'center'
-                    }  ,{
-                        display : '操作',
-                        name : 'zt',
-                        width : 200,
-                        align : 'center'
-                    }],
-                sortname : "iso",
-                sortorder : "asc",
-                usepager : true,
-                title : '参赛者列表',
-                useRp : false,
-                rp : 15,
-                width : "100%",
-                height : 300
-            });
-
-
-		},
-
-		jjyEditOnClick:function(){
-			return function(){
-				$("#page-content").load("jjyedit.htm");
-			}
-		}
-
-    };
-
-}();
-
-
-
-var JjyEdit = function () {
-
-    return {
-
-		jjyListOnClick:function(){
-			return function(){
-				$("#page-content").load("jjyList.htm");
-			}
-		}
-
-    };
-
-}();
 
 
 var ShList = function () {

@@ -30,6 +30,8 @@ import cn.hegrace.www.v1.dao.pojo.XtDmlb;
 import cn.hegrace.www.v1.dao.pojo.XtDmlbExample;
 import cn.hegrace.www.v1.dao.pojo.XtGydm;
 import cn.hegrace.www.v1.dao.pojo.XtGydmExample;
+import cn.hegrace.www.v1.dao.pojo.XtJjry;
+import cn.hegrace.www.v1.dao.pojo.XtSsgw;
 import cn.hegrace.www.v1.dao.pojo.XtSsjjy;
 import cn.hegrace.www.v1.seach.Flexigrid;
 import cn.hegrace.www.v1.seach.XtSsjjySeach;
@@ -46,6 +48,8 @@ public class XtSsjjyController extends BaseController {
 	public ModelAndView xtSsjjyList(HttpServletRequest request,
 			HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("raceManage/xtSsjjyList");
+		String ssid = request.getParameter("ssid");
+		mv.addObject("ssid", ssid);
 		return mv;
 	}
 	
@@ -56,12 +60,11 @@ public class XtSsjjyController extends BaseController {
 		XtSsjjySeach xtSsjjySeach = (XtSsjjySeach) httpMessageConverter(new XtSsjjySeach(), request);
 		Flexigrid flexigrid = new Flexigrid(xtSsjjySeach);
 		Map map = flexigrid.getMap();
-		map.put("ssmc", xtSsjjySeach.getSsmc());
-		map.put("zt", xtSsjjySeach.getZt());
+		map.put("xm", xtSsjjySeach.getXm());
+		map.put("ssid", xtSsjjySeach.getSsid());
 		flexigrid.setPages(xtSsjjySeach.getPage());
 		flexigrid.setTotal(baseService.queryForCount("XtSsjjy.select_xtssgl_count", map));
 		flexigrid.setRows(baseService.queryForList("XtSsjjy.select_xtssgl_list", map));
-		System.out.println(baseService.queryForList("XtSsjjy.select_xtssgl_list", map));
 		sendJson(flexigrid, response);
 	 }
 	
@@ -69,21 +72,14 @@ public class XtSsjjyController extends BaseController {
 	public ModelAndView xtSsjjyEdit(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("raceManage/xtSsjjyEdit");
-		String id = request.getParameter("id");
-		String zt = request.getParameter("zt");
-		int zt1=0;
-		if(StringUtils.isNotEmpty(zt)){
-			zt1 = Integer.parseInt(zt);
-		}else{
-			zt1=0;
-		}
-		if(StringUtils.isNotEmpty(id)){
-			XtSsjjy xtSsjjy = new XtSsjjy();
-			xtSsjjy.setId(id);
-			xtSsjjy.setZt(zt1);
-			xtSsjjy = baseService.selectByPrimaryKey(xtSsjjy);
-			mv.addObject("xtSsjjy", xtSsjjy);
-		}
+		String ssid = request.getParameter("ssid");
+		mv.addObject("ssid", ssid);
+		Map map = new HashMap();
+		map.put("ssid", ssid);
+		List<XtJjry> xtJjrys = baseService.selectList("XtSsjjy.select_xtJjrys_list", map);
+		mv.addObject("xtJjrys", xtJjrys);
+		List<XtSsgw> xtSsgws = baseService.selectList("XtSsgw.select_xtSsgws_list", map);
+		mv.addObject("xtSsgws", xtSsgws);
 		
 		return mv;
 	}
@@ -100,6 +96,7 @@ public class XtSsjjyController extends BaseController {
 		XtSsjjy xtSsjjy = (XtSsjjy) httpMessageConverter(new XtSsjjy(), request);
 		if(StringUtils.isEmpty(xtSsjjy.getId())){
 			xtSsjjy.setId(baseService.getUuid());
+			xtSsjjy.setZt(1);
 			baseService.insert(xtSsjjy);
 		}else{
 			baseService.updateByPrimaryKey(xtSsjjy);
@@ -108,11 +105,11 @@ public class XtSsjjyController extends BaseController {
 	}
 	
 	
+	
 	@RequestMapping("raceManage/xtSsjjyDelete.htm")
 	public void xtSsjjyDelete(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		String id = request.getParameter("id");
-		System.out.println(id);
 		XtSsjjy xtSsjjy = new XtSsjjy();
 		xtSsjjy.setId(id);
 		baseService.deleteByPrimaryKey(xtSsjjy);

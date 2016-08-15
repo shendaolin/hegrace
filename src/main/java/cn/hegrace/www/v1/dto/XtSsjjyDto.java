@@ -14,6 +14,11 @@ public class XtSsjjyDto extends XtSsjjy {
 	private String qjdh;
 	private String sflx;
 	private String lb;
+	private String zjlx;
+	private String ly;
+	private String fzcc;
+	private String zjhm;
+	private String gwmc;
 
 	public String getXm() {
 		return xm;
@@ -93,6 +98,46 @@ public class XtSsjjyDto extends XtSsjjy {
 
 	public void setLb(String lb) {
 		this.lb = lb;
+	}
+
+	public String getZjlx() {
+		return zjlx;
+	}
+
+	public void setZjlx(String zjlx) {
+		this.zjlx = zjlx;
+	}
+
+	public String getLy() {
+		return ly;
+	}
+
+	public void setLy(String ly) {
+		this.ly = ly;
+	}
+
+	public String getFzcc() {
+		return fzcc;
+	}
+
+	public void setFzcc(String fzcc) {
+		this.fzcc = fzcc;
+	}
+
+	public String getZjhm() {
+		return zjhm;
+	}
+
+	public void setZjhm(String zjhm) {
+		this.zjhm = zjhm;
+	}
+
+	public String getGwmc() {
+		return gwmc;
+	}
+
+	public void setGwmc(String gwmc) {
+		this.gwmc = gwmc;
 	}
 
 }

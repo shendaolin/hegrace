@@ -16,13 +16,13 @@
 		resultType="cn.hegrace.www.v1.dto.XtSsglDto">
 		select ssgl.*, count(distinct cszgl.id) as cszcount, count(distinct ssjjy.id) as jjycount from XT_SSGL ssgl
 		left join XT_CSZGL cszgl on cszgl.ssid = ssgl.id
-		left join XT_SSJJY ssjjy on ssjjy.ssid = ssgl.id
+		left join XT_SSJJY ssjjy on ssjjy.ssid = ssgl.id and ssjjy.zt = '1'
 		where 1=1
 		<if test="ssmc != null and ssmc != ''">
-			and ssmc like %${ssmc}%'
+			and ssmc like '%${ssmc}%'
 		</if>
 		<if test="zt != null and zt != ''">
-			and zt = ${zt}
+			and ssgl.zt = ${zt}
 		</if>
 		group by ssgl.id
 		<if test="orderByClause != null">

@@ -9,7 +9,7 @@
 			<ul class="breadcrumb">
 				<li>
 					<i class="icon-home"></i>
-					<a href="index.htm">首页</a> 
+					<a href="../index.htm">首页</a> 
 					<i class="icon-angle-right"></i>
 				</li>
 				<li><a href="#">赛事管理</a><i class="icon-angle-right"></i></li>
@@ -23,46 +23,44 @@
 				</li>
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
-			<button id="cszList" class="btn black">
+			<button id="xtSsjjyList" class="btn black">
 			返回 <i class="icon-arrow-left"></i>
 			</button>
-			<button id="raceSaveCart" class="btn blue">
-			保存为待发布 <i class="icon-shopping-cart"></i>
-			</button>
-			<button id="raceSave" class="btn green">
-			直接发布 <i class="icon-share"></i>
+			<button id="xtSsjjySave" class="btn green">
+			保存 <i class="icon-share"></i>
 			</button>
 			<br/><br/>
-			<form id="fileupload" action="#" class="form-horizontal" method="POST" enctype="multipart/form-data">
+			<form id="xtSsjjyForm" action="xtSsjjySave.htm" class="form-horizontal" method="POST">
+				<input type="hidden" name="ssid" value="$!ssid">
 				<div class="control-group">
-					<label class="control-label">姓名:</label>
+					<label class="control-label">急救员:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="xm">
+						<select id="xtSsjjyRyid" class="span6 select2" name="ryid">
+							<option value=""></option>
+							#foreach($xtJjry in $xtJjrys)
+								<option value="$!xtJjry.id">$!xtJjry.xm</option>
+							#end
+						</select>
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">电话:</label>
+					<label class="control-label">装备:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="lxdh">
-						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">证件:</label>
+					<label class="control-label">岗位:</label>
 					<div class="controls">
-						<select class="m-wrap small"><option>身份证</option><option>其他</option></select><input class="m-wrap medium" type="text" name="lxdh">
+						<select id="xtSsjjyGw" class="span6 select2" name="gwid">
+							<option value=""></option>
+							#foreach($xtSsgw in $xtSsgws)
+								<option value="$!xtSsgw.id">$!xtSsgw.gwmc ($!xtSsgw.gwsl)</option>
+							#end
+						</select>
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
-				<div class="control-group">
-					<label class="control-label">参赛编号:</label>
-					<div class="controls">
-						<input class="m-wrap medium" type="text" name="lxdh">
-						<span class="help-inline"><font color="red">*</font></span>
-					</div>
-				</div>
-
 			</form>
 			
 			<br/>
@@ -70,16 +68,47 @@
 	</div>
 </div>
 
-
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-<!-- BEGIN PAGE LEVEL PLUGINS -->   
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script type="text/javascript" src="../media/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="../media/js/jquery.tagsinput.min.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
+<script type="text/javascript" src="../media/js/select2.min.js"></script>
+<script type="text/javascript" src="../media/js/jquery.form.js"></script>
+
 
 <script>
+
+
 	jQuery(document).ready(function() {    
-	   App.init(); // initlayout and core plugins 
-	   $("#cszList").on("click", CszEdit.cszListOnClick());
-	   $(".page-content").height($(document).height() - 80)
+		
+	   $("#xtSsjjyList").on("click", function(){xtSsglList.xtSsjjyList("$!ssid")});
+	   $("#xtSsjjySave").on("click", XtSsjjyEdit.xtSsjjyFormSubmit());
+	   
+	   $("#page-content").height($(document).height() - 80)
+	   $('#xtSsjjyRyid').select2({
+           placeholder: "选择一个类型",
+           allowClear: false
+       });
+	   $('#xtSsjjyGw').select2({
+           placeholder: "选择一个类型",
+           allowClear: false
+       });
+	   
+		$('#xtSsjjyForm').submit(function() {
+			
+	        $(this).ajaxSubmit({
+	        	success: function(data){
+	        		alert("保存成功！");
+	            },
+	            error: function(data){
+	                alert("保存失败！");
+	            }
+	        });
+	        
+	        return false; //阻止表单默认提交
+	    });
 	});
+	
 </script>
 <!-- END JAVASCRIPTS -->

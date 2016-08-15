@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="XtSsgw">
+  	<select id="select_xtSsgws_list" parameterType="java.util.Map"
+		resultType="cn.hegrace.www.v1.dao.pojo.XtSsgw">
+		select gw.id, gwmc , gwsl - count(gwid) as gwsl from XT_SSGW gw
+		left join XT_SSJJY jjy on jjy.gwid = gw.id and jjy.zt = '1'
+		where gw.ssid = #{ssid}
+		group by gwid
+	</select>
+</mapper>

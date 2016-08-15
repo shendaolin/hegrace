@@ -2,28 +2,23 @@ package cn.hegrace.www.v1.seach;
 
 public class XtSsjjySeach extends Page {
 	
-	private String ssmc;
-	private String zt;
-	
-	
-	public String getZt() {
-		return zt;
+	private String xm;
+	private String ssid;
+
+	public String getXm() {
+		return xm;
 	}
 
-	public void setZt(String zt) {
-		this.zt = zt;
+	public void setXm(String xm) {
+		this.xm = xm;
 	}
 
-	public String getSsmc() {
-		return ssmc;
+	public String getSsid() {
+		return ssid;
 	}
 
-	public void setSsmc(String ssmc) {
-		this.ssmc = ssmc;
+	public void setSsid(String ssid) {
+		this.ssid = ssid;
 	}
-	
-	 
-	
-	 
 
 }
