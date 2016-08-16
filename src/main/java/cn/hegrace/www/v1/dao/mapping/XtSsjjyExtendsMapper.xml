@@ -65,7 +65,7 @@
 		group_concat(dm.dmmc) as sbmc
 		FROM XT_SSJJY jjy
 		left join XT_SSGW gw on gw.id = jjy.gwid
-		left join XT_SSJJYSB jjysb on jjysb.ssjjyid = jjy.id and jjysb.zt = '1'
+		left join XT_SSJJYSB jjysb on jjysb.ssjjyid = jjy.id
 		left join XT_BSYSB sb on sb.id = jjysb.sbid and sbzt = '1'
 		left join XT_GYDM dm on sb.sblx = dm.id and lbid = '2'
 		left join XT_JJRY ry on ry.id = jjy.ryid and ry.zt = '1'

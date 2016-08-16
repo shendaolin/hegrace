@@ -72,11 +72,26 @@ var XtSsjjyList = function () {
                         align : 'left',
                     	operation : function(tdDiv, row){
 							$(tdDiv).html("");
-							$(tdDiv).append($("<a href=\"#\" class=\"btn mini purple\"><i class=\"icon-edit\"></i> 选择装备与岗位</a>").on("click",function(){
 							
+							$(tdDiv).append($("<a href=\"#\" class=\"btn mini purple\"><i class=\"icon-edit\"></i> 修改</a>").on("click",function(){
+								
+								$("#page-content").load("xtSsjjyEdit.htm", {
+									"ssid" :row.ssid,
+									"id" : row.id,
+									"ryxm" : row.xm,
+								});
+								
 							}));
-							$(tdDiv).append($("<a href=\"#\" class=\"btn mini red\"><i class=\"icon-trash\"></i> 删除</a>").on("click",function(){
 							
+							$(tdDiv).append($("<a href=\"#\" class=\"btn mini red\"><i class=\"icon-trash\"></i> 删除</a>").on("click",function(){
+								var del = confirm("确定要删除吗？");
+								if(del){
+								$.get("xtSsjjyDelete.htm",{"id" : row.id}, function(){
+									$("#xtSsjjyFlexigrid").flexReload();
+								});
+								}else{
+									return false;
+								}
 							}));
 						}
                         	

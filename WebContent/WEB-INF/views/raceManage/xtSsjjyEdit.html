@@ -31,22 +31,41 @@
 			</button>
 			<br/><br/>
 			<form id="xtSsjjyForm" action="xtSsjjySave.htm" class="form-horizontal" method="POST">
+				<input type="hidden" name="id" value="$!xtSsjjy.id">
 				<input type="hidden" name="ssid" value="$!ssid">
+				
 				<div class="control-group">
 					<label class="control-label">急救员:</label>
 					<div class="controls">
+						#if("$!ryxm" == "")
 						<select id="xtSsjjyRyid" class="span6 select2" name="ryid">
 							<option value=""></option>
 							#foreach($xtJjry in $xtJjrys)
-								<option value="$!xtJjry.id">$!xtJjry.xm</option>
+								<option value="$!xtJjry.id">$!xtJjry.xm ($!xtJjry.dh)</option>
 							#end
 						</select>
 						<span class="help-inline"><font color="red">*</font></span>
+						#else
+							<input type="hidden" name="ryid" value="$!xtSsjjy.ryid">
+							<input class="span6 m-wrap" placeholder="$!ryxm" disabled="" type="text">
+						#end
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">装备:</label>
 					<div class="controls">
+					<select id="xtSsjjysb" data-placeholder="请选择装备" class="chosen span6" multiple="multiple" name="sbids">
+							<option value=""></option>
+							<optgroup label="">
+							#foreach($xtBsysbDto in $xtBsysbDtos)
+								#set($bsysbid = ","+$!xtBsysbDto.id+",")
+								<option value="$!xtBsysbDto.id" #if($sbids.indexOf($!bsysbid) >= 0)
+								selected
+								#end	
+								>$!xtBsysbDto.lbmc - $!xtBsysbDto.sbbh</option>
+							#end
+							</optgroup>
+					</select>
 					</div>
 				</div>
 				<div class="control-group">
@@ -55,7 +74,10 @@
 						<select id="xtSsjjyGw" class="span6 select2" name="gwid">
 							<option value=""></option>
 							#foreach($xtSsgw in $xtSsgws)
-								<option value="$!xtSsgw.id">$!xtSsgw.gwmc ($!xtSsgw.gwsl)</option>
+								<option value="$!xtSsgw.id" #if("$!xtSsgw.id" == "$!xtSsjjy.gwid")
+								selected
+								#end
+								>$!xtSsgw.gwmc (剩余: $!xtSsgw.gwsl 个)</option>
 							#end
 						</select>
 						<span class="help-inline"><font color="red">*</font></span>
@@ -75,6 +97,8 @@
 <!-- END PAGE LEVEL PLUGINS -->
 <script type="text/javascript" src="../media/js/select2.min.js"></script>
 <script type="text/javascript" src="../media/js/jquery.form.js"></script>
+<script type="text/javascript" src="../media/js/jquery.multi-select.js"></script> 
+<script type="text/javascript" src="../media/js/chosen.jquery.min.js"></script>
 
 
 <script>
@@ -97,6 +121,7 @@
 	   
 		$('#xtSsjjyForm').submit(function() {
 			
+			
 	        $(this).ajaxSubmit({
 	        	success: function(data){
 	        		alert("保存成功！");
@@ -108,6 +133,10 @@
 	        
 	        return false; //阻止表单默认提交
 	    });
+		
+        $('#xtSsjjysb').chosen({
+        	allow_single_deselect: $(this).attr("data-with-diselect") === "1" ? true : false
+        });
 	});
 	
 </script>

@@ -70,9 +70,6 @@ var xtSsglList = function () {
     						var sszbglButton = " <a href=\"javascript:;\" onclick=\"xtSsglList.xtSsjjysbListOnClick('"
 								+ id
 								+ "')\" class=\"btn mini green sszbgl\"><i class=\"icon-th-large\"></i> 赛事装备管理</a>";
-    						var zyzshButton = " <a href=\"javascript:;\" onclick=\"xtSsglList.xtSsjjysbListOnClick('"
-								+ id
-								+ "')\" class=\"btn mini red zyzsh\"><i class=\"icon-th-large\"></i> 自愿者审核</a>";
     						var sstjButton = " <a href=\"javascript:;\" onclick=\"xtSsglList.xtSsglEdit('"
 								+ id
 								+ "')\" class=\"btn mini blue sstj\"><i class=\"icon-th-large\"></i> 赛事统计</a>";
@@ -81,7 +78,6 @@ var xtSsglList = function () {
     								"<div>" + editButton
     										+ deleteButton
     										+ sszbglButton
-    										+ zyzshButton
     										+ sstjButton
     										+ "</div>");
     					}

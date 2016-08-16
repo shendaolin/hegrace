@@ -16,6 +16,7 @@ import org.codehaus.plexus.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,6 +34,9 @@ import cn.hegrace.www.v1.dao.pojo.XtGydmExample;
 import cn.hegrace.www.v1.dao.pojo.XtJjry;
 import cn.hegrace.www.v1.dao.pojo.XtSsgw;
 import cn.hegrace.www.v1.dao.pojo.XtSsjjy;
+import cn.hegrace.www.v1.dao.pojo.XtSsjjysb;
+import cn.hegrace.www.v1.dao.pojo.XtSsjjysbExample;
+import cn.hegrace.www.v1.dto.XtBsysbDto;
 import cn.hegrace.www.v1.seach.Flexigrid;
 import cn.hegrace.www.v1.seach.XtSsjjySeach;
 import net.sf.json.JSONObject;
@@ -73,13 +77,40 @@ public class XtSsjjyController extends BaseController {
 			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("raceManage/xtSsjjyEdit");
 		String ssid = request.getParameter("ssid");
+		String id = request.getParameter("id");
+		String ryxm = request.getParameter("ryxm");
+		
 		mv.addObject("ssid", ssid);
+		mv.addObject("ryxm", ryxm);
+		
+		if(StringUtils.isNotEmpty(id)){
+			XtSsjjy xtSsjjy = new XtSsjjy();
+			xtSsjjy.setId(id);
+			xtSsjjy = baseService.selectByPrimaryKey(xtSsjjy);
+			mv.addObject("xtSsjjy", xtSsjjy);
+			
+			XtSsjjysbExample example = new XtSsjjysbExample();
+			example.createCriteria().andSsjjyidEqualTo(id);
+			List<XtSsjjysb> xtSsjjysbs = baseService.selectByExample(example);
+			String sbids = "";
+			if(!CollectionUtils.isEmpty(xtSsjjysbs)){
+				sbids += ",";
+				for (XtSsjjysb xtSsjjysb : xtSsjjysbs) {
+					sbids += xtSsjjysb.getSbid();
+					sbids += ",";
+				}
+			}
+			mv.addObject("sbids", sbids);
+		}
+		
 		Map map = new HashMap();
 		map.put("ssid", ssid);
 		List<XtJjry> xtJjrys = baseService.selectList("XtSsjjy.select_xtJjrys_list", map);
 		mv.addObject("xtJjrys", xtJjrys);
 		List<XtSsgw> xtSsgws = baseService.selectList("XtSsgw.select_xtSsgws_list", map);
 		mv.addObject("xtSsgws", xtSsgws);
+		List<XtBsysbDto> xtBsysbDtos = baseService.selectList("XtBsysb.select_xtbsysbAll_list", map);
+		mv.addObject("xtBsysbDtos", xtBsysbDtos);
 		
 		return mv;
 	}
@@ -94,12 +125,28 @@ public class XtSsjjyController extends BaseController {
 	public void xtSsjjySave(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtSsjjy xtSsjjy = (XtSsjjy) httpMessageConverter(new XtSsjjy(), request);
+		String[] sbids = request.getParameterValues("sbids");
 		if(StringUtils.isEmpty(xtSsjjy.getId())){
 			xtSsjjy.setId(baseService.getUuid());
 			xtSsjjy.setZt(1);
 			baseService.insert(xtSsjjy);
 		}else{
+			XtSsjjy xtSsjjy2 = baseService.selectByPrimaryKey(xtSsjjy);
+			xtSsjjy.setZb(xtSsjjy2.getZb());
+			xtSsjjy.setZt(xtSsjjy2.getZt());
 			baseService.updateByPrimaryKey(xtSsjjy);
+		}
+		XtSsjjysbExample example = new XtSsjjysbExample();
+		example.createCriteria().andSsjjyidEqualTo(xtSsjjy.getId());
+		baseService.delete("XtSsjjysb.deleteByExample", example);
+		if(sbids != null && sbids.length > 0){
+			for (String sbid : sbids) {
+				XtSsjjysb xtSsjjysb =  new XtSsjjysb();
+				xtSsjjysb.setSsjjyid(xtSsjjy.getId());
+				xtSsjjysb.setSbid(sbid);
+				xtSsjjysb.setZt(0);
+				baseService.insert("XtSsjjysb.insert", xtSsjjysb);
+			}
 		}
 		sendJson(xtSsjjy, response);
 	}
@@ -113,6 +160,10 @@ public class XtSsjjyController extends BaseController {
 		XtSsjjy xtSsjjy = new XtSsjjy();
 		xtSsjjy.setId(id);
 		baseService.deleteByPrimaryKey(xtSsjjy);
+		XtSsjjysbExample example = new XtSsjjysbExample();
+		example.createCriteria().andSsjjyidEqualTo(id);
+		baseService.delete("XtSsjjysb.deleteByExample", example);
+		
 	}
 	
 }

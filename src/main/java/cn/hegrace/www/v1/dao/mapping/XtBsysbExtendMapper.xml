@@ -24,4 +24,13 @@
 		limit ${startPage}, ${page}
 	</select>
 
+
+	<select id="select_xtbsysbAll_list" parameterType="java.util.Map"
+		resultType="cn.hegrace.www.v1.dto.XtBsysbDto">
+		SELECT sb.*, dm.dmmc as lbmc from XT_BSYSB sb
+		left join XT_GYDM dm on dm.id = sb.sblx and dm.lbid = '2'
+		where sb.sbzt = '1'
+		order by sb.sblx
+	</select>
+
 </mapper>
