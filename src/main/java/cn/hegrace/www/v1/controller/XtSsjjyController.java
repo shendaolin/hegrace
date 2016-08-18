@@ -142,6 +142,7 @@ public class XtSsjjyController extends BaseController {
 		if(sbids != null && sbids.length > 0){
 			for (String sbid : sbids) {
 				XtSsjjysb xtSsjjysb =  new XtSsjjysb();
+				xtSsjjysb.setId(baseService.getUuid());
 				xtSsjjysb.setSsjjyid(xtSsjjy.getId());
 				xtSsjjysb.setSbid(sbid);
 				xtSsjjysb.setZt(0);

@@ -35,7 +35,7 @@
 	<!-- BEGIN LOGIN -->
 	<div class="content">
 		<!-- BEGIN LOGIN FORM -->
-		<form class="form-vertical login-form" action="check.htm" method="post">
+		<form id="xtCzyhLoinForm" class="form-vertical login-form" action="check.htm" method="post">
 			<h3 class="form-title">合恩医疗急救管理平台</h3>
 			<div class="alert alert-error #if(!$!error) hide #end">
 				<button class="close" data-dismiss="alert"></button>
@@ -99,7 +99,40 @@
 	<script>
 		jQuery(document).ready(function() {     
 		  App.init();
-		  Login.init();
+		  
+		  
+		  $('#xtCzyhLoinForm').validate({
+	            rules: {
+	                username: {
+	                    required: true,
+						minlength:6
+	                },
+	                password: {
+	                    required: true
+	                }
+	            },
+
+	            messages: {
+	                username: {
+	                    required: "用户名必填.",
+						minlength: "用户名长度必须大于6位."
+	                },
+	                password: {
+	                    required: "密码必填."
+	                }
+	            }
+	        });
+		  
+	        $('#xtCzyhLoinForm input').keypress(function (e) {
+	            if (e.which == 13) {
+	            	$('#xtCzyhLoinForm').validate();
+	                return false;
+	            }
+	        });
+		  
+		  
+
+		  
 		});
 	</script>
 	<!-- END JAVASCRIPTS -->

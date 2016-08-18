@@ -22,57 +22,13 @@
 				</li>
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
-			<div style="float:left;">
-			<button id="xtSsjjysbEdit" class="btn green">
-			新增 <i class="icon-plus"></i>
-			</button>
-			
-			</div>
 			<form id="SsjjysbSeach">
 			<div style="float:right;">
-			 <input type="hidden" name="ssid"  id="ssid" value="$!xtSsgl.id">
+			<input type="hidden" name="ssid"  id="ssid" value="$!xtSsgl.id">
 			<input placeholder="名称" class="m-wrap medium" type="text" name="xm"/>
 			</div>
 			</form>
-			<table id="SsjjysbFlexigrid" style="display: none">
-			<!-- 
-			<table class="flexme4" style="display: none">
-			<tbody>
-			<tr>
-				<td><div><input type="checkbox" class="selectsub"/></div></td>
-				<td><div>辽宁盘锦马拉松</div></td>
-				<td><div>辽宁盘锦</div></td>
-				<td><div>2016-07-12</div></td>
-				<td><div>2016-07-11</div></td>
-				<td><div><a href="#" class="btn mini green cszList"><i class="icon-user"></i> 1005</a></div></td>
-				<td><div><a href="#" class="btn mini red jjyList"><i class="icon-plus"></i> 30</a></div></td>
-				<td><div><span class="label label-success">已发布</span></div></td>
-				<td><div>
-				<a href="#" class="btn mini purple"><i class="icon-edit"></i> 编辑</a>
-				<a href="#" class="btn mini green sszbgl"><i class="icon-th-large"></i> 赛事装备管理</a>
-				<a href="#" class="btn mini red zyzsh"><i class="icon-th-large"></i> 自愿者审核</a>
-				<a href="#" class="btn mini blue sstj"><i class="icon-th-large"></i> 赛事统计</a>
-				</div></td>
-			</tr>    
-			<tr>
-				<td><div><input type="checkbox" class="selectsub"/></div></td>
-				<td><div>辽宁盘锦马拉松</div></td>
-				<td><div>辽宁盘锦</div></td>
-				<td><div>2016-07-12</div></td>
-				<td><div>2016-07-11</div></td>
-				<td><div><a href="#" class="btn mini green cszList"><i class="icon-user"></i> 1005</a></div></td>
-				<td><div><a href="#" class="btn mini red jjyList"><i class="icon-plus"></i> 30</a></div></td>
-				<td><div><span class="label label-success">已发布</span></div></td>
-				<td><div>
-				<a href="#" class="btn mini purple"><i class="icon-edit"></i> 编辑</a>
-				<a href="#" class="btn mini green sszbgl"><i class="icon-th-large"></i> 赛事装备管理</a>
-				<a href="#" class="btn mini red zyzsh"><i class="icon-th-large"></i> 自愿者审核</a>
-				<a href="#" class="btn mini blue sstj"><i class="icon-th-large"></i> 赛事统计</a>
-				</div></td>
-			</tr> 
-			</tbody>
-			</table>
-			 -->
+			<table id="SsjjysbFlexigrid" style="display: none" />
 			<br/>
 		</div>
 	</div>
@@ -83,24 +39,11 @@
 <!-- END PAGE LEVEL PLUGINS -->
 
 <script>
-/*
-	jQuery(document).ready(function() {    
-		//App.init(); // initlayout and core plugins
-		Racelist.init();
-		$("#raceEdit").on("click",Racelist.raceEditOnClick());
-		$(".cszList").on("click",Racelist.cszListOnClick())
-		$(".jjyList").on("click",Racelist.jjyListOnClick())
-		$(".sstj").on("click", Racelist.sstjOnClick())
-		$(".zyzsh").on("click", Racelist.zyzshOnClick())
-		$(".sszbgl").on("click", Racelist.sszbglOnClick())
-
-	});*/jQuery(document).ready(function() { 
+	jQuery(document).ready(function() { 
 		var ssid=$("#ssid").val();
 		xtSsjjysbList.init(ssid);
 		$("#xtSsjjysbEdit").on("click", xtSsjjysbList.xtSsjjysbEditOnClick(ssid));
 		$("#page-content").height("100%");
-
-		//$("#sbtj").on("click", xtBsysbList.sbTjOnClick());
 	});
 	
 </script>

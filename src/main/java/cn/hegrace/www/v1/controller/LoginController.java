@@ -44,14 +44,15 @@ public class LoginController extends BaseController{
 		ModelAndView mv = new ModelAndView("login");
 		XtCzyh xtCzyh = (XtCzyh) httpMessageConverter(new XtCzyh(), request);
 		XtCzyhExample example = new XtCzyhExample();
-		example.createCriteria().andDlmEqualTo(xtCzyh.getDlm());
-		example.createCriteria().andDlmmEqualTo(xtCzyh.getDlmm());
+		XtCzyhExample.Criteria c = example.createCriteria();
+		c.andDlmEqualTo(xtCzyh.getDlm());
+		c.andDlmmEqualTo(xtCzyh.getDlmm());
 		List<XtCzyh> list = baseService.selectByExample(example);
 		
 		if(list != null && !list.isEmpty()){
 			xtCzyh = list.get(0);
 			HttpSession session = request.getSession();
-			session.setAttribute("xtCzyh", xtCzyh);
+			session.setAttribute("xtCzyhBean", xtCzyh);
 			if(StringUtils.isNotEmpty(xtCzyh.getSsid())){
 				response.sendRedirect("index.htm");
 			}else{
