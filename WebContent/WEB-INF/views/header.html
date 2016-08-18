@@ -15,18 +15,18 @@
 			<!-- BEGIN USER LOGIN DROPDOWN -->
 			<li class="dropdown user">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				<span class="username">管理员</span>
+				<span class="username">$!xtCzyh.xm</span>
 				<i class="icon-angle-down"></i>
 				</a>
 				<ul class="dropdown-menu">
 					<li><a href="extra_profile.htm"><i class="icon-user"></i> 修改密码</a></li>
 					<li class="divider"></li>
-					<li><a href="extra_lock.htm"><i class="icon-lock"></i> 锁屏</a></li>
-					<li><a href="login.htm"><i class="icon-key"></i> 登出</a></li>
+					<li><a href="#if($!xtCzyh.ssid) login.htm #else ../login.htm  #end"><i class="icon-key"></i> 登出</a></li>
 				</ul>
 			</li>
 			<!-- END USER LOGIN DROPDOWN -->
 		</ul>
 		<!-- END TOP NAVIGATION MENU --> 
 	</div>
+	
 </div>

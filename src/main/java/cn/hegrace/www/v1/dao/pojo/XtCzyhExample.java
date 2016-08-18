@@ -1,6 +1,7 @@
 package cn.hegrace.www.v1.dao.pojo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class XtCzyhExample extends BaseExample{
@@ -591,6 +592,126 @@ public class XtCzyhExample extends BaseExample{
 
         public Criteria andSsidNotBetween(String value1, String value2) {
             addCriterion("ssid not between", value1, value2, "ssid");
+            return (Criteria) this;
+        }
+
+        public Criteria andFpqIsNull() {
+            addCriterion("fpq is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFpqIsNotNull() {
+            addCriterion("fpq is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFpqEqualTo(Integer value) {
+            addCriterion("fpq =", value, "fpq");
+            return (Criteria) this;
+        }
+
+        public Criteria andFpqNotEqualTo(Integer value) {
+            addCriterion("fpq <>", value, "fpq");
+            return (Criteria) this;
+        }
+
+        public Criteria andFpqGreaterThan(Integer value) {
+            addCriterion("fpq >", value, "fpq");
+            return (Criteria) this;
+        }
+
+        public Criteria andFpqGreaterThanOrEqualTo(Integer value) {
+            addCriterion("fpq >=", value, "fpq");
+            return (Criteria) this;
+        }
+
+        public Criteria andFpqLessThan(Integer value) {
+            addCriterion("fpq <", value, "fpq");
+            return (Criteria) this;
+        }
+
+        public Criteria andFpqLessThanOrEqualTo(Integer value) {
+            addCriterion("fpq <=", value, "fpq");
+            return (Criteria) this;
+        }
+
+        public Criteria andFpqIn(List<Integer> values) {
+            addCriterion("fpq in", values, "fpq");
+            return (Criteria) this;
+        }
+
+        public Criteria andFpqNotIn(List<Integer> values) {
+            addCriterion("fpq not in", values, "fpq");
+            return (Criteria) this;
+        }
+
+        public Criteria andFpqBetween(Integer value1, Integer value2) {
+            addCriterion("fpq between", value1, value2, "fpq");
+            return (Criteria) this;
+        }
+
+        public Criteria andFpqNotBetween(Integer value1, Integer value2) {
+            addCriterion("fpq not between", value1, value2, "fpq");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjIsNull() {
+            addCriterion("cjsj is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjIsNotNull() {
+            addCriterion("cjsj is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjEqualTo(Date value) {
+            addCriterion("cjsj =", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjNotEqualTo(Date value) {
+            addCriterion("cjsj <>", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjGreaterThan(Date value) {
+            addCriterion("cjsj >", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjGreaterThanOrEqualTo(Date value) {
+            addCriterion("cjsj >=", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjLessThan(Date value) {
+            addCriterion("cjsj <", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjLessThanOrEqualTo(Date value) {
+            addCriterion("cjsj <=", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjIn(List<Date> values) {
+            addCriterion("cjsj in", values, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjNotIn(List<Date> values) {
+            addCriterion("cjsj not in", values, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjBetween(Date value1, Date value2) {
+            addCriterion("cjsj between", value1, value2, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjNotBetween(Date value1, Date value2) {
+            addCriterion("cjsj not between", value1, value2, "cjsj");
             return (Criteria) this;
         }
     }

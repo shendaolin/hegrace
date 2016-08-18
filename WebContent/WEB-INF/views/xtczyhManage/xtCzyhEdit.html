@@ -86,7 +86,16 @@
 
 					</div>
 				</div>
-
+				<div class="control-group">
+					<label class="control-label">分配权:</label>
+					<div class="controls">
+						<select name="fpq">
+							<option value="0" #if($!xtCzyh.fpq == 0) selected #end>无</option>
+							<option value="1" #if($!xtCzyh.fpq == 1) selected #end>有</option>
+						</select>
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
 			</form>
 			
 			<br/>
@@ -114,10 +123,13 @@
 
 	   
 		$('#xtCzyhForm').submit(function() {
-		
 	        $(this).ajaxSubmit({
 	        	success: function(data){
-	        		alert("保存成功！");
+	        		if(data.exception){
+	        			alert(data.exception)
+	        		}else{
+	        			alert("保存成功！");
+	        		}
 	            },
 	            error: function(data){
 	                alert("保存失败！");

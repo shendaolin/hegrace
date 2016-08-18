@@ -50,8 +50,8 @@ var XtCzyhList = function () {
 										+ "</div>");
 					}
 				} ],
-                sortname : "Id",
-                sortorder : "asc",
+                sortname : "cjsj",
+                sortorder : "desc",
                 usepager : true,
                 title : '操作人员列表',
                 useRp : false,

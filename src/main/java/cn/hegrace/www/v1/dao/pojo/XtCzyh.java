@@ -1,5 +1,7 @@
 package cn.hegrace.www.v1.dao.pojo;
 
+import java.util.Date;
+
 import cn.hegrace.www.v1.annotation.PrimaryKey;
 
 public class XtCzyh extends BaseDao{
@@ -16,7 +18,11 @@ public class XtCzyh extends BaseDao{
     private String zw;
 
     private String ssid;
-    
+
+    private Integer fpq;
+
+    private Date cjsj;
+
     @PrimaryKey
     public String getId() {
         return id;
@@ -73,5 +79,20 @@ public class XtCzyh extends BaseDao{
     public void setSsid(String ssid) {
         this.ssid = ssid == null ? null : ssid.trim();
     }
-    
+
+    public Integer getFpq() {
+        return fpq;
+    }
+
+    public void setFpq(Integer fpq) {
+        this.fpq = fpq;
+    }
+
+    public Date getCjsj() {
+        return cjsj;
+    }
+
+    public void setCjsj(Date cjsj) {
+        this.cjsj = cjsj;
+    }
 }

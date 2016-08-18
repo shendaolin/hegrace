@@ -74,7 +74,9 @@
 			/ckfinder/core/connector/java/connector.java
 		</url-pattern>
 	</servlet-mapping>
-	
+	<session-config>  
+         <session-timeout>300</session-timeout>  
+    </session-config> 
 	<welcome-file-list>
 		<welcome-file>login.htm</welcome-file>
 	</welcome-file-list>
