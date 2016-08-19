@@ -69,12 +69,17 @@ var xtSsglList = function () {
     								+ "')\"  class=\"btn mini red\"><i class=\"icon-trash\"></i> 删除</a>";
     						var sszbglButton = " <a href=\"javascript:;\" onclick=\"xtSsglList.xtSsjjysbListOnClick('"
 								+ id
+<<<<<<< HEAD
 								+ "')\" class=\"btn mini green sszbgl\"><i class=\"icon-th-large\">赛事装备管理</i> </a>";
     						var ssgwButton = " <a href=\"javascript:;\" onclick=\"xtSsglList.xtSsgwList('"
 								+ id
 								+ "')\" class=\"btn mini green sszbgl\"><i class=\"icon-th-large\"></i> 赛事岗位管理</a>";
     						
     						var sstjButton = " <a href=\"javascript:;\" onclick=\"xtSsglList.xtSstjList('"
+=======
+								+ "')\" class=\"btn mini green sszbgl\"><i class=\"icon-th-large\"></i> 赛事装备管理</a>";
+    						var sstjButton = " <a href=\"javascript:;\" onclick=\"xtSsglList.xtSsjjysbList('"
+>>>>>>> branch 'master' of https://github.com/shendaolin/hegrace
 								+ id
 								+ "')\" class=\"btn mini blue sstj\"><i class=\"icon-th-large\"></i> 赛事统计</a>";
 						
@@ -150,6 +155,12 @@ var xtSsglList = function () {
 			$("#xtSsglFlexigrid").flexOptions({
 				params : $("#xtSsglSeach").serializeArray()
 			}).flexReload();
+		},
+		
+		xtSsjjysbList : function(){
+			return function(){
+				$("#page-content").load("xtSsjjysbList.htm");
+			}
 		}
 
     };

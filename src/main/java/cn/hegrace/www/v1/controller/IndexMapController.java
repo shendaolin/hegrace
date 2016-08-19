@@ -33,8 +33,8 @@ public class IndexMapController extends BaseController {
 	@RequestMapping("/getJjryLngLats.htm")
 	public void getJjryLngLats(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
-		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
-		String ssid = "7eb491aa-5dbb-11e6-b84a-00163e0003f4";
+		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyhBean");
+		String ssid = "";
 		if(xtCzyh != null){
 			ssid = xtCzyh.getSsid();
 		}
@@ -49,8 +49,8 @@ public class IndexMapController extends BaseController {
 	@RequestMapping("/getQJJLLngLats.htm")
 	public void getQJJLLngLats(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
-		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
-		String ssid = "7eb491aa-5dbb-11e6-b84a-00163e0003f4";
+		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyhBean");
+		String ssid = "";
 		if(xtCzyh != null){
 			ssid = xtCzyh.getSsid();
 		}
@@ -92,8 +92,8 @@ public class IndexMapController extends BaseController {
 	@RequestMapping("/automatic.htm")
 	public void automatic(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
-		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyh");
-		String ssid = "7eb491aa-5dbb-11e6-b84a-00163e0003f4";
+		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyhBean");
+		String ssid = "";
 		if(xtCzyh != null){
 			ssid = xtCzyh.getSsid();
 		}

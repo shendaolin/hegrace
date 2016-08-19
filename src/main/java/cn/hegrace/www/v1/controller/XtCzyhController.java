@@ -13,6 +13,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.codehaus.plexus.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -29,15 +30,15 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 import cn.hegrace.www.v1.busi.BaseService;
 import cn.hegrace.www.v1.dao.pojo.XtCzyh;
 import cn.hegrace.www.v1.dao.pojo.XtCzyhExample;
+import cn.hegrace.www.v1.dao.pojo.XtCzyhExample.Criteria;
 import cn.hegrace.www.v1.dao.pojo.XtDmlb;
 import cn.hegrace.www.v1.dao.pojo.XtDmlbExample;
 import cn.hegrace.www.v1.dao.pojo.XtGydm;
 import cn.hegrace.www.v1.dao.pojo.XtGydmExample;
 import cn.hegrace.www.v1.dao.pojo.XtSsgl;
 import cn.hegrace.www.v1.dao.pojo.XtSsglExample;
-import cn.hegrace.www.v1.dao.pojo.XtCzyh;
+import cn.hegrace.www.v1.error.HegraceException;
 import cn.hegrace.www.v1.seach.Flexigrid;
-import cn.hegrace.www.v1.seach.XtCzyhSeach;
 import cn.hegrace.www.v1.seach.XtCzyhSeach;
 import net.sf.json.JSONObject;
 
@@ -112,14 +113,51 @@ public class XtCzyhController extends BaseController {
 			HttpServletResponse response) throws Exception{
 		XtCzyh xtCzyh = (XtCzyh) httpMessageConverter(new XtCzyh(), request);
 		if(StringUtils.isEmpty(xtCzyh.getId())){
+			
+			XtCzyhExample example = new XtCzyhExample();
+			example.createCriteria().andDlmEqualTo(xtCzyh.getDlm());
+			List<XtCzyh> list = baseService.selectByExample(example);
+			if(!CollectionUtils.isEmpty(list)){
+				sendJson(new HegraceException("登录名已存在！"), response);
+				return;
+			}
+			
+			if(StringUtils.isNotEmpty(xtCzyh.getSsid()) && xtCzyh.getFpq() == 1){
+				XtCzyhExample example2 = new XtCzyhExample();
+				Criteria c = example2.createCriteria();
+				c.andSsidEqualTo(xtCzyh.getSsid());
+				c.andFpqEqualTo(1);
+				List<XtCzyh> list2 = baseService.selectByExample(example2);
+				if(!CollectionUtils.isEmpty(list2)){
+					sendJson(new HegraceException("该赛事已经存在分配权的用户，您不能再分配了！"), response);
+					return;
+				}
+			}
+			
 			xtCzyh.setId(baseService.getUuid());
 			baseService.insert(xtCzyh);
 		}else{
+			
+			if(StringUtils.isNotEmpty(xtCzyh.getSsid()) && xtCzyh.getFpq() == 1){
+				XtCzyhExample example2 = new XtCzyhExample();
+				Criteria c = example2.createCriteria();
+				c.andSsidEqualTo(xtCzyh.getSsid());
+				c.andFpqEqualTo(1);
+				c.andIdNotEqualTo(xtCzyh.getId());
+				List<XtCzyh> list2 = baseService.selectByExample(example2);
+				if(!CollectionUtils.isEmpty(list2)){
+					sendJson(new HegraceException("该赛事已经存在分配权的用户，您不能再分配了！"), response);
+					return;
+				}
+			}
+			
 			XtCzyh xtCzyh2 = baseService.selectByPrimaryKey(xtCzyh);
 			xtCzyh.setDlm(xtCzyh2.getDlm());
 			xtCzyh.setDlmm(xtCzyh2.getDlmm());
+			xtCzyh.setCjsj(xtCzyh2.getCjsj());
 			baseService.updateByPrimaryKey(xtCzyh);
 		}
+		
 		sendJson(xtCzyh, response);
 	}
 	

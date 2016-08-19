@@ -9,16 +9,7 @@ public class XtSsjjysbDto extends XtSsjjysb {
 	private String sbbh;
 	private String xm;
 	private String dh;
-	private String id;
 	
-	
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getRyid() {
 		return ryid;

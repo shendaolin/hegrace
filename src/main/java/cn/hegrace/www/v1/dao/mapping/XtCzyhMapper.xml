@@ -9,6 +9,8 @@
     <result column="dh" jdbcType="VARCHAR" property="dh" />
     <result column="zw" jdbcType="VARCHAR" property="zw" />
     <result column="ssid" jdbcType="VARCHAR" property="ssid" />
+    <result column="fpq" jdbcType="INTEGER" property="fpq" />
+    <result column="cjsj" jdbcType="TIMESTAMP" property="cjsj" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    Id, dlm, dlmm, xm, dh, zw, ssid
+    Id, dlm, dlmm, xm, dh, zw, ssid, fpq, cjsj
   </sql>
   <select id="selectByExample" parameterType="cn.hegrace.www.v1.dao.pojo.XtCzyhExample" resultMap="BaseResultMap">
     select
@@ -103,11 +105,11 @@
   </delete>
   <insert id="insert" parameterType="cn.hegrace.www.v1.dao.pojo.XtCzyh">
     insert into XT_CZYH (Id, dlm, dlmm, 
-      xm, dh, zw, ssid
-      )
+      xm, dh, zw, ssid, 
+      fpq, cjsj)
     values (#{id,jdbcType=VARCHAR}, #{dlm,jdbcType=VARCHAR}, #{dlmm,jdbcType=VARCHAR}, 
-      #{xm,jdbcType=VARCHAR}, #{dh,jdbcType=VARCHAR}, #{zw,jdbcType=VARCHAR}, #{ssid,jdbcType=VARCHAR}
-      )
+      #{xm,jdbcType=VARCHAR}, #{dh,jdbcType=VARCHAR}, #{zw,jdbcType=VARCHAR}, #{ssid,jdbcType=VARCHAR}, 
+      #{fpq,jdbcType=INTEGER}, #{cjsj,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.hegrace.www.v1.dao.pojo.XtCzyh">
     insert into XT_CZYH
@@ -133,6 +135,12 @@
       <if test="ssid != null">
         ssid,
       </if>
+      <if test="fpq != null">
+        fpq,
+      </if>
+      <if test="cjsj != null">
+        cjsj,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -155,6 +163,12 @@
       </if>
       <if test="ssid != null">
         #{ssid,jdbcType=VARCHAR},
+      </if>
+      <if test="fpq != null">
+        #{fpq,jdbcType=INTEGER},
+      </if>
+      <if test="cjsj != null">
+        #{cjsj,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -188,6 +202,12 @@
       <if test="record.ssid != null">
         ssid = #{record.ssid,jdbcType=VARCHAR},
       </if>
+      <if test="record.fpq != null">
+        fpq = #{record.fpq,jdbcType=INTEGER},
+      </if>
+      <if test="record.cjsj != null">
+        cjsj = #{record.cjsj,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -201,7 +221,9 @@
       xm = #{record.xm,jdbcType=VARCHAR},
       dh = #{record.dh,jdbcType=VARCHAR},
       zw = #{record.zw,jdbcType=VARCHAR},
-      ssid = #{record.ssid,jdbcType=VARCHAR}
+      ssid = #{record.ssid,jdbcType=VARCHAR},
+      fpq = #{record.fpq,jdbcType=INTEGER},
+      cjsj = #{record.cjsj,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +249,12 @@
       <if test="ssid != null">
         ssid = #{ssid,jdbcType=VARCHAR},
       </if>
+      <if test="fpq != null">
+        fpq = #{fpq,jdbcType=INTEGER},
+      </if>
+      <if test="cjsj != null">
+        cjsj = #{cjsj,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where Id = #{id,jdbcType=VARCHAR}
   </update>
@@ -237,7 +265,9 @@
       xm = #{xm,jdbcType=VARCHAR},
       dh = #{dh,jdbcType=VARCHAR},
       zw = #{zw,jdbcType=VARCHAR},
-      ssid = #{ssid,jdbcType=VARCHAR}
+      ssid = #{ssid,jdbcType=VARCHAR},
+      fpq = #{fpq,jdbcType=INTEGER},
+      cjsj = #{cjsj,jdbcType=TIMESTAMP}
     where Id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>
