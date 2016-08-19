@@ -16,7 +16,7 @@
 
 	<select id="select_xtcszgl_list" parameterType="java.util.Map"
 		resultType="cn.hegrace.www.v1.dto.XtCszglDto">
-		SELECT XT_CSZGL.*,XT_SSGL.ssmc,case  when xb=1 then '男' when xb=2 then '女' end as xbName,case  when gfx=0 then '否' when gfx=1 then '否' end as gfxName   from  XT_CSZGL,XT_SSGL where ssid = #{ssid} and
+		SELECT XT_CSZGL.*,XT_SSGL.ssmc,case  when xb=1 then '男' when xb=2 then '女' end as xbName,case  when gfx=0 then '否' when gfx=1 then '是' end as gfxName   from  XT_CSZGL,XT_SSGL where ssid = #{ssid} and
 		XT_SSGL.id=XT_CSZGL.ssid
 		<if test="xm != null and xm != ''">
 			and xm like '%${xm}%'
