@@ -8,4 +8,25 @@
 		where gw.ssid = #{ssid}
 		group by gwid
 	</select>
+	<select id="select_xtssgw_count" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		SELECT count(1) from XT_SSGW,XT_SSGL where XT_SSGW.ssid = #{ssid} and
+		XT_SSGL.id=XT_SSGW.ssid
+		<if test="gwmc != null and gwmc != ''">
+			and gwmc like '%${gwmc}%'
+		</if>
+	</select>
+
+	<select id="select_xtssgw_list" parameterType="java.util.Map"
+		resultType="cn.hegrace.www.v1.dto.XtSsgwDto">
+		select XT_SSGW.* from XT_SSGW,XT_SSGL where XT_SSGW.ssid = #{ssid} and
+		XT_SSGL.id=XT_SSGW.ssid
+		<if test="gwmc != null and gwmc != ''">
+			and gwmc like '%${gwmc}%'
+		</if>
+		order by id desc
+		
+		limit ${startPage}, ${page}
+	</select>
+	
 </mapper>

@@ -32,7 +32,7 @@ var xtSsglList = function () {
                         width : 100,
                         align : 'center',
                         operation : function(tdDiv, row){
-                    		var content = "<a href=\"javascript:;\" class=\"btn mini green\"><i class=\"icon-user\"></i> "+row.cszcount+"</a>";
+                    		var content = "<a href=\"javascript:;\" class=\"btn mini green\" onclick=\"xtSsglList.xtCszglList('"+row.id+"')\"><i class=\"icon-user\"></i> "+row.cszcount+"</a>";
 							$(tdDiv).html(content);
 						}
                     },{
@@ -69,8 +69,12 @@ var xtSsglList = function () {
     								+ "')\"  class=\"btn mini red\"><i class=\"icon-trash\"></i> 删除</a>";
     						var sszbglButton = " <a href=\"javascript:;\" onclick=\"xtSsglList.xtSsjjysbListOnClick('"
 								+ id
-								+ "')\" class=\"btn mini green sszbgl\"><i class=\"icon-th-large\"></i> 赛事装备管理</a>";
-    						var sstjButton = " <a href=\"javascript:;\" onclick=\"xtSsglList.xtSsglEdit('"
+								+ "')\" class=\"btn mini green sszbgl\"><i class=\"icon-th-large\">赛事装备管理</i> </a>";
+    						var ssgwButton = " <a href=\"javascript:;\" onclick=\"xtSsglList.xtSsgwList('"
+								+ id
+								+ "')\" class=\"btn mini green sszbgl\"><i class=\"icon-th-large\"></i> 赛事岗位管理</a>";
+    						
+    						var sstjButton = " <a href=\"javascript:;\" onclick=\"xtSsglList.xtSstjList('"
 								+ id
 								+ "')\" class=\"btn mini blue sstj\"><i class=\"icon-th-large\"></i> 赛事统计</a>";
 						
@@ -78,6 +82,7 @@ var xtSsglList = function () {
     								"<div>" + editButton
     										+ deleteButton
     										+ sszbglButton
+    										+ ssgwButton
     										+ sstjButton
     										+ "</div>");
     					}
@@ -96,6 +101,21 @@ var xtSsglList = function () {
         },
         xtSsjjyList : function(ssid){
         	$("#page-content").load("xtSsjjyList.htm", {
+				"ssid" :ssid
+			});	
+        },
+        xtCszglList : function(ssid){
+        	$("#page-content").load("xtCszglList.htm", {
+				"ssid" :ssid
+			});	
+        },
+        xtSsgwList : function(ssid){
+        	$("#page-content").load("xtSsgwList.htm", {
+				"ssid" :ssid
+			});	
+        },
+        xtSstjList : function(ssid){
+        	$("#page-content").load("xtSstjList.htm", {
 				"ssid" :ssid
 			});	
         },
@@ -166,7 +186,11 @@ var XtSsglEdit = function () {
 				$("#page-content").load("xtSsglList.htm");
 			}
 		},
-		
+		xtSsglListOnClick : function(){
+			return function(){
+				$("#page-content").load("xtSsglList.htm");
+			}
+		},
 		xtSsglFormSubmit : function() {
 			return function() {
 				var zt=$("#zt").val();
@@ -293,99 +317,6 @@ var xtcszglList = function () {
 
 }();
 
-var xtSsjjysbList = function () {
-	 
-	return {
-    	//main function to initiate the module
-		
-        init: function (ssid) {
-			$("#SsjjysbFlexigrid").flexigrid({	
-                url : "xtSsjjysbFlexigrid.htm",
-                data : {  
-                	ssid : ssid  
-                }, 
-                params : $("#SsjjysbSeach").serializeArray(),
-                dataType : 'json',
-                colModel : [ {
-                    display : '<input type="checkbox" id="selectall">',
-                    name:'',
-                    width : 30,
-                    sortable : true,
-                    align : 'center'
-                    },{
-                    display : '赛事急救员',
-                    name : 'ssjjyid',
-                    width : 150,
-                    sortable : true,
-                    align : 'center'
-                    }, {
-                        display : '设备',
-                        name : 'sbid',
-                        width : 70,
-                        align : 'center'
-                    }, {
-                        display : '领取状态',
-                        name : 'zt',
-                        width : 70,
-                        align : 'center'
-                    },{
-                        display : '操作',
-                        name : 'zt',
-                        width : 650,
-                        align : 'center',
-                    	process : function(tdDiv, ssjjyid) {
-    						var editButton = "<a href=\"javascript:;\" onclick=\"xtSsjjysbList.xtSsjjysbEdit('"
-    								+ ssjjyid
-    								+ "')\" class=\"btn mini purple\"><i class=\"icon-edit\"></i> 编辑</a>";
-    		
-    						$(tdDiv).html(
-    								"<div>" + editButton+
-    						"</div>");
-    					}
-        				} ],
-                sortname : "id",
-                sortorder : "desc",
-                usepager : true,
-                title : '赛事急救员设备管理',
-                useRp : false,
-                rp : 15,
-                width : "100%",
-                height : 300
-            });
-
-
-        },
-        xtSsjjysbEditOnClick : function(ssid) {
-        	alert(ssid);
-        	return function(ssid) {
-        		$("#page-content").load("xtSsjjysbEdit.htm",{
-					"ssid" : ssid
-				});
-			}	
-        	
-		},
-
-		xtSsjjysbEdit : function(id) {
-			alert(id);
-			$("#page-content").load("xtSsjjysbEdit.htm", {
-				"id" : id
-			});
-		},
-		xtSsjjysbDelete : function(id) {
-			var del = confirm("确定要删除吗？");
-			if (del == true) {
-				$.get("xtSsjjysbDelete.htm", {
-					"id" : id
-				});
-				$("#SsjjysbFlexigrid").flexReload();
-			} else {
-				return false;
-			}
-		}
-
-    };
-
-}();
 
 
 var XtcszglEdit = function () {

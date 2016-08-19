@@ -4,7 +4,7 @@
 		<div class="span12">
 			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 			<h3 class="page-title">
-				塞事管理 <small>马拉松赛事维护</small>
+				赛事管理 <small>$!xtSsgl.ssmc</small>
 			</h3>
 			<ul class="breadcrumb">
 				<li>
@@ -13,7 +13,7 @@
 					<i class="icon-angle-right"></i>
 				</li>
 				<li><a href="#">赛事管理</a><i class="icon-angle-right"></i></li>
-				<li><a href="#">新增赛事</a></li>
+				<li><a href="#">新增赛事岗位</a></li>
 				<li class="pull-right no-text-shadow">
 					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
 						<i class="icon-calendar"></i>
@@ -23,156 +23,28 @@
 				</li>
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
-			<button id="xtSsglList" class="btn black">
+			<button id="xtSsgwList1" class="btn black">
 			返回 <i class="icon-arrow-left"></i>
 			</button>
-			<button id="xtSsglSave" class="btn blue">
-			保存为待发布 <i class="icon-shopping-cart"></i>
-			</button>
-			<button id="xtSsglSaveAck" class="btn green">
-			直接发布 <i class="icon-share"></i>
+			<button id="xtSsgwSave" class="btn blue">
+			保存 <i class="icon-shopping-cart"></i>
 			</button>
 			<br/><br/>
-			<form id="xtSsglForm" action="xtSsglSave.htm" class="form-horizontal" method="POST">
-				<input type="hidden" name="id" value="$!xtSsgl.id">
-				<input type="hidden" name="zt" id="zt" value="$!xtSsgl.zt">
-				<div class="control-group">
-					<label class="control-label">赛事名称:</label>
+			<form id="xtSsgwForm" action="xtSsgwSave.htm" class="form-horizontal" method="POST">
+				<input type="hidden" name="id" value="$!xtSsgw.id">
+				<input type="hidden" name="ssid" value="$!xtSsgl.id">
+				 	<div class="control-group">
+					<label class="control-label">岗位名称:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="ssmc" value="$!xtSsgl.ssmc">
+						<input class="m-wrap medium" type="text" name="gwmc" value="$!xtSsgw.gwmc">
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">赛事地点:</label>
+					<label class="control-label">岗位数量:</label>
 					<div class="controls">
-						<input class="m-wrap large" type="text" name="ssdd" value="$!xtSsgl.ssdd">
+						<input class="m-wrap medium" type="text" name="gwsl"value="$!xtSsgw.gwsl">
 						<span class="help-inline"><font color="red">*</font></span>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">赛事时间:</label>
-					<div class="controls">
-						<div class="input-append date sssjstart">
-							<input size="16"  readonly="readonly" class="m-wrap" name="sskssj" type="text"   value=#if("$!xtSsgl.sskssj"!="")  "$dateTool.format('yyyy-MM-dd HH:mm:ss',$!xtSsgl.sskssj)" #end>
-							<span class="add-on"><i class="icon-calendar"></i></span>
-						</div> 到
-						<div class="input-append date sssjend">
-							<input size="16"  readonly="readolny" class="m-wrap" name="ssjssj" type="text"  value=#if("$!xtSsgl.ssjssj"!="")  "$dateTool.format('yyyy-MM-dd HH:mm:ss',$!xtSsgl.ssjssj)" #end>
-							<span class="add-on"><i class="icon-calendar"></i></span>
-						</div>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">场景时间:</label>
-					<div class="controls">
-						<div class="input-append date cjsjstart">
-							<input size="16"  readonly="readonly" class="m-wrap"  name="cjkssj" type="text"  value=#if("$!xtSsgl.cjkssj"!="")  "$dateTool.format('yyyy-MM-dd HH:mm:ss',$!xtSsgl.cjkssj)" #end>
-							<span class="add-on"><i class="icon-calendar"></i></span>
-						</div> 到
-						<div class="input-append date cjsjend">
-							<input size="16"  readonly="readonly" class="m-wrap" name="cjjssj" type="text"  value=#if("$!xtSsgl.cjjssj"!="")  "$dateTool.format('yyyy-MM-dd HH:mm:ss',$!xtSsgl.cjjssj)" #end>
-							<span class="add-on"><i class="icon-calendar"></i></span>
-						</div>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">赛事介绍</label>
-					<div class="controls">
-						<textarea class="span12 wysihtml5 m-wrap" rows="6" name="ssjs">$!xtSsgl.ssjs</textarea>
-					</div>
-				</div>
-				<!-- 
-				<div class="control-group">
-					<label class="control-label">岗位设置</label>
-					<div class="controls">
-						<input id="tags_2" type="text" class="m-wra tags medium" name="" value="$!xtSsgl.id"/>
-					</div>
-				</div>
- -->
-				<div class="control-group">
-					<label class="control-label">赛事图片</label>
-					<div class="controls">
-						<!-- Redirect browsers with JavaScript disabled to the origin page -->
-						<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
-						<div class="row-fluid fileupload-buttonbar">
-							<div class="span7">
-								<!-- The fileinput-button span is used to style the file input field as button -->
-								<span class="btn green fileinput-button">
-								<i class="icon-plus icon-white"></i>
-								<span>Add files...</span>
-								<input type="file" name="allfiles" id="allfiles" multiple>
-								</span>
-							</div>
-							<!-- The global progress information -->
-							<div class="span5 fileupload-progress fade">
-								<!-- The global progress bar -->
-								<div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-									<div class="bar" style="width:0%;"></div>
-								</div>
-								<!-- The extended global progress information -->
-								<div class="progress-extended">&nbsp;</div>
-							</div>
-						</div>
-						<!-- The loading indicator is shown during file processing -->
-						<div class="fileupload-loading"></div>
-						<br>
-						<!-- The table listing the files available for upload/download -->
-						<table role="presentation" class="table table-striped">
-							<tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
-						</table>
-					</div>
-				</div>
-				<div class="control-group">
-					<div class="controls">
-					<script id="template-upload" type="text/x-tmpl">
-							{% for (var i=0, file; file=o.files[i]; i++) { %}
-							    <tr class="template-upload fade">
-							        <td class="preview"><span class="fade"></span></td>
-							        <td class="name"><span>{%=file.name%}</span></td>
-							        <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
-					
-							        <td class="cancel">{% if (!i) { %}
-							            <button class="btn red">
-							                <i class="icon-ban-circle icon-white"></i>
-							                <span>Cancel</span>
-							            </button>
-							        {% } %}</td>
-							    </tr>
-							{% } %}
-						</script>
-						<!-- The template to display files available for download -->
-						<script id="template-download" type="text/x-tmpl">
-							{% for (var i=0, file; file=o.files[i]; i++) { %}
-							    <tr class="template-download fade">
-							        {% if (file.error) { %}
-							            <td></td>
-							            <td class="name"><span>{%=file.name%}</span></td>
-							            <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
-							            <td class="error" colspan="2"><span class="label label-important">Error</span> {%=file.error%}</td>
-							        {% } else { %}
-							            <td class="preview">
-							            {% if (file.thumbnail_url) { %}
-							                <a class="fancybox-button" data-rel="fancybox-button" href="{%=file.url%}" title="{%=file.name%}">
-							                <img src="media/image/{%=file.thumbnail_url%}">
-							                </a>
-							            {% } %}</td>
-							            <td class="name">
-							                <a href="{%=file.url%}" title="{%=file.name%}" data-gallery="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
-							            </td>
-							            <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
-							            <td colspan="2"></td>
-							        {% } %}
-							        <td class="delete">
-							            <button class="btn red" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}"{% if (file.delete_with_credentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
-							                <i class="icon-trash icon-white"></i>
-							                <span>Delete</span>
-							            </button>
-							            <input type="checkbox" class="fileupload-checkbox hide" name="delete" value="1">
-							        </td>
-							    </tr>
-							{% } %}
-						</script>
 					</div>
 				</div>
 			</form>
@@ -184,31 +56,7 @@
 
 
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-<!-- BEGIN PAGE LEVEL PLUGINS -->   
-
-<!-- BEGIN:File Upload Plugin JS files-->
-<script src="../media/js/jquery.ui.widget.js"></script>
-<!-- The Templates plugin is included to render the upload/download listings -->
-<script src="../media/js/tmpl.min.js"></script>
-<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-<script src="../media/js/load-image.min.js"></script>
-<!-- The Canvas to Blob plugin is included for image resizing functionality -->
-<script src="../media/js/canvas-to-blob.min.js"></script>
-<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-<script src="../media/js/jquery.iframe-transport.js"></script>
-<!-- The basic File Upload plugin -->
-<script src="../media/js/jquery.fileupload.js"></script>
-<!-- The File Upload file processing plugin -->
-<script src="../media/js/jquery.fileupload-fp.js"></script>
-<!-- The File Upload user interface plugin -->
-<script src="../media/js/jquery.fileupload-ui.js"></script>
-<!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
-<!--[if gte IE 8]><script src="media/js/jquery.xdr-transport.js"></script><![endif]-->
-<!-- END:File Upload Plugin JS files-->
-
-<script type="text/javascript" src="../media/js/bootstrap-datetimepicker.js"></script>
-<script type="text/javascript" src="../media/js/jquery.tagsinput.min.js"></script>
-
+ 
  
 
 
@@ -216,12 +64,16 @@
 <script type="text/javascript" src="../media/js/select2.min.js"></script>
 <script type="text/javascript" src="../media/js/jquery.form.js"></script>
 <script>
-	jQuery(document).ready(function() {    
-	   App.init(); // initlayout and core plugins
-	   RaceEdit.init(); 
-		$("#xtSsglList").on("click", XtSsglEdit.xtSsglListOnClick());
+	jQuery(document).ready(function() { 
 	
-		$('#xtSsglForm').submit(function() {
+		 $("#xtSsgwList1").on("click",function(){xtSsglList.xtSsgwList("$!xtSsgl.id")});
+		 $("#xtSsjjySave").on("click", XtSsgwEdit.xtSsgwFormSubmit());
+		//$("#xtSsgwList").on("click", XtSsgwEdit.xtSsgwListOnClick());
+		 $('#xtjjrySelect1').select2({
+	         placeholder: "选择一个类型",
+	         allowClear: true
+	     	}); 
+		$('#xtSsgwForm').submit(function() {
 		
 	        $(this).ajaxSubmit({
 	        	success: function(data){
@@ -235,15 +87,8 @@
 	        return false; //阻止表单默认提交
 	    }); 
 
-		$("#xtSsglSave").on("click", XtSsglEdit.xtSsglFormSubmit());
-		$("#xtSsglSaveAck").on("click", XtSsglEdit.xtSsglFormSubmitAck());
-		$('#tags_2').tagsInput({
-            width: 'auto',
-            'onAddTag': function () {
-                //alert(1);
-            },
-        });
-	   
+		$("#xtSsgwSave").on("click", XtSsgwEdit.xtSsgwFormSubmit());
+		
 	});
 </script>
 <!-- END JAVASCRIPTS -->

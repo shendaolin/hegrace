@@ -30,6 +30,7 @@ import cn.hegrace.www.v1.dao.pojo.XtDmlb;
 import cn.hegrace.www.v1.dao.pojo.XtDmlbExample;
 import cn.hegrace.www.v1.dao.pojo.XtGydm;
 import cn.hegrace.www.v1.dao.pojo.XtGydmExample;
+import cn.hegrace.www.v1.dao.pojo.XtSsgl;
 import cn.hegrace.www.v1.dao.pojo.XtCszgl;
 import cn.hegrace.www.v1.seach.Flexigrid;
 import cn.hegrace.www.v1.seach.XtCszglSeach;
@@ -44,8 +45,14 @@ public class XtCszglController extends BaseController {
 	
 	@RequestMapping("raceManage/xtCszglList.htm")
 	public ModelAndView xtCszglList(HttpServletRequest request,
-			HttpServletResponse response){
+			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("raceManage/xtCszglList");
+		String ssid = request.getParameter("ssid");
+		XtSsgl xtSsgl = new XtSsgl();
+		xtSsgl.setId(ssid);
+		xtSsgl = baseService.selectByPrimaryKey(xtSsgl);
+		mv.addObject("xtSsgl", xtSsgl);
+		mv.addObject("ssid", ssid);
 		return mv;
 	}
 	
@@ -72,11 +79,16 @@ public class XtCszglController extends BaseController {
 			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("raceManage/xtCszglEdit");
 		String id = request.getParameter("id");
+		String ssid = request.getParameter("ssid");
+		System.out.println("aaa="+ssid);
 		XtGydmExample example1 = new XtGydmExample();
 		example1.createCriteria().andLbidEqualTo(4);//证件类型
 		List<XtGydm> list1 = baseService.selectByExample(example1);
 		mv.addObject("XtDmbList1", list1);
-		System.out.println(list1); 
+		XtSsgl xtSsgl = new XtSsgl();
+		xtSsgl.setId(ssid);
+		xtSsgl = baseService.selectByPrimaryKey(xtSsgl);
+		mv.addObject("xtSsgl", xtSsgl);
 		if(StringUtils.isNotEmpty(id)){
 			XtCszgl xtCszgl = new XtCszgl();
 			xtCszgl.setId(id);		 

@@ -4,7 +4,7 @@
 		<div class="span12">
 			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 			<h3 class="page-title">
-				塞事管理 <small>马拉松赛事维护</small>
+				赛事管理 <small>$!xtSsgl.ssmc</small>
 			</h3>
 			<ul class="breadcrumb">
 				<li>
@@ -23,27 +23,22 @@
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
 			<div style="float:left;">
-			<button id="xtcszglEdit" class="btn green">
-			新增 <i class="icon-plus"></i>
+			<button id="xtCszglList" class="btn black">
+			返回 <i class="icon-arrow-left"></i>
 			</button>
-			<button id="raceDelete" class="btn red">
-			删除 <i class="icon-trash"></i>
+			<button id="xtCszglEdit" class="btn green">
+			新增参赛者<i class="icon-plus"></i>
 			</button>
-			<button id="raceShare" class="btn blue">
-			发布 <i class="icon-share"></i>
-			</button>
+			 
 			</div>
-			<form id="cszglSeach">
+			<form id="xtCszglSeach">
 			<div style="float:right;">
-			<select class="small m-wrap" tabindex="1" name="Zt">
-				<option value="">全部</option>
-				<option value="1">已发布</option>
-				<option value="0">待发布</option>
-			</select>
-			<input placeholder="赛事名称" class="m-wrap medium" type="text" name="ssmc"/>
+			 
+			<input type="hidden" name="ssid" value="$!ssid">
+			<input placeholder="姓名" class="m-wrap medium" type="text" name="xm"/>
 			</div>
 			</form>
-			<table id="cszglFlexigrid" style="display: none">
+			<table id="xtcszglFlexigrid" style="display: none">
 			<!-- 
 			<table class="flexme4" style="display: none">
 			<tbody>
@@ -101,11 +96,13 @@
 		$(".jjyList").on("click",Racelist.jjyListOnClick())
 		$(".sstj").on("click", Racelist.sstjOnClick())
 		$(".zyzsh").on("click", Racelist.zyzshOnClick())
-		$(".sszbgl").on("click", Racelist.sszbglOnClick())*/
+		$(".sszbgl").on("click", Racelist.sszbglOnClick())
 
-	});*/jQuery(document).ready(function() {  
-		xtcszglList.init();
-		$("#xtcszglEdit").on("click", xtcszglList.xtcszglEditOnClick());
+	});*/
+	jQuery(document).ready(function() {  
+		XtCszglList.init();
+		$("#xtCszglList").on("click", XtSsglEdit.xtSsglListOnClick());
+		$("#xtCszglEdit").on("click", XtCszglList.xtCszglEditOnClick("$!ssid"));
 		$("#page-content").height("100%");
 
 		//$("#sbtj").on("click", xtBsysbList.sbTjOnClick());

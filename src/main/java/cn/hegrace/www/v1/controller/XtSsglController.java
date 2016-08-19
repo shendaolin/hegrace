@@ -30,8 +30,10 @@ import cn.hegrace.www.v1.dao.pojo.XtDmlb;
 import cn.hegrace.www.v1.dao.pojo.XtDmlbExample;
 import cn.hegrace.www.v1.dao.pojo.XtGydm;
 import cn.hegrace.www.v1.dao.pojo.XtGydmExample;
+import cn.hegrace.www.v1.dao.pojo.XtJjry;
 import cn.hegrace.www.v1.dao.pojo.XtSsgl;
 import cn.hegrace.www.v1.dao.pojo.XtSsglWithBLOBs;
+import cn.hegrace.www.v1.dto.XtSsglDto;
 import cn.hegrace.www.v1.seach.Flexigrid;
 import cn.hegrace.www.v1.seach.XtSsglSeach;
 import cn.hegrace.www.v1.seach.XtSsjjySeach;
@@ -50,6 +52,23 @@ public class XtSsglController extends BaseController {
 		return mv;
 	}
 	
+	@RequestMapping("raceManage/xtSstjList.htm")
+	public ModelAndView xtSstjList(HttpServletRequest request,
+			HttpServletResponse response) throws Exception{
+		ModelAndView mv = new ModelAndView("raceManage/xtSstjList");
+		String ssid = request.getParameter("ssid");
+		XtSsgl xtSsgl = new XtSsgl();
+		xtSsgl.setId(ssid);
+		xtSsgl = baseService.selectByPrimaryKey(xtSsgl);
+		Map map = new HashMap();
+		map.put("ssid", ssid);
+		List<XtSsglDto> xtSstj = baseService.selectList("XtSsgl.select_xtsstj_list", map);
+		System.out.println("xtSstj="+xtSstj);
+		mv.addObject("xtSstj", xtSstj);
+		mv.addObject("xtSsgl", xtSsgl);
+		mv.addObject("ssid", ssid);
+		return mv;
+	}
 	@RequestMapping("raceManage/xtSsglList.htm")
 	public ModelAndView xtSsglList(HttpServletRequest request,
 			HttpServletResponse response){

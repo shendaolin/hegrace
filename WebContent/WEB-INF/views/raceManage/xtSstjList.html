@@ -4,7 +4,7 @@
 		<div class="span12">
 			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 			<h3 class="page-title">
-				塞事管理 <small>马拉松赛事维护</small>
+				赛事管理 <small>$!xtSsgl.ssmc</small>
 			</h3>
 			<ul class="breadcrumb">
 				<li>
@@ -13,7 +13,7 @@
 					<i class="icon-angle-right"></i>
 				</li>
 				<li>
-					<a href="#">塞事管理</a>
+					<a href="#">赛事管理</a>
 					<i class="icon-angle-right"></i>
 				</li>
 				<li><a href="#">赛事统计</a></li>
@@ -44,21 +44,24 @@
 						<table class="table table-hover">
 							<thead>
 								<tr>
-									<th>参赛者数量</th>
+									
 									<th>内部急救人员数量</th>
 									<th>志愿者数量</th>
 									<th>突发情况数量</th>
 									<th>处理数量</th>
+									<th>事件取消数量</th>
 								</tr>
 							</thead>
 							<tbody>
+							#foreach($sstj in $xtSstj)
 								<tr>
-									<td>3000</td>
-									<td>38</td>
-									<td>128</td>
-									<td>35</td>
-									<td>30</td>
+									<td>$!sstj.num1</td>
+									<td>$!sstj.num2</td>
+									<td>$!sstj.num3</td>
+									<td>$!sstj.num4</td>
+									<td>$!sstj.num5</td>
 								</tr>
+							#end
 							</tbody>
 						</table>
 					</div>
@@ -73,9 +76,8 @@
 
 <script>
 	jQuery(document).ready(function() {    
-		App.init(); // initlayout and core plugins
-		CszList.init();
-		$("#raceList").on("click", RaceEdit.raceListOnClick());
+		 
+		$("#raceList").on("click", XtSsglEdit.xtSsglListOnClick());
 	});
 </script>
 <!-- END JAVASCRIPTS -->

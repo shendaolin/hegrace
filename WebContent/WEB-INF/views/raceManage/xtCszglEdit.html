@@ -4,7 +4,7 @@
 		<div class="span12">
 			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 			<h3 class="page-title">
-				塞事管理 <small>马拉松赛事维护</small>
+				赛事管理 <small>$!xtSsgl.ssmc</small>
 			</h3>
 			<ul class="breadcrumb">
 				<li>
@@ -13,7 +13,7 @@
 					<i class="icon-angle-right"></i>
 				</li>
 				<li><a href="#">赛事管理</a><i class="icon-angle-right"></i></li>
-				<li><a href="#">新增赛事</a></li>
+				<li><a href="#">新增赛事参赛者</a></li>
 				<li class="pull-right no-text-shadow">
 					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
 						<i class="icon-calendar"></i>
@@ -23,23 +23,20 @@
 				</li>
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
-			<button id="xtCszglList" class="btn black">
+			<button id="xtCszglList1" class="btn black">
 			返回 <i class="icon-arrow-left"></i>
 			</button>
 			<button id="xtCszglSave" class="btn blue">
-			保存为待发布 <i class="icon-shopping-cart"></i>
-			</button>
-			<button id="xtCszglSaveAck" class="btn green">
-			直接发布 <i class="icon-share"></i>
+			保存 <i class="icon-shopping-cart"></i>
 			</button>
 			<br/><br/>
 			<form id="xtCszglForm" action="xtCszglSave.htm" class="form-horizontal" method="POST">
 				<input type="hidden" name="id" value="$!xtCszgl.id">
-				<input type="hidden" name="ssid" value="$!xtCszgl.ssid">
+				<input type="hidden" name="ssid" value="$!xtSsgl.id">
 				 	<div class="control-group">
 					<label class="control-label">姓名:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="xm" value="$!xtJjry.xm">
+						<input class="m-wrap medium" type="text" name="xm" value="$!xtCszgl.xm">
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
@@ -56,7 +53,7 @@
 				<div class="control-group">
 					<label class="control-label">电话:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="dh"value="$!xtJjry.dh">
+						<input class="m-wrap medium" type="text" name="dh"value="$!xtCszgl.dh">
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
@@ -73,14 +70,14 @@
 				<div class="control-group">
 					<label class="control-label">证件号码:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="zjhm"value="$!xtJjry.zjhm">
+						<input class="m-wrap medium" type="text" name="zjhm"value="$!xtCszgl.zjhm">
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">参赛编号:</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="bh"value="$!xtJjry.bh">
+						<input class="m-wrap medium" type="text" name="bh"value="$!xtCszgl.bh">
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
@@ -111,10 +108,11 @@
 <script type="text/javascript" src="../media/js/select2.min.js"></script>
 <script type="text/javascript" src="../media/js/jquery.form.js"></script>
 <script>
-	jQuery(document).ready(function() {    
-	   App.init(); // initlayout and core plugins
-	   RaceEdit.init(); 
-		$("#xtCszglList").on("click", XtCszglEdit.xtCszglListOnClick());
+	jQuery(document).ready(function() { 
+	
+		 $("#xtCszglList1").on("click",function(){xtSsglList.xtCszglList("$!xtSsgl.id")});
+		 $("#xtSsjjySave").on("click", XtCszglEdit.xtCszglFormSubmit());
+		//$("#xtCszglList").on("click", XtCszglEdit.xtCszglListOnClick());
 		 $('#xtjjrySelect1').select2({
 	         placeholder: "选择一个类型",
 	         allowClear: true
@@ -134,14 +132,7 @@
 	    }); 
 
 		$("#xtCszglSave").on("click", XtCszglEdit.xtCszglFormSubmit());
-		$("#xtCszglSaveAck").on("click", XtCszglEdit.xtCszglFormSubmitAck());
-		$('#tags_2').tagsInput({
-            width: 'auto',
-            'onAddTag': function () {
-                //alert(1);
-            },
-        });
-	   
+		
 	});
 </script>
 <!-- END JAVASCRIPTS -->

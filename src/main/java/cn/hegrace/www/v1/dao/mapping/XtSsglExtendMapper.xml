@@ -30,5 +30,11 @@
 		</if>
 		limit ${startPage}, ${page}
 	</select>
-
+	
+	<select id="select_xtsstj_list" parameterType="java.util.Map"
+		resultType="cn.hegrace.www.v1.dto.XtSsglDto">
+		select a.num1,b.num2,c.num3,d.num4,e.num5 from (select count(1) as num1 from XT_SSJJY  where Zt=1='1' and ssid=#{ssid} ) a ,(select count(1) as num2 from  XT_CSZGL where ssid=#{ssid} )b,(select count(1) as num3 from XT_QJJL where ssid=#{ssid} ) c,(select count(1) as num4 from XT_QJJL where zt='3' and ssid=#{ssid} ) d,(select count(1) as num5 from XT_QJJL where zt='9' and ssid=#{ssid} ) e
+		 
+	</select>
+	
 </mapper>

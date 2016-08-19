@@ -4,7 +4,7 @@
 		<div class="span12">
 			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 			<h3 class="page-title">
-				塞事管理 <small>马拉松赛事维护</small>
+				赛事管理 <small>$!xtSsgl.ssmc</small>
 			</h3>
 			<ul class="breadcrumb">
 				<li>
@@ -12,7 +12,7 @@
 					<a href="index.htm">首页</a> 
 					<i class="icon-angle-right"></i>
 				</li>
-				<li><a href="#">塞事管理</a></li>
+				<li><a href="#">赛事岗位管理</a></li>
 				<li class="pull-right no-text-shadow">
 					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
 						<i class="icon-calendar"></i>
@@ -22,28 +22,23 @@
 				</li>
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
+			
+			
 			<div style="float:left;">
+			<button id="xtCszglList" class="btn black">
+			返回 <i class="icon-arrow-left"></i>
+			</button>
 			<button id="xtssgwEdit" class="btn green">
-			新增 <i class="icon-plus"></i>
-			</button>
-			<button id="raceDelete" class="btn red">
-			删除 <i class="icon-trash"></i>
-			</button>
-			<button id="raceShare" class="btn blue">
-			发布 <i class="icon-share"></i>
+			新增赛事岗位<i class="icon-plus"></i>
 			</button>
 			</div>
-			<form id="ssgwSeach">
+			<form id="xtSsgwSeach">
 			<div style="float:right;">
-			<select class="small m-wrap" tabindex="1" name="Zt">
-				<option value="">全部</option>
-				<option value="1">已发布</option>
-				<option value="0">待发布</option>
-			</select>
-			<input placeholder="赛事名称" class="m-wrap medium" type="text" name="ssmc"/>
+			<input type="hidden" name="ssid" value="$!ssid">
+			<input placeholder="岗位名称" class="m-wrap medium" type="text" name="gwmc"/>
 			</div>
 			</form>
-			<table id="ssgwFlexigrid" style="display: none">
+			<table id="xtssgwFlexigrid" style="display: none">
 			<!-- 
 			<table class="flexme4" style="display: none">
 			<tbody>
@@ -105,7 +100,8 @@
 
 	});*/jQuery(document).ready(function() {  
 		xtssgwList.init();
-		$("#xtssgwEdit").on("click", xtssgwList.xtssgwEditOnClick());
+		$("#xtssgwEdit").on("click", xtssgwList.xtSsgwEditOnClick("$!ssid"));
+		$("#xtCszglList").on("click", XtSsglEdit.xtSsglListOnClick());
 		$("#page-content").height("100%");
 
 		//$("#sbtj").on("click", xtBsysbList.sbTjOnClick());

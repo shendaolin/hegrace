@@ -30,6 +30,7 @@ import cn.hegrace.www.v1.dao.pojo.XtDmlb;
 import cn.hegrace.www.v1.dao.pojo.XtDmlbExample;
 import cn.hegrace.www.v1.dao.pojo.XtGydm;
 import cn.hegrace.www.v1.dao.pojo.XtGydmExample;
+import cn.hegrace.www.v1.dao.pojo.XtSsgl;
 import cn.hegrace.www.v1.dao.pojo.XtSsgw;
 import cn.hegrace.www.v1.seach.Flexigrid;
 import cn.hegrace.www.v1.seach.XtSsgwSeach;
@@ -41,12 +42,17 @@ public class XtSsgwController extends BaseController {
 	@Autowired
 	private BaseService baseService;
 	
-	 
 	
 	@RequestMapping("raceManage/xtSsgwList.htm")
 	public ModelAndView xtSsgwList(HttpServletRequest request,
-			HttpServletResponse response){
+			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("raceManage/xtSsgwList");
+		String ssid = request.getParameter("ssid");
+		XtSsgl xtSsgl = new XtSsgl();
+		xtSsgl.setId(ssid);
+		xtSsgl = baseService.selectByPrimaryKey(xtSsgl);
+		mv.addObject("xtSsgl", xtSsgl);
+		mv.addObject("ssid", ssid);
 		return mv;
 	}
 	
@@ -58,11 +64,13 @@ public class XtSsgwController extends BaseController {
 		Flexigrid flexigrid = new Flexigrid(xtSsgwSeach);
 		Map map = flexigrid.getMap();
 		map.put("ssmc", xtSsgwSeach.getSsmc());
-		map.put("zt", xtSsgwSeach.getZt());
+		map.put("ssid", xtSsgwSeach.getSsid());
+		map.put("xm", xtSsgwSeach.getGwmc());
 		flexigrid.setPages(xtSsgwSeach.getPage());
-		flexigrid.setTotal(baseService.queryForCount("XtSsgw.select_xtssgl_count", map));
-		flexigrid.setRows(baseService.queryForList("XtSsgw.select_xtssgl_list", map));
-		System.out.println(baseService.queryForList("XtSsgw.select_xtssgl_list", map));
+		flexigrid.setTotal(baseService.queryForCount("XtSsgw.select_xtssgw_count", map));
+		flexigrid.setRows(baseService.queryForList("XtSsgw.select_xtssgw_list", map));
+		System.out.println(baseService.queryForList("XtSsgw.select_xtssgw_list", map));
+		
 		sendJson(flexigrid, response);
 	 }
 	
@@ -71,17 +79,15 @@ public class XtSsgwController extends BaseController {
 			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("raceManage/xtSsgwEdit");
 		String id = request.getParameter("id");
-		String zt = request.getParameter("zt");
-		int zt1=0;
-		if(StringUtils.isNotEmpty(zt)){
-			zt1 = Integer.parseInt(zt);
-		}else{
-			zt1=0;
-		}
+		String ssid = request.getParameter("ssid");
+		System.out.println("aaa="+ssid);
+		XtSsgl xtSsgl = new XtSsgl();
+		xtSsgl.setId(ssid);
+		xtSsgl = baseService.selectByPrimaryKey(xtSsgl);
+		mv.addObject("xtSsgl", xtSsgl);
 		if(StringUtils.isNotEmpty(id)){
 			XtSsgw xtSsgw = new XtSsgw();
-			xtSsgw.setId(id);
-			//xtSsgw.setZt(zt1);
+			xtSsgw.setId(id);		 
 			xtSsgw = baseService.selectByPrimaryKey(xtSsgw);
 			mv.addObject("xtSsgw", xtSsgw);
 		}
@@ -99,6 +105,7 @@ public class XtSsgwController extends BaseController {
 	public void xtSsgwSave(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtSsgw xtSsgw = (XtSsgw) httpMessageConverter(new XtSsgw(), request);
+		System.out.println("gwsl="+xtSsgw.getGwsl());
 		if(StringUtils.isEmpty(xtSsgw.getId())){
 			xtSsgw.setId(baseService.getUuid());
 			baseService.insert(xtSsgw);

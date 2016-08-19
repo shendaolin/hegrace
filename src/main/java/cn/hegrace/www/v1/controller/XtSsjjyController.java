@@ -32,6 +32,7 @@ import cn.hegrace.www.v1.dao.pojo.XtDmlbExample;
 import cn.hegrace.www.v1.dao.pojo.XtGydm;
 import cn.hegrace.www.v1.dao.pojo.XtGydmExample;
 import cn.hegrace.www.v1.dao.pojo.XtJjry;
+import cn.hegrace.www.v1.dao.pojo.XtSsgl;
 import cn.hegrace.www.v1.dao.pojo.XtSsgw;
 import cn.hegrace.www.v1.dao.pojo.XtSsjjy;
 import cn.hegrace.www.v1.dao.pojo.XtSsjjysb;
@@ -50,9 +51,13 @@ public class XtSsjjyController extends BaseController {
 	 
 	@RequestMapping("raceManage/xtSsjjyList.htm")
 	public ModelAndView xtSsjjyList(HttpServletRequest request,
-			HttpServletResponse response){
+			HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView("raceManage/xtSsjjyList");
 		String ssid = request.getParameter("ssid");
+		XtSsgl xtSsgl = new XtSsgl();
+		xtSsgl.setId(ssid);
+		xtSsgl = baseService.selectByPrimaryKey(xtSsgl);
+		mv.addObject("xtSsgl", xtSsgl);
 		mv.addObject("ssid", ssid);
 		return mv;
 	}
@@ -142,6 +147,7 @@ public class XtSsjjyController extends BaseController {
 		if(sbids != null && sbids.length > 0){
 			for (String sbid : sbids) {
 				XtSsjjysb xtSsjjysb =  new XtSsjjysb();
+				xtSsjjysb.setId(baseService.getUuid());
 				xtSsjjysb.setSsjjyid(xtSsjjy.getId());
 				xtSsjjysb.setSbid(sbid);
 				xtSsjjysb.setZt(0);
