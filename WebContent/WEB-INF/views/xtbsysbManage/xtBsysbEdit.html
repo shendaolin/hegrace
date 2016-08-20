@@ -7,62 +7,64 @@
 				比赛用设备管理 <small>设备管理</small>
 			</h3>
 			<ul class="breadcrumb">
-				<li>
-					<i class="icon-home"></i>
-					<a href="index.htm">首页</a> 
-					<i class="icon-angle-right"></i>
-				</li>
+				<li><i class="icon-home"></i> <a href="index.htm">首页</a> <i
+					class="icon-angle-right"></i></li>
 				<li><a href="#">比赛用设备管理</a><i class="icon-angle-right"></i></li>
 				<li><a href="#">新增设备</a></li>
 				<li class="pull-right no-text-shadow">
-					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
-						<i class="icon-calendar"></i>
-						<span></span>
-						<i class="icon-angle-down"></i>
+					<div id="dashboard-report-range"
+						class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive"
+						data-tablet="" data-desktop="tooltips" data-placement="top"
+						data-original-title="Change dashboard date range">
+						<i class="icon-calendar"></i> <span></span> <i
+							class="icon-angle-down"></i>
 					</div>
 				</li>
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
 			<button id="xtBsysbList" class="btn black">
-			返回 <i class="icon-arrow-left"></i>
+				返回 <i class="icon-arrow-left"></i>
 			</button>
 			<button id="xtBsysbSave" class="btn blue">
-			保存<i class="icon-share"></i>
+				保存<i class="icon-share"></i>
 			</button>
-			<br/><br/>
-			<form id="xtBsysbForm" action="xtBsysbSave.htm" class="form-horizontal" method="POST">
+			<br />
+			<br />
+			<form id="xtBsysbForm" action="xtBsysbSave.htm"
+				class="form-horizontal" method="POST">
 				<input type="hidden" name="id" value="$!xtBsysb.id">
 				<div class="control-group">
 					<label class="control-label">设备类型</label>
 					<div class="controls">
 						<select id="xtbsysbSelect" class="span6 select2" name="sblx">
 							#foreach($xtDmlb in $XtDmbList)
-								<option value="$!xtDmlb.id" #if("$!xtDmlb.id"=="$!xtBsysb.sblx") selected #end>$!xtDmlb.dmmc</option>
-							#end
+							<option value="$!xtDmlb.id" #if("$!xtDmlb.id"==
+								"$!xtBsysb.sblx") selected #end>$!xtDmlb.dmmc</option> #end
 						</select>
 
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">设备编号:</label>
+					<label class="control-label">设备编号:<span class="required">*</span></label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="sbbh"  value="$!xtBsysb.sbbh">
-						<span class="help-inline"><font color="red">*</font></span>
+						<input class="m-wrap medium" type="text" name="sbbh"
+							value="$!xtBsysb.sbbh">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">设备状态</label>
 					<div class="controls">
-						<select id="select2_sample2" class="span6 select2 medium" name="sbzt">
-							<option value="1" #if("$!xtBsysb.sbzt"=="1") selected #end>可用</option>
-							<option value="0" #if("$!xtBsysb.sbzt"=="0") selected #end>不可用</option>
+						<select id="select2_sample2" class="span6 select2 medium"
+							name="sbzt">
+							<option value="1" #if("$!xtBsysb.sbzt"== "1") selected #end>可用</option>
+							<option value="0" #if("$!xtBsysb.sbzt"== "0") selected #end>不可用</option>
 						</select>
 
 					</div>
 				</div>
 			</form>
-			
-			<br/>
+
+			<br />
 		</div>
 	</div>
 </div>
@@ -71,7 +73,8 @@
 
 
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-<!-- BEGIN PAGE LEVEL PLUGINS -->   
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
 <!-- END PAGE LEVEL PLUGINS -->
 
 <script>
@@ -79,11 +82,44 @@
 jQuery(document).ready(function() { 
 	
 	  	$("#xtBsysbList").on("click", xtBsysbEdit.xtBsysbListOnClick());
-	   
-	   $('#xtbsysbSelect').select2({
+	  	
+	    $('#xtbsysbSelect').select2({
          placeholder: "选择一个类型",
          allowClear: true
-     		}); 
+    	 }); 
+	   
+	   
+	   $("#xtBsysbForm").validate({
+           errorElement: 'label', //default input error message container
+           errorClass: 'help-inline', // default input error message class
+           focusInvalid: false, // do not focus the last invalid input
+           rules: {
+        	   sbbh: {
+                   required: true
+               }
+           },
+
+           messages: {
+        	   sbbh: {
+                   required: " 必填."
+        	   }
+           },
+
+           highlight: function (element) { // hightlight error inputs
+               $(element)
+                   .closest('.control-group').addClass('error'); // set error class to the control group
+           },
+
+           success: function (label) {
+               label.closest('.control-group').removeClass('error');
+               label.remove();
+           },
+
+           errorPlacement: function (error, element) {
+               error.addClass('help-small no-left-padding').insertAfter(element);
+           }
+       });
+	   
 	   
 		$('#xtBsysbForm').submit(function() {
 		

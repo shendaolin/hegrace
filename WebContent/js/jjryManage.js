@@ -151,8 +151,9 @@ var XtJjryEdit = function () {
 		},
 		xtJjryFormSubmit : function() {
 			return function() {
-				$("#xtJjryForm").submit();
-				
+				if ($('#xtJjryForm').validate().form()) {
+					$('#xtJjryForm').submit();
+                }
 			}
 		}
 	}; 

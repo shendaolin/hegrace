@@ -109,8 +109,9 @@ var XtCzyhEdit = function () {
 		},
 		xtCzyhFormSubmit : function() {
 			return function() {
-				$("#xtCzyhForm").submit();
-				
+				if ($('#xtCzyhForm').validate().form()) {
+					$('#xtCzyhForm').submit();
+                }
 			}
 		}
 	};

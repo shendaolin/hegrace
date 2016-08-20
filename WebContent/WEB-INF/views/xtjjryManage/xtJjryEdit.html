@@ -34,47 +34,44 @@
 				class="form-horizontal" method="POST">
 				<input type="hidden" name="id" value="$!xtJjry.id">
 				<div class="control-group">
-					<label class="control-label">姓名:</label>
+					<label class="control-label">姓名:<span class="required">*</span></label>
 					<div class="controls">
 						<input class="m-wrap medium" type="text" name="xm"
-							value="$!xtJjry.xm"> <span class="help-inline"><font
-							color="red">*</font></span>
+							value="$!xtJjry.xm">
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">性别:</label>
+					<label class="control-label">性别:<span class="required">*</span></label>
 					<div class="controls">
 						<select id="xb" name="xb">
 							<option value="1" #if("$!xtJjry.xb"== "1") selected #end>男</option>
 							<option value="2" #if("$!xtJjry.xb"== "2") selected #end>女</option>
 
-						</select> <span class="help-inline"><font color="red">*</font></span>
+						</select>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">电话:</label>
+					<label class="control-label">电话:<span class="required">*</span></label>
 					<div class="controls">
 						<input class="m-wrap medium" type="text" name="dh"
-							value="$!xtJjry.dh"> <span class="help-inline"><font
-							color="red">*</font></span>
+							value="$!xtJjry.dh">
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">证件类型:</label>
+					<label class="control-label">证件类型:<span class="required">*</span></label>
 					<div class="controls">
 						<select id="xtjjrySelect1" class="span6 select2" name="zjlx">
 							#foreach($xtDmlb in $XtDmbList1)
 								<option value="$!xtDmlb.id" #if("$!xtDmlb.id"=="$!xtJjry.zjlx") selected #end>$!xtDmlb.dmmc</option> 
 							#end
-						</select> <span class="help-inline"><font color="red">*</font></span>
+						</select>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">证件号码:</label>
+					<label class="control-label">证件号码:<span class="required">*</span></label>
 					<div class="controls">
 						<input class="m-wrap medium" type="text" name="zjhm"
-							value="$!xtJjry.zjhm"> <span class="help-inline"><font
-							color="red">*</font></span>
+							value="$!xtJjry.zjhm"> 
 					</div>
 				</div>
 
@@ -85,33 +82,30 @@
 							#foreach($xtDmlb in $XtDmbList) 
 							 	<option value="$!xtDmlb.id" #if("$!xtDmlb.id"=="$!xtJjry.sflx") selected #end>$!xtDmlb.dmmc</option> 
 							#end
-						</select> <span class="help-inline"><font color="red">*</font></span>
+						</select>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">类别</label>
 					<div class="controls">
 						<input class="m-wrap medium" type="text" name="lb"
-							value="$!xtJjry.lb"> <span class="help-inline"><font
-							color="red">*</font></span>
+							value="$!xtJjry.lb">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">服装尺寸</label>
 					<div class="controls">
 						<input class="m-wrap medium" type="text" name="fzcc"
-							value="$!xtJjry.fzcc"> <span class="help-inline"><font
-							color="red">*</font></span>
+							value="$!xtJjry.fzcc">
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">审核状态:</label>
+					<label class="control-label">审核状态:<span class="required">*</span></label>
 					<div class="controls">
 						<select id="zt" name="zt">
 							<option value="0" #if("$!xtJjry.zt"== "0") selected #end>未通过</option>
 							<option value="1" #if("$!xtJjry.zt"== "1") selected #end>通过</option>
 							<option value="2" #if("$!xtJjry.zt"== "2") selected #end>黑名单</option>
-						</select> <span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 			</form>
@@ -140,6 +134,63 @@
 		         placeholder: "选择一个类型",
 		         allowClear: true
 		   });  
+		   
+		   $("#xtJjryForm").validate({
+	           errorElement: 'label', //default input error message container
+	           errorClass: 'help-inline', // default input error message class
+	           focusInvalid: false, // do not focus the last invalid input
+	           rules: {
+	        	   xm: {
+	                   required: true
+	               },
+	               xb: {
+	                   required: true
+	               },
+	               dh: {
+	                   required: true
+	               },
+	               zjlx: {
+	                   required: true
+	               },
+	               zjhm: {
+	                   required: true
+	               }
+	           },
+
+	           messages: {
+	        	   xm: {
+	                   required: " 必填."
+	               },
+	               xb: {
+	                   required: " 必填."
+	               },
+	               dh: {
+	                   required: " 必填."
+	               },
+	               zjlx: {
+	                   required: " 必填."
+	               },
+	               zjhm: {
+	                   required: " 必填."
+	               }
+	           },
+
+	           highlight: function (element) { // hightlight error inputs
+	               $(element)
+	                   .closest('.control-group').addClass('error'); // set error class to the control group
+	           },
+
+	           success: function (label) {
+	               label.closest('.control-group').removeClass('error');
+	               label.remove();
+	           },
+
+	           errorPlacement: function (error, element) {
+	               error.addClass('help-small no-left-padding').insertAfter(element);
+	           }
+	       });
+		   
+		   
 			$('#xtJjryForm').submit(function() {
 			
 		        $(this).ajaxSubmit({
