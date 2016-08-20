@@ -61,7 +61,7 @@
 
 	<select id="select_xtssgl_list" parameterType="java.util.Map"
 		resultType="cn.hegrace.www.v1.dto.XtSsjjyDto">
-		SELECT jjy.* ,ry.xm, ry.dh, ry.ly, ry.fzcc, gw.gwmc, sflx.dmmc as sflx, zjlx.dmmc as zjlx, ry.zjhm,
+		SELECT jjy.* ,ry.xm, ry.xb, ry.dh, ry.ly, ry.fzcc, gw.gwmc, sflx.dmmc as sflx, zjlx.dmmc as zjlx, ry.zjhm,
 		group_concat(dm.dmmc) as sbmc
 		FROM XT_SSJJY jjy
 		left join XT_SSGW gw on gw.id = jjy.gwid

@@ -35,7 +35,7 @@
 				<input type="hidden" name="ssid" value="$!ssid">
 				
 				<div class="control-group">
-					<label class="control-label">急救员:</label>
+					<label class="control-label">急救员:<span class="required">*</span></label>
 					<div class="controls">
 						#if("$!ryxm" == "")
 						<select id="xtSsjjyRyid" class="span6 select2" name="ryid">
@@ -44,7 +44,6 @@
 								<option value="$!xtJjry.id">$!xtJjry.xm ($!xtJjry.dh)</option>
 							#end
 						</select>
-						<span class="help-inline"><font color="red">*</font></span>
 						#else
 							<input type="hidden" name="ryid" value="$!xtSsjjy.ryid">
 							<input class="span6 m-wrap" placeholder="$!ryxm" disabled="" type="text">
@@ -59,9 +58,12 @@
 							<optgroup label="">
 							#foreach($xtBsysbDto in $xtBsysbDtos)
 								#set($bsysbid = ","+$!xtBsysbDto.id+",")
-								<option value="$!xtBsysbDto.id" #if($sbids.indexOf($!bsysbid) >= 0)
-								selected
-								#end	
+								<option value="$!xtBsysbDto.id" 
+								#if("$!bsysbid" != "" )
+									#if($sbids.indexOf($!bsysbid) >= 0)
+									selected
+									#end	
+								#end
 								>$!xtBsysbDto.lbmc - $!xtBsysbDto.sbbh</option>
 							#end
 							</optgroup>
@@ -80,7 +82,6 @@
 								>$!xtSsgw.gwmc (剩余: $!xtSsgw.gwsl 个)</option>
 							#end
 						</select>
-						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 			</form>
@@ -117,6 +118,38 @@
 	   $('#xtSsjjyGw').select2({
            placeholder: "选择一个类型",
            allowClear: false
+       });
+	   
+	   
+	   $("#xtSsjjyForm").validate({
+           errorElement: 'label', //default input error message container
+           errorClass: 'help-inline', // default input error message class
+           focusInvalid: false, // do not focus the last invalid input
+           rules: {
+        	   ryid: {
+                   required: true
+               }
+           },
+
+           messages: {
+        	   ryid: {
+                   required: " 必填."
+               }
+           },
+
+           highlight: function (element) { // hightlight error inputs
+               $(element)
+                   .closest('.control-group').addClass('error'); // set error class to the control group
+           },
+
+           success: function (label) {
+               label.closest('.control-group').removeClass('error');
+               label.remove();
+           },
+
+           errorPlacement: function (error, element) {
+               error.addClass('help-small no-left-padding').insertAfter(element);
+           }
        });
 	   
 		$('#xtSsjjyForm').submit(function() {

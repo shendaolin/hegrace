@@ -4,7 +4,7 @@
 		<div class="span12">
 			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 			<h3 class="page-title">
-				    比赛用设别管理 <small>设备管理</small>
+				    急救员管理管理 <small>$!xtJjryzz.xm</small>
 			</h3>
 			<ul class="breadcrumb">
 				<li>
@@ -12,7 +12,7 @@
 					<a href="../index.htm">首页</a> 
 					<i class="icon-angle-right"></i>
 				</li>
-				<li><a href="#">比赛用设备管理 </a></li>
+				<li><a href="#">急救人员管理 </a></li>
 				<li class="pull-right no-text-shadow">
 					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
 						<i class="icon-calendar"></i>
@@ -23,44 +23,34 @@
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
 			<div style="float:left;">
-			<button id="sbEdit1" class="btn green">
-			新建 <i class="icon-plus"></i>
-			</button>
-			<button id="sbImp" class="btn yellow">
-			导入 <i class="icon-ok"></i>
-			</button>
-			<button id="sbExp" class="btn blue">
-			导出 <i class="icon-share"></i>
-			</button>
-			<button id="sbtj" class="btn blue">
-			统计 <i class="icon-list-alt"></i>
+			<button id="xtJjryzzAdd" class="btn green">
+			上传急救人员图片 <i class="icon-plus"></i>
 			</button>
 			</div>
 			<div style="float:right;">
-			<form id="bsysbSeach">
-			<input placeholder="设备类型" class="m-wrap medium" type="text" name="lbmc"/>
+			<form id="xtJjryzzSeach">
 			</form>
 			</div>
 			
-			<table id="bsysbFlexigrid" style="display: none" /> 
+			<table id="xtJjryzzFlexigrid" style="display: none" /> 
 			<br/>
 		</div>
 	</div>
 </div>
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-<!-- BEGIN PAGE LEVEL PLUGINS -->   
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+   
  <script type="text/javascript" src="../media/js/flexigrid.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 
 <script>
 	jQuery(document).ready(function() {  
-		xtBsysbList.init();
-		$("#sbEdit1").on("click", xtBsysbList.xtCzyhEditOnClick());
-		$('#bsysbSeach').submit(function() {
-			xtBsysbList.xtBsysbSeach()
+		xtJjryzzList.init();
+		$("#xtJjryzzAdd").on("click", xtJjryzzList.xtJjryzzEditOnClick());
+		$("#xtJjryzzSeach").submit(function() {
+			xtJjryzzList.xtJjryzzSeach()
 	        return false; //阻止表单默认提交
 	    });
-		// $("#sbtj").on("click", xtBsysbList.sbTjOnClick());
 	});
 </script>
 <!-- END JAVASCRIPTS -->

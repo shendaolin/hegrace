@@ -131,7 +131,9 @@ var XtSsjjyEdit = function () {
 
     	xtSsjjyFormSubmit : function() {
 			return function() {
-				$('#xtSsjjyForm').submit();
+				if ($('#xtSsjjyForm').validate().form()) {
+					$('#xtSsjjyForm').submit();
+                }
 			}
 		}
 

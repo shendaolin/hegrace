@@ -34,48 +34,43 @@
 				<input type="hidden" name="id" value="$!xtCzyh.id">
 				
 				<div class="control-group">
-					<label class="control-label">姓名:</label>
+					<label class="control-label">姓名:<span class="required">*</span></label>
 					<div class="controls">
 						<input class="m-wrap medium" type="text" name="xm" value="$!xtCzyh.xm">
-						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">电话:</label>
+					<label class="control-label">电话:<span class="required">*</span></label>
 					<div class="controls">
 						<input class="m-wrap medium" type="text" name="dh" value="$!xtCzyh.dh">
-						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				#if("$!xtCzyh.id"=="")
 				<div class="control-group">
-					<label class="control-label">账号:</label>
+					<label class="control-label">账号:<span class="required">*</span></label>
 					<div class="controls">
 						<input class="m-wrap medium" type="text" name="dlm" value="$!xtCzyh.dlm">
-						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">密码:</label>
+					<label class="control-label">密码:<span class="required">*</span></label>
 					<div class="controls">
 						<input class="m-wrap medium" type="password" name="dlmm" value="$!xtCzyh.dlmm">
-						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				#end
 				<div class="control-group">
-					<label class="control-label">职位</label>
+					<label class="control-label">职位:</label>
 					<div class="controls">
 						<select name="zw">
 						#foreach($xtGydm in $xtGydms)
 								<option value="$!xtGydm.id" #if("$!xtGydm.id"=="$!xtCzyh.zw") selected #end>$!xtGydm.dmmc</option>
 						#end
 						</select>
-						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">选择赛事</label>
+					<label class="control-label">选择赛事:</label>
 					<div class="controls">
 						<select id="xtSsgList" class="span6 select2" name="ssid">
 							<option value=""></option>
@@ -93,7 +88,6 @@
 							<option value="0" #if($!xtCzyh.fpq == 0) selected #end>无</option>
 							<option value="1" #if($!xtCzyh.fpq == 1) selected #end>有</option>
 						</select>
-						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 			</form>
@@ -122,6 +116,59 @@
         }); 
 
 	   
+	    $('#xtCzyhForm').validate({
+	           errorElement: 'label', //default input error message container
+	           errorClass: 'help-inline', // default input error message class
+	           focusInvalid: false, // do not focus the last invalid input
+	           rules: {
+	        	   xm: {
+	                   required: true
+	               },
+	               dh: {
+	                   required: true
+	               }#if("$!xtCzyh.id"==""),
+	               dlm: {
+	                   required: true,
+	                   minlength:5
+	               },
+	               dlmm: {
+	                   required: true,
+	                   minlength:5
+	               }#end
+	           },
+
+	           messages: {
+	        	   xm: {
+	                   required: " 必填."
+	               },
+	               dh: {
+	                   required: " 必填."
+	               }#if("$!xtCzyh.id"==""),
+	               dlm: {
+	                   required: " 必填.",
+	                   minlength: "用户名长度必须大于等于5位."
+	               },
+	               dlmm: {
+	                   required: " 必填.",
+	                   minlength: "密码长度必须大于等于6位."
+	               }#end
+	           },
+
+	           highlight: function (element) { // hightlight error inputs
+	               $(element)
+	                   .closest('.control-group').addClass('error'); // set error class to the control group
+	           },
+
+	           success: function (label) {
+	               label.closest('.control-group').removeClass('error');
+	               label.remove();
+	           },
+
+	           errorPlacement: function (error, element) {
+	               error.addClass('help-small no-left-padding').insertAfter(element);
+	           }
+	       });
+	    
 		$('#xtCzyhForm').submit(function() {
 	        $(this).ajaxSubmit({
 	        	success: function(data){

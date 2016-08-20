@@ -90,7 +90,7 @@ var xtSsjjysbList = function () {
         	var edit = confirm("确定要领取吗？");
         	if(edit){
 	        	$.get("xtSsjjysbEdit.htm", {"id" : id, "zt" : "1"}, function(){
-	        		$("#xtSsglFlexigrid").flexReload();
+	        		$("#SsjjysbFlexigrid").flexReload();
 	        	});
         	}
 		},

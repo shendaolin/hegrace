@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.codehaus.plexus.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,6 +21,7 @@ import cn.hegrace.www.v1.dao.pojo.XtGydm;
 import cn.hegrace.www.v1.dao.pojo.XtQjjl;
 import cn.hegrace.www.v1.dao.pojo.XtSsjjy;
 import cn.hegrace.www.v1.dao.pojo.XtSsjl;
+import cn.hegrace.www.v1.dao.pojo.XtSsjlExample;
 import cn.hegrace.www.v1.dto.XtQjjlDto;
 import cn.hegrace.www.v1.seach.Flexigrid;
 import cn.hegrace.www.v1.seach.Page;
@@ -108,13 +110,14 @@ public class IndexMapController extends BaseController {
 			xtSsjl.setQjid(qjid);
 			xtSsjl.setId(baseService.getUuid());
 			xtSsjl.setSsid(ssid);
-			xtSsjl.setZt(1);
+			xtSsjl.setZt(0);
 			baseService.insert(xtSsjl);
 		}
 	}
 	
 	
 	@RequestMapping("/closeQjjl.htm")
+	@Transactional
 	public void closeQjjl(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String qjid = request.getParameter("qjid");
 		XtQjjl xtqjjl = new XtQjjl();
@@ -123,11 +126,16 @@ public class IndexMapController extends BaseController {
 			xtqjjl = baseService.selectByPrimaryKey(xtqjjl);
 			xtqjjl.setZt("8");
 			baseService.updateByPrimaryKey(xtqjjl);
+			Map map = new HashMap();
+			map.put("zt", "8");
+			map.put("qjid", qjid);
+			baseService.update("XtSsjl.update_xtssjl_by_qjid", map);
 		}
 	}
 	
 	
 	@RequestMapping("/cancelQjjl.htm")
+	@Transactional
 	public void cancelQjjl(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String qjid = request.getParameter("qjid");
 		XtQjjl xtqjjl = new XtQjjl();
@@ -136,6 +144,10 @@ public class IndexMapController extends BaseController {
 			xtqjjl = baseService.selectByPrimaryKey(xtqjjl);
 			xtqjjl.setZt("9");
 			baseService.updateByPrimaryKey(xtqjjl);
+			Map map = new HashMap();
+			map.put("zt", "9");
+			map.put("qjid", qjid);
+			baseService.update("XtSsjl.update_xtssjl_by_qjid", map);
 		}
 	}
 	

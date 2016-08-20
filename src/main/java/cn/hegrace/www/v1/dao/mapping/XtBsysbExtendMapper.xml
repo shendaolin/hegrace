@@ -29,7 +29,11 @@
 		resultType="cn.hegrace.www.v1.dto.XtBsysbDto">
 		SELECT sb.*, dm.dmmc as lbmc from XT_BSYSB sb
 		left join XT_GYDM dm on dm.id = sb.sblx and dm.lbid = '2'
-		where sb.sbzt = '1'
+		where sb.sbzt = '1' and not exists (select 1 from XT_SSJJYSB jjysb where jjysb.sbid = sb.id and jjysb.zt in ('0', '1')
+		<if test="jjysbid != null and jjysbid != ''">
+			and jjysb.id not in (${jjysbid})
+		</if>
+		)
 		order by sb.sblx
 	</select>
 

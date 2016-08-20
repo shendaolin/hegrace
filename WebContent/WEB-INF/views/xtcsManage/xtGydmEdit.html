@@ -33,21 +33,19 @@
 			<form id="xtGydmForm" action="xtGydmSave.htm" class="form-horizontal" method="POST">
 				<input type="hidden" name="id" value="$!xtGydm.id">
 				<div class="control-group">
-					<label class="control-label">参数类型</label>
+					<label class="control-label">参数类型:<span class="required">*</span></label>
 					<div class="controls">
 						<select id="xtDmlbSelect" class="span6 select2" name="lbid">
 							#foreach($xtDmlb in $xtDmlbList)
 								<option value="$!xtDmlb.lbid" #if("$!xtDmlb.lbid"=="$!xtGydm.lbid") selected #end>$!xtDmlb.lbmc</option>
 							#end
 						</select>
-
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">参数名称:</label>
+					<label class="control-label">参数名称:<span class="required">*</span></label>
 					<div class="controls">
 						<input class="m-wrap medium" type="text" name="dmmc" value="$!xtGydm.dmmc">
-						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 			</form>
@@ -73,6 +71,43 @@
             allowClear: false
         });
 	   
+	   
+	   $('#xtGydmForm').validate({
+           errorElement: 'label', //default input error message container
+           errorClass: 'help-inline', // default input error message class
+           focusInvalid: false, // do not focus the last invalid input
+           rules: {
+        	   lbid: {
+                   required: true
+               },
+               dmmc: {
+                   required: true
+               }
+           },
+
+           messages: {
+        	   lbid: {
+                   required: " 必填."
+               },
+               dmmc: {
+                   required: " 必填."
+               }
+           },
+
+           highlight: function (element) { // hightlight error inputs
+               $(element)
+                   .closest('.control-group').addClass('error'); // set error class to the control group
+           },
+
+           success: function (label) {
+               label.closest('.control-group').removeClass('error');
+               label.remove();
+           },
+
+           errorPlacement: function (error, element) {
+               error.addClass('help-small no-left-padding').insertAfter(element);
+           }
+       });
 	   
 	   
 		$('#xtGydmForm').submit(function() {

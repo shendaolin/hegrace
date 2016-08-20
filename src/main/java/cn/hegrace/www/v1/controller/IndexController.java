@@ -48,6 +48,7 @@ public class IndexController extends BaseController {
 		ModelAndView mv = new ModelAndView("index");
 		HttpSession session = request.getSession();
 		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyhBean");
+		mv.addObject("xtCzyh", xtCzyh);
 		String ssid = "";
 		if(xtCzyh != null){
 			ssid = xtCzyh.getSsid();

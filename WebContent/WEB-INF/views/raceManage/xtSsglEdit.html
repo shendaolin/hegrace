@@ -39,21 +39,19 @@
 				<input type="hidden" name="ssjs" id="ssjs">
 				<input type="hidden" name="sslj" id="sslj" value="$!xtSsgl.sslj">
 				<div class="control-group">
-					<label class="control-label">赛事名称:</label>
+					<label class="control-label">赛事名称:<span class="required">*</span></label>
 					<div class="controls">
 						<input class="m-wrap medium" type="text" name="ssmc" value="$!xtSsgl.ssmc">
-						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">赛事地点:</label>
+					<label class="control-label">赛事地点:<span class="required">*</span></label>
 					<div class="controls">
 						<input class="m-wrap large" type="text" name="ssdd" value="$!xtSsgl.ssdd">
-						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">赛事时间:</label>
+					<label class="control-label">赛事时间:<span class="required">*</span></label>
 					<div class="controls">
 						<div class="input-append date sssjstart">
 							<input size="16"  readonly="readonly" class="m-wrap" name="sskssj" type="text"   value=#if("$!xtSsgl.sskssj"!="")  "$dateTool.format('yyyy-MM-dd HH:mm:ss',$!xtSsgl.sskssj)" #end>
@@ -67,7 +65,7 @@
 				</div>
 				
 				<div class="control-group">
-					<label class="control-label">场景时间:</label>
+					<label class="control-label">场景时间:<span class="required">*</span></label>
 					<div class="controls">
 						<div class="input-append date cjsjstart">
 							<input size="16"  readonly="readonly" class="m-wrap"  name="cjkssj" type="text"  value=#if("$!xtSsgl.cjkssj"!="")  "$dateTool.format('yyyy-MM-dd HH:mm:ss',$!xtSsgl.cjkssj)" #end>
@@ -119,6 +117,68 @@
 		$("#page-content").height("auto");
 		XtSsglEdit.init();
 		$("#xtSsglList").on("click", XtSsglEdit.xtSsglListOnClick());
+		
+		$("#xtSsglForm").validate({
+	           errorElement: 'label', //default input error message container
+	           errorClass: 'help-inline', // default input error message class
+	           focusInvalid: false, // do not focus the last invalid input
+	           rules: {
+	        	   ssmc: {
+	                   required: true
+	               },
+	               ssdd: {
+	                   required: true
+	               },
+	               sskssj: {
+	                   required: true
+	               },
+	               ssjssj: {
+	                   required: true
+	               },
+	               cjkssj: {
+	                   required: true
+	               },
+	               cjjssj: {
+	                   required: true
+	               }
+	           },
+
+	           messages: {
+		           ssmc: {
+	                   required: " 必填."
+	               },
+	               ssdd: {
+	                   required: " 必填."
+	               },
+	               sskssj: {
+	                   required: " 必填."
+	               },
+	               ssjssj: {
+	                   required: " 必填."
+	               },
+	               cjkssj: {
+	                   required: " 必填."
+	               },
+	               cjjssj: {
+	                   required: " 必填."
+	               }
+	           },
+
+	           highlight: function (element) { // hightlight error inputs
+	               $(element)
+	                   .closest('.control-group').addClass('error'); // set error class to the control group
+	           },
+
+	           success: function (label) {
+	               label.closest('.control-group').removeClass('error');
+	               label.remove();
+	           },
+
+	           errorPlacement: function (error, element) {
+	               error.addClass('help-small no-left-padding').insertAfter(element);
+	           }
+	       });
+		
 		$('#xtSsglForm').submit(function() {
 			$("#ssjs").val(CKEDITOR.instances["editor1"].getData());
 	        $(this).ajaxSubmit({

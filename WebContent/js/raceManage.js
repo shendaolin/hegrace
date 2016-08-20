@@ -192,25 +192,22 @@ var XtSsglEdit = function () {
 				$("#page-content").load("xtSsglList.htm");
 			}
 		},
-		xtSsglListOnClick : function(){
-			return function(){
-				$("#page-content").load("xtSsglList.htm");
-			}
-		},
 		xtSsglFormSubmit : function() {
 			return function() {
 				var zt=$("#zt").val();
 				$("#zt").val(0);
-				$("#xtSsglForm").submit();
-				
+				if ($('#xtSsglForm').validate().form()) {
+					$('#xtSsglForm').submit();
+                }
 			}
 		},
 		
 		xtSsglFormSubmitAck : function() {
 			return function() {
 				$("#zt").val(1);
-				$("#xtSsglForm").submit();
-				
+				if ($('#xtSsglForm').validate().form()) {
+					$('#xtSsglForm').submit();
+                }
 			}
 		}
 	}; 

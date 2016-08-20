@@ -5,6 +5,7 @@ import cn.hegrace.www.v1.dao.pojo.XtSsjjy;
 public class XtSsjjyDto extends XtSsjjy {
 
 	private String xm;
+	private String xb;
 	private String dh;
 	private String sbmc;
 	private String jlid;
@@ -26,6 +27,14 @@ public class XtSsjjyDto extends XtSsjjy {
 
 	public void setXm(String xm) {
 		this.xm = xm;
+	}
+
+	public String getXb() {
+		return xb;
+	}
+
+	public void setXb(String xb) {
+		this.xb = xb;
 	}
 
 	public String getDh() {

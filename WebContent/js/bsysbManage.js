@@ -49,7 +49,7 @@ var xtBsysbList = function () {
     										+ "</div>");
     					}
     				} ],
-                sortname : "id",
+                sortname : "sblx",
                 sortorder : "asc",
                 usepager : true,
                 title : '设备信息列表',
@@ -103,13 +103,14 @@ var xtBsysbEdit = function () {
 
 		xtBsysbListOnClick : function(){
 			return function(){
-				
 				$("#page-content").load("xtBsysbList.htm");
 			}
 		},
 		xtBsysbFormSubmit : function() {
 			return function() {
-				$("#xtBsysbForm").submit();
+				if ($('#xtBsysbForm').validate().form()) {
+					$('#xtBsysbForm').submit();
+                }
 			}
 		}
     };

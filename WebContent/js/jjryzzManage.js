@@ -1,11 +1,11 @@
-var xtJjryList = function () {
+var xtJjryzzList = function () {
 	
     return {
     	
 		init: function () {
-			$("#xtJjryFlexigrid").flexigrid({
-                url : "xtJjryFlexigrid.htm",
-                params : $("#jjrySeach").serializeArray(),
+			$("#xtJjryzzFlexigrid").flexigrid({
+                url : "xtJjryzzFlexigrid.htm",
+                params : $("#xtJjryzzSeach").serializeArray(),
                 dataType : 'json',
                 colModel : [{
 	                    display : '姓名',
@@ -13,11 +13,6 @@ var xtJjryList = function () {
 	                    width : 100,
 	                    align : 'center'
 	                },{
-                        display : '手机号',
-                        name : 'dh',
-                        width : 100,
-                        align : 'center'
-                    },{
                         display : '性别',
                         width : 30,
                         align : 'center',
@@ -31,66 +26,29 @@ var xtJjryList = function () {
 							$(tdDiv).html(content);
 						}	
                     },{
-                        display : '证件类型',
-                        name : 'zjmc',
+                        display : '图片',
+                        name : 'tpdz',
                         width : 100,
                         align : 'center'
                     },{
-                        display : '证件号码',
-                        name : 'zjhm',
-                        width : 150,
-                        align : 'center'
-                    }, {
-                        display : '身份类型',
-                        name : 'sfmc',
-                        width : 100,
-                        align : 'center'
-                    },{
-                        display : '类别',
-                        name : 'lb',
-                        width : 100,
-                        align : 'center'
-                    },{
-                        display : '审核状态',
-                        width : 60,
-                        align : 'center',
-                    	operation : function(tdDiv, row){
-                    		var content = "";
-                    		if(row.zt == "0"){
-                    			content = "<span class=\"label label-warning\">未通过</span>";
-                    		}else if(row.zt == "1"){
-                    			content = "<span class=\"label label-success\">通过</span>";
-                    		}else if(row.zt == "2"){
-                    			content = "<span class=\"label label-danger\">黑名单</span>";
-                    		}
-							$(tdDiv).html(content);
-						}
-                        	
-                },{
                         display : '操作',
                         name : 'zt',
                         width : 300,
                         process : function(tdDiv, id) {
-    						var editButton = "<a href=\"javascript:;\" onclick=\"xtJjryList.xtJjryEdit('"
-    								+ id
-    								+ "')\" class=\"btn mini purple\"><i class=\"icon-edit\"></i> 编辑</a>";
-    						var deleteButton = "<a href=\"javascript:;\" onclick=\"xtJjryList.xtJjryDelete('"
-    								+ id
-    								+ "')\"  class=\"btn mini red\"><i class=\"icon-trash\"></i> 删除</a>";
     						var ssjlListButton = "<a href=\"javascript:;\" onclick=\"xtSsjlList.jjryListOnClick('"
 								+ id
 								+ "')\" class=\"btn mini yellow ssjl\"><i class=\"icon-time\"></i>赛事记录</a>";
 						
     						$(tdDiv).html(
-    								"<div>" + editButton
-    										+ deleteButton
-    										+ ssjlListButton+"</div>");
+    								"<div>"
+    										+ deleteButton + 
+    										"</div>");
     					}
     				} ],
-                sortname : "cjsj",
-                sortorder : "desc",
+                sortname : "id",
+                sortorder : "asc",
                 usepager : true,
-                title : '急救人员列表',
+                title : '急救人员图片列表',
                 useRp : false,
                 rp : 15,
                 width : "100%",
@@ -100,24 +58,24 @@ var xtJjryList = function () {
 			 
 		},
 
-		xtJjryEditOnClick : function() {
+		xtJjryzzEditOnClick : function() {
 			return function() {
-				$("#page-content").load("xtJjryEdit.htm");
+				$("#page-content").load("xtJjryzzEdit.htm");
 			}
 		},
 
-		xtJjryEdit : function(id) {
-			$("#page-content").load("xtJjryEdit.htm", {
+		xtJjryzzEdit : function(id) {
+			$("#page-content").load("xtJjryzzEdit.htm", {
 				"id" : id
 			});
 		},
-		xtJjryDelete : function(id) {
+		xtJjryzzDelete : function(id) {
 			var del = confirm("确定要删除吗？");
 			if (del == true) {
-				$.get("xtJjryDelete.htm", {
+				$.get("xtJjryzzDelete.htm", {
 					"id" : id
 				});
-				$("#xtJjryFlexigrid").flexReload();
+				$("#xtJjryzzFlexigrid").flexReload();
 			} else {
 				return false;
 			}
@@ -129,9 +87,9 @@ var xtJjryList = function () {
 			}
 		}, 
 		
-		xtJjrySeach : function(){
-			$("#xtJjryFlexigrid").flexOptions({
-				params : $("#xtJjrySeach").serializeArray()
+		xtJjryzzSeach : function(){
+			$("#xtJjryzzFlexigrid").flexOptions({
+				params : $("#xtJjryzzSeach").serializeArray()
 			}).flexReload();
 		}
 
@@ -140,25 +98,22 @@ var xtJjryList = function () {
 }();
 
 
-var XtJjryEdit = function () {
+var XtJjryzzEdit = function () {
 	
     return {
 
-    	xtJjryListOnClick : function(){
+    	xtJjryzzListOnClick : function(){
 			return function(){
-				$("#page-content").load("xtJjryList.htm");
+				$("#page-content").load("xtJjryzzList.htm");
 			}
 		},
-		xtJjryFormSubmit : function() {
+		xtJjryzzFormSubmit : function() {
 			return function() {
-				if ($('#xtJjryForm').validate().form()) {
-					$('#xtJjryForm').submit();
+				if ($('#xtJjryzzForm').validate().form()) {
+					$('#xtJjryzzForm').submit();
                 }
-<<<<<<< HEAD
-				//$("#xtJjryForm").submit();
+				//$("#xtJjryzzForm").submit();
 				
-=======
->>>>>>> branch 'master' of https://github.com/shendaolin/hegrace
 			}
 		}
 	}; 
@@ -174,7 +129,7 @@ var xtSsjlList = function () {
 	
 			$("#xtssjlFlexigrid").flexigrid({
                 url:"xtssjlFlexigrid.htm",
-                params : $("#xtJjrySeach1").serializeArray(),
+                params : $("#xtJjryzzSeach1").serializeArray(),
                 dataType : 'json',
                 colModel : [ {
                         display : '赛事名称',
