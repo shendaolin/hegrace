@@ -1,5 +1,6 @@
 package cn.hegrace.www.v1.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +32,7 @@ public class LoginController extends BaseController{
 	@Autowired
 	private BaseService baseService;
 	
+	
 
 	@RequestMapping("/login.htm")
 	public ModelAndView login(HttpServletRequest request,
@@ -38,6 +40,13 @@ public class LoginController extends BaseController{
 		ModelAndView mv = new ModelAndView("login");
 		return mv;
 	}
+	
+	@RequestMapping("/error.htm")
+	public void error(HttpServletRequest request,
+			HttpServletResponse response) throws IOException{
+		response.sendRedirect(request.getContextPath()+"/login.htm");
+	}
+	
 	@RequestMapping("/indexPass.htm")
 	public ModelAndView indexPass(HttpServletRequest request,
 			HttpServletResponse response){
