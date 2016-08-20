@@ -23,5 +23,25 @@
 		</if>
 		limit ${startPage}, ${page}
 	</select>
+	
+	<select id="select_xtssjl_count" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		select count(1) from XT_SSJL a,XT_QJJL b,XT_SSGL c where b.id=a.qjid and  a.ssid=c.id and  a.ryid=#{ryid} 
+		<if test="ssmc != null and ssmc != ''">
+			and  ssmc like '%${ssmc}%'
+		</if>
+	</select>
+
+	<select id="select_xtssjl_list" parameterType="java.util.Map"
+		resultType="cn.hegrace.www.v1.dto.XtJjryDto">
+		 select c.ssmc,c.sskssj,b.xm,b.bh,b.zt as zt1,b.dh,b.ms,a.Zt as zt2,a.clms,a.bhms  from XT_SSJL a,XT_QJJL b,XT_SSGL c where b.id=a.qjid and  a.ssid=c.id and  a.ryid=#{ryid} 
+		<if test="ssmc != null and ssmc != ''">
+			and ssmc like '%${ssmc}%'
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+		limit ${startPage}, ${page}
+	</select>
 
 </mapper>

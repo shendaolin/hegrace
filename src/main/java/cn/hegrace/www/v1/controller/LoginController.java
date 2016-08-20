@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.hegrace.www.v1.busi.BaseService;
+import cn.hegrace.www.v1.dao.pojo.XtBsysb;
 import cn.hegrace.www.v1.dao.pojo.XtCzyh;
 import cn.hegrace.www.v1.dao.pojo.XtCzyhExample;
 import cn.hegrace.www.v1.dao.pojo.XtGydm;
 import cn.hegrace.www.v1.dao.pojo.XtGydmExample;
 import cn.hegrace.www.v1.dao.pojo.XtGydmExample.Criteria;
+import cn.hegrace.www.v1.error.HegraceException;
 import cn.hegrace.www.v1.seach.XtGydmSeach;
 
 @Controller
@@ -34,6 +36,12 @@ public class LoginController extends BaseController{
 	public ModelAndView login(HttpServletRequest request,
 			HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("login");
+		return mv;
+	}
+	@RequestMapping("/indexPass.htm")
+	public ModelAndView indexPass(HttpServletRequest request,
+			HttpServletResponse response){
+		ModelAndView mv = new ModelAndView("indexPass");
 		return mv;
 	}
 	
@@ -64,7 +72,43 @@ public class LoginController extends BaseController{
 		}
 		return mv;
 	}
+	@RequestMapping("/editPass.htm")
+	public ModelAndView editPass(HttpServletRequest request,
+			HttpServletResponse response) throws Exception{
+		ModelAndView mv = new ModelAndView("editPass");
+		HttpSession session = request.getSession();
+		XtCzyh xtCzyh = null;
+		if(session.getAttribute("xtCzyhBean") != null){
+			xtCzyh = (XtCzyh) session.getAttribute("xtCzyhBean");
+			System.out.println("xtCzyh="+xtCzyh.getXm());
+		}else{
+			mv.addObject("error", "用户未登陆");
+		}
+		mv.addObject("xtCzyh", xtCzyh);
+		return mv;
+	}
 	
+	@RequestMapping("/editPassSave.htm")
+	public void editPassSave(HttpServletRequest request,
+			HttpServletResponse response) throws Exception{
+		XtCzyh xtCzyh = (XtCzyh) httpMessageConverter(new XtCzyh(), request); 
+		String olddlmm = request.getParameter("olddlmm");
+		XtCzyhExample example = new XtCzyhExample();
+		XtCzyhExample.Criteria c = example.createCriteria();
+		c.andDlmmEqualTo(olddlmm);
+		System.out.println("olddlmm="+olddlmm);
+		List<XtCzyh> list = baseService.selectByExample(example);
+		if(list != null && !list.isEmpty()){
+			XtCzyh xtCzyh2 = baseService.selectByPrimaryKey(xtCzyh);
+			xtCzyh2.setDlmm(xtCzyh.getDlmm());
+			baseService.updateByPrimaryKey(xtCzyh2);
+		}else{
+			sendJson(new HegraceException("密码修改失败，请检查账号旧密码是否正确！"), response);
+			return;
+		}
+		
+		//sendJson(XtCzyh, response);
+	}
 	
 	
 

@@ -151,7 +151,10 @@ var XtJjryEdit = function () {
 		},
 		xtJjryFormSubmit : function() {
 			return function() {
-				$("#xtJjryForm").submit();
+				if ($('#xtJjryForm').validate().form()) {
+					$('#xtJjryForm').submit();
+                }
+				//$("#xtJjryForm").submit();
 				
 			}
 		}
@@ -165,48 +168,75 @@ var xtSsjlList = function () {
     return {
 
 		init: function () {
-
-			$(".flexme4").flexigrid({
-                url : false,
+	
+			$("#xtssjlFlexigrid").flexigrid({
+                url:"xtssjlFlexigrid.htm",
+                params : $("#xtJjrySeach1").serializeArray(),
                 dataType : 'json',
                 colModel : [ {
                         display : '赛事名称',
-                        name : 'dd',
-                        width : 100,
+                        name : 'ssmc',
+                        width : 200,
                         align : 'center'
                     }, {
                         display : '事件时间',
-                        name : 'bssj',
+                        name : 'sskssj',
+                        width : 100,
+                        align : 'center'
+                    },  {
+                        display : '参赛者姓名',
+                        name : 'xm',
+                        width : 100,
+                        align : 'center'
+                    },  {
+                        display : '参赛者编号',
+                        name : 'bh',
                         width : 100,
                         align : 'center'
                     },  {
                         display : '事件描述',
-                        name : 'bssj',
-                        width : 150,
+                        name : 'ms',
+                        width : 350,
                         align : 'center'
                     },{
                         display : '处理描述',
-                        name : 'cjsj',
+                        name : 'clms',
                         width : 350,
                         align : 'center'
+                    },{
+                        display : '驳回描述',
+                        name : 'bhms',
+                        width : 350,
+                        align : 'center'
+                    },{
+                        display : '处理状态',
+                        width : 100,
+                        align : 'center',
+                        operation : function(tdDiv, row){
+							var zt2 = "";
+							if(row.zt2 == "0") zt2 = "未接收";
+							if(row.zt2 == "1") zt2 = "已接收";
+							if(row.zt2 == "2") zt2 = "驳回";
+							if(row.zt2 == "3") zt2 = "已处理";
+							$(tdDiv).html(zt2);
+						}
                     }],
-                sortname : "iso",
+                sortname : "c.id",
                 sortorder : "asc",
                 usepager : true,
-                title : '急救人员列表',
+                title : '急救人员事件列表',
                 useRp : false,
                 rp : 15,
                 width : "100%",
-                height : 300
             });
 
 
 		},
-		jjryListOnClick : function(){
-			return function(){
-				$("#page-content").load("jjryList.htm");
-			}
-		}
+		jjryListOnClick : function(ryid){
+	        	$("#page-content").load("xtssjlList.htm", {
+					"ryid" :ryid
+				});	
+	        }
     };
 
 }();
