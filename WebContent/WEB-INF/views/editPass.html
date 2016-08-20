@@ -1,0 +1,114 @@
+<div class="container-fluid">
+	<!-- BEGIN PAGE HEADER-->
+	<div class="row-fluid">
+		<div class="span12">
+			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+			<h3 class="page-title">
+				密码修改<small>$!xtCzyh.dlm</small>
+			</h3>
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="index.htm">首页</a> 
+					<i class="icon-angle-right"></i>
+				</li>
+				<li>系统管理<i class="icon-angle-right"></i></li>
+				<li>密码修改</li>
+				<li class="pull-right no-text-shadow">
+					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
+						<i class="icon-calendar"></i>
+						<span></span>
+						<i class="icon-angle-down"></i>
+					</div>
+				</li>
+			</ul>
+			<!-- END PAGE TITLE & BREADCRUMB-->
+			#if("$!error"=="")
+			<button id="xtCzyhSave" class="btn blue">
+			保存<i class="icon-share"></i>
+			</button>
+			#else
+			<b>$!error</b>
+		    #end
+			
+			<br/><br/>
+			<form id="xtCzyhForm" action="editPassSave.htm" class="form-horizontal" method="POST">
+				<input type="hidden" name="id" value="$!xtCzyh.id">
+				
+				<div class="control-group">
+					<label class="control-label">姓名:</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="text" name="xm"  readonly value="$!xtCzyh.xm">
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">账号:</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="text" readonly name="dlm" value="$!xtCzyh.dlm">
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">旧密码:</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="password" name="olddlmm">
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">新密码:</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="password" name="dlmm" >
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">确认密码:</label>
+					<div class="controls">
+						<input class="m-wrap medium" type="password" name="dlmm1" >
+						<span class="help-inline"><font color="red">*</font></span>
+					</div>
+				</div>
+			</form>
+			
+			<br/>
+		</div>
+	</div>
+</div>
+
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+   
+<script type="text/javascript" src="media/js/select2.min.js"></script>
+<script type="text/javascript" src="media/js/jquery.form.js"></script>
+
+<!-- END PAGE LEVEL PLUGINS -->
+
+<script>
+	jQuery(document).ready(function() {   
+		$('#xtCzyhForm').submit(function() {
+	        $(this).ajaxSubmit({
+	        	success: function(data){ 
+	        		if(data.exception){
+	        			alert(data.exception)
+	        		}else{
+	        		  
+	        			alert("密码修改成功！");
+	        
+	        		}
+	            },
+	            error: function(data){
+	                alert("密码修改失败！");
+	            }
+	        });
+	        
+	        return false; //阻止表单默认提交
+	    });
+		
+		$("#xtCzyhSave").on("click", XtCzyhEdit.xtCzyhFormSubmit());
+	   
+	});
+</script>
+<!-- END JAVASCRIPTS -->
