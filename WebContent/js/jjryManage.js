@@ -154,11 +154,6 @@ var XtJjryEdit = function () {
 				if ($('#xtJjryForm').validate().form()) {
 					$('#xtJjryForm').submit();
                 }
-<<<<<<< HEAD
-				//$("#xtJjryForm").submit();
-				
-=======
->>>>>>> branch 'master' of https://github.com/shendaolin/hegrace
 			}
 		}
 	}; 
