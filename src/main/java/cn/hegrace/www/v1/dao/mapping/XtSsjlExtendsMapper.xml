@@ -4,7 +4,7 @@
 
 	<update id="update_xtssjl_by_qjid" parameterType="map">
 	
-		update XT_SSJL set zt = #{zt} where qjid = #{qjid};
+		update XT_SSJL set zt = #{zt} where zt in ('0', '1') and qjid = #{qjid};
 	
 	</update>
   
