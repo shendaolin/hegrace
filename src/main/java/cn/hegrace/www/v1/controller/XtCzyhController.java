@@ -135,6 +135,7 @@ public class XtCzyhController extends BaseController {
 			}
 			
 			xtCzyh.setId(baseService.getUuid());
+			xtCzyh.setCjsj(new Date());
 			baseService.insert(xtCzyh);
 		}else{
 			

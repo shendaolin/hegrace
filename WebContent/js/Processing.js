@@ -9,7 +9,7 @@ var Processing = function() {
 		dropdownCustom : null,
 		countDown : 0,
 		// main function to initiate the module
-		init : function() {
+		init : function(fpq) {
 			var self = this;
 			self.loadCountInterval();
 			self.countDownInterval();
@@ -26,7 +26,7 @@ var Processing = function() {
 						return;
 					}
 					// 30秒以内再次打开不进行查询；
-					HegraceMap.getQJJLLngLats();
+					HegraceMap.getQJJLLngLats(fpq);
 					self.countDown = 30;
 					self.processingReLoad();
 				} else {
