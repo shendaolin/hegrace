@@ -2,6 +2,7 @@ package cn.hegrace.www.v1.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -87,7 +88,7 @@ public class XtSsjjyController extends BaseController {
 		
 		mv.addObject("ssid", ssid);
 		mv.addObject("ryxm", ryxm);
-		
+		List<String> jjysbid = new ArrayList<String>();
 		if(StringUtils.isNotEmpty(id)){
 			XtSsjjy xtSsjjy = new XtSsjjy();
 			xtSsjjy.setId(id);
@@ -98,22 +99,31 @@ public class XtSsjjyController extends BaseController {
 			example.createCriteria().andSsjjyidEqualTo(id);
 			List<XtSsjjysb> xtSsjjysbs = baseService.selectByExample(example);
 			String sbids = "";
+			
 			if(!CollectionUtils.isEmpty(xtSsjjysbs)){
 				sbids += ",";
 				for (XtSsjjysb xtSsjjysb : xtSsjjysbs) {
 					sbids += xtSsjjysb.getSbid();
 					sbids += ",";
+					jjysbid.add("'" + xtSsjjysb.getId() + "'");
 				}
 			}
 			mv.addObject("sbids", sbids);
 		}
 		
+
 		Map map = new HashMap();
 		map.put("ssid", ssid);
 		List<XtJjry> xtJjrys = baseService.selectList("XtSsjjy.select_xtJjrys_list", map);
 		mv.addObject("xtJjrys", xtJjrys);
 		List<XtSsgw> xtSsgws = baseService.selectList("XtSsgw.select_xtSsgws_list", map);
 		mv.addObject("xtSsgws", xtSsgws);
+		if(!CollectionUtils.isEmpty(jjysbid)){
+			
+			
+			
+			map.put("jjysbid", StringUtils.join(jjysbid.toArray(), ","));
+		}
 		List<XtBsysbDto> xtBsysbDtos = baseService.selectList("XtBsysb.select_xtbsysbAll_list", map);
 		mv.addObject("xtBsysbDtos", xtBsysbDtos);
 		
