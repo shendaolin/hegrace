@@ -6,7 +6,7 @@
 		select gw.id, gwmc , gwsl - count(gwid) as gwsl from XT_SSGW gw
 		left join XT_SSJJY jjy on jjy.gwid = gw.id and jjy.zt = '1'
 		where gw.ssid = #{ssid}
-		group by gwid
+		group by gw.id
 	</select>
 	<select id="select_xtssgw_count" parameterType="java.util.Map"
 		resultType="java.lang.Integer">

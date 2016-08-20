@@ -46,8 +46,8 @@ var XtGydmList = function() {
 																+ "</div>");
 											}
 										} ],
-								sortname : "lbid",
-								sortorder : "asc",
+								sortname : "cjsj",
+								sortorder : "desc",
 								usepager : true,
 								title : '系统参数列表',
 								useRp : false,

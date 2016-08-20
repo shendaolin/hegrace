@@ -38,12 +38,12 @@ var xtJjryList = function () {
                     },{
                         display : '证件号码',
                         name : 'zjhm',
-                        width : 100,
+                        width : 150,
                         align : 'center'
                     }, {
                         display : '身份类型',
                         name : 'sfmc',
-                        width : 60,
+                        width : 100,
                         align : 'center'
                     },{
                         display : '类别',
@@ -87,8 +87,8 @@ var xtJjryList = function () {
     										+ ssjlListButton+"</div>");
     					}
     				} ],
-                sortname : "id",
-                sortorder : "asc",
+                sortname : "cjsj",
+                sortorder : "desc",
                 usepager : true,
                 title : '急救人员列表',
                 useRp : false,

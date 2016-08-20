@@ -119,9 +119,6 @@ public class XtSsjjyController extends BaseController {
 		List<XtSsgw> xtSsgws = baseService.selectList("XtSsgw.select_xtSsgws_list", map);
 		mv.addObject("xtSsgws", xtSsgws);
 		if(!CollectionUtils.isEmpty(jjysbid)){
-			
-			
-			
 			map.put("jjysbid", StringUtils.join(jjysbid.toArray(), ","));
 		}
 		List<XtBsysbDto> xtBsysbDtos = baseService.selectList("XtBsysb.select_xtbsysbAll_list", map);

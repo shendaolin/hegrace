@@ -99,7 +99,7 @@ var HegraceMap = function(){
 			getJjryLngLats();
 			setInterval(function() {
 				getJjryLngLats();
-			}, "60000");
+			}, "30000");
 		},
 		getQJJLLngLats : function(fpq){
 			
@@ -169,9 +169,11 @@ var HegraceMap = function(){
 			        });
 			        
 				        if(self.alljjry && fpq == '1'){
+				        	
 				        	var distance = [];
 				        	jQuery.each(self.alljjry, function(key, jjry){
 			        			if(!jjry.jlid && !item.jjyzt){
+			        				alert(1)
 			        				distance.push({"key" : key, "ryid":jjry.ryid, "jl":marker.getPosition().distance(jjry.position)})
 			        			}
 				        	})
@@ -181,6 +183,7 @@ var HegraceMap = function(){
 				            });  	
 				        	
 					        	distance = distance.slice(0,2);
+					        	
 				        	
 					        	var ryids = [];
 				        	jQuery.each(distance, function(i, json){
@@ -219,7 +222,7 @@ var HegraceMap = function(){
 			var self = this;
 			setInterval(function() {
 				self.getQJJLLngLats(fpq);
-			}, "30000");
+			}, "10000");
 		},
 		
 		close : function(qjid){
@@ -237,6 +240,7 @@ var HegraceMap = function(){
 		},
 		
 		cancel : function(qjid){
+			var self = this;
 			if(confirm("取消任务吗？")){
 				$.get("cancelQjjl.htm",{"qjid" : qjid}, function(){
 					var marker = self.allqjjl[""+qjid].marker;
