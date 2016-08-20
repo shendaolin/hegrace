@@ -104,7 +104,9 @@ var xtGydmEdit = function() {
 
 		xtGydmFormSubmit : function() {
 			return function() {
-				$('#xtGydmForm').submit();
+				if ($('#xtGydmForm').validate().form()) {
+					$('#xtGydmForm').submit();
+                }
 			}
 		}
 	};
