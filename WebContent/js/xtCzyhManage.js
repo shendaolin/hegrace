@@ -108,10 +108,17 @@ var XtCzyhEdit = function () {
 			}
 		},
 		xtCzyhFormSubmit : function() {
+		
 			return function() {
 				if ($('#xtCzyhForm').validate().form()) {
 					$('#xtCzyhForm').submit();
                 }
+			} 
+		},
+	 xtCzyhFormPassSubmit : function() {
+			
+			return function() {
+				$('#xtCzyhForm').submit();
 			}
 		}
 	};

@@ -63,11 +63,12 @@ public class XtJjryController extends BaseController {
 	@RequestMapping(value = "xtjjryManage/xtssjlFlexigrid.htm", method = RequestMethod.POST)
 	public void xtssjlFlexigrid(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		XtJjrySeach xtssjlSeach = (XtJjrySeach) httpMessageConverter(new XtJjrySeach(), request);
+		System.out.println("xtssjlSeach=" +  xtssjlSeach);
 		Flexigrid flexigrid = new Flexigrid(xtssjlSeach);
 		Map map = flexigrid.getMap();
 		System.out.println("ryid1=" +  xtssjlSeach.getRyid());
-		map.put("ryid", xtssjlSeach.getRyid());
-		map.put("ssmc", xtssjlSeach.getXm());
+		map.put("ryid",xtssjlSeach.getRyid());
+		map.put("ssmc", xtssjlSeach.getSsmc());
 		flexigrid.setPages(xtssjlSeach.getPage());
 		flexigrid.setTotal(baseService.queryForCount("XtJjry.select_xtssjl_count", map));
 		flexigrid.setRows(baseService.queryForList("XtJjry.select_xtssjl_list", map));

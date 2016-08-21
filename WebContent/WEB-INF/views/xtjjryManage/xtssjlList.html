@@ -29,10 +29,9 @@
 			</button>
 			</div>
 			<div style="float:right;">
-			<form id="xtJjrySeach1">
+			<form id="xtSsjlSeach">
 			<input placeholder="赛事名称、事件" class="m-wrap medium" name="ssmc" type="text"/>
-			<input   name="ryid" type="hidden" value="$!ryid"/>
-			
+			<input   name="ryid" type="hidden" value="$!xtJjry.id"/>
 			</form>
 			</div>
 
@@ -58,7 +57,7 @@
 
 <script>
 	jQuery(document).ready(function() {    
-		xtSsjlList.init();
+		xtSsjlList1.init();
 		$("#xtjjryList").on("click", XtJjryEdit.xtJjryListOnClick()); 
 	});
 </script>

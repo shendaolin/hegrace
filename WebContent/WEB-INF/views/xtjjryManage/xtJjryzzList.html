@@ -4,15 +4,15 @@
 		<div class="span12">
 			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 			<h3 class="page-title">
-				    急救员管理管理 <small>$!xtJjryzz.xm</small>
-			</h3>
+				    急救员管理  <small>$!xtJjry.xm</small>
+			</h3> 
 			<ul class="breadcrumb">
 				<li>
 					<i class="icon-home"></i>
 					<a href="../index.htm">首页</a> 
 					<i class="icon-angle-right"></i>
 				</li>
-				<li><a href="#">急救人员管理 </a></li>
+				<li><a href="#">急救人员资质管理 </a></li>
 				<li class="pull-right no-text-shadow">
 					<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
 						<i class="icon-calendar"></i>
@@ -23,12 +23,18 @@
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
 			<div style="float:left;">
+			<button id="xtjjryzzList" class="btn black">
+			返回 <i class="icon-arrow-left"></i>
+			</button>
+			</div>
+			<div style="float:left;">
 			<button id="xtJjryzzAdd" class="btn green">
-			上传急救人员图片 <i class="icon-plus"></i>
+			增加急救人员图片 <i class="icon-plus"></i>
 			</button>
 			</div>
 			<div style="float:right;">
 			<form id="xtJjryzzSeach">
+			<input   name="ryid" type="hidden" value="$!ryid"/>
 			</form>
 			</div>
 			
@@ -46,7 +52,8 @@
 <script>
 	jQuery(document).ready(function() {  
 		xtJjryzzList.init();
-		$("#xtJjryzzAdd").on("click", xtJjryzzList.xtJjryzzEditOnClick());
+		$("#xtjjryzzList").on("click", XtJjryEdit.xtJjryListOnClick()); 
+		$("#xtJjryzzAdd").on("click", xtJjryzzList.xtJjryzzEditOnClick("$!ryid"));
 		$("#xtJjryzzSeach").submit(function() {
 			xtJjryzzList.xtJjryzzSeach()
 	        return false; //阻止表单默认提交

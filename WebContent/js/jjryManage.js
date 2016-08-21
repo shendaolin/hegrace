@@ -77,13 +77,18 @@ var xtJjryList = function () {
     						var deleteButton = "<a href=\"javascript:;\" onclick=\"xtJjryList.xtJjryDelete('"
     								+ id
     								+ "')\"  class=\"btn mini red\"><i class=\"icon-trash\"></i> 删除</a>";
-    						var ssjlListButton = "<a href=\"javascript:;\" onclick=\"xtSsjlList.jjryListOnClick('"
+    						var jjryzzlButton = " <a href=\"javascript:;\" onclick=\"xtJjryList.xtJjryzzsbListOnClick('"
+								+ id
+								+ "')\" class=\"btn mini green sszbgl\"><i class=\"icon-th-large\">急救人员资质管理</i> </a>";
+						
+    						var ssjlListButton = "<a href=\"javascript:;\" onclick=\"xtJjryList.jjryListOnClick('"
 								+ id
 								+ "')\" class=\"btn mini yellow ssjl\"><i class=\"icon-time\"></i>赛事记录</a>";
 						
     						$(tdDiv).html(
     								"<div>" + editButton
     										+ deleteButton
+    										+jjryzzlButton
     										+ ssjlListButton+"</div>");
     					}
     				} ],
@@ -105,12 +110,22 @@ var xtJjryList = function () {
 				$("#page-content").load("xtJjryEdit.htm");
 			}
 		},
-
+		xtJjryzzsbListOnClick : function(ryId){
+			$("#page-content").load("xtJjryzzList.htm", {
+				"ryid" :ryId
+			});		
+		},
 		xtJjryEdit : function(id) {
 			$("#page-content").load("xtJjryEdit.htm", {
 				"id" : id
 			});
 		},
+		jjryListOnClick : function(id){
+	        	$("#page-content").load("xtssjlList.htm", {
+					"ryid" :id
+				});	
+	        },
+	        
 		xtJjryDelete : function(id) {
 			var del = confirm("确定要删除吗？");
 			if (del == true) {
@@ -161,15 +176,13 @@ var XtJjryEdit = function () {
 }();
 
 
-var xtSsjlList = function () {
-
+var xtSsjlList1 = function () {
     return {
 
 		init: function () {
-	
 			$("#xtssjlFlexigrid").flexigrid({
                 url:"xtssjlFlexigrid.htm",
-                params : $("#xtJjrySeach1").serializeArray(),
+                params : $("#xtSsjlSeach").serializeArray(),
                 dataType : 'json',
                 colModel : [ {
                         display : '赛事名称',
@@ -230,11 +243,7 @@ var xtSsjlList = function () {
 
 
 		},
-		jjryListOnClick : function(ryid){
-	        	$("#page-content").load("xtssjlList.htm", {
-					"ryid" :ryid
-				});	
-	        }
+		
     };
 
 }();

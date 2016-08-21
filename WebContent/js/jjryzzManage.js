@@ -27,17 +27,23 @@ var xtJjryzzList = function () {
 						}	
                     },{
                         display : '图片',
-                        name : 'tpdz',
-                        width : 100,
-                        align : 'center'
+                        width : 400,
+                        align : 'center',
+                        operation : function(tdDiv, row){
+    
+                    		var content = "";       
+                    		content = "<image src=../uploads/"+row.tpdz+" width='200' height='200'>";
+							$(tdDiv).html(content);
+						}	
+                        	
                     },{
                         display : '操作',
-                        name : 'zt',
-                        width : 300,
-                        process : function(tdDiv, id) {
-    						var ssjlListButton = "<a href=\"javascript:;\" onclick=\"xtSsjlList.jjryListOnClick('"
-								+ id
-								+ "')\" class=\"btn mini yellow ssjl\"><i class=\"icon-time\"></i>赛事记录</a>";
+                        width : 100,
+                        align : 'center',
+                        operation : function(tdDiv, row) {
+                        	var deleteButton = "<a href=\"javascript:;\" onclick=\"xtJjryzzList.xtJjryzzDelete('"
+								+ row.tpdz
+								+ "')\"  class=\"btn mini red\"><i class=\"icon-trash\"></i> 删除</a>";
 						
     						$(tdDiv).html(
     								"<div>"
@@ -57,11 +63,12 @@ var xtJjryzzList = function () {
 
 			 
 		},
-
-		xtJjryzzEditOnClick : function() {
-			return function() {
-				$("#page-content").load("xtJjryzzEdit.htm");
-			}
+		xtJjryzzEditOnClick : function(ryid) {
+			return function(){
+				$("#page-content").load("xtJjryzzEdit.htm", {
+					"ryid" :ryid
+				});
+		   }
 		},
 
 		xtJjryzzEdit : function(id) {
@@ -102,10 +109,12 @@ var XtJjryzzEdit = function () {
 	
     return {
 
-    	xtJjryzzListOnClick : function(){
-			return function(){
-				$("#page-content").load("xtJjryzzList.htm");
-			}
+    	xtJjryzzListOnClick : function(ryid){
+    		return function(){
+    			$("#page-content").load("xtJjryzzList.htm", {
+					"ryid" :ryid
+				});
+			} 		 
 		},
 		xtJjryzzFormSubmit : function() {
 			return function() {

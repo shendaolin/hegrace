@@ -1,16 +1,18 @@
+<script src="../media/js/uploadfy/swfobject.js" type="text/javascript"></script>
+<script src="../media/js/uploadfy/jquery.uploadify.v2.1.0.js" type="text/javascript"></script>
 <div class="container-fluid">
 	<!-- BEGIN PAGE HEADER-->
 	<div class="row-fluid">
 		<div class="span12">
 			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 			<h3 class="page-title">
-				塞事管理 <small>$!xtJjry.xm</small>
+				急救人员管理 <small>$!xtJjry.xm</small>
 			</h3>
 			<ul class="breadcrumb">
 				<li><i class="icon-home"></i> <a href="index.htm">首页</a> <i
 					class="icon-angle-right"></i></li>
 				<li><a href="#">急救人员管理</a><i class="icon-angle-right"></i></li>
-				<li><a href="#">新增急救员</a></li>
+				<li><a href="#">新增急救员资质图片</a></li>
 				<li class="pull-right no-text-shadow">
 					<div id="dashboard-report-range"
 						class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive"
@@ -22,98 +24,25 @@
 				</li>
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
-			<button id="xtjjryList" class="btn black">
+			<button id="xtjjryzzList" class="btn black">
 				返回 <i class="icon-arrow-left"></i>
 			</button>
-			<button id="xtJjrySave" class="btn blue">
-				保存<i class="icon-share"></i>
-			</button>
 			<br />
 			<br />
-			<form id="xtJjryForm" action="xtJjrySave.htm"
+			<form id="xtJjryzzForm" action="xtJjryzzSave.htm"
 				class="form-horizontal" method="POST">
-				<input type="hidden" name="id" value="$!xtJjry.id">
+				<input type="hidden" name="id" value="$!xtJjryzz.id">
+				<input   name="ryid" type="hidden" value="$!xtJjry.id"/>
 				<div class="control-group">
-					<label class="control-label">姓名:</label>
+					<label class="control-label">上传急救员资质图片(支持同时多张):</label>
 					<div class="controls">
-						<input class="m-wrap medium" type="text" name="xm"
-							value="$!xtJjry.xm"> <span class="help-inline"><font
+						<input class="m-wrap medium" type="file" name="uploadify"
+						id="uploadify"	> <span class="help-inline"><font
 							color="red">*</font></span>
 					</div>
+					<div id="fileQueue"></div>
 				</div>
-				<div class="control-group">
-					<label class="control-label">性别:</label>
-					<div class="controls">
-						<select id="xb" name="xb">
-							<option value="1" #if("$!xtJjry.xb"== "1") selected #end>男</option>
-							<option value="2" #if("$!xtJjry.xb"== "2") selected #end>女</option>
-
-						</select> <span class="help-inline"><font color="red">*</font></span>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">电话:</label>
-					<div class="controls">
-						<input class="m-wrap medium" type="text" name="dh"
-							value="$!xtJjry.dh"> <span class="help-inline"><font
-							color="red">*</font></span>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">证件类型:</label>
-					<div class="controls">
-						<select id="xtjjrySelect1" class="span6 select2" name="zjlx">
-							#foreach($xtDmlb in $XtDmbList1)
-								<option value="$!xtDmlb.id" #if("$!xtDmlb.id"=="$!xtJjry.zjlx") selected #end>$!xtDmlb.dmmc</option> 
-							#end
-						</select> <span class="help-inline"><font color="red">*</font></span>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">证件号码:</label>
-					<div class="controls">
-						<input class="m-wrap medium" type="text" name="zjhm"
-							value="$!xtJjry.zjhm"> <span class="help-inline"><font
-							color="red">*</font></span>
-					</div>
-				</div>
-
-				<div class="control-group">
-					<label class="control-label">身份类型</label>
-					<div class="controls">
-						<select id="xtjjrySelect" class="span6 select2" name="sflx">
-							#foreach($xtDmlb in $XtDmbList) 
-							 	<option value="$!xtDmlb.id" #if("$!xtDmlb.id"=="$!xtJjry.sflx") selected #end>$!xtDmlb.dmmc</option> 
-							#end
-						</select> <span class="help-inline"><font color="red">*</font></span>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">类别</label>
-					<div class="controls">
-						<input class="m-wrap medium" type="text" name="lb"
-							value="$!xtJjry.lb"> <span class="help-inline"><font
-							color="red">*</font></span>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">服装尺寸</label>
-					<div class="controls">
-						<input class="m-wrap medium" type="text" name="fzcc"
-							value="$!xtJjry.fzcc"> <span class="help-inline"><font
-							color="red">*</font></span>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">审核状态:</label>
-					<div class="controls">
-						<select id="zt" name="zt">
-							<option value="0" #if("$!xtJjry.zt"== "0") selected #end>未通过</option>
-							<option value="1" #if("$!xtJjry.zt"== "1") selected #end>通过</option>
-							<option value="2" #if("$!xtJjry.zt"== "2") selected #end>黑名单</option>
-						</select> <span class="help-inline"><font color="red">*</font></span>
-					</div>
-				</div>
+				
 			</form>
 
 			<br />
@@ -131,16 +60,34 @@
 
 <script>
 	jQuery(document).ready(function() {  
-			$("#xtjjryList").on("click", XtJjryEdit.xtJjryListOnClick());   
-	       $('#xtjjrySelect1').select2({
-	         placeholder: "选择一个类型",
-	         allowClear: true
-	     	}); 
-		   $('#xtjjrySelect').select2({
-		         placeholder: "选择一个类型",
-		         allowClear: true
-		   });  
-			$('#xtJjryForm').submit(function() {
+
+		   $("#uploadify").uploadify({
+	            'uploader': '../media/js/uploadfy/uploadify.allglyphs.swf',
+	            'script':"xtJjryzzSave.htm",
+	            'cancelImg': '../media/js/uploadfy/cancel.png',
+	            'folder'    :   "uploads",//上传文件存放的路径,请保持与uploadFile.jsp中PATH的值相同 
+	            'queueID': 'fileQueue',
+	            'method'   : 'post',//方法，服务端可以用$_POST数组获取数据
+	            'auto': true,
+	            'buttonText': 'select',
+	            'scriptData'     :{'ryid':'$!xtJjry.id'}, // 多个参数用逗号隔开
+	            'simUploadLimit' : 1,
+	            'queueSizeLimit' : 1,
+	            'fileExt': '*.jpg;*.gif;*.jpeg;*.png;*.bmp;',
+	            onComplete: function(event, queueID, fileObj, response, data) {
+	                //转换为json对象
+	                var dataObj = eval("("+response+")");
+	                saveFile(dataObj);
+	            },
+	            onSelect:function(){
+	            },
+	            onError: function(event, queueID, fileObj) {
+	                alert("文件:" + fileObj.name + "上传失败");
+	            }
+	        });
+	
+		$("#xtjjryzzList").on("click", XtJjryzzEdit.xtJjryzzListOnClick("$!xtJjry.id"));   
+			$('#xtJjryzzForm').submit(function() {
 			
 		        $(this).ajaxSubmit({
 		        	success: function(data){
@@ -153,7 +100,7 @@
 		        
 		        return false; //阻止表单默认提交
 		    }); 
-			$("#xtJjrySave").on("click", XtJjryEdit.xtJjryFormSubmit());
+			$("#xtJjryzzSave").on("click", XtJjryzzEdit.xtJjryzzFormSubmit());
 		   
 			$("#page-content").height("auto");
 	});

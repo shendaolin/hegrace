@@ -15,6 +15,14 @@ public class XtJjryDto extends XtJjry {
 	private String zt2;
 	private String clms;
 	private String bhms;
+	private String ryid;
+	
+	public String getRyid() {
+		return ryid;
+	}
+	public void setRyid(String ryid) {
+		this.ryid = ryid;
+	}
 	public String getZt2() {
 		return zt2;
 	}

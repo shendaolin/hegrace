@@ -24,7 +24,7 @@
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
 			#if("$!error"=="")
-			<button id="xtCzyhSave" class="btn blue">
+			<button id="xtCzyhSave1" class="btn blue">
 			保存<i class="icon-share"></i>
 			</button>
 			#else
@@ -87,28 +87,28 @@
 <!-- END PAGE LEVEL PLUGINS -->
 
 <script>
-	jQuery(document).ready(function() {   
-		$('#xtCzyhForm').submit(function() {
-	        $(this).ajaxSubmit({
-	        	success: function(data){ 
-	        		if(data.exception){
-	        			alert(data.exception)
-	        		}else{
-	        		  
-	        			alert("密码修改成功！");
-	        
-	        		}
-	            },
-	            error: function(data){
-	                alert("密码修改失败！");
-	            }
-	        });
-	        
-	        return false; //阻止表单默认提交
-	    });
-		
-		$("#xtCzyhSave").on("click", XtCzyhEdit.xtCzyhFormSubmit());
-	   
-	});
+jQuery(document).ready(function() {  
+	 
+	$('#xtCzyhForm').submit(function() {
+        $(this).ajaxSubmit({
+        	success: function(data){
+        		if(data.exception){
+        			alert(data.exception)
+        		}else{
+        		  
+        			alert("密码修改成功！");
+        
+        		}
+            },
+            error: function(data){
+                alert("保存失败！");
+            }
+        });
+        
+        return false; //阻止表单默认提交
+    }); 
+	$("#xtCzyhSave1").on("click", XtCzyhEdit.xtCzyhFormPassSubmit());
+   
+});
 </script>
 <!-- END JAVASCRIPTS -->

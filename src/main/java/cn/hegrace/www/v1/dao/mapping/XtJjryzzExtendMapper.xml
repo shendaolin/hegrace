@@ -14,5 +14,9 @@
 		</if>
 		limit ${startPage}, ${page}
 	</select>
+	<select id="delete_xtjjryzz_list" parameterType="java.util.Map"
+		resultType="cn.hegrace.www.v1.dto.XtJjryzzDto">
+		 delete from XT_JJRYZZ where tpdz=#{tpdz}   
+	</select>
 
 </mapper>
