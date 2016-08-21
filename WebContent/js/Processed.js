@@ -48,7 +48,7 @@ var Processed = function() {
 			self.processedCount();
 			setInterval(function() {
 				self.processedCount();
-			}, "60000");
+			}, "10000");
 		},
 
 		processedCount : function() {

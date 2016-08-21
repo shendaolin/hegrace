@@ -51,7 +51,7 @@ var Processing = function() {
 			self.processingCount();
 			setInterval(function() {
 				self.processingCount();
-			}, "60000");
+			}, "10000");
 		},
 
 		processingCount : function() {

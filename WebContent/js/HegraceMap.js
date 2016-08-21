@@ -99,7 +99,7 @@ var HegraceMap = function(){
 			getJjryLngLats();
 			setInterval(function() {
 				getJjryLngLats();
-			}, "30000");
+			}, "10000");
 		},
 		getQJJLLngLats : function(fpq){
 			
@@ -141,9 +141,9 @@ var HegraceMap = function(){
 			        				}
 			        			});
 				        		content += "<br/><div>";
+				        		if(fpq == '1'){
 				        		content += " <a href=\"javascript:;\" class=\"btn green mini\" onclick=\"HegraceMap.close('"+item.id+"')\">完成</a>";
 				        		content += " <a href=\"javascript:;\" class=\"btn red mini\" onclick=\"HegraceMap.cancel('"+item.id+"')\">取消</a>";
-				        		if(fpq == '1'){
 				        		content += " <a class=\"btn green mini\" href=\"javascript:;\" data-toggle=\"dropdown\">";
 				        		content += " <i class=\"icon-user\"></i> 手工分配";
 				        		content += " <i class=\"icon-angle-down\"></i>";
