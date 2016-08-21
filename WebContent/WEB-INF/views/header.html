@@ -21,7 +21,7 @@
 				<ul class="dropdown-menu">
 					<li><a href="/hegrace/indexPass.htm"><i class="icon-user"></i> 修改密码</a></li>
 					<li class="divider"></li>
-					<li><a href="#if($!xtCzyhBean.ssid) /hegrace/login.htm #else /hegrace/login.htm  #end"><i class="icon-key"></i> 登出</a></li>
+					<li><a href="/hegrace/login.htm"><i class="icon-key"></i> 登出</a></li>
 				</ul>
 			</li>
 			<!-- END USER LOGIN DROPDOWN -->
@@ -30,3 +30,8 @@
 	</div>
 	
 </div>
+<script>
+$(document).ajaxError(function(event,request, settings){
+   window.location.href="/hegrace/login.htm";
+})
+</script>

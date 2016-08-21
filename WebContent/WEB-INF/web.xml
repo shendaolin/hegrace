@@ -4,6 +4,17 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value></param-value>
 	</context-param>
+
+	<filter>
+		<filter-name>sessionTimeoutFilter</filter-name>
+		<filter-class>cn.hegrace.www.v1.filter.SessionTimeoutFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>sessionTimeoutFilter</filter-name>
+		<url-pattern>*.htm</url-pattern>
+	</filter-mapping>
+
+
 	<filter>
 		<filter-name>simpleCORS</filter-name>
 		<filter-class>cn.hegrace.www.v1.filter.SimpleCORSFilter</filter-class>
@@ -49,14 +60,19 @@
 		<servlet-name>springMVC</servlet-name>
 		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
-	
-	
+
+	<error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/error.htm</location>
+    </error-page>
+   
 	<servlet>
 		<servlet-name>ConnectorServlet</servlet-name>
 		<servlet-class>com.ckfinder.connector.ConnectorServlet</servlet-class>
 		<init-param>
 			<description>
-				Path to configuration file can be relative path inside application,
+				Path to configuration file can be relative path inside
+				application,
 				absolute path on local file system or UNC path.
 			</description>
 			<param-name>XMLConfig</param-name>
@@ -74,9 +90,9 @@
 			/ckfinder/core/connector/java/connector.java
 		</url-pattern>
 	</servlet-mapping>
-	<session-config>  
-         <session-timeout>300</session-timeout>  
-    </session-config> 
+	<session-config>
+		<session-timeout>300</session-timeout>
+	</session-config>
 	<welcome-file-list>
 		<welcome-file>login.htm</welcome-file>
 	</welcome-file-list>
