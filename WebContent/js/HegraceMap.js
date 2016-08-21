@@ -126,7 +126,8 @@ var HegraceMap = function(){
 										"0" : "未接受",
 										"1" : "已接受",
 										"2" : "已驳回",
-										"3" : "已处理"
+										"3" : "已处理",
+										"4" : "已中断"
 								}
 			        			$.each(list.rows, function(key, xtQjjlDto){
 			        				if(key == 0){
@@ -173,7 +174,6 @@ var HegraceMap = function(){
 				        	var distance = [];
 				        	jQuery.each(self.alljjry, function(key, jjry){
 			        			if(!jjry.jlid && !item.jjyzt){
-			        				alert(1)
 			        				distance.push({"key" : key, "ryid":jjry.ryid, "jl":marker.getPosition().distance(jjry.position)})
 			        			}
 				        	})
@@ -182,10 +182,8 @@ var HegraceMap = function(){
 				                return a.jl-b.jl;  
 				            });  	
 				        	
-					        	distance = distance.slice(0,2);
-					        	
-				        	
-					        	var ryids = [];
+					        distance = distance.slice(0,2);
+					        var ryids = [];
 				        	jQuery.each(distance, function(i, json){
 				        		ryids.push(json.ryid);
 					        })
@@ -194,7 +192,7 @@ var HegraceMap = function(){
 					        	$.ajaxSetup({async : false  }); 
 					        	$.get("automatic.htm", {"ryid":ryids.join(","), "qjid" : item.id}, function(){
 					        		jQuery.each(distance, function(i, json){
-					        			self.alljjry[json.key].jjry = '1';
+					        			self.alljjry[json.key].jlid = '1';
 						        	})
 					        	})
 					        	$.ajaxSetup({async : true}); 
