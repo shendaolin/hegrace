@@ -107,6 +107,7 @@ var xtGydmEdit = function() {
 				if ($('#xtGydmForm').validate().form()) {
 					$('#xtGydmForm').submit();
                 }
+				$("#page-content").load("xtGydmList.htm");
 			}
 		}
 	};

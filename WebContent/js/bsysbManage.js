@@ -111,6 +111,7 @@ var xtBsysbEdit = function () {
 				if ($('#xtBsysbForm').validate().form()) {
 					$('#xtBsysbForm').submit();
                 }
+				$("#page-content").load("xtBsysbList.htm");
 			}
 		}
     };

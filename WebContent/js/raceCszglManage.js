@@ -108,8 +108,10 @@ var XtCszglEdit = function () {
 
     	xtCszglFormSubmit : function() {
 			return function() {
-				
 				$('#xtCszglForm').submit();
+				$("#page-content").load("xtCszglList.htm", {
+					"ssid" :$("#ssid").val()
+				});
 			}
 		}
 

@@ -66,7 +66,7 @@ var xtssgwList = function () {
 
 		xtSsgwEditOnClick:function(ssid){
 			return function(){
-				$("#page-content").load("xtSsgwEdit.htm", {
+				$("#page-content").load("xtSsgwList.htm", {
 					"ssid" :ssid
 				});
 			}
@@ -84,9 +84,12 @@ var XtSsgwEdit = function () {
 
     	xtSsgwFormSubmit : function() {
 			return function() {
-				
 				$('#xtSsgwForm').submit();
+				$("#page-content").load("xtSsgwList.htm", {
+					"ssid" :$("#ssid").val()
+				});
 			}
+			
 		}
 
     };

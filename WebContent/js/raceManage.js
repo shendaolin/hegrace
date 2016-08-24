@@ -199,6 +199,7 @@ var XtSsglEdit = function () {
 				if ($('#xtSsglForm').validate().form()) {
 					$('#xtSsglForm').submit();
                 }
+				$("#page-content").load("xtSsglList.htm");
 			}
 		},
 		
@@ -208,6 +209,7 @@ var XtSsglEdit = function () {
 				if ($('#xtSsglForm').validate().form()) {
 					$('#xtSsglForm').submit();
                 }
+				$("#page-content").load("xtSsglList.htm");
 			}
 		}
 	}; 

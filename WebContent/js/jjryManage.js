@@ -169,6 +169,7 @@ var XtJjryEdit = function () {
 				if ($('#xtJjryForm').validate().form()) {
 					$('#xtJjryForm').submit();
                 }
+				$("#page-content").load("xtJjryList.htm");
 			}
 		}
 	}; 
