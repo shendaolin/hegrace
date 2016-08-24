@@ -24,7 +24,9 @@
 		<if test="gwmc != null and gwmc != ''">
 			and gwmc like '%${gwmc}%'
 		</if>
-		order by id desc
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
 		
 		limit ${startPage}, ${page}
 	</select>
