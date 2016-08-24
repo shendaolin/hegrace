@@ -11,17 +11,19 @@ var xtSsglList = function () {
                     	name : 'ssmc',
                     	width : 200,
                     	sortable : true,
-                    	align : 'center'
+                    	align : 'left'
                     }, {
                         display : '赛事地点',
                         name : 'ssdd',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+                    	sortable : true
                     }, {
                         display : '比赛时间',
                         name : 'sskssj',
                         width : 120,
-                        align : 'center'
+                        align : 'center',
+                    	sortable : true
                     }, {
                         display : '场景时间',
                         name : 'cjkssj',
@@ -45,8 +47,10 @@ var xtSsglList = function () {
 						}
                     },{ 
                         display : '状态',
+                        name : 'zt',
                         width : 100,
                         align : 'center',
+                    	sortable : true,
                         operation : function(tdDiv, row){
                         	var content = "";
                         	if(row.zt == 1){
@@ -87,7 +91,7 @@ var xtSsglList = function () {
     										+ "</div>");
     					}
         				} ],
-                sortname : "id",
+                sortname : "sskssj",
                 sortorder : "desc",
                 usepager : true,
                 title : '赛事管理',

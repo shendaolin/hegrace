@@ -15,7 +15,8 @@ var XtGydmList = function() {
 											display : '参数类型',
 											name : 'lbmc',
 											width : 100,
-											align : 'center'
+											align : 'center',
+											sortable : true
 										},
 										{
 											display : '参数编号',
@@ -27,7 +28,8 @@ var XtGydmList = function() {
 											display : '参数名称',
 											name : 'dmmc',
 											width : 100,
-											align : 'center'
+											align : 'center',
+											sortable : true
 										},
 										{
 											display : '操作',

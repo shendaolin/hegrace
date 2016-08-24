@@ -12,16 +12,20 @@ var xtBsysbList = function () {
                         display : '设备类型',
                         name : 'lbmc',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+                        sortable : true
                     }, {
                         display : '设备编号',
                         name : 'sbbh',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+                        sortable : true
                     },  {
                         display : '设备状态',
+                        name : 'sbzt',
                         width : 100,
                         align : 'center',
+                        sortable : true,
                     	operation : function(tdDiv, row){
                     		var content = "";
                     		if(row.sbzt == "1"){
@@ -49,7 +53,7 @@ var xtBsysbList = function () {
     										+ "</div>");
     					}
     				} ],
-                sortname : "sblx",
+                sortname : "cjsj",
                 sortorder : "asc",
                 usepager : true,
                 title : '设备信息列表',

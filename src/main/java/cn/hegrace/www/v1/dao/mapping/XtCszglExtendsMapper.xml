@@ -24,8 +24,9 @@
 		<if test="ssmc != null and ssmc != ''">
 			and ssmc like '%${ssmc}%'
 		</if>
-		order by id desc
-		
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
 		limit ${startPage}, ${page}
 	</select>
 	

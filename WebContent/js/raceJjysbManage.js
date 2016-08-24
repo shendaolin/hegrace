@@ -29,16 +29,20 @@ var xtSsjjysbList = function () {
                         display : '设备名称',
                         name : 'sblx',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+                        sortable : true
                     }, {
                         display : '设备编号',
                         name : 'sbbh',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+                        sortable : true
                     }, {
                         display : '领取状态',
+                        name : 'zt',
                         width : 70,
                         align : 'center',
+                        sortable : true,
 						operation : function(tdDiv, row){
 							var zt = "";
 							if(row.zt == "0") zt = "未领取";
@@ -74,7 +78,7 @@ var xtSsjjysbList = function () {
     						"</div>");
     					}
         				} ],
-                sortname : "id",
+                sortname : "jj.cjsj",
                 sortorder : "desc",
                 usepager : true,
                 title : '赛事急救员设备管理',

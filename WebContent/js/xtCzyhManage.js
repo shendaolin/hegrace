@@ -12,27 +12,33 @@ var XtCzyhList = function () {
 		                    display : '赛事名称',
 		                    name : 'ssmc',
 		                    width : 200,
-		                    align : 'center'
+		                    align : 'center',
+	                        sortable : true
 		                },{
                         display : '账号名',
                         name : 'dlm',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+                        sortable : true
                     }, {
                         display : '姓名',
                         name : 'xm',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+                        sortable : true,
+                        sortable : true
                     },  {
                         display : '电话',
                         name : 'dh',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+                        sortable : true
                     },{
                         display : '职位',
                         name : 'zwmc',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+                        sortable : true
                     },{
                 	display : '操作',
 					width : 200,
