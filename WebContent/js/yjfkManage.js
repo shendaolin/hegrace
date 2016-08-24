@@ -18,22 +18,26 @@ var xtYjfkList = function () {
                         display : '反馈日期',
                         name : 'fkrq',
                         width : 60,
-                        align : 'center'
+                        align : 'center',
+						sortable : true
                     },  {
                         display : '反馈人姓名',
                         name : 'xm',
                         width : 80,
-                        align : 'center'
+                        align : 'center',
+						sortable : true
                     }, {
                         display : '反馈人电话',
                         name : 'dh',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+						sortable : true
                     },{
                         display : '状态',
                         name : 'ztName',
                         width : 50,
-                        align : 'center'
+                        align : 'center',
+						sortable : true
                     },{
                         display : '操作',
                         width : 80,

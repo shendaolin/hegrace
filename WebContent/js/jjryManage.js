@@ -11,7 +11,8 @@ var xtJjryList = function () {
 	                    display : '姓名',
 	                    name : 'xm',
 	                    width : 100,
-	                    align : 'center'
+	                    align : 'center',
+                        sortable : true
 	                },{
                         display : '手机号',
                         name : 'dh',
@@ -19,13 +20,15 @@ var xtJjryList = function () {
                         align : 'center'
                     },{
                         display : '性别',
+                        name : 'xb',
                         width : 30,
                         align : 'center',
+                        sortable : true,
                     	operation : function(tdDiv, row){
                     		var content = "";
                     		if(row.xb == "1"){
                     			content = "男";
-                    		}else{
+                    		}else if(row.xb == "2"){
                     			content = "女";
                     		}
 							$(tdDiv).html(content);
@@ -34,26 +37,32 @@ var xtJjryList = function () {
                         display : '证件类型',
                         name : 'zjmc',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+                        sortable : true
                     },{
                         display : '证件号码',
                         name : 'zjhm',
                         width : 150,
-                        align : 'center'
+                        align : 'center',
+                        sortable : true
                     }, {
                         display : '身份类型',
                         name : 'sfmc',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+                        sortable : true
                     },{
                         display : '类别',
                         name : 'lb',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+                        sortable : true
                     },{
                         display : '审核状态',
+                        name : 'zt',
                         width : 60,
                         align : 'center',
+                        sortable : true,
                     	operation : function(tdDiv, row){
                     		var content = "";
                     		if(row.zt == "0"){

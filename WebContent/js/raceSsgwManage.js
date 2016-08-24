@@ -14,12 +14,14 @@ var xtssgwList = function () {
                         display : '岗位名称',
                         name : 'gwmc',
                         width : 200,
-                        align : 'center'
+                        align : 'center',
+                        sortable : true
                     }, {
                         display : '岗位数量',
                         name : 'gwsl',
                         width : 50,
-                        align : 'center'
+                        align : 'center',
+                        sortable : true
                     },{
                         display : '操作',
                         width : 200,

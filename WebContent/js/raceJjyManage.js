@@ -20,13 +20,22 @@ var XtSsjjyList = function () {
                         display : '姓名',
                         name : 'xm',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+                    	sortable : true
                     }, {
                         display : '性别',
+                        name : 'xb',
+                    	sortable : true,
                         width : 50,
                         align : 'center',
 						operation : function(tdDiv, row){
-							$(tdDiv).html(row.xb == "1"?"男":"女");
+							var content = "";
+                    		if(row.xb == "1"){
+                    			content = "男";
+                    		}else if(row.xb == "2"){
+                    			content = "女";
+                    		}
+							$(tdDiv).html(content);
 						}
                     },{
                         display : '证件类型',
@@ -42,12 +51,14 @@ var XtSsjjyList = function () {
                         display : '身份类型',
                         name : 'sflx',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+                    	sortable : true
                     },{
                         display : '来源',
                         name : 'ly',
                         width : 100,
                         align : 'center',
+                    	sortable : true,
 						operation : function(tdDiv, row){
 							$(tdDiv).html(row.ly == "1"?"平台添加":"App申请");
 						}
@@ -60,12 +71,14 @@ var XtSsjjyList = function () {
                         display : '岗位名称',
                         name : 'gwmc',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+                    	sortable : true
                     } ,{
                         display : '携带装备',
                         name : 'sbmc',
                         width : 200,
-                        align : 'center'
+                        align : 'center',
+                    	sortable : true
                     }  ,{
                         display : '操作',
                         width : 200,
@@ -98,7 +111,7 @@ var XtSsjjyList = function () {
                         	
                         	
                     }],
-                sortname : "ry.xm",
+                sortname : "jjy.cjsj",
                 sortorder : "asc",
                 usepager : true,
                 title : '赛事急救员列表',

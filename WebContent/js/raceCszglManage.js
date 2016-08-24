@@ -14,12 +14,14 @@ var XtCszglList = function () {
                         display : '姓名',
                         name : 'xm',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+                    	sortable : true
                     }, {
                         display : '性别',
                         name : 'xbName',
                         width : 50,
-                        align : 'center'
+                        align : 'center',
+                    	sortable : true
                     }, {
                         display : '证件号码',
                         width : 100,
@@ -37,12 +39,14 @@ var XtCszglList = function () {
                         display : '参赛者编号',
                         name : 'bh',
                         width : 120,
-                        align : 'center'
+                        align : 'center',
+                    	sortable : true
                     }, {
                         display : '是否高风险',
                         name : 'gfxName',
                         width : 100,
-                        align : 'center'
+                        align : 'center',
+                    	sortable : true
                     }  ,{
                         display : '操作',
                         width : 200,
@@ -75,8 +79,8 @@ var XtCszglList = function () {
                         	
                         	
                     }],
-                sortname : "id",
-                sortorder : "asc",
+                sortname : "cjsj",
+                sortorder : "desc",
                 usepager : true,
                 title : '参赛者列表',
                 useRp : false,
