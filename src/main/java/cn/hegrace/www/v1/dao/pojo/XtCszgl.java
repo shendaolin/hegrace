@@ -1,5 +1,7 @@
 package cn.hegrace.www.v1.dao.pojo;
 
+import java.util.Date;
+
 import cn.hegrace.www.v1.annotation.PrimaryKey;
 
 public class XtCszgl extends BaseDao{
@@ -20,11 +22,11 @@ public class XtCszgl extends BaseDao{
     private String bh;
 
     private Integer gfx;
-    
-    private String xbName;
-    
-    private String gfxName;
-    
+
+    private Date cjsj;
+
+    private String nr;
+
     @PrimaryKey
     public String getId() {
         return id;
@@ -98,20 +100,19 @@ public class XtCszgl extends BaseDao{
         this.gfx = gfx;
     }
 
-	public String getXbName() {
-		return xbName;
-	}
+    public Date getCjsj() {
+        return new Date();
+    }
 
-	public void setXbName(String xbName) {
-		this.xbName = xbName;
-	}
+    public void setCjsj(Date cjsj) {
+        this.cjsj = cjsj;
+    }
 
-	public String getGfxName() {
-		return gfxName;
-	}
+    public String getNr() {
+        return nr;
+    }
 
-	public void setGfxName(String gfxName) {
-		this.gfxName = gfxName;
-	}
-    
+    public void setNr(String nr) {
+        this.nr = nr == null ? null : nr.trim();
+    }
 }
