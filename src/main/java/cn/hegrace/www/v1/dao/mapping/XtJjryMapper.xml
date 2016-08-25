@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="XtJjry">
+<mapper namespace="cn.hegrace.www.v1.dao.mapping.XtJjryMapper">
   <resultMap id="BaseResultMap" type="cn.hegrace.www.v1.dao.pojo.XtJjry">
     <id column="Id" jdbcType="VARCHAR" property="id" />
     <result column="xm" jdbcType="VARCHAR" property="xm" />
@@ -13,6 +13,8 @@
     <result column="zt" jdbcType="INTEGER" property="zt" />
     <result column="fzcc" jdbcType="VARCHAR" property="fzcc" />
     <result column="ly" jdbcType="INTEGER" property="ly" />
+    <result column="cjsj" jdbcType="TIMESTAMP" property="cjsj" />
+    <result column="nr" jdbcType="VARCHAR" property="nr" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +75,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    Id, xm, xb, zjlx, zjhm, dh, sflx, lb, zt, fzcc, ly
+    Id, xm, xb, zjlx, zjhm, dh, sflx, lb, zt, fzcc, ly, cjsj, nr
   </sql>
   <select id="selectByExample" parameterType="cn.hegrace.www.v1.dao.pojo.XtJjryExample" resultMap="BaseResultMap">
     select
@@ -108,10 +110,12 @@
   <insert id="insert" parameterType="cn.hegrace.www.v1.dao.pojo.XtJjry">
     insert into XT_JJRY (Id, xm, xb, zjlx, 
       zjhm, dh, sflx, lb, 
-      zt, fzcc, ly)
+      zt, fzcc, ly, cjsj, 
+      nr)
     values (#{id,jdbcType=VARCHAR}, #{xm,jdbcType=VARCHAR}, #{xb,jdbcType=INTEGER}, #{zjlx,jdbcType=VARCHAR}, 
       #{zjhm,jdbcType=VARCHAR}, #{dh,jdbcType=VARCHAR}, #{sflx,jdbcType=VARCHAR}, #{lb,jdbcType=VARCHAR}, 
-      #{zt,jdbcType=INTEGER}, #{fzcc,jdbcType=VARCHAR}, #{ly,jdbcType=INTEGER})
+      #{zt,jdbcType=INTEGER}, #{fzcc,jdbcType=VARCHAR}, #{ly,jdbcType=INTEGER}, #{cjsj,jdbcType=TIMESTAMP}, 
+      #{nr,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.hegrace.www.v1.dao.pojo.XtJjry">
     insert into XT_JJRY
@@ -149,6 +153,12 @@
       <if test="ly != null">
         ly,
       </if>
+      <if test="cjsj != null">
+        cjsj,
+      </if>
+      <if test="nr != null">
+        nr,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -183,6 +193,12 @@
       </if>
       <if test="ly != null">
         #{ly,jdbcType=INTEGER},
+      </if>
+      <if test="cjsj != null">
+        #{cjsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nr != null">
+        #{nr,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -228,6 +244,12 @@
       <if test="record.ly != null">
         ly = #{record.ly,jdbcType=INTEGER},
       </if>
+      <if test="record.cjsj != null">
+        cjsj = #{record.cjsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.nr != null">
+        nr = #{record.nr,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -245,7 +267,9 @@
       lb = #{record.lb,jdbcType=VARCHAR},
       zt = #{record.zt,jdbcType=INTEGER},
       fzcc = #{record.fzcc,jdbcType=VARCHAR},
-      ly = #{record.ly,jdbcType=INTEGER}
+      ly = #{record.ly,jdbcType=INTEGER},
+      cjsj = #{record.cjsj,jdbcType=TIMESTAMP},
+      nr = #{record.nr,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -283,6 +307,12 @@
       <if test="ly != null">
         ly = #{ly,jdbcType=INTEGER},
       </if>
+      <if test="cjsj != null">
+        cjsj = #{cjsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nr != null">
+        nr = #{nr,jdbcType=VARCHAR},
+      </if>
     </set>
     where Id = #{id,jdbcType=VARCHAR}
   </update>
@@ -297,7 +327,9 @@
       lb = #{lb,jdbcType=VARCHAR},
       zt = #{zt,jdbcType=INTEGER},
       fzcc = #{fzcc,jdbcType=VARCHAR},
-      ly = #{ly,jdbcType=INTEGER}
+      ly = #{ly,jdbcType=INTEGER},
+      cjsj = #{cjsj,jdbcType=TIMESTAMP},
+      nr = #{nr,jdbcType=VARCHAR}
     where Id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

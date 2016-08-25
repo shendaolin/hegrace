@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="XtCszgl">
+<mapper namespace="cn.hegrace.www.v1.dao.mapping.XtCszglMapper">
   <resultMap id="BaseResultMap" type="cn.hegrace.www.v1.dao.pojo.XtCszgl">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="ssid" jdbcType="VARCHAR" property="ssid" />
@@ -11,6 +11,8 @@
     <result column="dh" jdbcType="VARCHAR" property="dh" />
     <result column="bh" jdbcType="VARCHAR" property="bh" />
     <result column="gfx" jdbcType="INTEGER" property="gfx" />
+    <result column="cjsj" jdbcType="TIMESTAMP" property="cjsj" />
+    <result column="nr" jdbcType="VARCHAR" property="nr" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, ssid, xm, xb, zjlx, zjhm, dh, bh, gfx
+    id, ssid, xm, xb, zjlx, zjhm, dh, bh, gfx, cjsj, nr
   </sql>
   <select id="selectByExample" parameterType="cn.hegrace.www.v1.dao.pojo.XtCszglExample" resultMap="BaseResultMap">
     select
@@ -106,10 +108,12 @@
   <insert id="insert" parameterType="cn.hegrace.www.v1.dao.pojo.XtCszgl">
     insert into XT_CSZGL (id, ssid, xm, 
       xb, zjlx, zjhm, dh, 
-      bh, gfx)
+      bh, gfx, cjsj, nr
+      )
     values (#{id,jdbcType=VARCHAR}, #{ssid,jdbcType=VARCHAR}, #{xm,jdbcType=VARCHAR}, 
       #{xb,jdbcType=INTEGER}, #{zjlx,jdbcType=VARCHAR}, #{zjhm,jdbcType=VARCHAR}, #{dh,jdbcType=VARCHAR}, 
-      #{bh,jdbcType=VARCHAR}, #{gfx,jdbcType=INTEGER})
+      #{bh,jdbcType=VARCHAR}, #{gfx,jdbcType=INTEGER}, #{cjsj,jdbcType=TIMESTAMP}, #{nr,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.hegrace.www.v1.dao.pojo.XtCszgl">
     insert into XT_CSZGL
@@ -141,6 +145,12 @@
       <if test="gfx != null">
         gfx,
       </if>
+      <if test="cjsj != null">
+        cjsj,
+      </if>
+      <if test="nr != null">
+        nr,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -169,6 +179,12 @@
       </if>
       <if test="gfx != null">
         #{gfx,jdbcType=INTEGER},
+      </if>
+      <if test="cjsj != null">
+        #{cjsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nr != null">
+        #{nr,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -208,6 +224,12 @@
       <if test="record.gfx != null">
         gfx = #{record.gfx,jdbcType=INTEGER},
       </if>
+      <if test="record.cjsj != null">
+        cjsj = #{record.cjsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.nr != null">
+        nr = #{record.nr,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -223,7 +245,9 @@
       zjhm = #{record.zjhm,jdbcType=VARCHAR},
       dh = #{record.dh,jdbcType=VARCHAR},
       bh = #{record.bh,jdbcType=VARCHAR},
-      gfx = #{record.gfx,jdbcType=INTEGER}
+      gfx = #{record.gfx,jdbcType=INTEGER},
+      cjsj = #{record.cjsj,jdbcType=TIMESTAMP},
+      nr = #{record.nr,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -255,6 +279,12 @@
       <if test="gfx != null">
         gfx = #{gfx,jdbcType=INTEGER},
       </if>
+      <if test="cjsj != null">
+        cjsj = #{cjsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nr != null">
+        nr = #{nr,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -267,7 +297,9 @@
       zjhm = #{zjhm,jdbcType=VARCHAR},
       dh = #{dh,jdbcType=VARCHAR},
       bh = #{bh,jdbcType=VARCHAR},
-      gfx = #{gfx,jdbcType=INTEGER}
+      gfx = #{gfx,jdbcType=INTEGER},
+      cjsj = #{cjsj,jdbcType=TIMESTAMP},
+      nr = #{nr,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -1,6 +1,7 @@
 package cn.hegrace.www.v1.dao.pojo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class XtCszglExample extends BaseExample{
@@ -711,6 +712,136 @@ public class XtCszglExample extends BaseExample{
 
         public Criteria andGfxNotBetween(Integer value1, Integer value2) {
             addCriterion("gfx not between", value1, value2, "gfx");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjIsNull() {
+            addCriterion("cjsj is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjIsNotNull() {
+            addCriterion("cjsj is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjEqualTo(Date value) {
+            addCriterion("cjsj =", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjNotEqualTo(Date value) {
+            addCriterion("cjsj <>", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjGreaterThan(Date value) {
+            addCriterion("cjsj >", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjGreaterThanOrEqualTo(Date value) {
+            addCriterion("cjsj >=", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjLessThan(Date value) {
+            addCriterion("cjsj <", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjLessThanOrEqualTo(Date value) {
+            addCriterion("cjsj <=", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjIn(List<Date> values) {
+            addCriterion("cjsj in", values, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjNotIn(List<Date> values) {
+            addCriterion("cjsj not in", values, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjBetween(Date value1, Date value2) {
+            addCriterion("cjsj between", value1, value2, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjNotBetween(Date value1, Date value2) {
+            addCriterion("cjsj not between", value1, value2, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andNrIsNull() {
+            addCriterion("nr is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNrIsNotNull() {
+            addCriterion("nr is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNrEqualTo(String value) {
+            addCriterion("nr =", value, "nr");
+            return (Criteria) this;
+        }
+
+        public Criteria andNrNotEqualTo(String value) {
+            addCriterion("nr <>", value, "nr");
+            return (Criteria) this;
+        }
+
+        public Criteria andNrGreaterThan(String value) {
+            addCriterion("nr >", value, "nr");
+            return (Criteria) this;
+        }
+
+        public Criteria andNrGreaterThanOrEqualTo(String value) {
+            addCriterion("nr >=", value, "nr");
+            return (Criteria) this;
+        }
+
+        public Criteria andNrLessThan(String value) {
+            addCriterion("nr <", value, "nr");
+            return (Criteria) this;
+        }
+
+        public Criteria andNrLessThanOrEqualTo(String value) {
+            addCriterion("nr <=", value, "nr");
+            return (Criteria) this;
+        }
+
+        public Criteria andNrLike(String value) {
+            addCriterion("nr like", value, "nr");
+            return (Criteria) this;
+        }
+
+        public Criteria andNrNotLike(String value) {
+            addCriterion("nr not like", value, "nr");
+            return (Criteria) this;
+        }
+
+        public Criteria andNrIn(List<String> values) {
+            addCriterion("nr in", values, "nr");
+            return (Criteria) this;
+        }
+
+        public Criteria andNrNotIn(List<String> values) {
+            addCriterion("nr not in", values, "nr");
+            return (Criteria) this;
+        }
+
+        public Criteria andNrBetween(String value1, String value2) {
+            addCriterion("nr between", value1, value2, "nr");
+            return (Criteria) this;
+        }
+
+        public Criteria andNrNotBetween(String value1, String value2) {
+            addCriterion("nr not between", value1, value2, "nr");
             return (Criteria) this;
         }
     }

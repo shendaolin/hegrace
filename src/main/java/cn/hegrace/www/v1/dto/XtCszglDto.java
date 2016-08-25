@@ -6,6 +6,8 @@ public class XtCszglDto extends XtCszgl {
 
 	private String sbid;
 	private String jlid;
+	private String xbName;
+	private String gfxName;
 
 	public String getSbid() {
 		return sbid;
@@ -21,6 +23,22 @@ public class XtCszglDto extends XtCszgl {
 
 	public void setJlid(String jlid) {
 		this.jlid = jlid;
+	}
+
+	public String getXbName() {
+		return xbName;
+	}
+
+	public void setXbName(String xbName) {
+		this.xbName = xbName;
+	}
+
+	public String getGfxName() {
+		return gfxName;
+	}
+
+	public void setGfxName(String gfxName) {
+		this.gfxName = gfxName;
 	}
 
 }

@@ -1,5 +1,7 @@
 package cn.hegrace.www.v1.dao.pojo;
 
+import java.util.Date;
+
 import cn.hegrace.www.v1.annotation.PrimaryKey;
 
 public class XtJjry extends BaseDao{
@@ -24,7 +26,11 @@ public class XtJjry extends BaseDao{
     private String fzcc;
 
     private Integer ly;
-    
+
+    private Date cjsj;
+
+    private String nr;
+
     @PrimaryKey
     public String getId() {
         return id;
@@ -113,5 +119,20 @@ public class XtJjry extends BaseDao{
     public void setLy(Integer ly) {
         this.ly = ly;
     }
-    
+
+    public Date getCjsj() {
+        return new Date();
+    }
+
+    public void setCjsj(Date cjsj) {
+        this.cjsj = cjsj;
+    }
+
+    public String getNr() {
+        return nr;
+    }
+
+    public void setNr(String nr) {
+        this.nr = nr == null ? null : nr.trim();
+    }
 }
