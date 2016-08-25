@@ -4,6 +4,7 @@ import cn.hegrace.www.v1.dao.pojo.XtQjjl;
 
 public class XtQjjlDto extends XtQjjl {
 	private String sjmc;
+	private String jjyid;
 	private String jjyxm;
 	private String jjydh;
 	private String clms;
@@ -56,6 +57,14 @@ public class XtQjjlDto extends XtQjjl {
 
 	public void setJjyzt(String jjyzt) {
 		this.jjyzt = jjyzt;
+	}
+
+	public String getJjyid() {
+		return jjyid;
+	}
+
+	public void setJjyid(String jjyid) {
+		this.jjyid = jjyid;
 	}
 
 }

@@ -170,4 +170,33 @@ public class IndexMapController extends BaseController {
 	}
 	
 	
+	@RequestMapping("/belaidOff.htm")
+	@Transactional
+	public void belaidOff(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String jjyid = request.getParameter("jjyid");
+		
+		XtSsjjy xtSsjjy = new XtSsjjy();
+		if(StringUtils.isNotEmpty(jjyid)){
+			xtSsjjy.setId(jjyid);
+			xtSsjjy = baseService.selectByPrimaryKey(xtSsjjy);
+			xtSsjjy.setZb("");
+			baseService.updateByPrimaryKey(xtSsjjy);
+		}
+	}
+	
+	@RequestMapping("/cancelSsjl.htm")
+	@Transactional
+	public void cancelSsjl(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String qjid = request.getParameter("qjid");
+		String ryid = request.getParameter("ryid");
+		if(StringUtils.isNotEmpty(qjid) && StringUtils.isNotEmpty(ryid)){
+			Map map = new HashMap();
+			map.put("zt", "9");
+			map.put("qjid", qjid);
+			map.put("ryid", ryid);
+			baseService.update("XtSsjl.update_xtssjl_by_qjid_ryid", map);
+		}
+	}
+	
+	
 }

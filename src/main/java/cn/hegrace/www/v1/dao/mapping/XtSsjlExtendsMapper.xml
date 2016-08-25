@@ -3,9 +3,11 @@
 <mapper namespace="XtSsjl">
 
 	<update id="update_xtssjl_by_qjid" parameterType="map">
-	
 		update XT_SSJL set zt = #{zt} where zt in ('0', '1') and qjid = #{qjid};
+	</update>
 	
+		<update id="update_xtssjl_by_qjid_ryid" parameterType="map">
+		update XT_SSJL set zt = #{zt} where ryid = #{ryid} and qjid = #{qjid};
 	</update>
   
 </mapper>

@@ -27,10 +27,10 @@ var HegraceMap = function(){
 			this.mapObj.setFitView();
 			this.infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
 			this.getQjjlLngLatsInterval(fpq);
-			this.getJjryLngLatsInterval();
+			this.getJjryLngLatsInterval(fpq);
 		},
 		
-		getJjryLngLatsInterval : function(){
+		getJjryLngLatsInterval : function(fpq){
 			
 			var self = this;
 			var getJjryLngLats = function(){
@@ -53,6 +53,7 @@ var HegraceMap = function(){
 				        	
 				        	var content = "";
 				        	$.get("getJjryInfomation.htm", {"jjyid" : item.id}, function(list){
+				        			var rw  = true;
 				        			$.each(list.rows, function(key, xtSsjjyDto){
 				        				if(key == 0){
 				        					content += "<div>急救员："+xtSsjjyDto.xm+"("+xtSsjjyDto.dh+")</div>"
@@ -64,9 +65,15 @@ var HegraceMap = function(){
 				        					content += "<br/>";
 				        				}
 				        				if(xtSsjjyDto.qjid){
+				        					rw = false;
 				        					content += "<div>正在救助："+xtSsjjyDto.qjxm+"("+xtSsjjyDto.qjdh+")</div>"
 				        				}
 				        			});
+				        			content += "<br/>";
+				        			if(fpq == '1' && rw){
+						        		content += " <a href=\"javascript:;\" class=\"btn red mini\" onclick=\"HegraceMap.belaidOff('"+item.id+"')\">下岗</a>";
+				        			}	
+				        			
 					        		self.infoWindow.setContent(content);
 						        	self.infoWindow.open(self.mapObj, marker.getPosition());
 				        	})
@@ -137,7 +144,9 @@ var HegraceMap = function(){
 			        					content += "<br/>";
 			        				}
 			        				if(xtQjjlDto.jjyxm){
-			        					content += "<div>["+ztStyle[xtQjjlDto.jjyzt]+"]救护员："+xtQjjlDto.jjyxm+"("+xtQjjlDto.jjydh+")</div>"
+			        					content += "<div>";
+			        					content += "<a href=\"javascript:;\" class=\"btn red mini\" onclick=\"HegraceMap.cancelJjy('"+xtQjjlDto.jjyid+"', '"+item.id+"')\">取消</a>";
+			        					content +="["+ztStyle[xtQjjlDto.jjyzt]+"]救护员："+xtQjjlDto.jjyxm+"("+xtQjjlDto.jjydh+")</div>"
 			        				}
 			        			});
 				        		content += "<br/><div>";
@@ -223,6 +232,20 @@ var HegraceMap = function(){
 			}, "10000");
 		},
 		
+		belaidOff : function(jjyid){
+			var self = this;
+			if(confirm("真的要下岗吗？")){
+				$.get("belaidOff.htm",{"jjyid" : jjyid}, function(){
+					var marker = self.alljjry[""+jjyid].marker;
+					self.mapObj.remove(marker);
+					delete self.alljjry[""+jjyid];
+					self.infoWindow && self.infoWindow.close();
+				});
+			}else{
+			       return false;
+			}
+		},
+		
 		close : function(qjid){
 			var self = this;
 			if(confirm("完成任务吗？")){
@@ -245,6 +268,18 @@ var HegraceMap = function(){
 					self.mapObj.remove(marker);
 					delete self.allqjjl[""+qjid];
 					self.infoWindow && self.infoWindow.close();
+				});
+			}else{
+			       return false;
+			}
+		},
+		
+		cancelJjy : function(ryid, qjid){
+			var self = this;
+			if(confirm("取消急救员任务吗？")){
+				$.get("cancelSsjl.htm",{"ryid" : ryid, "qjid" : qjid}, function(){
+					self.infoWindow && self.infoWindow.close();
+					AMap.event.trigger(self.allqjjl[""+qjid].marker,"click")
 				});
 			}else{
 			       return false;
