@@ -20,6 +20,16 @@ public class XtSsjjyDto extends XtSsjjy {
 	private String fzcc;
 	private String zjhm;
 	private String gwmc;
+	private String ryzt;
+	
+
+	public String getRyzt() {
+		return ryzt;
+	}
+
+	public void setRyzt(String ryzt) {
+		this.ryzt = ryzt;
+	}
 
 	public String getXm() {
 		return xm;

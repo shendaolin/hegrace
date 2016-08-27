@@ -1,3 +1,7 @@
+<link rel="stylesheet" type="text/css" href="../ckeditor/skins/kama/editor.css?t=D03G5XL">
+<link rel="shortcut icon" href="../media/image/favicon.ico" />
+<script src="../ckeditor/ckeditor.js"></script>
+<script src="../ckfinder/ckfinder.js"></script>   
 <div class="container-fluid">
 	<!-- BEGIN PAGE HEADER-->
 	<div class="row-fluid">
@@ -22,9 +26,7 @@
 				</li>
 			</ul>
 			<!-- END PAGE TITLE & BREADCRUMB-->
-			<button id="xtjjryList" class="btn black">
-				返回 <i class="icon-arrow-left"></i>
-			</button>
+			 
 			<button id="xtJjrySave" class="btn blue">
 				保存<i class="icon-share"></i>
 			</button>
@@ -33,6 +35,7 @@
 			<form id="xtJjryForm" action="xtJjrySave.htm"
 				class="form-horizontal" method="POST">
 				<input type="hidden" name="id" value="$!xtJjry.id">
+				<input type="hidden" name="nr" id="nr">
 				<div class="control-group">
 					<label class="control-label">姓名:<span class="required">*</span></label>
 					<div class="controls">
@@ -108,15 +111,24 @@
 							<option value="2" #if("$!xtJjry.zt"== "2") selected #end>黑名单</option>
 					</div>
 				</div>
-			</form>
+				<div class="control-group">
+					<label class="control-label">介绍</label>
+					<div class="controls">
+						<textarea cols="80" id="editor1" name="editor1" rows="10">$!xtJjry.nr</textarea>
+					</div>
+				</div>
 
 			<br />
 		</div>
+	
+				
+			</form>
 	</div>
 </div>
 
 <script type="text/javascript" src="../media/js/select2.min.js"></script>
 <script type="text/javascript" src="../media/js/jquery.form.js"></script>
+<script type="text/javascript" src="../media/js/jquery.tagsinput.min.js"></script>
 
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -125,7 +137,8 @@
 
 <script>
 	jQuery(document).ready(function() {  
-			$("#xtjjryList").on("click", XtJjryEdit.xtJjryListOnClick());   
+		$("#page-content").height("auto");
+			//$("#xtjjryList").on("click", XtJjryEdit.xtJjryListOnClick());   
 	       $('#xtjjrySelect1').select2({
 	         placeholder: "选择一个类型",
 	         allowClear: true
@@ -192,7 +205,7 @@
 		   
 		   
 			$('#xtJjryForm').submit(function() {
-			
+				$("#nr").val(CKEDITOR.instances["editor1"].getData());
 		        $(this).ajaxSubmit({
 		        	success: function(data){
 		        		alert("保存成功！");
@@ -205,7 +218,10 @@
 		        return false; //阻止表单默认提交
 		    }); 
 			$("#xtJjrySave").on("click", XtJjryEdit.xtJjryFormSubmit());
-		   
+			if(CKEDITOR.instances['editor1']){
+				  CKEDITOR.remove(CKEDITOR.instances['editor1']); 
+			} 
+	        CKEDITOR.replace("editor1");
 			$("#page-content").height("auto");
 	});
 	

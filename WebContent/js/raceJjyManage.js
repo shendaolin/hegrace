@@ -79,7 +79,41 @@ var XtSsjjyList = function () {
                         width : 200,
                         align : 'center',
                     	sortable : true
-                    }  ,{
+                    },{
+                        display : ' 赛事急救员状态',
+                        name : 'zt',
+                        width : 100,
+                        align : 'center',
+                        sortable : true,
+                    	operation : function(tdDiv, row){
+                    		var content = "";
+                    		if(row.zt == "0"){
+                    			content = "<span class=\"label label-warning\">未通过</span>";
+                    		}else if(row.zt == "1"){
+                    			content = "<span class=\"label label-success\">通过</span>";
+                    		}
+							$(tdDiv).html(content);
+						}	
+                        	
+                },{
+                    display : '急救员状态',
+                    name : 'ryzt',
+                    width : 80,
+                    align : 'center',
+                    sortable : true,
+                	operation : function(tdDiv, row){
+                		var content = "";
+                		if(row.ryzt == "0"){
+                			content = "<span class=\"label label-warning\">未通过</span>";
+                		}else if(row.ryzt == "1"){
+                			content = "<span class=\"label label-success\">通过</span>";
+                		}else if(row.ryzt == "2"){
+                			content = "<span class=\"label label-danger\">黑名单</span>";
+                		}
+						$(tdDiv).html(content);
+					}
+                    	
+            }  ,{
                         display : '操作',
                         width : 200,
                         align : 'left',

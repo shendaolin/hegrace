@@ -73,8 +73,8 @@ public class XtSsjjyController extends BaseController {
 		map.put("xm", xtSsjjySeach.getXm());
 		map.put("ssid", xtSsjjySeach.getSsid());
 		flexigrid.setPages(xtSsjjySeach.getPage());
-		flexigrid.setTotal(baseService.queryForCount("XtSsjjy.select_xtssgl_count", map));
-		flexigrid.setRows(baseService.queryForList("XtSsjjy.select_xtssgl_list", map));
+		flexigrid.setTotal(baseService.queryForCount("XtSsjjy.select_xtssgl_count1", map));
+		flexigrid.setRows(baseService.queryForList("XtSsjjy.select_xtssgl_list1", map));
 		sendJson(flexigrid, response);
 	 }
 	
@@ -85,7 +85,10 @@ public class XtSsjjyController extends BaseController {
 		String ssid = request.getParameter("ssid");
 		String id = request.getParameter("id");
 		String ryxm = request.getParameter("ryxm");
-		
+		XtSsgl xtSsgl = new XtSsgl();
+		xtSsgl.setId(ssid);
+		xtSsgl = baseService.selectByPrimaryKey(xtSsgl);
+		mv.addObject("xtSsgl", xtSsgl);
 		mv.addObject("ssid", ssid);
 		mv.addObject("ryxm", ryxm);
 		List<String> jjysbid = new ArrayList<String>();

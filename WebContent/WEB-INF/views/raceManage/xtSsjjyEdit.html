@@ -4,7 +4,7 @@
 		<div class="span12">
 			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 			<h3 class="page-title">
-				赛事管理 <small></small>
+				赛事管理 <small>$!xtSsgl.ssmc</small>
 			</h3>
 			<ul class="breadcrumb">
 				<li>
@@ -82,6 +82,14 @@
 								>$!xtSsgw.gwmc (剩余: $!xtSsgw.gwsl 个)</option>
 							#end
 						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">审核状态:<span class="required">*</span></label>
+					<div class="controls">
+						<select id="zt" name="zt">
+							<option value="0" #if("$!xtSsjjy.zt"== "0") selected #end>未通过</option>
+							<option value="1" #if("$!xtSsjjy.zt"== "1") selected #end>通过</option>
 					</div>
 				</div>
 			</form>

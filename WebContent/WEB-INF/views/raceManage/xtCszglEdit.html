@@ -1,3 +1,8 @@
+<link rel="stylesheet" type="text/css" href="../ckeditor/skins/kama/editor.css?t=D03G5XL">
+<link rel="shortcut icon" href="../media/image/favicon.ico" />
+<script src="../ckeditor/ckeditor.js"></script>
+<script src="../ckfinder/ckfinder.js"></script>   
+<div class="container-fluid">
 <div class="container-fluid">
 	<!-- BEGIN PAGE HEADER-->
 	<div class="row-fluid">
@@ -33,6 +38,7 @@
 			<form id="xtCszglForm" action="xtCszglSave.htm" class="form-horizontal" method="POST">
 				<input type="hidden" name="id" value="$!xtCszgl.id">
 				<input type="hidden" name="ssid"  id="ssid" value="$!xtSsgl.id">
+				<input type="hidden" name="nr" id="nr" >
 				 	<div class="control-group">
 					<label class="control-label">姓名:</label>
 					<div class="controls">
@@ -90,7 +96,13 @@
 						</select>
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
+				</div><div class="control-group">
+					<label class="control-label">介绍</label>
+					<div class="controls">
+						<textarea cols="80" id="editor1" name="editor1" rows="10">$!xtCszgl.nr</textarea>
+					</div>
 				</div>
+				
 			</form>
 			
 			<br/>
@@ -109,7 +121,7 @@
 <script type="text/javascript" src="../media/js/jquery.form.js"></script>
 <script>
 	jQuery(document).ready(function() { 
-	
+		$("#page-content").height("auto");
 		 $("#xtCszglList1").on("click",function(){xtSsglList.xtCszglList("$!xtSsgl.id")});
 		 $("#xtSsjjySave").on("click", XtCszglEdit.xtCszglFormSubmit());
 		//$("#xtCszglList").on("click", XtCszglEdit.xtCszglListOnClick());
@@ -118,7 +130,7 @@
 	         allowClear: true
 	     	}); 
 		$('#xtCszglForm').submit(function() {
-		
+			$("#nr").val(CKEDITOR.instances["editor1"].getData());
 	        $(this).ajaxSubmit({
 	        	success: function(data){
 	        		alert("保存成功！");
@@ -132,7 +144,10 @@
 	    }); 
 
 		$("#xtCszglSave").on("click", XtCszglEdit.xtCszglFormSubmit());
-		
+		if(CKEDITOR.instances['editor1']){
+			  CKEDITOR.remove(CKEDITOR.instances['editor1']); 
+		} 
+      CKEDITOR.replace("editor1");
 	});
 </script>
 <!-- END JAVASCRIPTS -->
