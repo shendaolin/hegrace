@@ -1,6 +1,7 @@
 package cn.hegrace.www.v1.dao.pojo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class XtSsgwExample extends BaseExample{
@@ -371,6 +372,206 @@ public class XtSsgwExample extends BaseExample{
 
         public Criteria andGwslNotBetween(Integer value1, Integer value2) {
             addCriterion("Gwsl not between", value1, value2, "gwsl");
+            return (Criteria) this;
+        }
+
+        public Criteria andDwIsNull() {
+            addCriterion("dw is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDwIsNotNull() {
+            addCriterion("dw is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDwEqualTo(String value) {
+            addCriterion("dw =", value, "dw");
+            return (Criteria) this;
+        }
+
+        public Criteria andDwNotEqualTo(String value) {
+            addCriterion("dw <>", value, "dw");
+            return (Criteria) this;
+        }
+
+        public Criteria andDwGreaterThan(String value) {
+            addCriterion("dw >", value, "dw");
+            return (Criteria) this;
+        }
+
+        public Criteria andDwGreaterThanOrEqualTo(String value) {
+            addCriterion("dw >=", value, "dw");
+            return (Criteria) this;
+        }
+
+        public Criteria andDwLessThan(String value) {
+            addCriterion("dw <", value, "dw");
+            return (Criteria) this;
+        }
+
+        public Criteria andDwLessThanOrEqualTo(String value) {
+            addCriterion("dw <=", value, "dw");
+            return (Criteria) this;
+        }
+
+        public Criteria andDwLike(String value) {
+            addCriterion("dw like", value, "dw");
+            return (Criteria) this;
+        }
+
+        public Criteria andDwNotLike(String value) {
+            addCriterion("dw not like", value, "dw");
+            return (Criteria) this;
+        }
+
+        public Criteria andDwIn(List<String> values) {
+            addCriterion("dw in", values, "dw");
+            return (Criteria) this;
+        }
+
+        public Criteria andDwNotIn(List<String> values) {
+            addCriterion("dw not in", values, "dw");
+            return (Criteria) this;
+        }
+
+        public Criteria andDwBetween(String value1, String value2) {
+            addCriterion("dw between", value1, value2, "dw");
+            return (Criteria) this;
+        }
+
+        public Criteria andDwNotBetween(String value1, String value2) {
+            addCriterion("dw not between", value1, value2, "dw");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgIsNull() {
+            addCriterion("img is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgIsNotNull() {
+            addCriterion("img is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgEqualTo(String value) {
+            addCriterion("img =", value, "img");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgNotEqualTo(String value) {
+            addCriterion("img <>", value, "img");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgGreaterThan(String value) {
+            addCriterion("img >", value, "img");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgGreaterThanOrEqualTo(String value) {
+            addCriterion("img >=", value, "img");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgLessThan(String value) {
+            addCriterion("img <", value, "img");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgLessThanOrEqualTo(String value) {
+            addCriterion("img <=", value, "img");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgLike(String value) {
+            addCriterion("img like", value, "img");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgNotLike(String value) {
+            addCriterion("img not like", value, "img");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgIn(List<String> values) {
+            addCriterion("img in", values, "img");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgNotIn(List<String> values) {
+            addCriterion("img not in", values, "img");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgBetween(String value1, String value2) {
+            addCriterion("img between", value1, value2, "img");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgNotBetween(String value1, String value2) {
+            addCriterion("img not between", value1, value2, "img");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjIsNull() {
+            addCriterion("cjsj is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjIsNotNull() {
+            addCriterion("cjsj is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjEqualTo(Date value) {
+            addCriterion("cjsj =", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjNotEqualTo(Date value) {
+            addCriterion("cjsj <>", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjGreaterThan(Date value) {
+            addCriterion("cjsj >", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjGreaterThanOrEqualTo(Date value) {
+            addCriterion("cjsj >=", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjLessThan(Date value) {
+            addCriterion("cjsj <", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjLessThanOrEqualTo(Date value) {
+            addCriterion("cjsj <=", value, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjIn(List<Date> values) {
+            addCriterion("cjsj in", values, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjNotIn(List<Date> values) {
+            addCriterion("cjsj not in", values, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjBetween(Date value1, Date value2) {
+            addCriterion("cjsj between", value1, value2, "cjsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andCjsjNotBetween(Date value1, Date value2) {
+            addCriterion("cjsj not between", value1, value2, "cjsj");
             return (Criteria) this;
         }
     }

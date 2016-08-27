@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="XtSsgw">
+<mapper namespace="cn.hegrace.www.v1.dao.mapping.XtSsgwMapper">
   <resultMap id="BaseResultMap" type="cn.hegrace.www.v1.dao.pojo.XtSsgw">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="ssid" jdbcType="VARCHAR" property="ssid" />
     <result column="gwmc" jdbcType="VARCHAR" property="gwmc" />
     <result column="Gwsl" jdbcType="INTEGER" property="gwsl" />
+    <result column="dw" jdbcType="VARCHAR" property="dw" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="cjsj" jdbcType="TIMESTAMP" property="cjsj" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, ssid, gwmc, Gwsl
+    id, ssid, gwmc, Gwsl, dw, img, cjsj
   </sql>
   <select id="selectByExample" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsgwExample" resultMap="BaseResultMap">
     select
@@ -100,9 +103,11 @@
   </delete>
   <insert id="insert" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsgw">
     insert into XT_SSGW (id, ssid, gwmc, 
-      Gwsl)
+      Gwsl, dw, img, cjsj
+      )
     values (#{id,jdbcType=VARCHAR}, #{ssid,jdbcType=VARCHAR}, #{gwmc,jdbcType=VARCHAR}, 
-      #{gwsl,jdbcType=INTEGER})
+      #{gwsl,jdbcType=INTEGER}, #{dw,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, #{cjsj,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.hegrace.www.v1.dao.pojo.XtSsgw">
     insert into XT_SSGW
@@ -119,6 +124,15 @@
       <if test="gwsl != null">
         Gwsl,
       </if>
+      <if test="dw != null">
+        dw,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+      <if test="cjsj != null">
+        cjsj,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -132,6 +146,15 @@
       </if>
       <if test="gwsl != null">
         #{gwsl,jdbcType=INTEGER},
+      </if>
+      <if test="dw != null">
+        #{dw,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="cjsj != null">
+        #{cjsj,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -156,6 +179,15 @@
       <if test="record.gwsl != null">
         Gwsl = #{record.gwsl,jdbcType=INTEGER},
       </if>
+      <if test="record.dw != null">
+        dw = #{record.dw,jdbcType=VARCHAR},
+      </if>
+      <if test="record.img != null">
+        img = #{record.img,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cjsj != null">
+        cjsj = #{record.cjsj,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,7 +198,10 @@
     set id = #{record.id,jdbcType=VARCHAR},
       ssid = #{record.ssid,jdbcType=VARCHAR},
       gwmc = #{record.gwmc,jdbcType=VARCHAR},
-      Gwsl = #{record.gwsl,jdbcType=INTEGER}
+      Gwsl = #{record.gwsl,jdbcType=INTEGER},
+      dw = #{record.dw,jdbcType=VARCHAR},
+      img = #{record.img,jdbcType=VARCHAR},
+      cjsj = #{record.cjsj,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -183,6 +218,15 @@
       <if test="gwsl != null">
         Gwsl = #{gwsl,jdbcType=INTEGER},
       </if>
+      <if test="dw != null">
+        dw = #{dw,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="cjsj != null">
+        cjsj = #{cjsj,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -190,7 +234,10 @@
     update XT_SSGW
     set ssid = #{ssid,jdbcType=VARCHAR},
       gwmc = #{gwmc,jdbcType=VARCHAR},
-      Gwsl = #{gwsl,jdbcType=INTEGER}
+      Gwsl = #{gwsl,jdbcType=INTEGER},
+      dw = #{dw,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      cjsj = #{cjsj,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>
