@@ -19,6 +19,8 @@ import cn.hegrace.www.v1.busi.BaseService;
 import cn.hegrace.www.v1.dao.pojo.XtCzyh;
 import cn.hegrace.www.v1.dao.pojo.XtGydm;
 import cn.hegrace.www.v1.dao.pojo.XtQjjl;
+import cn.hegrace.www.v1.dao.pojo.XtSsgw;
+import cn.hegrace.www.v1.dao.pojo.XtSsgwExample;
 import cn.hegrace.www.v1.dao.pojo.XtSsjjy;
 import cn.hegrace.www.v1.dao.pojo.XtSsjl;
 import cn.hegrace.www.v1.dao.pojo.XtSsjlExample;
@@ -31,6 +33,27 @@ public class IndexMapController extends BaseController {
 
 	@Autowired
 	private BaseService baseService;
+	
+	
+	@RequestMapping("/getGwLngLats.htm")
+	public void getGwLngLats(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HttpSession session = request.getSession();
+		XtCzyh xtCzyh = (XtCzyh) session.getAttribute("xtCzyhBean");
+		String ssid = "";
+		if(xtCzyh != null){
+			ssid = xtCzyh.getSsid();
+		}
+		Page page = (Page) httpMessageConverter(new Page(), request);
+		Flexigrid flexigrid = new Flexigrid(page);
+		XtSsgwExample xtSsgwExample = new XtSsgwExample();
+		XtSsgwExample.Criteria  criteria = xtSsgwExample.createCriteria();
+		criteria.andSsidEqualTo(ssid);
+		List<XtSsgw> list = baseService.selectByExample(xtSsgwExample);
+		if (!CollectionUtils.isEmpty(list)) {
+			flexigrid.setRows(list.toArray());
+		}
+		sendJson(flexigrid, response);
+	}
 	
 	@RequestMapping("/getJjryLngLats.htm")
 	public void getJjryLngLats(HttpServletRequest request, HttpServletResponse response) throws Exception {
