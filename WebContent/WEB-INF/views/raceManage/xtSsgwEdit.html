@@ -33,7 +33,9 @@
 			<form id="xtSsgwForm" action="xtSsgwSave.htm" class="form-horizontal" method="POST">
 				<input type="hidden" name="id" value="$!xtSsgw.id">
 				<input type="hidden" name="ssid" id="ssid" value="$!xtSsgl.id">
-				 	<div class="control-group">
+				<input type="hidden" name="dw" id="xtSsgwDw" value="$!xtSsgw.dw">
+				<input type="hidden" name="img" id="xtSsgwImg" value="$!xtSsgw.img">
+				<div class="control-group">
 					<label class="control-label">岗位名称:</label>
 					<div class="controls">
 						<input class="m-wrap medium" type="text" name="gwmc" value="$!xtSsgw.gwmc">
@@ -51,8 +53,10 @@
 					<label class="control-label">岗位打点</label>
 					<div class="controls">
 						<div id="ssljMap" style="width:100%;height:400px;"></div>
-						<div  style="position:absolute;margin-top:-35px; left:100%; margin-left:-190px; z-index:100;">
-							<i class="icon-ok"></i> 点击选择图标
+						<div  style="position:absolute;margin-top:-400px;  z-index:100;">
+							<a class="btn blue" href="javascript:;" id="cleanTools">
+								<i class="icon-delete"></i> 点击清除图标
+							</a>
 						</div>
 					</div>
 				</div>
@@ -63,6 +67,45 @@
 	</div>
 </div>
 
+<div id="infoWindow" class="hide">
+<table style="border:1px gray solid inset;">
+  <tr height="30px;">
+	<td width="150px;" align="center"><div><img src="../media/image/bj1.png" style="cursor:pointer" onclick="getDotIcon('bj1.png')"/></div><div>补给点1</div></td>
+	<td width="150px;" align="center"><div><img src="../media/image/bj2.png" style="cursor:pointer" onclick="getDotIcon('bj2.png')"/></div><div>补给点2</div></td>
+	<td width="150px;" align="center"><div><img src="../media/image/bj3.png" style="cursor:pointer" onclick="getDotIcon('bj3.png')"/></div><div>补给点3</div></td>
+	<td width="150px;" align="center"><div><img src="../media/image/dot1.png" style="cursor:pointer" onclick="getDotIcon('dot1.png')"/></div><div>dot1</div></td>
+	<td width="150px;" align="center"><div><img src="../media/image/dot2.png" style="cursor:pointer" onclick="getDotIcon('dot2.png')"/></div><div>dot2</div></td>
+  </tr>
+  <tr height="30px;">
+	<td align="center"><div><img src="../media/image/dot3.png" style="cursor:pointer" onclick="getDotIcon('dot3.png')"/></div><div>dot3</div></td>
+	<td align="center"><div><img src="../media/image/dot4.png" style="cursor:pointer" onclick="getDotIcon('dot4.png')"/></div><div>dot4</div></td>
+	<td align="center"><div><img src="../media/image/dot5.png" style="cursor:pointer" onclick="getDotIcon('dot5.png')"/></div><div>dot5</div></td>
+	<td align="center"><div><img src="../media/image/dot6.png" style="cursor:pointer" onclick="getDotIcon('dot6.png')"/></div><div>dot6</div></td>
+	<td align="center"><div><img src="../media/image/end.png" style="cursor:pointer" onclick="getDotIcon('end.png')"/></div><div>结束点1</div></td>
+  </tr>
+  <tr height="30px;">
+	<td align="center"><div><img src="../media/image/end2.png" style="cursor:pointer" onclick="getDotIcon('end2.png')"/></div><div>结束点2</div></td>
+	<td align="center"><div><img src="../media/image/end3.png" style="cursor:pointer" onclick="getDotIcon('end3.png')"/></div><div>结束点3</div></td>
+	<td align="center"><div><img src="../media/image/qd1.png" style="cursor:pointer" onclick="getDotIcon('qd1.png')"/></div><div>签到点1</div></td>
+	<td align="center"><div><img src="../media/image/qd2.png" style="cursor:pointer" onclick="getDotIcon('qd2.png')"/></div><div>签到点2</div></td>
+	<td align="center"><div><img src="../media/image/qd3.png" style="cursor:pointer" onclick="getDotIcon('qd3.png')"/></div><div>签到点3</div></td>
+  </tr>
+  <tr height="30px;">
+	<td align="center"><div><img src="../media/image/qd4.png" style="cursor:pointer" onclick="getDotIcon('qd4.png')"/></div><div>签到点4</div></td>
+	<td align="center"><div><img src="../media/image/start.png" style="cursor:pointer" onclick="getDotIcon('start.png')"/></div><div>开始点1</div></td>
+	<td align="center"><div><img src="../media/image/start2.png" style="cursor:pointer" onclick="getDotIcon('start2.png')"/></div><div>开始点2</div></td>
+	<td align="center"><div><img src="../media/image/start3.png" style="cursor:pointer" onclick="getDotIcon('start3.png')"/></div><div>开始点3</div></td>
+	<td align="center"><div><img src="../media/image/yl1.png" style="cursor:pointer" onclick="getDotIcon('yl1.png')"/></div><div>医疗1</div></td>
+  </tr>  
+  <tr height="30px;">
+	<td align="center"><div><img src="../media/image/yl2.png"  style="cursor:pointer" onclick="getDotIcon('yl2.png')"/></div><div>医疗2</div></td>
+	<td align="center"><div><img src="../media/image/yl3.png"  style="cursor:pointer" onclick="getDotIcon('yl3.png')"/></div><div>医疗3</div></td>
+	<td align="center"><div><img src="../media/image/zh1.png"  style="cursor:pointer" onclick="getDotIcon('zh1.png')"/></div><div>指挥车1</div></td>
+	<td align="center"><div><img src="../media/image/zh2.png"  style="cursor:pointer" onclick="getDotIcon('zh2.png')"/></div><div>指挥车2</div></td>
+	<td align="center"></td>
+  </tr>
+  </table>
+</div>
 
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
  
@@ -73,6 +116,15 @@
 <script type="text/javascript" src="../media/js/select2.min.js"></script>
 <script type="text/javascript" src="../media/js/jquery.form.js"></script>
 <script>
+
+	var map = new AMap.Map("ssljMap", {
+		level : 13
+	});	
+	var infoWindow = new AMap.InfoWindow({
+		offset : new AMap.Pixel(0, -30)
+	});
+	var lnglat = null;
+	var markers = [];
 	jQuery(document).ready(function() { 
 	
 		 $("#xtSsgwList1").on("click",function(){xtSsglList.xtSsgwList("$!xtSsgl.id")});
@@ -98,11 +150,8 @@
 
 		$("#xtSsgwSave").on("click", XtSsgwEdit.xtSsgwFormSubmit());
 		
-		 var map = new AMap.Map("ssljMap", {
-	        	level : 13
-	        });	
-		 
 		 #if($!xtSsgl.sslj)
+			var sslj = "$!xtSsgl.sslj";
 			var pathArry = new Array();
 			var paths = sslj.split(";");
 			$(paths).each(function(i, path) {
@@ -112,10 +161,45 @@
 				path : pathArry
 			});
 			polyline.setMap(map);
+			
+			#if($!xtSsgw.dw)
+				var dw = "$!xtSsgw.dw";
+				var marker = new AMap.Marker({
+					icon : "../media/image/$!xtSsgw.img",
+					position : dw.split(",")
+				});
+				marker.setMap(map);
+			#end
+			
+			map.setFitView();
 		 #end
-		 
-		 
-		
+
+		infoWindow.setContent($("#infoWindow").html());
+	    var clickEventListener = map.on('click', function(e) {
+	    	lnglat = e.lnglat;
+	        infoWindow.open(map, e.lnglat);
+	    });
+	    
+	    $("#cleanTools").on("click", function(){
+	    	map.remove(markers);
+	    	$("#xtSsgwImg").val("");
+	    	$("#xtSsgwDw").val("");
+	    });
+	    
 	});
+	
+	var getDotIcon = function(icon){
+		$("#xtSsgwImg").val(icon)
+		$("#xtSsgwDw").val(lnglat.toString())
+		map.remove(markers);
+		markers = [];
+		var marker = new AMap.Marker({
+					icon : "../media/image/" + icon,
+					position : lnglat
+		});
+		marker.setMap(map);
+		markers.push(marker);
+		infoWindow.close();
+	}
 </script>
 <!-- END JAVASCRIPTS -->
