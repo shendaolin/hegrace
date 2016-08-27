@@ -68,7 +68,7 @@ var xtssgwList = function () {
 
 		xtSsgwEditOnClick:function(ssid){
 			return function(){
-				$("#page-content").load("xtSsgwList.htm", {
+				$("#page-content").load("xtSsgwEdit.htm", {
 					"ssid" :ssid
 				});
 			}

@@ -32,6 +32,8 @@ import cn.hegrace.www.v1.dao.pojo.XtGydm;
 import cn.hegrace.www.v1.dao.pojo.XtGydmExample;
 import cn.hegrace.www.v1.dao.pojo.XtSsgl;
 import cn.hegrace.www.v1.dao.pojo.XtSsgw;
+import cn.hegrace.www.v1.dao.pojo.XtSsgwExample;
+import cn.hegrace.www.v1.error.HegraceException;
 import cn.hegrace.www.v1.seach.Flexigrid;
 import cn.hegrace.www.v1.seach.XtSsgwSeach;
 import net.sf.json.JSONObject;
@@ -106,10 +108,25 @@ public class XtSsgwController extends BaseController {
 			HttpServletResponse response) throws Exception{
 		XtSsgw xtSsgw = (XtSsgw) httpMessageConverter(new XtSsgw(), request);
 		System.out.println("gwsl="+xtSsgw.getGwsl());
+		XtSsgwExample example = new XtSsgwExample();
+		XtSsgwExample.Criteria c = example.createCriteria();
+		c.andGwmcLike(xtSsgw.getGwmc());
+		c.andSsidEqualTo(xtSsgw.getSsid());
 		if(StringUtils.isEmpty(xtSsgw.getId())){
+			List<XtSsgw> list = baseService.selectByExample(example);
+			if(list != null && !list.isEmpty()){
+				sendJson(new HegraceException(xtSsgw.getGwmc()+"岗位名称已存在！"), response);
+				return;
+			}
 			xtSsgw.setId(baseService.getUuid());
 			baseService.insert(xtSsgw);
 		}else{
+			c.andIdNotEqualTo(xtSsgw.getId());
+			List<XtSsgw> list = baseService.selectByExample(example);
+			if(list != null && !list.isEmpty()){
+				sendJson(new HegraceException(xtSsgw.getGwmc()+"岗位名称已存在！"), response);
+				return;
+			}
 			baseService.updateByPrimaryKey(xtSsgw);
 		}
 		sendJson(xtSsgw, response);
