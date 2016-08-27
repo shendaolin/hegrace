@@ -143,12 +143,12 @@ public class XtSsjjyController extends BaseController {
 		String[] sbids = request.getParameterValues("sbids");
 		if(StringUtils.isEmpty(xtSsjjy.getId())){
 			xtSsjjy.setId(baseService.getUuid());
-			xtSsjjy.setZt(1);
+			//xtSsjjy.setZt(1);
 			baseService.insert(xtSsjjy);
 		}else{
 			XtSsjjy xtSsjjy2 = baseService.selectByPrimaryKey(xtSsjjy);
 			xtSsjjy.setZb(xtSsjjy2.getZb());
-			xtSsjjy.setZt(xtSsjjy2.getZt());
+			//xtSsjjy.setZt(xtSsjjy2.getZt());
 			baseService.updateByPrimaryKey(xtSsjjy);
 		}
 		XtSsjjysbExample example = new XtSsjjysbExample();

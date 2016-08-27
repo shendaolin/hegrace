@@ -146,7 +146,7 @@ var XtSsjjyList = function () {
                         	
                     }],
                 sortname : "jjy.cjsj",
-                sortorder : "asc",
+                sortorder : "desc",
                 usepager : true,
                 title : '赛事急救员列表',
                 useRp : false,
@@ -176,7 +176,7 @@ var XtSsjjyEdit = function () {
 
     return {
 
-    	xtSsjjyFormSubmit : function() {
+    	xtSsjjyFormSubmit : function(ssid) {
 			return function() {
 				if ($('#xtSsjjyForm').validate().form()) {
 					$('#xtSsjjyForm').submit();
