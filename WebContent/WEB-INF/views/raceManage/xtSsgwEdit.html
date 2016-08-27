@@ -47,6 +47,15 @@
 						<span class="help-inline"><font color="red">*</font></span>
 					</div>
 				</div>
+				<div class="control-group">
+					<label class="control-label">岗位打点</label>
+					<div class="controls">
+						<div id="ssljMap" style="width:100%;height:400px;"></div>
+						<div  style="position:absolute;margin-top:-35px; left:100%; margin-left:-190px; z-index:100;">
+							<i class="icon-ok"></i> 点击选择图标
+						</div>
+					</div>
+				</div>
 			</form>
 			
 			<br/>
@@ -88,6 +97,24 @@
 	    }); 
 
 		$("#xtSsgwSave").on("click", XtSsgwEdit.xtSsgwFormSubmit());
+		
+		 var map = new AMap.Map("ssljMap", {
+	        	level : 13
+	        });	
+		 
+		 #if($!xtSsgl.sslj)
+			var pathArry = new Array();
+			var paths = sslj.split(";");
+			$(paths).each(function(i, path) {
+				pathArry.push(path.split(","))
+			});
+			var polyline = new AMap.Polyline({
+				path : pathArry
+			});
+			polyline.setMap(map);
+		 #end
+		 
+		 
 		
 	});
 </script>
