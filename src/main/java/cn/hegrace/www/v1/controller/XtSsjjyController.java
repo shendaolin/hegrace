@@ -58,6 +58,10 @@ public class XtSsjjyController extends BaseController {
 		XtSsgl xtSsgl = new XtSsgl();
 		xtSsgl.setId(ssid);
 		xtSsgl = baseService.selectByPrimaryKey(xtSsgl);
+		XtGydmExample example = new XtGydmExample();
+		example.createCriteria().andLbidEqualTo(3);// 身份类型
+		List<XtGydm> list = baseService.selectByExample(example);
+		mv.addObject("XtDmbList", list);
 		mv.addObject("xtSsgl", xtSsgl);
 		mv.addObject("ssid", ssid);
 		return mv;
@@ -72,6 +76,7 @@ public class XtSsjjyController extends BaseController {
 		Map map = flexigrid.getMap();
 		map.put("xm", xtSsjjySeach.getXm());
 		map.put("ssid", xtSsjjySeach.getSsid());
+		map.put("sflx", xtSsjjySeach.getSflx());
 		flexigrid.setPages(xtSsjjySeach.getPage());
 		flexigrid.setTotal(baseService.queryForCount("XtSsjjy.select_xtssgl_count1", map));
 		flexigrid.setRows(baseService.queryForList("XtSsjjy.select_xtssgl_list1", map));

@@ -164,6 +164,12 @@ var XtSsjjyList = function () {
 					"ssid" :ssid
 				});
 			}
+		},
+
+		xtSsjjySearch : function(){
+			$("#xtSsjjyFlexigrid").flexOptions({
+				params : $("#xtSsjjySeach").serializeArray()
+			}).flexReload();
 		}
 
     };

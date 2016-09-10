@@ -96,6 +96,12 @@
 		left join XT_GYDM sflx on ry.sflx = sflx.id and sflx.lbid = '3'
 		left join XT_GYDM zjlx on ry.zjlx = zjlx.id and zjlx.lbid = '4'
 		where    jjy.ssid = #{ssid}
+		<if test="xm != null and xm != ''">
+			and ry.xm like '%${xm}%'
+		</if>
+		<if test="sflx != null and sflx != ''">
+			and ry.sflx like '%${sflx}%'
+		</if>
 	</select>
 	
 	<select id="select_xtssgl_list1" parameterType="java.util.Map"
@@ -111,7 +117,14 @@
 		left join XT_GYDM sflx on ry.sflx = sflx.id and sflx.lbid = '3'
 		left join XT_GYDM zjlx on ry.zjlx = zjlx.id and zjlx.lbid = '4'
 		where    jjy.ssid = #{ssid}
+		<if test="xm != null and xm != ''">
+			and ry.xm like '%${xm}%'
+		</if>
+		<if test="sflx != null and sflx != ''">
+			and ry.sflx like '%${sflx}%'
+		</if>
 		group by jjy.id
+		
 		<if test="orderByClause != null">
 			order by ${orderByClause}
 		</if>

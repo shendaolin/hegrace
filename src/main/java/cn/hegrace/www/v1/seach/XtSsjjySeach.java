@@ -4,6 +4,15 @@ public class XtSsjjySeach extends Page {
 	
 	private String xm;
 	private String ssid;
+	private String sflx;
+	
+	public String getSflx() {
+		return sflx;
+	}
+
+	public void setSflx(String sflx) {
+		this.sflx = sflx;
+	}
 
 	public String getXm() {
 		return xm;

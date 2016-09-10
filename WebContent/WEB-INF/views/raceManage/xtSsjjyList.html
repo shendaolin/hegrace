@@ -34,6 +34,11 @@
 			<div style="float:right;">
 			<form id="xtSsjjySeach">
 			<input type="hidden" name="ssid" value="$!ssid">
+			<select id="xtjjrySelect" class="span6 select2" name="sflx">
+			#foreach($xtDmlb in $XtDmbList) 
+				<option value="$!xtDmlb.id" #if("$!xtDmlb.id"=="$!xtJjry.sflx") selected #end>$!xtDmlb.dmmc</option> 
+			#end
+			</select>
 			<input placeholder="急救员姓名" class="m-wrap medium" type="text" name="xm"/>
 			</form>
 			</div>
@@ -54,6 +59,10 @@
 		XtSsjjyList.init();
 		$("#xtSsglList").on("click", XtSsglEdit.xtSsglListOnClick());
 		$("#xtSsjjyEdit").on("click", XtSsjjyList.XtSsjjyEditOnClick("$!ssid"));
+		$('#xtSsjjySeach').submit(function() {
+			XtSsjjyList.xtSsjjySearch();
+	        return false; //阻止表单默认提交
+	    });
 	});
 	
 </script>
