@@ -3,10 +3,11 @@
 <mapper namespace="XtSsgw">
   	<select id="select_xtSsgws_list" parameterType="java.util.Map"
 		resultType="cn.hegrace.www.v1.dao.pojo.XtSsgw">
+		select * from (
 		select gw.id, gwmc , gwsl - count(gwid) as gwsl from XT_SSGW gw
 		left join XT_SSJJY jjy on jjy.gwid = gw.id and jjy.zt = '1'
 		where gw.ssid = #{ssid}
-		group by gw.id
+		group by gw.id ) temp where temp.gwsl > 0
 	</select>
 	<select id="select_xtssgw_count" parameterType="java.util.Map"
 		resultType="java.lang.Integer">

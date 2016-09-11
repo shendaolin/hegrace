@@ -71,7 +71,7 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">岗位:</label>
+					<label class="control-label">岗位:<span class="required">*</span></label>
 					<div class="controls">
 						<select id="xtSsjjyGw" class="span6 select2" name="gwid">
 							<option value=""></option>
@@ -136,11 +136,17 @@
            rules: {
         	   ryid: {
                    required: true
+               },
+               gwid: {
+                   required: true
                }
            },
 
            messages: {
         	   ryid: {
+                   required: " 必填."
+               },
+               gwid: {
                    required: " 必填."
                }
            },
@@ -161,8 +167,6 @@
        });
 	   
 		$('#xtSsjjyForm').submit(function() {
-			
-			
 	        $(this).ajaxSubmit({
 	        	success: function(data){
 	        		alert("保存成功！");
