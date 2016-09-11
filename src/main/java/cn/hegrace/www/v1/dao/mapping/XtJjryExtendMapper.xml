@@ -8,6 +8,9 @@
 		<if test="xm != null and xm != ''">
 			where xm like '%${xm}%'
 		</if>
+		<if test="sflx != null and sflx != ''">
+			where ry.sflx = #{sflx}
+		</if>
 	</select>
 
 	<select id="select_xtjjry_list" parameterType="java.util.Map"
@@ -17,6 +20,9 @@
 		left join XT_GYDM zjlx on zjlx.id = ry.zjlx and zjlx.lbid = '4'
 		<if test="xm != null and xm != ''">
 			where xm like '%${xm}%'
+		</if>
+		<if test="sflx != null and sflx != ''">
+			where ry.sflx = #{sflx}
 		</if>
 		<if test="orderByClause != null">
 			order by ${orderByClause}

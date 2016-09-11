@@ -35,6 +35,12 @@
 			</div>
 			<div style="float:right;">
 			<form id="xtJjrySeach">
+			<select id="xtjjrySelect"  class="small m-wrap"  name="sflx">
+				<option value="">身份类型</option> 
+			#foreach($xtDmlb in $XtDmbList) 
+				<option value="$!xtDmlb.id">$!xtDmlb.dmmc</option> 
+			#end
+			</select>
 			<input placeholder="急救员姓名" class="m-wrap medium" type="text" name="xm"/>
 			</form>
 			</div>

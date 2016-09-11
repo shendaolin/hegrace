@@ -1,10 +1,12 @@
 package cn.hegrace.www.v1.seach;
 
 public class XtJjrySeach extends Page {
-	
+
 	private String xm;
 	private String ssmc;
 	private String ryid;
+	private String sflx;
+
 	public String getRyid() {
 		return ryid;
 	}
@@ -28,7 +30,13 @@ public class XtJjrySeach extends Page {
 	public void setXm(String xm) {
 		this.xm = xm;
 	}
-	
-	 
+
+	public String getSflx() {
+		return sflx;
+	}
+
+	public void setSflx(String sflx) {
+		this.sflx = sflx;
+	}
 
 }

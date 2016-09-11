@@ -34,7 +34,8 @@
 			<div style="float:right;">
 			<form id="xtSsjjySeach">
 			<input type="hidden" name="ssid" value="$!ssid">
-			<select id="xtjjrySelect" class="span6 select2" name="sflx">
+			<select id="xtjjrySelect"  class="small m-wrap"  name="sflx">
+				<option value="">身份类型</option> 
 			#foreach($xtDmlb in $XtDmbList) 
 				<option value="$!xtDmlb.id" #if("$!xtDmlb.id"=="$!xtJjry.sflx") selected #end>$!xtDmlb.dmmc</option> 
 			#end

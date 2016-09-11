@@ -78,6 +78,10 @@ public class XtJjryController extends BaseController {
 	@RequestMapping("xtjjryManage/xtJjryList.htm")
 	public ModelAndView xtJjryList(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView("xtjjryManage/xtJjryList");
+		XtGydmExample example = new XtGydmExample();
+		example.createCriteria().andLbidEqualTo(3);// 身份类型
+		List<XtGydm> list = baseService.selectByExample(example);
+		mv.addObject("XtDmbList", list);
 		return mv;
 	}
 
@@ -87,6 +91,7 @@ public class XtJjryController extends BaseController {
 		Flexigrid flexigrid = new Flexigrid(xtJjrySeach);
 		Map map = flexigrid.getMap();
 		map.put("xm", xtJjrySeach.getXm());
+		map.put("sflx", xtJjrySeach.getSflx());
 		flexigrid.setPages(xtJjrySeach.getPage());
 		flexigrid.setTotal(baseService.queryForCount("XtJjry.select_xtjjry_count", map));
 		flexigrid.setRows(baseService.queryForList("XtJjry.select_xtjjry_list", map));
