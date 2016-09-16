@@ -97,8 +97,8 @@ public class XtSsjjyController extends BaseController {
 		mv.addObject("ssid", ssid);
 		mv.addObject("ryxm", ryxm);
 		List<String> jjysbid = new ArrayList<String>();
+		XtSsjjy xtSsjjy = new XtSsjjy();
 		if(StringUtils.isNotEmpty(id)){
-			XtSsjjy xtSsjjy = new XtSsjjy();
 			xtSsjjy.setId(id);
 			xtSsjjy = baseService.selectByPrimaryKey(xtSsjjy);
 			mv.addObject("xtSsjjy", xtSsjjy);
@@ -122,6 +122,7 @@ public class XtSsjjyController extends BaseController {
 
 		Map map = new HashMap();
 		map.put("ssid", ssid);
+		map.put("gwid", xtSsjjy.getGwid());
 		List<XtJjry> xtJjrys = baseService.selectList("XtSsjjy.select_xtJjrys_list", map);
 		mv.addObject("xtJjrys", xtJjrys);
 		List<XtSsgw> xtSsgws = baseService.selectList("XtSsgw.select_xtSsgws_list", map);

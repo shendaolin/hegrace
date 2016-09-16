@@ -321,7 +321,7 @@ var HegraceMap = function() {
 																	});
 
 													if (self.alljjry
-															&& fpq == '1') {
+															&& fpq == '1' && false) {
 
 														var distance = [];
 														jQuery
