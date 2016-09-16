@@ -30,7 +30,9 @@ import cn.hegrace.www.v1.dao.pojo.XtDmlb;
 import cn.hegrace.www.v1.dao.pojo.XtDmlbExample;
 import cn.hegrace.www.v1.dao.pojo.XtGydm;
 import cn.hegrace.www.v1.dao.pojo.XtGydmExample;
+import cn.hegrace.www.v1.error.HegraceException;
 import cn.hegrace.www.v1.dao.pojo.XtBsysb;
+import cn.hegrace.www.v1.dao.pojo.XtBsysbExample;
 import cn.hegrace.www.v1.seach.Flexigrid;
 import cn.hegrace.www.v1.seach.XtBsysbSeach;
 import net.sf.json.JSONObject;
@@ -100,10 +102,27 @@ public class XtBsysbController extends BaseController {
 	public void xtBsysbSave(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtBsysb xtBsysb = (XtBsysb) httpMessageConverter(new XtBsysb(), request);
+		XtBsysbExample example = new XtBsysbExample();
+		XtBsysbExample.Criteria c = example.createCriteria();
+		c.andSblxEqualTo(xtBsysb.getSblx());
+		c.andSbbhLike(xtBsysb.getSbbh());
+		c.andSbztEqualTo(1);
 		if(StringUtils.isEmpty(xtBsysb.getId())){
+			List<XtBsysb> list = baseService.selectByExample(example);
+			if(list != null && !list.isEmpty()){
+				sendJson(new HegraceException("比赛用设备名称已存在！"), response);
+				return;
+			}
+			
 			xtBsysb.setId(baseService.getUuid());
 			baseService.insert(xtBsysb);
 		}else{
+			c.andIdNotEqualTo(xtBsysb.getId());
+			List<XtBsysb> list = baseService.selectByExample(example);
+			if(list != null && !list.isEmpty()){
+				sendJson(new HegraceException("比赛用设备名称已存在！"), response);
+				return;
+			}
 			baseService.updateByPrimaryKey(xtBsysb);
 		}
 		sendJson(xtBsysb, response);

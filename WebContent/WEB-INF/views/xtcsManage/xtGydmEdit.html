@@ -114,7 +114,11 @@
 		
 	        $(this).ajaxSubmit({
 	        	success: function(data){
-	        		alert("保存成功！");
+	        		if(data.exception){
+	        			alert(data.exception)
+	        		}else{
+	        			alert("保存成功！");
+	        		}
 	            },
 	            error: function(data){
 	                alert("保存失败！");

@@ -29,6 +29,8 @@ import cn.hegrace.www.v1.busi.BaseService;
 import cn.hegrace.www.v1.dao.pojo.XtDmlb;
 import cn.hegrace.www.v1.dao.pojo.XtDmlbExample;
 import cn.hegrace.www.v1.dao.pojo.XtGydm;
+import cn.hegrace.www.v1.dao.pojo.XtGydmExample;
+import cn.hegrace.www.v1.error.HegraceException;
 import cn.hegrace.www.v1.seach.Flexigrid;
 import cn.hegrace.www.v1.seach.XtGydmSeach;
 import net.sf.json.JSONObject;
@@ -96,10 +98,25 @@ public class XtGydmController extends BaseController {
 	public void xtGydmSave(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		XtGydm xtGydm = (XtGydm) httpMessageConverter(new XtGydm(), request);
+		XtGydmExample example = new XtGydmExample();
+		XtGydmExample.Criteria c = example.createCriteria();
+		c.andLbidEqualTo(xtGydm.getLbid());
+		c.andDmmcLike(xtGydm.getDmmc());
 		if(StringUtils.isEmpty(xtGydm.getId())){
+			List<XtGydm> list = baseService.selectByExample(example);
+			if(list != null && !list.isEmpty()){
+				sendJson(new HegraceException(xtGydm.getDmmc()+"名称已存在！"), response);
+				return;
+			}
 			xtGydm.setId(baseService.getUuid());
 			baseService.insert(xtGydm);
 		}else{
+			c.andIdNotEqualTo(xtGydm.getId());
+			List<XtGydm> list = baseService.selectByExample(example);
+			if(list != null && !list.isEmpty()){
+				sendJson(new HegraceException(xtGydm.getDmmc()+"名称已存在！"), response);
+				return;
+			}
 			baseService.updateByPrimaryKey(xtGydm);
 		}
 		sendJson(xtGydm, response);
