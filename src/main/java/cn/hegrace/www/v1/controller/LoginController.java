@@ -3,6 +3,7 @@ package cn.hegrace.www.v1.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -70,6 +71,8 @@ public class LoginController extends BaseController{
 			xtCzyh = list.get(0);
 			HttpSession session = request.getSession();
 			session.setAttribute("xtCzyhBean", xtCzyh);
+			ServletContext application = request.getServletContext();
+			application.setAttribute(xtCzyh.getId(), session.getId());
 			if(StringUtils.isNotEmpty(xtCzyh.getSsid())){
 				response.sendRedirect("index.htm");
 			}else{

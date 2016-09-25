@@ -203,6 +203,7 @@ public class IndexMapController extends BaseController {
 			xtSsjjy.setId(jjyid);
 			xtSsjjy = baseService.selectByPrimaryKey(xtSsjjy);
 			xtSsjjy.setZb("");
+			xtSsjjy.setSg(0);
 			baseService.updateByPrimaryKey(xtSsjjy);
 		}
 	}

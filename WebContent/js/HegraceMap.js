@@ -22,15 +22,16 @@ var HegraceMap = function() {
 				});
 				polyline.setMap(this.mapObj);
 			}
-			
 			$.get("getGwLngLats.htm", function(data){
 				$(data.rows).each(function(i,item){
-					var marker = new AMap.Marker(
-							{
-								icon : "media/image/" + item.img,
-								position : item.dw.split(",")
-							});
-					marker.setMap(self.mapObj);
+					if(item.dw){
+						var marker = new AMap.Marker(
+								{
+									icon : "media/image/" + item.img,
+									position : item.dw.split(",")
+								});
+						marker.setMap(self.mapObj);
+					}
 				});
 			});
 			
