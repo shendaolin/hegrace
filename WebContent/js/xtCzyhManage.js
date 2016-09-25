@@ -114,12 +114,10 @@ var XtCzyhEdit = function () {
 			}
 		},
 		xtCzyhFormSubmit : function() {
-		
 			return function() {
 				if ($('#xtCzyhForm').validate().form()) {
 					$('#xtCzyhForm').submit();
                 }
-				$("#page-content").load("xtCzyhList.htm");
 			} 
 		},
 	 xtCzyhFormPassSubmit : function() {

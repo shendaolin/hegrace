@@ -125,7 +125,8 @@
 	                   required: true
 	               },
 	               dh: {
-	                   required: true
+	                   required: true,
+	                   minlength:11
 	               }#if("$!xtCzyh.id"==""),
 	               dlm: {
 	                   required: true,
@@ -133,7 +134,7 @@
 	               },
 	               dlmm: {
 	                   required: true,
-	                   minlength:5
+	                   checkPwd: true
 	               }#end
 	           },
 
@@ -142,7 +143,8 @@
 	                   required: " 必填."
 	               },
 	               dh: {
-	                   required: " 必填."
+	                   required: " 必填.",
+	                   minlength: "手机号码长度必须为11位."
 	               }#if("$!xtCzyh.id"==""),
 	               dlm: {
 	                   required: " 必填.",
@@ -169,6 +171,11 @@
 	           }
 	       });
 	    
+	    $.validator.addMethod("checkPwd",function(value,element,params){  
+            var checkPwd = /^\w{6,16}$/g;  
+            return this.optional(element)||(checkPwd.test(value));  
+        },"*只允许6-16位英文字母、数字或者下画线！");  
+	    
 		$('#xtCzyhForm').submit(function() {
 	        $(this).ajaxSubmit({
 	        	success: function(data){
@@ -177,6 +184,7 @@
 	        		}else{
 	        			alert("保存成功！");
 	        		}
+	        		$("#page-content").load("xtCzyhList.htm");
 	            },
 	            error: function(data){
 	                alert("保存失败！");
