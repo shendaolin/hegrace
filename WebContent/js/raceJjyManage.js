@@ -187,9 +187,6 @@ var XtSsjjyEdit = function () {
 				if ($('#xtSsjjyForm').validate().form()) {
 					$('#xtSsjjyForm').submit();
                 }
-				$("#page-content").load("xtSsjjyList.htm", {
-					"ssid" :ssid
-				});
 			}
 		}
 

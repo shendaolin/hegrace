@@ -170,6 +170,9 @@
 	        $(this).ajaxSubmit({
 	        	success: function(data){
 	        		alert("保存成功！");
+	        		$("#page-content").load("xtSsjjyList.htm", {
+						"ssid" :"$!ssid"
+					});
 	            },
 	            error: function(data){
 	                alert("保存失败！");
