@@ -62,13 +62,18 @@ var HegraceMap = function() {
 									$(rows)
 											.each(
 													function(i, item) {
-														var marker = new AMap.Marker(
+														var marker = null;
+														try{
+														marker= new AMap.Marker(
 																{
 																	icon : item.sbmc ? "media/image/dsbjjy.png"
 																			: "media/image/jjy.png",
 																	position : item.zb
 																			.split(",")
 																});
+														}catch(e){
+															return;
+														}
 														marker
 																.setMap(self.mapObj);
 														marker
