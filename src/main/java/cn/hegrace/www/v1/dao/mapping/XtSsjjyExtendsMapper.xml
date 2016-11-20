@@ -5,15 +5,14 @@
 	<select id="select_noSignIn_count" parameterType="java.util.Map"
 		resultType="java.lang.Integer">
 		SELECT count(1) from XT_SSJJY where ssid = #{ssid} and
-		zt='1' and ( zb = '' or zb is null )
+		zt='1'
 	</select>
 
 	<select id="select_noSignIn_list" parameterType="java.util.Map"
-		resultType="cn.hegrace.www.v1.dao.pojo.XtJjry">
-		SELECT jj.* from XT_SSJJY ssjj, XT_JJRY jj where ssjj.ryid =
-		jj.id and ssjj.ssid = #{ssid} and ssjj.zt = '1' and ( zb = '' or zb is
-		null )
-		order by jj.xm asc
+		resultType="cn.hegrace.www.v1.dto.XtJjryDto">
+		SELECT jj.*, ssjj.sg from XT_SSJJY ssjj, XT_JJRY jj where ssjj.ryid =
+		jj.id and ssjj.ssid = #{ssid} and ssjj.zt = '1'
+		order by ssjj.sg desc
 		limit ${startPage}, ${page}
 	</select>
 	

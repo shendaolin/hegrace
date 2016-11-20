@@ -73,6 +73,21 @@ var NoSignIn = function() {
 				url : "noSignIn.htm",
 				dataType : 'json',
 				colModel : [ {
+					display : '是否在线',
+					name : 'sg',
+					width : 80,
+					align : 'center',
+					sortable : true,
+                    operation : function(tdDiv, row){
+                    	var content = "";
+                    	if(row.sg == 1){
+                    		content = "<font color='green'>在线</font>";
+                    	}else{
+                    		content = "<font color='red'>离线</font>";
+                    	}
+						$(tdDiv).html(content);
+					}
+				},{
 					display : '姓名',
 					name : 'xm',
 					width : 80,
@@ -100,7 +115,7 @@ var NoSignIn = function() {
 				} ],
 				usepager : true,
 				useRp : false,
-				rp : 5,
+				rp : 7,
 				width : 500,
 				height : 200,
 				onSuccess : function() {
