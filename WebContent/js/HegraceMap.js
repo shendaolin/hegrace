@@ -64,10 +64,16 @@ var HegraceMap = function() {
 													function(i, item) {
 														var marker = null;
 														try{
+															
+														var iconstr = "";
+														if(item.sbmc){
+															iconstr = item.sg?"media/image/dsbjjy.png":"media/image/dsbjjy2.png";
+														}else{
+															iconstr = item.sg?"media/image/jjy.png":"media/image/jjy2.png";
+														}
 														marker= new AMap.Marker(
 																{
-																	icon : item.sbmc ? "media/image/dsbjjy.png"
-																			: "media/image/jjy.png",
+																	icon : iconstr,
 																	position : item.zb
 																			.split(",")
 																});
@@ -76,82 +82,16 @@ var HegraceMap = function() {
 														}
 														marker
 																.setMap(self.mapObj);
-														marker
-																.on(
-																		'click',
-																		function(
-																				e) {
-
-																			var content = "";
-																			$
-																					.get(
-																							"getJjryInfomation.htm",
-																							{
-																								"jjyid" : item.id
-																							},
-																							function(
-																									list) {
-																								var rw = true;
-																								$
-																										.each(
-																												list.rows,
-																												function(
-																														key,
-																														xtSsjjyDto) {
-																													if (key == 0) {
-																														content += "<div>急救员："
-																																+ xtSsjjyDto.xm
-																																+ "("
-																																+ xtSsjjyDto.dh
-																																+ ")</div>"
-																														if (xtSsjjyDto.sbmc) {
-																															content += "<div>设备名称："
-																																	+ xtSsjjyDto.sbmc
-																																	+ "</div>"
-																														}
-																														content += "<div>身份类型："
-																																+ xtSsjjyDto.sflx
-																																+ "</div>"
-																														content += "<div>类别："
-																																+ xtSsjjyDto.lb
-																																+ "</div>"
-																														content += "<br/>";
-																													}
-																													if (xtSsjjyDto.qjid) {
-																														rw = false;
-																														content += "<div>正在救助："
-																																+ xtSsjjyDto.qjxm
-																																+ "("
-																																+ xtSsjjyDto.qjdh
-																																+ ")</div>"
-																													}
-																												});
-																								content += "<br/>";
-																								if (fpq == '1'
-																										&& rw) {
-																									content += " <a href=\"javascript:;\" class=\"btn red mini\" onclick=\"HegraceMap.belaidOff('"
-																											+ item.id
-																											+ "')\">下岗</a>";
-																								}
-
-																								self.infoWindow
-																										.setContent(content);
-																								self.infoWindow
-																										.open(
-																												self.mapObj,
-																												marker
-																														.getPosition());
-																							})
-																		});
-
+														
+														
 														var content = item.xm
-																+ "(" + item.dh
-																+ ")";
+														+ "(" + item.dh
+														+ ")";
 														if (item.sbmc) {
 															content += "<br/>设备:"
 																	+ item.sbmc;
 														}
-
+		
 														marker
 																.setLabel({// label默认蓝框白底左上角显示，样式className为：amap-marker-label
 																	offset : new AMap.Pixel(
@@ -159,28 +99,100 @@ var HegraceMap = function() {
 																			0),// 修改label相对于maker的位置
 																	content : content
 																});
-
-														self.alljjry[""
-																+ item.id] = {
-															"marker" : marker,
-															"position" : marker
-																	.getPosition(),
-															"ryid" : item.ryid,
-															"jlid" : item.jlid,
-															"sbmc" : item.sbmc,
-															"xm" : item.xm,
-															"dh" : item.dh,
-															"id" : item.id
-														};
-
-														if (item.sbmc
-																.indexOf("救护车") > -1) {
+														
+														self.markerJjrys.push(marker);
+														
+														if(item.sg){
+														
+															marker
+																	.on(
+																			'click',
+																			function(
+																					e) {
+	
+																				var content = "";
+																				$
+																						.get(
+																								"getJjryInfomation.htm",
+																								{
+																									"jjyid" : item.id
+																								},
+																								function(
+																										list) {
+																									var rw = true;
+																									$
+																											.each(
+																													list.rows,
+																													function(
+																															key,
+																															xtSsjjyDto) {
+																														if (key == 0) {
+																															content += "<div>急救员："
+																																	+ xtSsjjyDto.xm
+																																	+ "("
+																																	+ xtSsjjyDto.dh
+																																	+ ")</div>"
+																															if (xtSsjjyDto.sbmc) {
+																																content += "<div>设备名称："
+																																		+ xtSsjjyDto.sbmc
+																																		+ "</div>"
+																															}
+																															content += "<div>身份类型："
+																																	+ xtSsjjyDto.sflx
+																																	+ "</div>"
+																															content += "<div>类别："
+																																	+ xtSsjjyDto.lb
+																																	+ "</div>"
+																															content += "<br/>";
+																														}
+																														if (xtSsjjyDto.qjid) {
+																															rw = false;
+																															content += "<div>正在救助："
+																																	+ xtSsjjyDto.qjxm
+																																	+ "("
+																																	+ xtSsjjyDto.qjdh
+																																	+ ")</div>"
+																														}
+																													});
+																									content += "<br/>";
+																									if (fpq == '1'
+																											&& rw) {
+																										content += " <a href=\"javascript:;\" class=\"btn red mini\" onclick=\"HegraceMap.belaidOff('"
+																												+ item.id
+																												+ "')\">下岗</a>";
+																									}
+	
+																									self.infoWindow
+																											.setContent(content);
+																									self.infoWindow
+																											.open(
+																													self.mapObj,
+																													marker
+																															.getPosition());
+																								})
+																			});
+	
+															
+	
 															self.alljjry[""
-																	+ item.id].jlid = '1';
+																	+ item.id] = {
+																"marker" : marker,
+																"position" : marker
+																		.getPosition(),
+																"ryid" : item.ryid,
+																"jlid" : item.jlid,
+																"sbmc" : item.sbmc,
+																"xm" : item.xm,
+																"dh" : item.dh,
+																"id" : item.id
+															};
+	
+															if (item.sbmc
+																	.indexOf("救护车") > -1) {
+																self.alljjry[""
+																		+ item.id].jlid = '1';
+															}
 														}
-
-														self.markerJjrys
-																.push(marker);
 													});
 
 								});
@@ -436,8 +448,11 @@ var HegraceMap = function() {
 					"jjyid" : jjyid
 				}, function() {
 					var marker = self.alljjry["" + jjyid].marker;
-					self.mapObj.remove(marker);
 					delete self.alljjry["" + jjyid];
+//					self.mapObj.remove(marker);
+					var icon = marker.getIcon( );
+					icon = icon.replace(/jjy/g, "jjy2");
+					marker.setIcon(icon)
 					self.infoWindow && self.infoWindow.close();
 				});
 			} else {

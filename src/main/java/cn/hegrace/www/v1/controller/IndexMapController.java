@@ -202,7 +202,6 @@ public class IndexMapController extends BaseController {
 		if(StringUtils.isNotEmpty(jjyid)){
 			xtSsjjy.setId(jjyid);
 			xtSsjjy = baseService.selectByPrimaryKey(xtSsjjy);
-			xtSsjjy.setZb("");
 			xtSsjjy.setSg(0);
 			baseService.updateByPrimaryKey(xtSsjjy);
 		}
